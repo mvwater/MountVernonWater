@@ -12,7 +12,8 @@ The following documentation is a set of guidelines for contributing to the Knox 
 
 This section guides you through submitting a bug report for Atom. Following these guidelines helps developers, maintainers, and the community understand your report, reproduce the behavior, and find related reports.
 
-We track bugs as GitHub issues. After you've determined what software clump your bug is related to, create an issue on that repository and provide the following information. Explain the problem and include details to help maintainers and developers reproduce the problem.
+We track bugs as GitHub issues. After you've determined what software clump your bug is related to, create an issue on that repository and provide the following information. Explain the problem and include details to help maintainers and developers reproduce the problem. 
+We encourage you to use our templates when filing your issues.
 
 - Use a clear and descriptive title for the issue to identify the problem.
 - Describe the exact steps to reproduce the problems with as much detail as necessary.
@@ -26,6 +27,7 @@ We track bugs as GitHub issues. After you've determined what software clump your
 This section guides you through submitting an enhancement or a refactoring request.
 
 Enhancement suggestions are tracked as GitHub issues. After you've determined what software clump your bug is related to, create an issue on that repository and provide the following information.
+We encourage you to use our templates when filing your issues.
 
 - Use a clear and descriptive title for the issue to identify the area of improvement.
 - Describe the code clumps that you think should be optimized or enhanced, or if it is a rendered piece of software, the exact steps to get to that display.
