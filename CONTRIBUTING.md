@@ -22,6 +22,8 @@ We encourage you to use our templates when filing your issues.
 - Note whether the software terminates gracefully or crashes.
 - Any other information that you think are important.
 
+If you squish the bug, please reference your commit hash when you close the issue, if possible. If not, we should be able to match your bug squashing by your commit emoji :bug: `:bug:`.
+
 ### Suggesting Enhancements
 
 This section guides you through submitting an enhancement or a refactoring request.
