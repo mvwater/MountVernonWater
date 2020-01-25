@@ -8,3 +8,5 @@ The Knox County Department of Watershed is currently using a closed-source data 
 ## Specifications
 
 As we continue to work on this project, the specifications will be developed and modified as the developers and clients see fit to best serve the needs of the greater community as a long term solution. The system is planning on being deployed on existing server platforms provided by the local government. Depending on our abilities, we may choose to utilize some sort of containerization technology, like Kubernetes, to better serve the clients and to make the applications highly scalable.
+
+**Please read the Contributor Guidelines before attempting to make changes!**
