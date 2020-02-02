@@ -43,7 +43,7 @@ For security reasons, local hosting is recommended for hosting the platform, and
 For better performance, reliability, security, and scalability, we *suggest* the following:
 - Securing the website by SSL certificate
 
-The **recommended** high-level server architecture for the platform is as illustrated in the [https://www.lucidchart.com/documents/view/078e9382-fdee-4b86-94dc-ece34b0e72c3](provided diagram).
+The **recommended** high-level server architecture for the platform is as illustrated in the [following diagram](https://www.lucidchart.com/documents/view/078e9382-fdee-4b86-94dc-ece34b0e72c3 "View LucidChart Diagram").
 
 ## Features Overview
 - There will be two types of users namely:
