@@ -78,3 +78,5 @@ The following are excluded from the project scope:
 ## Project Development Methodology
 The project execution methodology which will be followed for this project design and development is the rapid development (cyclical) model. We find that the rapid develoment model is a great way to successfully manage projects that are relatively small in scope, with all functional and nonfunctional requirements defined in sufficient detail before any code is written.
 
+View the diagram [here](https://www.lucidchart.com/documents/view/e1b4f89e-5ee3-4511-a26b-e772351c4bc0#).
+
