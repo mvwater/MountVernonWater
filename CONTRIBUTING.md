@@ -55,6 +55,7 @@ We encourage you to use our templates when filing your issues, BUT if nothing fi
   + :lock: `:lock:` when dealing with security
   + :arrow_up: `:arrow_up:` when ADDING dependencies
   + :arrow_down: `:arrow_down:` when REMOVING dependencies
+  + :space_invader: `:space_invader:` when adding meeting notes
 
 ### GitHub Pull Requests
 
