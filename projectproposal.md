@@ -35,10 +35,10 @@ For security reasons, local hosting is recommended for hosting the platform, and
 - MySQL version 5.6 or greater - https://www.mysql.com/
 - Apache 2.x.x (mod_rewrite module enabled, https://httpd.apache.org/) OR Nginx 1.x.x (https//www.nginx.com/resources/wiki/)
 - Required PHP extensions -
-  +OpenSSL
-  +XML
-  +Ctype
-  +JSON
+  + OpenSSL
+  + XML
+  + Ctype
+  + JSON
 
 For better performance, reliability, security, and scalability, we *suggest* the following:
 - Securing the website by SSL certificate
@@ -47,17 +47,17 @@ The **recommended** high-level server architecture for the platform is as illust
 
 ## Features Overview
 - There will be two types of users namely:
-  +Admin - Who can access and manage all aspects of the platform including all registered entries, and can edit entries
-  +User - Who can view any information on the platform
+  + Admin - Who can access and manage all aspects of the platform including all registered entries, and can edit entries
+  + User - Who can view any information on the platform
 - The user interface for the front-end (User area) of the platform will be responsive, but not necessarily mobile friendly, as the end product is intended for desktop use. It shall support the following resolutions:
-  +320px for common smartphones
-  +480px and below for common smartphones at the landscape orientaiton
-  +768px and 960px for tablets in their common orientations
-  +960px and upwards for desktop monitors
+  + 320px for common smartphones
+  + 480px and below for common smartphones at the landscape orientaiton
+  + 768px and 960px for tablets in their common orientations
+  + 960px and upwards for desktop monitors
 - The following pages will be designed:
-  +Home page
-  +View entries
-  +Search entries
+  + Home page
+  + View entries
+  + Search entries
 
 ## Version Control
 GitHub will be used as the online version control repository hosting service for tracking all development and coding changes. We usually follow the GitFlow workflow, which as a Master branch, hotfixes, release, develop, and feature branches.
