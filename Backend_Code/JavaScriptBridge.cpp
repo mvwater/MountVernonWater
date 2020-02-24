@@ -1,7 +1,8 @@
 //File Name: JavaScriptBridge.cpp
-//Author: Michaela, Sejin, and Shane
-//Email Address: brydon1@kenyon.edu, kim3@kenyon.edu,
-//Project: City Water Archival Database
+//Author: M Brydon, S Kim, S Canfield
+
+//Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, canfield1@kenyon.edu
+//Project: Mount Vernon Water
 //Description: Sends output and gets input to and from JavaScript through Ajax
 //Last Changed: February 17, 2020
 
