@@ -14,7 +14,7 @@ using std::string;
 #ifndef DATABASEBRIDGE_H
 #define DATABASEBRIDGE_H
 
-#define HOST "localhost"
+#define HOST "localhost" // Set IP address instead of localhost
 #define USER "brydon1"
 #define DB "Team5" // RENAME!!!!!!!
 #define PASS "S217079"

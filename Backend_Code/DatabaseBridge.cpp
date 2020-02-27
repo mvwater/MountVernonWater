@@ -1,12 +1,9 @@
 //File Name: DatabaseBridge.cpp
-//Author: Michaela, Sejin, and Shane
-
-// Add Shane's email!!!!!!
-
-//Email Address: kim3@kenyon.edu, brydon1@kenyon.edu
+//Author: M Brydon, S Kim, and S Canfield
+//Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, and canfield1@kenyon.edu
 //Assignment: Project 3
 //Description: General class that can communicate with our database
-//Last Changed: November 13, 2019
+//Last Changed: February 18, 2019
 
 #include "DatabaseBridge.h"
 
@@ -16,6 +13,6 @@ Statement DatabaseBridge::createStatement(string query){
   con->setSchema(DBName);
   Statement statement(con->createStatement());
   statement->execute(query);
-  
+
   return statement;
 }
