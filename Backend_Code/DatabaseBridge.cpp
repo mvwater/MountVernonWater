@@ -1,9 +1,10 @@
 //File Name: DatabaseBridge.cpp
-//Author: M Brydon, S Kim, and S Canfield
-//Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, and canfield1@kenyon.edu
-//Assignment: Project 3
+//Author: M Brydon, S Kim, S Canfield
+
+//Email Address: kim3@kenyon.edu, brydon1@kenyon.edu, canfield1@kenyon.edu
+//Dev Project: Mount Vernon Water
 //Description: General class that can communicate with our database
-//Last Changed: February 18, 2019
+//Last Changed: 23 February 2020
 
 #include "DatabaseBridge.h"
 
