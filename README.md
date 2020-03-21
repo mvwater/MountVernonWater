@@ -1,5 +1,11 @@
 # Knox County Department of Watershed Software Upgrade Project
 
+---
+
+[![Build Status](https://travis-ci.org/mvwater/mvwater-cpp.svg?branch=master)](https://travis-ci.org/mvwater/mvwater-cpp)
+
+---
+
 ## Project Overview
 
 This project overview is subject to change as the project evolves.
