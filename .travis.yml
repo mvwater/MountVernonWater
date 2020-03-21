@@ -1,0 +1,8 @@
+language: cpp
+install: make
+dist: bionic
+compiler:
+- gcc
+os:
+- linux
+
