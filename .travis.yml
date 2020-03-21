@@ -1,5 +1,5 @@
 language: cpp
-install: make
+install: make --file Backend_Code/Makefile
 dist: bionic
 compiler:
 - gcc
