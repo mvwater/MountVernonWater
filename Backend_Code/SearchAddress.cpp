@@ -18,11 +18,7 @@ int main(){
   string searchVal = javaScriptBridge.getElement("searchVal", cgi);
   string searchCategory = javaScriptBridge.getElement("searchCategory", cgi);
 
-
-
-
-
-  vector<Artwork> searchResults;
+  vector<Account> searchResults;
 
   //If the user didn't choose to search by category use general lookup to get
   //search results

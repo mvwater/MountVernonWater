@@ -1,5 +1,3 @@
-//#include "ArtLookup.h"
-//#include "Query.h"
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
 #include <iostream>
@@ -22,8 +20,10 @@ int main(){
   string searchVal = javaScriptBridge.getElement("searchVal", cgi);
   string searchCategory = javaScriptBridge.getElement("searchCategory", cgi);
 
-  ArtLookup artLookup;
-  Query query;
+
+
+
+
   vector<Artwork> searchResults;
 
   //If the user didn't choose to search by category use general lookup to get
