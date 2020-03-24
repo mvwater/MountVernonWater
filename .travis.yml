@@ -1,0 +1,12 @@
+language: cpp
+install: make --file Backend_Code/Makefile
+dist: bionic
+compiler:
+- gcc
+os:
+- linux
+notifications:
+  email:
+    recipients:
+      - kim3@kenyon.edu
+    

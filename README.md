@@ -1,5 +1,13 @@
 # Knox County Department of Watershed Software Upgrade Project
 
+---
+
+Travis CI Build Status
+
+[![Build Status](https://travis-ci.org/mvwater/mvwater-cpp.svg?branch=master)](https://travis-ci.org/mvwater/mvwater-cpp)
+
+---
+
 ## Project Overview
 
 This project overview is subject to change as the project evolves.
@@ -8,5 +16,16 @@ The Knox County Department of Watershed is currently using a closed-source data 
 ## Specifications
 
 As we continue to work on this project, the specifications will be developed and modified as the developers and clients see fit to best serve the needs of the greater community as a long term solution. The system is planning on being deployed on existing server platforms provided by the local government. Depending on our abilities, we may choose to utilize some sort of containerization technology, like Kubernetes, to better serve the clients and to make the applications highly scalable.
+
+## Installation
+
+No specification is being outlined for installation, as this is all custom software.
+
+## Dependencies
+
+- CGICC for CGI calls
+- Cppconn for SQL querying
+
+## Contributions
 
 **Please read the [Contributor Guidelines](https://github.com/mvwater/MountVernonWater/blob/master/CONTRIBUTING.md) before attempting to make changes!**
