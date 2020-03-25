@@ -6,6 +6,7 @@ compiler:
 os:
 - linux
 notifications:
+  slack: kcwater:mNBKPYQfal7YQUJWRhMMUECd
   email:
     recipients:
       - kim3@kenyon.edu
