@@ -13,18 +13,32 @@ struct Address {
   string zip;
 };
 
+struct Person {
+  string name;
+  Address address;
+  string phoneNum;
+  string email;
+  string SScan;
+  string DLNum;
+  string cellNum;
+  string dob;
+};
+
 class AccountInfo{
   public:
     // Accessor Member Functions; all return data member
     string getAccountNo();
-    Address getAddress();
+    string getStatus();
 
     // Default Constructor
     Account();
 
   private:
     string accountNo;
-    Address address;
+    string status;
+    string startDate;
+    Person resident;
+    Person landlord;
 };
 
 #endif //ACCOUNTINFO_H
