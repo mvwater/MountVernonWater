@@ -5,30 +5,33 @@ using namespace std;
 #ifndef ACCOUNTSNAPSHOT_H
 #define ACCOUNTSNAPSHOT_H
 
-// struct ArtistInfo {
-//   string author;
-//   string birthDeath;
-//   };
+struct Address {
+  string streetname;
+  string city;
+  string state;
+  string zip;
+};
 
 // Uppercase class does not work
-class AccountInfo{
+class AccountSnapshot{
   public:
+    // Constructor
+    AccountSnapshot();
+    AccountSnapshot(string inputAccountNo, Address inputResAddress, bool inputHasComments, bool inputHasText);
 
     // Accessor Member Functions; all return data member
     int getAccountNo();
-    //string getAddress();
+    Address getResAddress();
+    bool getHasComments();
+    bool getHasText();
 
-    Account();
-    //Preconditions: All variables must come from the table in the Team5 sql
-    //database. The parameters are listed in the same order as the respective
-    //columns
-    //Postconditions: Relevant data is stored in member variables including ArtistInfo, ArtSetting and ArtStyle structs
+    string returnFullResAddress();
 
   private:
-    int accountNo;
+    string accountNo; // Maybe accountNo object?
+    string resAddress;
     bool hasComments;
-    //string address;
-
+    bool hasText;
 };
 
 #endif //ACCOUNTSNAPSHOT_H

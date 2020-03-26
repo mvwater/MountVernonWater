@@ -12,14 +12,14 @@ using std::cout;
 
 AccountSnapshot::AccountSnapshot(){
   accountNo = "";
-  Address address{ "", "", "", "" };
+  Address resAddress{ "", "", "", "" };
   hasComments = 0;
   hasText = 0;
 }
 
 AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments, bool inputHasText){
   accountNo = inputAccountNo;
-  address = inputAddress;
+  resAddress = inputAddress;
   hasComments = titleFromDB;
   hasText = urlFromDB;
 }
@@ -45,7 +45,7 @@ bool AccountSnapshot::getHasText(){
   string state;
   string zip;
 
-string AccountSnapshot::returnFullAddress(){
+string AccountSnapshot::returnFullResAddress(){
 	string result(address.streetname);
 	result+= "\n" + address.city + ", " + address.state + address.zip;
 	return result;
