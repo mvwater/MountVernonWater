@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include "DatabaseBridge.h"
+#include "JavascriptBridge.h"
+#include "AccountSnapshot.h"
 
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
@@ -16,31 +19,11 @@ int main(){
 
   //Receive info from web page
   string searchVal = javaScriptBridge.getElement("searchVal", cgi);
-  string searchCategory = javaScriptBridge.getElement("searchCategory", cgi);
+  vector<AccountSnapshot> searchResults;
 
-  vector<Account> searchResults;
+  DatabaseBridge databaseBridge;
+  vector<AccountSnapshot> results = databaseBridge.searchByAddress(searchVal);
 
-  //If the user didn't choose to search by category use general lookup to get
-  //search results
-  if( searchCategory == "undefined" ){
-    searchResults = artLookup.lookupGeneral( searchVal );
-  }
-  //Else lookup using the category they specified to get search results
-  else {
-    searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
-    //vector<Artwork> searchResults = artLookup.lookupSingleCommand( query.matchSingleCol( searchVal, searchCategory ) );
-  }
-
-  //Sends artwork data to JavaScript
-  Artwork artwork;
-  string result = "";
-  for (uint i = 0; i < searchResults.size(); i++){
-    artwork = searchResults.at(i);
-    result += jSCommunicator.printArtwork(artwork);
-  }
-  jSCommunicator.sendStringToJS(result);
-  // cout << "Content-Type: text/plain\n\n";
-  // cout << result << endl;
-
+  JavascriptBridge.sendAccountSnapshots(results);
   return 0;
 }
