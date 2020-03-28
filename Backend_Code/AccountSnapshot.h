@@ -21,7 +21,7 @@ class AccountSnapshot{
     AccountSnapshot(string inputAccountNo, Address inputResAddress, bool inputHasComments);
 
     // Accessor Member Functions; all return data member
-    int getAccountNo();
+    string getAccountNo();
     Address getResAddress();
     bool getHasComments();
     //bool getHasText();
@@ -30,7 +30,7 @@ class AccountSnapshot{
 
   private:
     string accountNo; // Maybe accountNo object?
-    string resAddress;
+    Address resAddress;
     bool hasComments;
     //bool hasText;
 };
