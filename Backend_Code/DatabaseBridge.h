@@ -1,4 +1,5 @@
 #include <string>
+#include "AccountSnapshot.h"
 
 using std::string;
 
@@ -15,9 +16,9 @@ using std::string;
 #define DATABASEBRIDGE_H
 
 #define HOST "localhost" // Set IP address instead of localhost
-#define USER "brydon1"
-#define DB "Team5" // RENAME!!!!!!!
-#define PASS "S217079"
+#define USER "brydon1" // Maybe rename
+#define DB "mvwater" 
+#define PASS "clangrelationsheet" 
 
 typedef std::unique_ptr<sql::Statement> Statement;
 typedef sql::Driver Driver;
@@ -26,14 +27,23 @@ typedef std::unique_ptr<sql::ResultSet> ResultSet; // Not yet used
 
 class DatabaseBridge{
   public:
+  	//DatabaseBridge();
+
     Statement queryDatabase(string query);
     // Returns sql Statement object with executed query
+
+    vector<AccountSnapshot> searchByAddress(string address);
+    // Returns vector of AccountSnapshot objects after searching by address
+
+    vector<string> commentsByAccountNo(string accountNo);
+    // Returns vector of comments after searching comment database by accountNo
 
   private:
     const string password = PASS;
     const string DBName = DB;
     const string address = HOST;
     const string DBUsername = USER;
+    //vector<string> resAddressCols;
 };
 
 #endif //DATABASEBRIDGE_H
