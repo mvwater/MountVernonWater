@@ -12,4 +12,13 @@ DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountSnapshot.h
 AccountSnapshot.o: AccountSnapshot.cpp AccountSnapshot.h
 	$(CC) $(FLAGS) AccountSnapshot.cpp $(CFLAGS)
 
+JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountSnapshot.h
+	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
+SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
+
+
+
+clean:
+	rm -f $(OUT)
