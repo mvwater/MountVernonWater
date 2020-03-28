@@ -26,6 +26,6 @@ int main(){
   vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
 
   // Send search results to JavaScript 
-  JavascriptBridge.sendAccountSnapshots(searchResults);
+  javaScriptBridge.sendAccountSnapshots(searchResults);
   return 0;
 }
