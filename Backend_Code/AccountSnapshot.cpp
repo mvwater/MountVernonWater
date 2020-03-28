@@ -32,7 +32,7 @@ string AccountSnapshot::getAccountNo(){
   return accountNo;
 }
 
-Address AccountSnapshot::getAddress(){
+Address AccountSnapshot::getResAddress(){
   return address;
 }
 
