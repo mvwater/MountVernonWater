@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "DatabaseBridge.h"
 #include "JavascriptBridge.h"
 #include "AccountSnapshot.h"
@@ -19,11 +20,12 @@ int main(){
 
   //Receive info from web page
   string searchVal = javaScriptBridge.getElement("searchVal", cgi);
-  vector<AccountSnapshot> searchResults;
-
   DatabaseBridge databaseBridge;
-  vector<AccountSnapshot> results = databaseBridge.searchByAddress(searchVal);
 
-  JavascriptBridge.sendAccountSnapshots(results);
+  // Receive vector of AccountSnapshot objects from database
+  vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
+
+  // Send search results to JavaScript 
+  JavascriptBridge.sendAccountSnapshots(searchResults);
   return 0;
 }

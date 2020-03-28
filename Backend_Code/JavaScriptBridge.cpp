@@ -19,12 +19,12 @@ string JavaScriptBridge::printAccountSnapshot(AccountSnapshot accountSnapshot){
 		result += "F" + sep;
 	}
 
-	// Has text
+	/*// Has text
 	if (accountSnapshot.getHasText()){
 		result += "T" + sep;
 	} else {
 		result += "F" + sep;
-	}
+	}*/
 
    return result;
 }

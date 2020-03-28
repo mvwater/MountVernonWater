@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "AccountSnapshot.h"
 
 #include "cgicc/Cgicc.h"
