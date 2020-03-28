@@ -1,4 +1,4 @@
-#VIEW_COMMENTS = ViewComments.o ArtDBCommunicator.o JSCommunicator.o CommentManager.o Query.o Comment.o Artwork.o Member.o UserManager.o
+SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
 CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
@@ -6,18 +6,30 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-#all: ViewComments PutCGI PutHTML
+all: SearchAddress PutCGI PutHTML
 
-DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h
+AccountInfo.o: AccountInfo.cpp AccountInfo.h
+	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
+
+AccountSnapshot.o: AccountSnapshot.cpp AccountSnapshot.h
+	$(CC) $(FLAGS) AccountSnapshot.cpp $(CFLAGS)
+
+DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) DatabaseBridge.cpp $(CFLAGS)
 
-# Linking after compiling
-#ViewComments: $(VIEW_COMMENTS)
-#	$(CC) $(VIEW_COMMENTS) -o ViewComments -L/usr/local/lib $(SQL_FLAGS)
+JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountSnapshot.h
+	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
-#PutCGI: ViewComments
-	#chmod 757 ViewComments
-	#cp ViewComments /usr/lib/cgi-bin/$(USER)_artAppGetCommentsPhoto.cgi
+SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
+
+# Linking after compiling
+SearchAddress: $(SEARCH_ADDRESS)
+	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
+
+PutCGI: SearchAddress
+	chmod 757 SearchAddress
+	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
 
 	#echo "Current contents of your cgi-bin directory: "
 	#ls -l /usr/lib/cgi-bin/
@@ -29,4 +41,4 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/CityWaterDatabase
 
 clean:
-	rm -f ViewComments $(OUT)
+	rm -f SearchAddress $(OUT)
