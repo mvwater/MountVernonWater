@@ -6,7 +6,7 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-all: SearchAddress
+#all: SearchAddress
 
 # ISSUES with cgicc link??
 #SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
