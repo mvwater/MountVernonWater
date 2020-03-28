@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include "DatabaseBridge.h"
-#include "JavascriptBridge.h"
+#include "JavaScriptBridge.h"
 #include "AccountSnapshot.h"
 
 // Stuff for Ajax
