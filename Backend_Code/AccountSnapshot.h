@@ -17,13 +17,14 @@ class AccountSnapshot{
   public:
     // Constructor
     AccountSnapshot();
-    AccountSnapshot(string inputAccountNo, Address inputResAddress, bool inputHasComments, bool inputHasText);
+    // AccountSnapshot(string inputAccountNo, Address inputResAddress, bool inputHasComments, bool inputHasText);
+    AccountSnapshot(string inputAccountNo, Address inputResAddress, bool inputHasComments);
 
     // Accessor Member Functions; all return data member
     int getAccountNo();
     Address getResAddress();
     bool getHasComments();
-    bool getHasText();
+    //bool getHasText();
 
     string returnFullResAddress();
 
@@ -31,7 +32,7 @@ class AccountSnapshot{
     string accountNo; // Maybe accountNo object?
     string resAddress;
     bool hasComments;
-    bool hasText;
+    //bool hasText;
 };
 
 #endif //ACCOUNTSNAPSHOT_H

@@ -14,14 +14,15 @@ AccountSnapshot::AccountSnapshot(){
   accountNo = "";
   Address resAddress{ "", "", "", "" };
   hasComments = 0;
-  hasText = 0;
+  //hasText = 0;
 }
 
-AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments, bool inputHasText){
+// AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments, bool inputHasText){
+AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments){
   accountNo = inputAccountNo;
   resAddress = inputAddress;
   hasComments = titleFromDB;
-  hasText = urlFromDB;
+  //hasText = urlFromDB;
 }
 
 string AccountSnapshot::getAccountNo(){
@@ -36,14 +37,9 @@ bool AccountSnapshot::getHasComments(){
   return hasComments;
 }
 
-bool AccountSnapshot::getHasText(){
-  return hasText;
-}
-
-  string streetname;
-  string city;
-  string state;
-  string zip;
+// bool AccountSnapshot::getHasText(){
+//   return hasText;
+// }
 
 string AccountSnapshot::returnFullResAddress(){
 	string result(address.streetname);
