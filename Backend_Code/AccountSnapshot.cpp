@@ -33,7 +33,7 @@ string AccountSnapshot::getAccountNo(){
 }
 
 Address AccountSnapshot::getResAddress(){
-  return address;
+  return resAddress;
 }
 
 bool AccountSnapshot::getHasComments(){
