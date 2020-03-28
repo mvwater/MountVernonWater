@@ -10,7 +10,7 @@
 // Final string will have sep at end
 string JavaScriptBridge::printAccountSnapshot(AccountSnapshot accountSnapshot){
 	string result, sep("*");
-	result += accountSnapshot.getAccountNo() + sep + accountSnapshot.getResAddress().author + sep; 
+	result += accountSnapshot.getAccountNo() + sep + accountSnapshot.getResAddress() + sep; 
 
 	// Has comments
 	if (accountSnapshot.getHasComments()){
@@ -40,7 +40,7 @@ string JavaScriptBridge::getElement(string element, Cgicc &cgi){
 void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResults){
 	AccountSnapshot accountSnapshot;
   	string jsMessage = "";
-	for (int i=0; i<searchResults.size(); i++){
+	for (uint i=0; i<searchResults.size(); i++){
 	    accountSnapshot = searchResults.at(i);
 	    jsMessage += printAccountSnapshot(accountSnapshot);
 	}
