@@ -51,13 +51,17 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 }
 
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
+	cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + address + "%';");
+
 	Statement statement = queryDatabase(query);
+	cout << "Statement created."<< endl;
 
 	ResultSet searchMatches;
 	AccountSnapshot *accountSnapshot;
 	vector<AccountSnapshot> accountResultList;
 
+	cout << "Beginning while loop."<< endl;
 	do {
 	    searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
@@ -84,6 +88,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 			delete accountSnapshot; // Deallocate memory in accountSnapshot
 	    }
   	} while (statement->getMoreResults());
+  cout << "Done."<< endl;
   return accountResultList;
 }
 
