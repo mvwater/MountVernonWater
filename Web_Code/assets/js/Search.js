@@ -11,7 +11,7 @@ function searchDatabase(){
     console.log("Searching database");
     //console.log("Search Field: " + $("#search_field").value());
     console.log("Search Field: " + $("#search_field").value);
-    if ($("#search_field").value() == ""){
+    if ($("#search_field").value == ""){
         console.log("Blank field");
         alert("Please enter an address or account number.") // Maybe do something else
     } else {
