@@ -7,6 +7,7 @@
 //Last Changed: 27 March 2020
 
 #include "DatabaseBridge.h"
+using std::cout;
 
 /*
 DatabaseBridge::DatabaseBridge(){
@@ -19,11 +20,17 @@ DatabaseBridge::DatabaseBridge(){
 }*/
 
 Statement DatabaseBridge::queryDatabase(string query){
+	cout << "About to connect."<< endl;
 	Driver* driver = sql::mysql::get_driver_instance();
+	cout << "Created driver."<< endl;
 	Connection con(driver->connect(address, DBUsername, password));
+	cout << "Created connection."<< endl;
 	con->setSchema(DBName);
+	cout << "Setting database."<< endl;
 	Statement statement(con->createStatement());
+	cout << "Creating statement."<< endl;
 	statement->execute(query);
+	cout << "Query executed."<< endl;
 	return statement;
 }
 
