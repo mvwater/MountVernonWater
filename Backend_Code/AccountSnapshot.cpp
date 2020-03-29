@@ -11,45 +11,44 @@
 using std::cout;
 
 AccountSnapshot::AccountSnapshot(){
-  accountNo = "";
-  Address resAddress{ "", "", "", "" };
-  hasComments = 0;
-  //hasText = 0;
+    accountNo = "";
+    Address resAddress{ "", "", "", "" };
+    hasComments = 0;
+    //hasText = 0;
 }
 
 // AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments, bool inputHasText){
 AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments){
-  accountNo = inputAccountNo;
-  resAddress.streetname = inputAddress.streetname;
-  resAddress.city = inputAddress.city;
-  resAddress.state = inputAddress.state;
-  resAddress.zip = inputAddress.zip;
-  hasComments = inputHasComments;
-  //hasText = inputHasText;
+    accountNo = inputAccountNo;
+    resAddress.streetname = inputAddress.streetname;
+    resAddress.city = inputAddress.city;
+    resAddress.state = inputAddress.state;
+    resAddress.zip = inputAddress.zip;
+    hasComments = inputHasComments;
+    //hasText = inputHasText;
 }
 
 string AccountSnapshot::getAccountNo(){
-  return accountNo;
+    return accountNo;
 }
 
 Address AccountSnapshot::getResAddress(){
-  return resAddress;
+    return resAddress;
 }
 
 bool AccountSnapshot::getHasComments(){
-  return hasComments;
+    return hasComments;
 }
 
 // bool AccountSnapshot::getHasText(){
-//   return hasText;
+// return hasText;
 // }
 
-string AccountSnapshot::returnFullResAddress(){
-	string result(resAddress.streetname);
-	result += " " + resAddress.city + ", " + resAddress.state + resAddress.zip;
-	return result;
+string AccountSnapshot::resAddressLine2(){
+    string result(resAddress.city);
+    result += ", " + resAddress.state + resAddress.zip;
+    return result;
 }
-
 
 
 
