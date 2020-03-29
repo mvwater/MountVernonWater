@@ -21,15 +21,15 @@ DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountSnapshot.h
 JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
-TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
+#TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+#	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
 
 SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 # Linking after compiling
-TestSearchAddress: $(TEST_SEARCH_ADDRESS)
-	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
+#TestSearchAddress: $(TEST_SEARCH_ADDRESS)
+#	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
 SearchAddress: $(SEARCH_ADDRESS)
 	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
