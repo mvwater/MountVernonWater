@@ -3,10 +3,10 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 
 $(document).ready(function() {
     console.log("ready!");
-    //$(#search_button).click(searchDatabase);
+    $(#search_button).click(searchDatabase);
 });
 
-/*
+
 // Function to send info to database
 function searchDatabase(){
     console.log("Searching database");
@@ -45,7 +45,7 @@ function setSearchType(searchTypeVar){
     }
 }
 
-*/
+
 
 
 
@@ -56,7 +56,7 @@ function displayAccountInfo(results){
 }*/
 
 
-/*
+
 accountSnapshot.getAccountNo() + sep + accountSnapshot.getResAddress().streetname + sep + accountSnapshot.resAddressLine2() + sep; 
 
     // Has comments
@@ -72,6 +72,6 @@ function displayAddressMatches(results){
     // Finish me
     console.log(results);
 }
-*/
+
 
 
