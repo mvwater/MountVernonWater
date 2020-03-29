@@ -37,14 +37,18 @@ string JavaScriptBridge::getElement(string element, Cgicc &cgi){
   return returnElement;
 }
 
-void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResults){
+string JavaScriptBridge::accountSnapshotsToStr(vector<AccountSnapshot> searchResults){
 	AccountSnapshot accountSnapshot;
   	string jsMessage = "";
 	for (uint i=0; i<searchResults.size(); i++){
 	    accountSnapshot = searchResults.at(i);
 	    jsMessage += printAccountSnapshot(accountSnapshot);
 	}
-	sendMessage(jsMessage);
+	return jsMessage;
+}
+
+void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResults){
+	sendMessage(accountSnapshotsToStr(searchResults));
 }
 
 void JavaScriptBridge::sendMessage(string message){

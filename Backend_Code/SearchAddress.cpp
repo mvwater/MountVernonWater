@@ -12,7 +12,7 @@
 
 // Fix later
 using namespace cgicc;
-using std::cout;
+//using std::cout;
 
 int main(){
   Cgicc cgi; // Ajax object

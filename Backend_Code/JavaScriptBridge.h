@@ -23,6 +23,9 @@ class JavaScriptBridge{
     //sent from JavaScript. cgi is a Cgicc ajax object.
     //Postconditions: Returns the value of the ajax element as a string.
 
+    string accountSnapshotsToStr(vector<AccountSnapshot> searchResults);
+    // Returns string of AccountSnapshot objects that will be sent to JavaScript
+
     void sendAccountSnapshots(vector<AccountSnapshot> searchResults);
     //Preconditions: 
     //Postconditions:

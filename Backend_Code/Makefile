@@ -1,4 +1,5 @@
 SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
+TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
 CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
@@ -6,7 +7,7 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-all: SearchAddress PutCGI PutHTML
+all: TestSearchAddress SearchAddress PutCGI PutHTML
 
 #AccountInfo.o: AccountInfo.cpp AccountInfo.h
 #	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
@@ -20,10 +21,16 @@ DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountSnapshot.h
 JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
+TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
+
 SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 # Linking after compiling
+TestSearchAddress: $(TEST_SEARCH_ADDRESS)
+	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
+
 SearchAddress: $(SEARCH_ADDRESS)
 	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
@@ -41,4 +48,5 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 
 clean:
-	rm -f SearchAddress $(OUT)
+	rm -f SearchAddress TestSearchAddress $(OUT)
+
