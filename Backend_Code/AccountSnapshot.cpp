@@ -46,7 +46,7 @@ bool AccountSnapshot::getHasComments(){
 
 string AccountSnapshot::returnFullResAddress(){
 	string result(resAddress.streetname);
-	result+= "\n" + resAddress.city + ", " + resAddress.state + resAddress.zip;
+	result += " " + resAddress.city + ", " + resAddress.state + resAddress.zip;
 	return result;
 }
 

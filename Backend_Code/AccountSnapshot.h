@@ -26,7 +26,9 @@ class AccountSnapshot{
     bool getHasComments();
     //bool getHasText();
 
-    string returnFullResAddress();
+    //string returnFullResAddress();
+    string resAddressLine2();
+    // Returns "city, state zip" in string
 
   private:
     string accountNo; // Maybe accountNo object?

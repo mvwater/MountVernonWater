@@ -8,8 +8,8 @@ USER     = brydon1
 
 all: SearchAddress PutCGI PutHTML
 
-#AccountInfo.o: AccountInfo.cpp AccountInfo.h
-#	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
+AccountInfo.o: AccountInfo.cpp AccountInfo.h
+	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
 
 AccountSnapshot.o: AccountSnapshot.cpp AccountSnapshot.h
 	$(CC) $(FLAGS) AccountSnapshot.cpp $(CFLAGS)
@@ -35,10 +35,10 @@ PutCGI: SearchAddress
 	#ls -l /usr/lib/cgi-bin/
 
 PutHTML:
-	cp -R ../Web_Code/var/www/html/class/softdev/$(USER)/Mvwater
+	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/CityWaterDatabase
 
 	echo "Current contents of HTML directory: "
-	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
+	ls -l /var/www/html/class/softdev/$(USER)/CityWaterDatabase
 
 clean:
 	rm -f SearchAddress $(OUT)
