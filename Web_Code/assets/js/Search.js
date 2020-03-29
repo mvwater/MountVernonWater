@@ -9,7 +9,9 @@ $(document).ready(function() {
 // Function to send info to database
 function searchDatabase(){
     console.log("Searching database");
-    if ($("#search_field").text() == ""){
+    console.log("Search Field: " + $("#search_field").value());
+    console.log("Search Field: " + $("#search_field").value);
+    if ($("#search_field").value() == ""){
         console.log("Blank field");
         alert("Please enter an address or account number.") // Maybe do something else
     } else {
