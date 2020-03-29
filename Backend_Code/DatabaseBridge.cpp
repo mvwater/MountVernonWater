@@ -52,8 +52,7 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	cout << "About to create query."<< endl;
-	//string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + address + "%';");
-	string query("SELECT * FROM accounts;");
+	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + address + "%';");
 
 	Statement statement = queryDatabase(query);
 	cout << "Statement created."<< endl;
