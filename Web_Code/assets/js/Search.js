@@ -10,14 +10,14 @@ $(document).ready(function() {
 function searchDatabase(){
     console.log("Searching database");
     //console.log("Search Field: " + $("#search_field").value());
-    console.log("Search Field: " + $("#search_field").value);
+    console.log("Search Field: " + $("#search_field").val());
     console.log(document.getElementById('search_field').value);
-    if ($("#search_field").value == ""){
+    if ($("#search_field").val() == ""){
         console.log("Blank field");
         alert("Please enter an address or account number.") // Maybe do something else
     } else {
         console.log("Search field not empty.");
-        console.log($("#search_field").text());
+        console.log($("#search_field").value);
         setSearchType(searchType);
         if (searchType == "AccountNo"){
             $.ajax({
