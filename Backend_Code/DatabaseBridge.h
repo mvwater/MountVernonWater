@@ -16,7 +16,7 @@ using std::string;
 #ifndef DATABASEBRIDGE_H
 #define DATABASEBRIDGE_H
 
-#define HOST "localhost" // Set IP address instead of localhost
+#define HOST "localhost:3306" // Set IP address instead of localhost
 #define USER "brydon1" // Maybe rename
 #define DB "mvwater" 
 #define PASS "clangrelationsheet" 
