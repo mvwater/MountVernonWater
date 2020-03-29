@@ -14,6 +14,7 @@ function searchDatabase(){
         alert("Please enter an address or account number.") // Maybe do something else
     } else {
         console.log("Search field not empty.");
+        console.log($("#search_field").text());
         setSearchType(searchType);
         if (searchType == "AccountNo"){
             $.ajax({
