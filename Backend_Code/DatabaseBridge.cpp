@@ -64,19 +64,26 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	cout << "Beginning while loop."<< endl;
 	do {
 	    searchMatches.reset(statement->getResultSet());
+	    cout << "Reset resultSet."<< endl;
 	    while (searchMatches->next()) {
 	    	string accountNo = searchMatches -> getString("AccountNo");
+	    	cout << "AccountNo: " << accountNo << endl;
 	    	Address resAddress;
 	    	//How to best add spacing?
 	    	resAddress.streetname += searchMatches -> getString("TAdd1") + " ";
 	    	resAddress.streetname += searchMatches -> getString("TAdd2") + " ";
 	    	resAddress.streetname += searchMatches -> getString("TAdd3");
+	    	cout << "Address: " << resAddress.streetname << endl;
 
 	    	resAddress.city += searchMatches -> getString("TCity");
+	    	cout << "City: " << resAddress.city << endl;
 	    	resAddress.state += searchMatches -> getString("TState");
+	    	cout << "State: " << resAddress.state << endl;
 	    	resAddress.zip += searchMatches -> getString("TZip");
+	    	cout << "Zip: " << resAddress.zip << endl;
 			
 			int numComments = commentsByAccountNo(accountNo).size();
+			cout << "NumComments: " << numComments << endl;
 			bool hasComments(false);
 	    	if (numComments != 0){
 	    		hasComments = true;
