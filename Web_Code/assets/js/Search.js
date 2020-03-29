@@ -10,25 +10,27 @@ $(document).ready(function() {
 function searchDatabase(){
     console.log("Searching database");
     //console.log("Search Field: " + $("#search_field").value());
-    console.log("Search Field: " + $("#search_field").val());
+    //console.log("Search Field: " + $("#search_field").val());
     console.log(document.getElementById('search_field').value);
-    if ($("#search_field").val() == ""){
+
+    var userInput = document.getElementById('search_field').value
+    if (document.getElementById('search_field').value == ""){
         console.log("Blank field");
         alert("Please enter an address or account number.") // Maybe do something else
     } else {
         console.log("Search field not empty.");
-        console.log($("#search_field").value);
+        console.log(document.getElementById('search_field').value);
         setSearchType(searchType);
         if (searchType == "AccountNo"){
             $.ajax({
-                url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + searchType,
+                url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
                 dataType: 'text', // maybe JSON
                 success: displayAccountInfo, 
                 error: function(){alert("Error: Could not search by account number.");}
             });
         } else { // searchType == "Address"
             $.ajax({
-                url: '/cgi-bin/'+ajaxUser+'_searchByAddress.cgi?address=' + searchType,
+                url: '/cgi-bin/'+ajaxUser+'_searchByAddress.cgi?address=' + userInput,
                 dataType: 'text', // maybe JSON
                 success: displayAddressMatches, 
                 error: function(){alert("Error: Could not search by address.");}
