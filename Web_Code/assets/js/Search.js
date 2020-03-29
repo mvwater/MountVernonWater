@@ -3,7 +3,7 @@ var ajaxUser = "brydon1"; //Your username for ajax calls
 
 $(document).ready(function() {
     console.log("ready!");
-    $(#search_button).click(searchDatabase);
+    $("#search_button").click(searchDatabase);
 });
 
 // Function to send info to database
