@@ -17,14 +17,14 @@ using std::string;
 #define DATABASEBRIDGE_H
 
 //#define HOST "174.138.60.6:3306" // Set IP address instead of localhost
-/*#define HOST "localhost"
-#define USER "brydon1" // Maybe rename
-#define DB "mvwater" 
-#define PASS "clangrelationsheet" */
 #define HOST "localhost"
 #define USER "brydon1" // Maybe rename
+#define DB "mvwater" 
+#define PASS "clangrelationsheet"
+/*#define HOST "localhost"
+#define USER "brydon1" // Maybe rename
 #define DB "brydon1" 
-#define PASS "S217079"
+#define PASS "S217079"*/
 
 typedef std::unique_ptr<sql::Statement> Statement;
 typedef sql::Driver Driver;
