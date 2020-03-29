@@ -35,7 +35,7 @@ PutCGI: SearchAddress
 	#ls -l /usr/lib/cgi-bin/
 
 PutHTML:
-	cp -R ../Web_Code/var/www/html/class/softdev/$(USER)/Mvwater
+	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
 
 	echo "Current contents of HTML directory: "
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
