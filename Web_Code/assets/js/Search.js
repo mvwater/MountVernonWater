@@ -6,7 +6,6 @@ $(document).ready(function() {
     $(#search_button).click(searchDatabase);
 });
 
-
 // Function to send info to database
 function searchDatabase(){
     console.log("Searching database");
@@ -45,26 +44,11 @@ function setSearchType(searchTypeVar){
     }
 }
 
-
-
-
-
 // Function to parse info from database
 /*
 function displayAccountInfo(results){
 
 }*/
-
-
-
-accountSnapshot.getAccountNo() + sep + accountSnapshot.getResAddress().streetname + sep + accountSnapshot.resAddressLine2() + sep; 
-
-    // Has comments
-    if (accountSnapshot.getHasComments()){
-        result += "T" + sep;
-    } else {
-        result += "F" + sep;
-    }
 
 // Example result string: 104-23-1*85 Delaware Prk*MOUNT VERNON, OH  43050*T*83-26-19*101 Coshoctan Rd*MOUNT VERNON, OH  43050*F*
 // Function to send info to database
