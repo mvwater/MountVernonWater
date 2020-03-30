@@ -20,17 +20,72 @@ DatabaseBridge::DatabaseBridge(){
 }*/
 
 Statement DatabaseBridge::queryDatabase(string query){
-	cout << "About to connect."<< endl;
-	Driver* driver = sql::mysql::get_driver_instance();
-	cout << "Created driver."<< endl;
-	Connection con(driver->connect(address, DBUsername, password));
-	cout << "Created connection."<< endl;
-	con->setSchema(DBName);
-	cout << "Setting database."<< endl;
-	Statement statement(con->createStatement());
-	cout << "Creating statement."<< endl;
-	statement->execute(query);
-	cout << "Query executed."<< endl;
+//cout << "About to connect."<< endl;
+Driver* driver = sql::mysql::get_driver_instance();
+//cout << "Created driver."<< endl;
+Connection con(driver->connect(address, DBUsername, password));
+//cout << "Created connection."<< endl;
+con->setSchema(DBName);
+//cout << "Setting database."<< endl;
+Statement statement(con->createStatement());
+//cout << "Creating statement."<< endl;
+statement->execute(query);
+//cout << "Query executed."<< endl;
+
+
+
+ResultSet searchMatches;
+	AccountSnapshot *accountSnapshot;
+	vector<AccountSnapshot> accountResultList;
+
+	cout << "Beginning while loop."<< endl;
+	do {
+		// Issue here
+	    searchMatches.reset(statement->getResultSet());
+
+
+
+	    cout << "Reset resultSet."<< endl;
+	    while (searchMatches->next()) {
+	    	string accountNo = searchMatches -> getString("AccountNo");
+	    	cout << "AccountNo: " << accountNo << endl;
+	    	Address resAddress;
+	    	//How to best add spacing?
+	    	resAddress.streetname += searchMatches -> getString("TAdd1") + " ";
+	    	resAddress.streetname += searchMatches -> getString("TAdd2") + " ";
+	    	resAddress.streetname += searchMatches -> getString("TAdd3");
+	    	cout << "Address: " << resAddress.streetname << endl;
+
+	    	resAddress.city += searchMatches -> getString("TCity");
+	    	cout << "City: " << resAddress.city << endl;
+	    	resAddress.state += searchMatches -> getString("TState");
+	    	cout << "State: " << resAddress.state << endl;
+	    	resAddress.zip += searchMatches -> getString("TZip");
+	    	cout << "Zip: " << resAddress.zip << endl;
+			
+			int numComments = commentsByAccountNo(accountNo).size();
+			cout << "NumComments: " << numComments << endl;
+			bool hasComments(false);
+	    	if (numComments != 0){
+	    		hasComments = true;
+	    	}
+
+			//Use pointer to dynamically create accountSnapshot
+			accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
+			accountResultList.push_back(*(accountSnapshot));
+			delete accountSnapshot; // Deallocate memory in accountSnapshot
+	    }
+  	} while (statement->getMoreResults());
+  	cout << "Done."<< endl;
+
+
+
+
+
+
+
+
+
 	return statement;
 }
 
@@ -65,9 +120,6 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	do {
 		// Issue here
 	    searchMatches.reset(statement->getResultSet());
-
-
-
 
 
 
