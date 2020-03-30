@@ -18,7 +18,7 @@ DatabaseBridge::DatabaseBridge(){
 	resAddressCols.push_back("TState");
 	resAddressCols.push_back("TZip");
 }*/
-Statement DatabaseBridge::queryDatabase(string query){
+vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
 //Statement DatabaseBridge::queryDatabase(string query){
 	//cout << "About to connect."<< endl;
 	Driver* driver = sql::mysql::get_driver_instance();
