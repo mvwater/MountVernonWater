@@ -31,12 +31,7 @@ vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
 	//cout << "Creating statement."<< endl;
 	statement->execute(query);
 	//cout << "Query executed."<< endl;
-
-
-
-
-
-
+	
 
 	ResultSet searchMatches;
 	AccountSnapshot *accountSnapshot;
