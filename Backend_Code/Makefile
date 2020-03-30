@@ -8,7 +8,7 @@ CFLAGS 	 = -std=c++14
 USER     = brydon1
 
 #all: SearchAddress PutCGI PutHTML
-all: PutHTML
+all: TestSearchAddress
 
 #AccountInfo.o: AccountInfo.cpp AccountInfo.h
 #	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
