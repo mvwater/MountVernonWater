@@ -63,15 +63,22 @@ vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
 	    	resAddress.zip += searchMatches -> getString("TZip");
 	    	cout << "Zip: " << resAddress.zip << endl;
 			
+
+
+			/*
 			int numComments = commentsByAccountNo(accountNo).size();
 			cout << "NumComments: " << numComments << endl;
 			bool hasComments(false);
 	    	if (numComments != 0){
 	    		hasComments = true;
-	    	}
+	    	}*/
+
+
+
 
 			//Use pointer to dynamically create accountSnapshot
-			accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
+			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
+			accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountSnapshot));
 			delete accountSnapshot; // Deallocate memory in accountSnapshot
 	    }
@@ -91,6 +98,7 @@ vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
 }
 
 // Must input accountNo with - instead of * as separaters
+/*
 vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 	string query("SELECT * FROM comments WHERE AccountNo = '" + accountNo + "';");
 	Statement statement = queryDatabase(query);
@@ -104,8 +112,10 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 	    }
   	} while (statement->getMoreResults());
   	return commentResultList;
-}
+}*/
 
+
+/*
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + address + "%';");
@@ -157,7 +167,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
   	} while (statement->getMoreResults());
   cout << "Done."<< endl;
   return accountResultList;
-}
+}*/
 
 
 
