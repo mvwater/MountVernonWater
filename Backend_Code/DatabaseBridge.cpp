@@ -18,7 +18,7 @@ DatabaseBridge::DatabaseBridge(){
 	resAddressCols.push_back("TState");
 	resAddressCols.push_back("TZip");
 }*/
-vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
+Statement DatabaseBridge::queryDatabase(string query){
 //Statement DatabaseBridge::queryDatabase(string query){
 	//cout << "About to connect."<< endl;
 	Driver* driver = sql::mysql::get_driver_instance();
@@ -31,6 +31,10 @@ vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
 	//cout << "Creating statement."<< endl;
 	statement->execute(query);
 	//cout << "Query executed."<< endl;
+
+
+
+
 
 
 
@@ -63,38 +67,27 @@ vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
 	    	resAddress.zip += searchMatches -> getString("TZip");
 	    	cout << "Zip: " << resAddress.zip << endl;
 			
-
-
-			/*
 			int numComments = commentsByAccountNo(accountNo).size();
 			cout << "NumComments: " << numComments << endl;
 			bool hasComments(false);
 	    	if (numComments != 0){
 	    		hasComments = true;
-	    	}*/
-
-
-
+	    	}
 
 			//Use pointer to dynamically create accountSnapshot
-			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
-			accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
+			accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
 			accountResultList.push_back(*(accountSnapshot));
 			delete accountSnapshot; // Deallocate memory in accountSnapshot
 	    }
   	} while (statement->getMoreResults());
   	cout << "Done."<< endl;
-
-
-
-
+  	return accountResultList;
 
 
 
 
 
 	//return statement;
-	return accountResultList;
 }
 
 // Must input accountNo with - instead of * as separaters
@@ -112,10 +105,10 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 	    }
   	} while (statement->getMoreResults());
   	return commentResultList;
-}*/
+}
 
 
-/*
+
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + address + "%';");
@@ -167,7 +160,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
   	} while (statement->getMoreResults());
   cout << "Done."<< endl;
   return accountResultList;
-}*/
-
+}
+*/
 
 

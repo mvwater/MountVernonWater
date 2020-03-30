@@ -10,10 +10,13 @@ using std::cout;
 int main(){
 	string searchVal = "Delaware";
 	DatabaseBridge databaseBridge;
+
+	vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(searchVal);
+
 	// Receive vector of AccountSnapshot objects from database
-	vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
+	/*vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
 
 	JavaScriptBridge javaScriptBridge;
-	cout << javaScriptBridge.accountSnapshotsToStr(searchResults) << endl;
+	cout << javaScriptBridge.accountSnapshotsToStr(searchResults) << endl;*/
 	return 0;
 }
