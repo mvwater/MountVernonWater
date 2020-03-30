@@ -18,23 +18,23 @@ DatabaseBridge::DatabaseBridge(){
 	resAddressCols.push_back("TState");
 	resAddressCols.push_back("TZip");
 }*/
+vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
+//Statement DatabaseBridge::queryDatabase(string query){
+	//cout << "About to connect."<< endl;
+	Driver* driver = sql::mysql::get_driver_instance();
+	//cout << "Created driver."<< endl;
+	Connection con(driver->connect(address, DBUsername, password));
+	//cout << "Created connection."<< endl;
+	con->setSchema(DBName);
+	//cout << "Setting database."<< endl;
+	Statement statement(con->createStatement());
+	//cout << "Creating statement."<< endl;
+	statement->execute(query);
+	//cout << "Query executed."<< endl;
 
-Statement DatabaseBridge::queryDatabase(string query){
-//cout << "About to connect."<< endl;
-Driver* driver = sql::mysql::get_driver_instance();
-//cout << "Created driver."<< endl;
-Connection con(driver->connect(address, DBUsername, password));
-//cout << "Created connection."<< endl;
-con->setSchema(DBName);
-//cout << "Setting database."<< endl;
-Statement statement(con->createStatement());
-//cout << "Creating statement."<< endl;
-statement->execute(query);
-//cout << "Query executed."<< endl;
 
 
-
-ResultSet searchMatches;
+	ResultSet searchMatches;
 	AccountSnapshot *accountSnapshot;
 	vector<AccountSnapshot> accountResultList;
 
@@ -86,7 +86,8 @@ ResultSet searchMatches;
 
 
 
-	return statement;
+	//return statement;
+	return accountResultList;
 }
 
 // Must input accountNo with - instead of * as separaters
