@@ -1,10 +1,6 @@
 language: cpp
 install:
-  - g++ -o AccountInfo AccountInfo.cpp AccountInfo.h
-  - g++ -o AccountSnapshot AccountSnapshot.cpp AccountSnapshot.h
-  - g++ -o DatabaseBridge DatabaseBridge.cpp DatabaseBridge.h
-  - g++ -o JavaScriptBridge JavaScriptBridge.cpp JavaScriptBridge.h
-  - g++ -o SearchAddress SearchAddress.cpp SearchAddress.h
+  - make --file Backend_Code/travis.make
 dist: bionic
 compiler:
 - gcc
