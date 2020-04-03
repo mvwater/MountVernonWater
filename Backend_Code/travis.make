@@ -1,32 +1,29 @@
-SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
-TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
-
+OBJS	= TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o SearchAddress.o
+SOURCE	= TestSearchAddress.cpp JavaScriptBridge.cpp DatabaseBridge.cpp AccountSnapshot.cpp SearchAddress.cpp
+HEADER	= JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+OUT	= TestSearchAddress.o
 CC	 = g++
-SQL_FLAGS = -lcgicc -lmysqlcppconn
 FLAGS	 = -g -c -Wall
-CFLAGS 	 = -std=c++14
+LFLAGS	 = 
 
-all: TestSearchAddress
+all: $(OBJS)
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
-AccountSnapshot.o: AccountSnapshot.cpp AccountSnapshot.h
-	$(CC) $(FLAGS) AccountSnapshot.cpp $(CFLAGS)
+TestSearchAddress.o: TestSearchAddress.cpp
+	$(CC) $(FLAGS) TestSearchAddress.cpp 
 
-DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) DatabaseBridge.cpp $(CFLAGS)
+JavaScriptBridge.o: JavaScriptBridge.cpp
+	$(CC) $(FLAGS) JavaScriptBridge.cpp 
 
-JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
+DatabaseBridge.o: DatabaseBridge.cpp
+	$(CC) $(FLAGS) DatabaseBridge.cpp 
 
-TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
+AccountSnapshot.o: AccountSnapshot.cpp
+	$(CC) $(FLAGS) AccountSnapshot.cpp 
 
-SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
+SearchAddress.o: SearchAddress.cpp
+	$(CC) $(FLAGS) SearchAddress.cpp 
 
-# Linking after compiling
-TestSearchAddress: $(TEST_SEARCH_ADDRESS)
-	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
-  
+
 clean:
-	#rm -f SearchAddress $(OUT)
-	rm -f $(OUT)
+	rm -f $(OBJS) $(OUT)
