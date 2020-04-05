@@ -158,6 +158,12 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
   cout << "Done."<< endl;
   return accountResultList;
 }
-*/
 
+
+vector<AccountSnapshot> DatabaseBridge::searchByAccount(string accountNo){
+cout << "About to create query."<< endl;
+	string query("SELECT * FROM accounts WHERE AccountNo = '" + accountNo + "';");
+
+	
+*/
 
