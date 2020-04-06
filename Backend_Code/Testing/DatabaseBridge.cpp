@@ -32,10 +32,13 @@ Connection DatabaseBridge::connectToDatabase(){
 
 
 // Must input accountNo with - instead of * as separaters
-/*
+
 vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 	string query("SELECT * FROM comments WHERE AccountNo = '" + accountNo + "';");
-	Statement statement = queryDatabase(query);
+	Connection con = connectToDatabase();
+	Statement statement(con->createStatement());
+	statement->execute(query);
+
 	ResultSet commentMatches;
 	vector<string> commentResultList;
 	do {
@@ -46,7 +49,7 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 	    }
   	} while (statement->getMoreResults());
   	return commentResultList;
-}*/
+}
 
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 	//cout << "About to create query."<< endl;
@@ -82,17 +85,17 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 	    	resAddress.zip += searchMatches -> getString("TZip");
 	    	//cout << "Zip: " << resAddress.zip << endl << endl;
 			
-			/*
+			
 			int numComments = commentsByAccountNo(accountNo).size();
 			cout << "NumComments: " << numComments << endl;
 			bool hasComments(false);
 	    	if (numComments != 0){
 	    		hasComments = true;
-	    	}*/
+	    	}
 
 			//Use pointer to dynamically create accountSnapshot
-			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
-			accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
+			accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
+			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountSnapshot));
 			delete accountSnapshot; // Deallocate memory in accountSnapshot
 	    }

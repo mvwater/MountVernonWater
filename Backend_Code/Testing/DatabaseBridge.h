@@ -41,7 +41,7 @@ class DatabaseBridge{
     vector<AccountSnapshot> searchByAddress(string inputAddress);
     // Returns vector of AccountSnapshot objects after searching by address
 
-    //vector<string> commentsByAccountNo(string accountNo);
+    vector<string> commentsByAccountNo(string accountNo);
     // Returns vector of comments after searching comment database by accountNo
 
   private:
