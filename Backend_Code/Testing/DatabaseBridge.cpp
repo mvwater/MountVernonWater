@@ -49,18 +49,20 @@ vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
 	    	string accountNo = searchMatches -> getString("AccountNo");
 	    	cout << "AccountNo: " << accountNo << endl;
 	    	Address resAddress;
-	    	//How to best add spacing?
-	    	resAddress.streetname += searchMatches -> getString("TAdd1") + " ";
-	    	resAddress.streetname += searchMatches -> getString("TAdd2") + " ";
-	    	resAddress.streetname += searchMatches -> getString("TAdd3");
-	    	cout << "Address: " << resAddress.streetname << endl;
+
+	    	resAddress.add1 += searchMatches -> getString("TAdd1");
+	    	cout << "Add1: " << resAddress.add1 << endl;
+	    	resAddress.add2 += searchMatches -> getString("TAdd2");
+	    	cout << "Add2: " << resAddress.add2 << endl;
+	    	resAddress.add3 += searchMatches -> getString("TAdd3");
+	    	cout << "Add3: " << resAddress.add3 << endl;
 
 	    	resAddress.city += searchMatches -> getString("TCity");
 	    	cout << "City: " << resAddress.city << endl;
 	    	resAddress.state += searchMatches -> getString("TState");
 	    	cout << "State: " << resAddress.state << endl;
 	    	resAddress.zip += searchMatches -> getString("TZip");
-	    	cout << "Zip: " << resAddress.zip << endl;
+	    	cout << "Zip: " << resAddress.zip << endl << endl;
 			
 
 			/*
@@ -129,11 +131,13 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	    	string accountNo = searchMatches -> getString("AccountNo");
 	    	cout << "AccountNo: " << accountNo << endl;
 	    	Address resAddress;
-	    	//How to best add spacing?
-	    	resAddress.streetname += searchMatches -> getString("TAdd1") + " ";
-	    	resAddress.streetname += searchMatches -> getString("TAdd2") + " ";
-	    	resAddress.streetname += searchMatches -> getString("TAdd3");
-	    	cout << "Address: " << resAddress.streetname << endl;
+	    	
+	    	resAddress.add1 += searchMatches -> getString("TAdd1");
+	    	cout << "Add1: " << resAddress.add1 << endl;
+	    	resAddress.add2 += searchMatches -> getString("TAdd2");
+	    	cout << "Add2: " << resAddress.add2 << endl;
+	    	resAddress.add3 += searchMatches -> getString("TAdd3");
+	    	cout << "Add3: " << resAddress.add3 << endl;
 
 	    	resAddress.city += searchMatches -> getString("TCity");
 	    	cout << "City: " << resAddress.city << endl;
