@@ -35,11 +35,11 @@ class DatabaseBridge{
   public:
   	//DatabaseBridge();
 
-    vector<AccountSnapshot> queryDatabase(string query);
-    //Statement queryDatabase(string query);
+    //vector<AccountSnapshot> queryDatabase(string query);
+    Statement queryDatabase(string query);
     // Returns sql Statement object with executed query
 
-    //vector<AccountSnapshot> searchByAddress(string address);
+    vector<AccountSnapshot> searchByAddress(string address);
     // Returns vector of AccountSnapshot objects after searching by address
 
     //vector<string> commentsByAccountNo(string accountNo);
