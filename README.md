@@ -24,7 +24,7 @@ No specification is being outlined for installation, as this is all custom softw
 ## Dependencies
 
 - CGICC for CGI calls
-- Cppconn for SQL querying
+- Cppconn for SQL querying (fixed!)
 
 ## Contributions
 
