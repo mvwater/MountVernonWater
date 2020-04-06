@@ -162,7 +162,8 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	    	}*/
 
 			//Use pointer to dynamically create accountSnapshot
-			accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
+			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
+			accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountSnapshot));
 			delete accountSnapshot; // Deallocate memory in accountSnapshot
 	    }
