@@ -29,9 +29,10 @@ Statement DatabaseBridge::queryDatabase(string query){
 	cout << "Setting database."<< endl;
 	Statement statement(con->createStatement());
 	cout << "Creating statement."<< endl;
-	statement->execute(query);
-	cout << "Query executed."<< endl;
+	
 
+	//statement->execute(query);
+	//cout << "Query executed."<< endl;
 	return statement;
 }
 
@@ -121,6 +122,9 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 
 	Statement statement = queryDatabase(query);
 	cout << "Statement created."<< endl;
+
+	// ADDED fix?????
+	statement->execute(query);
 
 	ResultSet searchMatches;
 	AccountSnapshot *accountSnapshot;
