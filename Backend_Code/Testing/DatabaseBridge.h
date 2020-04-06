@@ -36,7 +36,7 @@ class DatabaseBridge{
   	//DatabaseBridge();
 
     //vector<AccountSnapshot> queryDatabase(string query);
-    Statement queryDatabase(string query);
+    Connection queryDatabase(string query);
     // Returns sql Statement object with executed query
 
     vector<AccountSnapshot> searchByAddress(string address);
