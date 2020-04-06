@@ -4,7 +4,7 @@
 //Email Address: kim3@kenyon.edu, brydon1@kenyon.edu, canfield1@kenyon.edu
 //Dev Project: Mount Vernon Water
 //Description: General class that can communicate with our database
-//Last Changed: 27 March 2020
+//Last Changed: 5 April 2020
 
 #include "DatabaseBridge.h"
 using std::cout;
@@ -20,75 +20,15 @@ DatabaseBridge::DatabaseBridge(){
 }*/
 
 Connection DatabaseBridge::connectToDatabase(){
-	cout << "About to connect."<< endl;
+	//cout << "About to connect."<< endl;
 	Driver* driver = sql::mysql::get_driver_instance();
-	cout << "Created driver."<< endl;
+	//cout << "Created driver."<< endl;
 	Connection con(driver->connect(address, DBUsername, password));
-	cout << "Created connection."<< endl;
+	//cout << "Created connection."<< endl;
 	con->setSchema(DBName);
-	cout << "Setting database."<< endl;
+	//cout << "Setting database."<< endl;
 	return con;
 }
-
-
-
-/*
-vector<AccountSnapshot> DatabaseBridge::queryDatabase(string query){
-//Statement DatabaseBridge::queryDatabase(string query){
-	cout << "About to connect."<< endl;
-	Driver* driver = sql::mysql::get_driver_instance();
-	cout << "Created driver."<< endl;
-	Connection con(driver->connect(address, DBUsername, password));
-	cout << "Created connection."<< endl;
-	con->setSchema(DBName);
-	cout << "Setting database."<< endl;
-	Statement statement(con->createStatement());
-	cout << "Creating statement."<< endl;
-	statement->execute(query);
-	cout << "Query executed."<< endl;
-	
-
-	ResultSet searchMatches;
-	AccountSnapshot *accountSnapshot;
-	vector<AccountSnapshot> accountResultList;
-
-	cout << "Beginning while loop."<< endl;
-	do {
-		// Issue here
-	    searchMatches.reset(statement->getResultSet());
-
-	    cout << "Reset resultSet."<< endl;
-	    while (searchMatches->next()) {
-	    	string accountNo = searchMatches -> getString("AccountNo");
-	    	cout << "AccountNo: " << accountNo << endl;
-	    	Address resAddress;
-
-	    	resAddress.add1 += searchMatches -> getString("TAdd1");
-	    	cout << "Add1: " << resAddress.add1 << endl;
-	    	resAddress.add2 += searchMatches -> getString("TAdd2");
-	    	cout << "Add2: " << resAddress.add2 << endl;
-	    	resAddress.add3 += searchMatches -> getString("TAdd3");
-	    	cout << "Add3: " << resAddress.add3 << endl;
-
-	    	resAddress.city += searchMatches -> getString("TCity");
-	    	cout << "City: " << resAddress.city << endl;
-	    	resAddress.state += searchMatches -> getString("TState");
-	    	cout << "State: " << resAddress.state << endl;
-	    	resAddress.zip += searchMatches -> getString("TZip");
-	    	cout << "Zip: " << resAddress.zip << endl << endl;
-
-			//Use pointer to dynamically create accountSnapshot
-			accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
-			accountResultList.push_back(*(accountSnapshot));
-			delete accountSnapshot; // Deallocate memory in accountSnapshot
-	    }
-  	} while (statement->getMoreResults());
-  	cout << "Done."<< endl;
-  	return accountResultList;
-
-	//return statement;
-}*/
-
 
 
 // Must input accountNo with - instead of * as separaters
@@ -108,47 +48,39 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
   	return commentResultList;
 }*/
 
-
-
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
-	cout << "About to create query."<< endl;
+	//cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + inputAddress + "%';");
 
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
-	cout << "Creating statement."<< endl;
+	//cout << "Creating statement."<< endl;
 	statement->execute(query);
 
 	ResultSet searchMatches;
 	AccountSnapshot *accountSnapshot;
 	vector<AccountSnapshot> accountResultList;
 
-	cout << "Beginning while loop."<< endl;
 	do {
-		// Issue here
 	    searchMatches.reset(statement->getResultSet());
-
-
-
-	    cout << "Reset resultSet."<< endl;
 	    while (searchMatches->next()) {
 	    	string accountNo = searchMatches -> getString("AccountNo");
-	    	cout << "AccountNo: " << accountNo << endl;
+	    	//cout << "AccountNo: " << accountNo << endl;
 	    	Address resAddress;
 	    	
 	    	resAddress.add1 += searchMatches -> getString("TAdd1");
-	    	cout << "Add1: " << resAddress.add1 << endl;
+	    	//cout << "Add1: " << resAddress.add1 << endl;
 	    	resAddress.add2 += searchMatches -> getString("TAdd2");
-	    	cout << "Add2: " << resAddress.add2 << endl;
+	    	//cout << "Add2: " << resAddress.add2 << endl;
 	    	resAddress.add3 += searchMatches -> getString("TAdd3");
-	    	cout << "Add3: " << resAddress.add3 << endl;
+	    	//cout << "Add3: " << resAddress.add3 << endl;
 
 	    	resAddress.city += searchMatches -> getString("TCity");
-	    	cout << "City: " << resAddress.city << endl;
+	    	//cout << "City: " << resAddress.city << endl;
 	    	resAddress.state += searchMatches -> getString("TState");
-	    	cout << "State: " << resAddress.state << endl;
+	    	//cout << "State: " << resAddress.state << endl;
 	    	resAddress.zip += searchMatches -> getString("TZip");
-	    	cout << "Zip: " << resAddress.zip << endl;
+	    	//cout << "Zip: " << resAddress.zip << endl << endl;
 			
 			/*
 			int numComments = commentsByAccountNo(accountNo).size();
@@ -165,7 +97,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 			delete accountSnapshot; // Deallocate memory in accountSnapshot
 	    }
   	} while (statement->getMoreResults());
-  cout << "Done."<< endl;
+  //cout << "Done."<< endl;
   return accountResultList;
 }
 
