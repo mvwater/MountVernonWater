@@ -19,7 +19,7 @@ DatabaseBridge::DatabaseBridge(){
 	resAddressCols.push_back("TZip");
 }*/
 
-Connection DatabaseBridge::queryDatabase(string query){
+Connection DatabaseBridge::connectToDatabase(){
 	cout << "About to connect."<< endl;
 	Driver* driver = sql::mysql::get_driver_instance();
 	cout << "Created driver."<< endl;
@@ -27,12 +27,6 @@ Connection DatabaseBridge::queryDatabase(string query){
 	cout << "Created connection."<< endl;
 	con->setSchema(DBName);
 	cout << "Setting database."<< endl;
-	//Statement statement(con->createStatement());
-	//cout << "Creating statement."<< endl;
-	
-
-	//statement->execute(query);
-	//cout << "Query executed."<< endl;
 	return con;
 }
 
@@ -120,26 +114,10 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 	cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + inputAddress + "%';");
 
-	Connection con = queryDatabase(query);
-	//cout << "Statement created."<< endl;
-
-	// ADDED fix?????
-	/*
-	cout << "About to connect."<< endl;
-	Driver* driver = sql::mysql::get_driver_instance();
-	cout << "Created driver."<< endl;
-	Connection con(driver->connect(address, DBUsername, password));
-	cout << "Created connection."<< endl;
-	con->setSchema(DBName);
-	cout << "Setting database."<< endl;*/
+	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
 	cout << "Creating statement."<< endl;
 	statement->execute(query);
-
-
-
-
-
 
 	ResultSet searchMatches;
 	AccountSnapshot *accountSnapshot;
