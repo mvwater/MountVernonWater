@@ -8,7 +8,7 @@
 using std::cout;
 
 int main(){
-	string searchVal = "Red Cloud Center";
+	string searchVal = "Pine";
 	
 	//string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + searchVal + "%';");
 	
