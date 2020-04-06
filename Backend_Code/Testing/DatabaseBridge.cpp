@@ -132,9 +132,9 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 	cout << "Created connection."<< endl;
 	con->setSchema(DBName);
 	cout << "Setting database."<< endl;
-	Statement statement(con->createStatement());
+	Statement statement(con->createStatement());*/
 	cout << "Creating statement."<< endl;
-	statement->execute(query);*/
+	statement->execute(query);
 
 
 
