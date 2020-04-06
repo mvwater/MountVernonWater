@@ -10,7 +10,7 @@
 // Final string will have sep at end
 string JavaScriptBridge::printAccountSnapshot(AccountSnapshot accountSnapshot){
 	string result, sep("*");
-	result += accountSnapshot.getAccountNo() + sep + accountSnapshot.getResAddress().streetname + sep + accountSnapshot.resAddressLine2() + sep; 
+	result += accountSnapshot.getAccountNo() + sep + accountSnapshot.getResAddress().add1 + sep + getResAddress().add2 + sep + getResAddress().add3 + sep + accountSnapshot.resAddressLastLine() + sep; 
 
 	// Has comments
 	if (accountSnapshot.getHasComments()){
