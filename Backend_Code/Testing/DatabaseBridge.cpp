@@ -153,12 +153,13 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string address){
 	    	resAddress.zip += searchMatches -> getString("TZip");
 	    	cout << "Zip: " << resAddress.zip << endl;
 			
+			/*
 			int numComments = commentsByAccountNo(accountNo).size();
 			cout << "NumComments: " << numComments << endl;
 			bool hasComments(false);
 	    	if (numComments != 0){
 	    		hasComments = true;
-	    	}
+	    	}*/
 
 			//Use pointer to dynamically create accountSnapshot
 			accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
