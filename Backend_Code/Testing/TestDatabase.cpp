@@ -11,7 +11,8 @@ int main(){
 	string searchVal = "Delaware";
 	DatabaseBridge databaseBridge;
 	// Receive vector of AccountSnapshot objects from database
-	vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
+	//vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
+	vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(searchVal);
 
 	JavaScriptBridge javaScriptBridge;
 	cout << javaScriptBridge.accountSnapshotsToStr(searchResults) << endl;
