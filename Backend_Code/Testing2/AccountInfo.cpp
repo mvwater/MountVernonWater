@@ -14,8 +14,8 @@ AccountInfo::AccountInfo(){
 	accountNo = "";
     status = "";
     startDate = "";
-    Person resident{"","","","","","","",""};
-	Person landlord{"","","","","","","",""};
+    Person resident{"","","","","","",""};
+	Person landlord{"","","","","","",""};
 	Address resAddress{"","","","","",""};
 	Address landAddress{"","","","","",""};
 

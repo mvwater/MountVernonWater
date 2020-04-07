@@ -12,16 +12,27 @@ using namespace std;
 #ifndef ACCOUNTINFO_H
 #define ACCOUNTINFO_H
 
+struct Address {
+	string add1;
+	string add2;
+	string add3;
+	string city;
+	string state;
+	string zip;
+};
+
+
+
 
 struct Person {
-  string name;
-  Address address;
-  string phoneNum;
-  string email;
-  string SScan;
-  string DLNum;
-  string cellNum;
-  string dob;
+	string name;
+	//Address address;
+	string phoneNum;
+	string email;
+	string SScan;
+	string DLNum;
+	string cellNum;
+	string dob;
 };
 
 class AccountInfo {
