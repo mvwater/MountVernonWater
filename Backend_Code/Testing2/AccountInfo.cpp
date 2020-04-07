@@ -93,13 +93,3 @@ string AccountInfo::getResAddress(){
 	return resAddress;
 }
 
-
-
-
-	
-	
-	
-	
-	
-}
-
