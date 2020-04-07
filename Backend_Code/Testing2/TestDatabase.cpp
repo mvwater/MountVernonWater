@@ -3,13 +3,15 @@
 #include <vector>
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
-#include "AccountSnapshot.h"
+#include "AccountInfo.h"
 
 using std::cout;
 
 int main(){
-	string searchVal = "23-60-8";
-		
+	string searchVal = "Pine";
+	
+	//string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + searchVal + "%';");
+	
 
 	DatabaseBridge databaseBridge;
 	// Receive vector of AccountSnapshot objects from database
@@ -19,6 +21,6 @@ int main(){
 	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
 
 	JavaScriptBridge javaScriptBridge;
-	cout << javaScriptBridge.accountSnapshotsToStr(searchResults) << endl;
+	cout << javaScriptBridge.accountInfosToStr(searchResults) << endl;
 	return 0;
 }
