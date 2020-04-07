@@ -59,6 +59,7 @@ class AccountInfo {
     Person landlord;
 	Address resAddress;
 	Address landAddress;
+	bool hasComments;
 };
 
 #endif //ACCOUNTINFO_H
