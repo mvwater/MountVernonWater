@@ -19,7 +19,7 @@ AccountInfo::AccountInfo(){
 
 }
 
-AccountSnapshot::AccountSnapshotAccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord){
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord){
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
@@ -47,10 +47,28 @@ string AccountInfo::getAccountNo(){
 	return accountNo;
 }
 
-string AccountInfo::getAddress(){
+string AccountInfo::getStatus(){
 	
-	return address;
+	return status;
 }
+
+string AccountInfo::getstartDate(){
+	
+	return startDate;
+}
+
+string AccountInfo::getResident(){
+	
+	return resident;
+}
+
+string AccountInfo::getLandlord(){
+	
+	return landlord;
+}
+
+
+
 
 	
 	

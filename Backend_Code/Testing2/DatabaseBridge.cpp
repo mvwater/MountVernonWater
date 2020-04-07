@@ -53,9 +53,9 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 
 
 
-vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccount){
+vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	//cout << "About to create query."<< endl;
-	string query("SELECT * FROM accounts WHERE AccountNo = '" + accountNo + "';");
+	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
 
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
