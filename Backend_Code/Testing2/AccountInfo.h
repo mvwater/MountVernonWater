@@ -47,6 +47,7 @@ class AccountInfo {
 	Person getLandlord();
 	Address getResAddress();
 	Address getLandAddress();
+	bool getHasComments();
 
     // Default Constructor
     

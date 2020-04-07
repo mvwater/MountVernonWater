@@ -93,7 +93,7 @@ Address AccountInfo::getResAddress(){
 	return resAddress;
 }
 
-bool AccountInfo::getHadComments(){
+bool AccountInfo::getHasComments(){
 	
 	return hasComments;
 }
