@@ -68,28 +68,33 @@ string AccountInfo::getStatus(){
 	return status;
 }
 
-string AccountInfo::getstartDate(){
+string  AccountInfo::getstartDate(){
 	
 	return startDate;
 }
 
-string AccountInfo::getResident(){
+Person AccountInfo::getResident(){
 	
 	return resident;
 }
 
-string AccountInfo::getLandlord(){
+Person AccountInfo::getLandlord(){
 	
 	return landlord;
 }
 
-string AccountInfo::getLandAddress(){
+Address AccountInfo::getLandAddress(){
 	
 	return landAddress;
 }
 
-string AccountInfo::getResAddress(){
+Address AccountInfo::getResAddress(){
 	
 	return resAddress;
+}
+
+bool AccountInfo::getHadComments(){
+	
+	return hasComments;
 }
 
