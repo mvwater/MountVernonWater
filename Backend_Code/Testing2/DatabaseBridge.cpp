@@ -1,10 +1,9 @@
 //File Name: DatabaseBridge.cpp
 //Author: M Brydon, S Kim, S Canfield
-
 //Email Address: kim3@kenyon.edu, brydon1@kenyon.edu, canfield1@kenyon.edu
 //Dev Project: Mount Vernon Water
 //Description: General class that can communicate with our database
-//Last Changed: 27 March 2020
+//Last Changed: 7 April 2020
 
 #include "DatabaseBridge.h"
 using std::cout;

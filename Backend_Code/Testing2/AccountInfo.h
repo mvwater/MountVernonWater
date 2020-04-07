@@ -1,3 +1,10 @@
+//File Name: AccountSnapshot.cpp
+//Author: Shane, Michaela, and Sejin
+//Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
+//Assignment: Mount Vernon City Water Database
+//Description: Snapshot of an account
+//Last Changed: April 7th, 2020
+
 #include <string>
 
 using namespace std;
@@ -24,6 +31,9 @@ class AccountInfo{
 	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord);
     string getAccountNo();
     string getStatus();
+	string getstartDate();
+	string getResident();
+	string getLandlord();
 
     // Default Constructor
     

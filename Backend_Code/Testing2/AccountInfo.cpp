@@ -1,9 +1,9 @@
-//File Name: AccountInfo.cpp
+//File Name: AccountSnapshot.cpp
 //Author: Shane, Michaela, and Sejin
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
-//Description: Detailed data representation of an account
-//Last Changed: March 26, 2020
+//Description: Snapshot of an account
+//Last Changed: 7 April 2020
 
 #include "AccountInfo.h"
 #include <iostream>
