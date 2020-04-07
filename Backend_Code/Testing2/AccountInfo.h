@@ -28,7 +28,7 @@ class AccountInfo {
   public:
   
 	AccountInfo();
-	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address resAddress, Address landAddress);
+	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address inputResAddress, Address inputLandAddress);
     string getAccountNo();
     string getStatus();
 	string getstartDate();
