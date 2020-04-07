@@ -22,8 +22,8 @@ TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
 # Linking after compiling
-TestDatabase: TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o
-	$(CC) TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
+TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o
+	$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
 
 clean:
 	rm -f TestDatabase $(OUT)
