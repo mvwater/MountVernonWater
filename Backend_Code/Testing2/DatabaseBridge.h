@@ -40,7 +40,7 @@ class DatabaseBridge{
     Connection connectToDatabase();
     // Returns sql Connection object
 
-    vector<AccountSnapshot> searchByAddress(string inputAddress);
+    //vector<AccountSnapshot> searchByAddress(string inputAddress);
     // Returns vector of AccountSnapshot objects after searching by address
 
     vector<string> commentsByAccountNo(string accountNo);
