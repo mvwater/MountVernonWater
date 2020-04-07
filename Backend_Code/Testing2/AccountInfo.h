@@ -22,8 +22,6 @@ struct Address {
 };
 
 
-
-
 struct Person {
 	string name;
 	//Address address;

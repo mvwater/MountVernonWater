@@ -18,6 +18,7 @@ AccountInfo::AccountInfo(){
 	Person landlord{"","","","","","",""};
 	Address resAddress{"","","","","",""};
 	Address landAddress{"","","","","",""};
+	hasComments = 0;
 
 }
 
