@@ -43,10 +43,10 @@ class AccountInfo {
     string getAccountNo();
     string getStatus();
 	string getstartDate();
-	string getResident();
-	string getLandlord();
-	string getResAddress();
-	string getLandAddress();
+	Person getResident();
+	Person getLandlord();
+	Address getResAddress();
+	Address getLandAddress();
 
     // Default Constructor
     
