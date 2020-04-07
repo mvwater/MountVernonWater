@@ -1,6 +1,5 @@
 #include <string>
 #include <vector>
-#include "AccountSnapshot.h"
 #include "AccountInfo.h"
 
 using std::string;
@@ -18,10 +17,16 @@ using std::string;
 #define DATABASEBRIDGE_H
 
 
-#define HOST "localhost"
-#define USER "canfield1" // Maybe rename
-#define DB "canfield1" 
-#define PASS "S216408"
+//#define HOST "localhost"
+//#define USER "canfield1" // Maybe rename
+//#define DB "canfield1" 
+//#define PASS "S216408"
+
+#define HOST "174.138.60.6:3306"
+#define USER "canfield1"
+#define DB "mvwater" 
+#define PASS "mousesandwichhospital"
+
 
 typedef std::unique_ptr<sql::Statement> Statement;
 typedef sql::Driver Driver;
