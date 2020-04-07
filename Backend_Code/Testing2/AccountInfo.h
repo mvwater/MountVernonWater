@@ -24,11 +24,11 @@ struct Person {
   string dob;
 };
 
-class AccountInfo{
+class AccountInfo {
   public:
   
 	AccountInfo();
-	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord);
+	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address resAddress, Address landAddress);
     string getAccountNo();
     string getStatus();
 	string getstartDate();
