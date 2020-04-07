@@ -69,6 +69,8 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
 	    	string accountNo = searchMatches -> getString("AccountNo");
+			string status = searchMatches -> getString("AcctStatus");
+			string startDate = searchMatches -> getString("SrtDate");
 	    	//cout << "AccountNo: " << accountNo << endl;
 	    	Address resAddress;
 			Address landAddress;
@@ -130,7 +132,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 			
 
 			//Use pointer to dynamically create accountSnapshot
-			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord);
+			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, resAddress, landAddress);
 			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountInfo));
 			delete accountInfo; // Deallocate memory in accountSnapshot

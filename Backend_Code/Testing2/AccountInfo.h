@@ -34,6 +34,8 @@ class AccountInfo{
 	string getstartDate();
 	string getResident();
 	string getLandlord();
+	string getResAddress();
+	string getLandAddress();
 
     // Default Constructor
     
@@ -45,6 +47,8 @@ class AccountInfo{
     string startDate;
     Person resident;
     Person landlord;
+	Address resAddress;
+	Address landAddress;
 };
 
 #endif //ACCOUNTINFO_H

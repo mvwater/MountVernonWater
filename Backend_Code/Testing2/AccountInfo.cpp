@@ -16,10 +16,12 @@ AccountInfo::AccountInfo(){
     startDate = "";
     Person resident{"","","","","","","",""};
 	Person landlord{"","","","","","","",""};
+	Address resAddress{"","","","","",""};
+	Address landAddress{"","","","","",""};
 
 }
 
-AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord){
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address inputResAddress, Address inputLandAddress){
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
@@ -39,6 +41,20 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	landlord.DLNum = inputlandlord.DLNum;
 	landlord.cellNum = inputlandlord.cellNum;
 	landlord.dob = inputlandlord.dob;
+	
+	resAddress.add1 = inputResAddress.add1;
+	resAddress.add2 = inputResAddress.add2;
+	resAddress.add3 = inputResAddress.add3;
+	resAddress.city = inputResAddress.city;
+	resAddress.state = inputResAddress.state;
+	resAddress.zip = inputResAddress.zip;
+	
+	landAddress.add1 = inputLandAddress.add1;
+	landAddress.add2 = inputLandAddress.add2;
+	landAddress.add3 = inputLandAddress.add3;
+	landAddress.city = inputLandAddress.city;
+	landAddress.state = inputLandAddress.state;
+	landAddress.zip = inputLandAddress.zip;
     
 }
 
@@ -65,6 +81,16 @@ string AccountInfo::getResident(){
 string AccountInfo::getLandlord(){
 	
 	return landlord;
+}
+
+string AccountInfo::getLandAddress(){
+	
+	return landAddress;
+}
+
+string AccountInfo::getResAddress(){
+	
+	return resAddress;
 }
 
 
