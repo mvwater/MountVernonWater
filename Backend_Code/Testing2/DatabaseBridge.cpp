@@ -97,7 +97,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    	landAddress.add2 += searchMatches -> getString("LAdd2");
 	    	landAddress.add3 += searchMatches -> getString("LAdd3");
 	    	landAddress.city += searchMatches -> getString("LCity");
-	    	landAddress.state += searchMatches -> getString("LState");
+	    	landAddress.state += searchMatches -> getString("LSt");
 	    	landAddress.zip += searchMatches -> getString("LZip");
 				
 			
