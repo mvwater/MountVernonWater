@@ -114,7 +114,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 			landlord.email += searchMatches -> getString("LEmail");
 			landlord.SScan += searchMatches -> getString("LSScan");
 			landlord.DLNum += searchMatches -> getString("LDL#");
-			landlord.cellNum += searchMatches -> getString("LCell#");
+			//landlord.cellNum += searchMatches -> getString("LCell#"); maybe make a new column for this
 			landlord.dob += searchMatches -> getString("LDoB");
 
 			
