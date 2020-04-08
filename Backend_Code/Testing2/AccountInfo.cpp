@@ -22,7 +22,7 @@ AccountInfo::AccountInfo(){
 
 }
 
-AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address inputResAddress, Address inputLandAddress){
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address inputResAddress, Address inputLandAddress, bool inputHasComments){
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
@@ -56,6 +56,8 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	landAddress.city = inputLandAddress.city;
 	landAddress.state = inputLandAddress.state;
 	landAddress.zip = inputLandAddress.zip;
+	
+	hasComments = inputHasComments;
     
 }
 

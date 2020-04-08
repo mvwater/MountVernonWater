@@ -128,7 +128,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    		hasComments = true;
 	    	}
 			
-		
+			
 			
 
 			//Use pointer to dynamically create accountSnapshot
