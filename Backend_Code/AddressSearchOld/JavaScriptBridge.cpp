@@ -8,19 +8,19 @@
 #include "JavaScriptBridge.h"
 
 // Final string will have sep at end
-string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
+string JavaScriptBridge::printAccountSnapshot(AccountSnapshot accountSnapshot){
 	string result, sep("*");
-	result += accountInfo.getAccountNo() + sep + accountInfo.getStatus()+ sep + accountInfo.getstartDate() + sep + accountInfo.getResident().name + sep + accountInfo.getLandlord().name; 
+	result += accountSnapshot.getAccountNo() + sep + accountSnapshot.getResAddress().streetname + sep + accountSnapshot.resAddressLine2() + sep; 
 
 	// Has comments
-	//if (accountInfo.getHasComments()){
-	//	result += "T" + sep;
-	//} else {
-	//	result += "F" + sep;
-	//}
+	if (accountSnapshot.getHasComments()){
+		result += "T" + sep;
+	} else {
+		result += "F" + sep;
+	}
 
 	/*// Has text
-	if (accountInfo.getHasText()){
+	if (accountSnapshot.getHasText()){
 		result += "T" + sep;
 	} else {
 		result += "F" + sep;
@@ -37,18 +37,18 @@ string JavaScriptBridge::getElement(string element, Cgicc &cgi){
   return returnElement;
 }
 
-string JavaScriptBridge::accountInfosToStr(vector<AccountInfo> searchResults){
-	AccountInfo accountInfo;
+string JavaScriptBridge::accountSnapshotsToStr(vector<AccountSnapshot> searchResults){
+	AccountSnapshot accountSnapshot;
   	string jsMessage = "";
 	for (uint i=0; i<searchResults.size(); i++){
-	    accountInfo = searchResults.at(i);
-	    jsMessage += printAccountInfo(accountInfo);
+	    accountSnapshot = searchResults.at(i);
+	    jsMessage += printAccountSnapshot(accountSnapshot);
 	}
 	return jsMessage;
 }
 
-void JavaScriptBridge::sendAccountInfos(vector<AccountInfo> searchResults){
-	sendMessage(accountInfosToStr(searchResults));
+void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResults){
+	sendMessage(accountSnapshotsToStr(searchResults));
 }
 
 void JavaScriptBridge::sendMessage(string message){

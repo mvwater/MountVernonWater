@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "AccountInfo.h"
+#include "AccountSnapshot.h"
 
 #include "cgicc/Cgicc.h"
 #include "cgicc/HTTPHTMLHeader.h"
@@ -14,18 +14,19 @@ using namespace cgicc;
 
 class JavaScriptBridge{
   public:
-    string printAccountInfo(AccountInfo accountInfo);
-
-   
+    string printAccountSnapshot(AccountSnapshot accountSnapshot);
+    //Preconditions: artwork must be an Artwork object
+    //Postconditions: Returns artwork info delimited by * as a string
+    
     string getElement(string element, Cgicc &cgi);
     //Preconditions: element must be a string corresponding to an ajax element
     //sent from JavaScript. cgi is a Cgicc ajax object.
     //Postconditions: Returns the value of the ajax element as a string.
 
-    string accountInfosToStr(vector<AccountInfo> searchResults);
-    // Returns string of AccountInfo objects that will be sent to JavaScript
+    string accountSnapshotsToStr(vector<AccountSnapshot> searchResults);
+    // Returns string of AccountSnapshot objects that will be sent to JavaScript
 
-    void sendAccountInfos(vector<AccountInfo> searchResults);
+    void sendAccountSnapshots(vector<AccountSnapshot> searchResults);
     //Preconditions: 
     //Postconditions:
 
