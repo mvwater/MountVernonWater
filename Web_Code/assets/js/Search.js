@@ -86,6 +86,7 @@ function showSearchResults(resultString){
     } else {
         console.log("We have results.");
         console.log(listLength);
+        // Why do I need extra blank <th> tag?
         var result = "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th></th><th></th><th>Address</th><th>Account No.</th><th>Has Comments</th></tr></thead><tbody>";
 
         var count=0; // Error stop
@@ -103,6 +104,7 @@ function showSearchResults(resultString){
             var hasComments = accountData[i+5];
 
             // Construct address HTML
+            // Eliminate vertical spacing between elements
             var addressHtml = "<p>" + add1 + "</p>";
             if (add2 != ""){
                 addressHtml += "<p>" + add2 + "</p>";
@@ -123,6 +125,7 @@ function showSearchResults(resultString){
                 hasCommentsImg = "Red_X.png";
             }
 
+            // Move style instructions to css
             result += "<tr id='" + accountNumber + "'><td> </td><td id='open_" + accountNumber + "' class='open_account'><strong>Open</strong></td><td style='width: 205px;'>" + addressHtml + "</td><td>" + accountNumberStars + "</td><td><img src='assets/img/" + hasCommentsImg + "' style='height: 26px;'></td></tr>";
 
         }
