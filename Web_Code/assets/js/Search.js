@@ -123,7 +123,7 @@ function showSearchResults(resultString){
                 hasCommentsImg = "Red_X.png";
             }
 
-            result += "<tr><td id='" + accountNumber + "' class='open_account' style='width: 11px;height: 13px;padding: 12px;''><strong id='open_" + accountNumber + "' style='margin-top: 0px;padding: -4px;>Open</strong></td><td style='width: 205px;'>" + addressHtml + "</td><td>" + accountNumberStars + "</td><td><img src='assets/img/" + hasCommentsImg + "' style='height: 26px;'></td></tr>";
+            result += "<tr id='" + accountNumber + "'><td> </td><td id='open_" + accountNumber + "' class='open_account'><strong>Open</strong></td><td style='width: 205px;'>" + addressHtml + "</td><td>" + accountNumberStars + "</td><td><img src='assets/img/" + hasCommentsImg + "' style='height: 26px;'></td></tr>";
 
         }
         result += "</tbody></table></div></div>";
