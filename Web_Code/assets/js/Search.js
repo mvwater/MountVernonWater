@@ -78,7 +78,7 @@ function processSearchResults(results) {
 
 
 function showSearchResults(resultString){
-    var accountData = resultsString.split('*');
+    var accountData = resultString.split('*');
     var listLength = accountData.length;
 
     if (listLength < 1){
