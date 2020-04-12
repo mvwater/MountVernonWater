@@ -115,7 +115,7 @@ function showSearchResults(resultString){
             addressHtml += "<p>" + lastLineAdd + "</p>";
 
             // Replace - with * in accountNumber
-            var accountNumberStars = accountNumber.replace("-","*");
+            var accountNumberStars = accountNumber.replace("-","*").replace("-","*");
 
             // Get check or x for hasComments box
             var hasCommentsImg;
