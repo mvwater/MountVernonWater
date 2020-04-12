@@ -27,8 +27,7 @@ class JavaScriptBridge{
     // Returns string of AccountSnapshot objects that will be sent to JavaScript
 
     void sendAccountSnapshots(vector<AccountSnapshot> searchResults);
-    //Preconditions: 
-    //Postconditions:
+    //Postconditions: Sends string of form "" to JavaScript
 
     void sendMessage(string message);
     //Preconditions: stringForJS must be a string that is intended to be sent
