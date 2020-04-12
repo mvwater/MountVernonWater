@@ -32,7 +32,7 @@ function searchDatabase(){
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAddress.cgi?address=' + userInput,
                 dataType: 'text', // maybe JSON
-                success: displayAddressMatches, 
+                success: processAddressMatches, 
                 error: function(){alert("Error: Could not search by address.");}
             });
         }
@@ -50,18 +50,96 @@ function setSearchType(searchTypeVar){
     }
 }
 
+// Example result string: 104-23-1*85 Delaware Prk*MOUNT VERNON, OH  43050*T*83-26-19*101 Coshoctan Rd*MOUNT VERNON, OH  43050*F*
+// Function to send info to database
+function processAddressMatches(results){
+    console.log(results);
+    $('#search_results').empty();
+    console.log("About to show results");
+    $('#search_results').append(showSearchResults(results));
+    console.log("Finished show photos");
+    //$(".open_account").click(openAccount);
+    //console.log("button click event was created.");
+}
+
+
+//Empties photo gallery (again?) builds new gallery using buildGallery function
+/*
+function processSearchResults(results) {
+
+    //console.log("Results:"+results);
+    $('#artworkResults').empty();
+    //console.log("About to show photos");
+    $('#artworkResults').append(showSearchResults(results));
+    console.log("Finished show results");
+    //$(".open_account").click(openAccount);
+    //console.log("button click event was created.");
+}*/
+
+
+function showSearchResults(resultString){
+    var accountData = resultsString.split('*');
+    var listLength = accountData.length;
+
+    if (listLength < 1){
+        return "<h3>Internal Error</h3>";
+    } else {
+        console.log("We have results.");
+        console.log(listLength);
+        var result = "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th></th><th>Address</th><th>Account No.</th><th>Has Comments</th></tr></thead><tbody>";
+
+        var count=0; // Error stop
+        for (var i = 0; i < listLength; i+=6){
+            count++;
+            if (count == 2000){
+                console.log("Aborting loop.");
+                break;
+            }
+            var accountNumber = accountData[i];
+            var add1 = accountData[i+1];
+            var add2 = accountData[i+2];
+            var add3 = accountData[i+3];
+            var lastLineAdd = accountData[i+4];
+            var hasComments = accountData[i+5];
+
+            // Construct address HTML
+            var addressHtml = "<p>" + add1 + "</p>";
+            if (add2 != ""){
+                addressHtml += "<p>" + add2 + "</p>";
+            }
+            if (add3 != ""){
+                addressHtml += "<p>" + add3 + "</p>";
+            }
+            addressHtml += "<p>" + lastLineAdd + "</p>";
+
+            // Replace - with * in accountNumber
+            var accountNumberStars = accountNumber.replace("-","*");
+
+            // Get check or x for hasComments box
+            var hasCommentsImg;
+            if (hasComments == "T"){
+                hasCommentsImg = "Green_Check.png";
+            } else {
+                hasCommentsImg = "Red_X.png";
+            }
+
+            result += "<tr><td id='" + accountNumber + "' class='open_account' style='width: 11px;height: 13px;padding: 12px;''><strong id='open_" + accountNumber + "' style='margin-top: 0px;padding: -4px;>Open</strong></td><td style='width: 205px;'>" + addressHtml + "</td><td>" + accountNumberStars + "</td><td><img src='assets/img/" + hasCommentsImg + "' style='height: 26px;'></td></tr>";
+
+        }
+        result += "</tbody></table></div></div>";
+        console.log("Number of results:", count);
+    }
+    return result;
+}
+
+
 // Function to parse info from database
 /*
 function displayAccountInfo(results){
 
 }*/
 
-// Example result string: 104-23-1*85 Delaware Prk*MOUNT VERNON, OH  43050*T*83-26-19*101 Coshoctan Rd*MOUNT VERNON, OH  43050*F*
-// Function to send info to database
-function displayAddressMatches(results){
-    // Finish me
-    console.log(results);
-}
+
 
 
 
