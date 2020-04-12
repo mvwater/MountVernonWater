@@ -29,6 +29,7 @@ function searchDatabase(){
                 error: function(){alert("Error: Could not search by account number.");}
             });
         } else { // searchType == "Address"
+            console.log("Sending " + userInput);
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAddress.cgi?address=' + userInput,
                 dataType: 'text', // maybe JSON
