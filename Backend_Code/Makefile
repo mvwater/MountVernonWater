@@ -30,7 +30,10 @@ TestJavaScript.o: TestJavaScript.cpp JavaScriptBridge.h DatabaseBridge.h Account
 TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
 
-SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+#SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+#	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
+
+SearchAddress.o: SearchAddress.cpp
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
@@ -46,8 +49,11 @@ TestJavaScript: $(TEST_JAVASCRIPT)
 TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-SearchAddress: $(SEARCH_ADDRESS)
-	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
+#SearchAddress: $(SEARCH_ADDRESS)
+#	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
+
+SearchAddress: SearchAddress.o
+	$(CC) SearchAddress.o -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
 PutCGI: SearchAddress
 #PutCGI: TestJavaScript SearchAddress
@@ -66,6 +72,6 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 
 clean:
-	rm -f TestDatabase SearchAddress TestSearchAddress $(OUT)
+	rm -f SearchAddress $(OUT)
 	#rm -f $(OUT)
 

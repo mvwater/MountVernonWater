@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <string>
 #include <vector>
@@ -13,10 +14,12 @@
 // Fix later
 using namespace cgicc;
 //using std::cout;
+*/
+
 
 int main(){
-  Cgicc cgi; // Ajax object
-  JavaScriptBridge javaScriptBridge;
+  //Cgicc cgi; // Ajax object
+  //JavaScriptBridge javaScriptBridge;
 
   //Receive info from web page
   //string searchVal = javaScriptBridge.getElement("address", cgi);
