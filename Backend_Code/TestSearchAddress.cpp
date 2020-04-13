@@ -13,7 +13,7 @@ int main(){
 
 
 
-
+// CURRENTLY INVALID
 
 
 
@@ -21,7 +21,7 @@ int main(){
 	cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + searchVal + "%';");
 
-	vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
+	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
 
 
 
