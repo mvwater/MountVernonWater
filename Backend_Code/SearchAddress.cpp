@@ -16,7 +16,7 @@ using namespace cgicc;
 //using std::cout;
 */
 
-
+// MUST Always print out line or you will get 500 error
 int main(){
   //Cgicc cgi; // Ajax object
   //JavaScriptBridge javaScriptBridge;
@@ -31,5 +31,7 @@ int main(){
 
   // Send search results to JavaScript 
   //javaScriptBridge.sendAccountSnapshots(searchResults);
+
+  cout << "Content-Type: text/plain\n\n" << endl;
   return 0;
 }
