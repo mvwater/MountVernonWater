@@ -61,13 +61,17 @@ function getSearchType(){
 // Example result string: 104-23-1*85 Delaware Prk*MOUNT VERNON, OH  43050*T*83-26-19*101 Coshoctan Rd*MOUNT VERNON, OH  43050*F*
 // Function to send info to database
 function processAddressMatches(results){
+    console.log("Temporarily does nothing.");
+
+
+    /*
     console.log("&" + results + "&");
     $('#search_results').empty();
     console.log("About to show results");
     $('#search_results').append(showSearchResults(results));
     console.log("Finished show results");
     //$(".open_account").click(openAccount);
-    //console.log("button click event was created.");
+    //console.log("button click event was created.");*/
 }
 
 
