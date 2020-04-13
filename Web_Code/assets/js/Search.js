@@ -36,8 +36,9 @@ function searchDatabase(){
         } else { // searchType == "Address"
             console.log("Searching by address.");
             console.log("Sending " + userInput);
+
             $.ajax({
-                url: '/cgi-bin/'+ajaxUser+'_searchByAddress.cgi?address=' + userInput,
+                url: '/cgi-bin/' + ajaxUser + '_searchByAddress.cgi?address=' + userInput,
                 dataType: 'text', // maybe JSON
                 success: processAddressMatches, 
                 error: function(){alert("Error: Could not search by address.");}
@@ -61,6 +62,7 @@ function getSearchType(){
 // Example result string: 104-23-1*85 Delaware Prk*MOUNT VERNON, OH  43050*T*83-26-19*101 Coshoctan Rd*MOUNT VERNON, OH  43050*F*
 // Function to send info to database
 function processAddressMatches(results){
+    console.log(results);
     console.log("Temporarily does nothing.");
 
 
