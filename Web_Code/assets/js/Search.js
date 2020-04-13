@@ -1,6 +1,8 @@
 var searchType; //Category to be searched by: accountNo or address
 var ajaxUser = "brydon1"; //Your username for ajax calls
 
+// Problem: searchType not defined
+
 $(document).ready(function() {
     console.log("ready!");
     $("#search_button").click(searchDatabase);
@@ -21,8 +23,9 @@ function searchDatabase(){
     } else {
         console.log("Search field not empty.");
         console.log(userInput);
-        setSearchType(searchType);
+        searchType = getSearchType();
         console.log("Search Type: " + searchType);
+        
         if (searchType == "AccountNo"){
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
@@ -44,13 +47,14 @@ function searchDatabase(){
 }
 
 // Function to send info to database
-function setSearchType(searchTypeVar){
+function getSearchType(){
+    console.log("Getting searchType");
     if ($("#search_type").selectedIndex == 0) {
         // Search by accountNo
-        searchTypeVar = "AccountNo";
+        return "AccountNo";
     } else {
         // Search by address
-        searchTypeVar = "Address";
+        return "Address";
     }
 }
 
