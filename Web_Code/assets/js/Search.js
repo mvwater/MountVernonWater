@@ -12,8 +12,9 @@ function searchDatabase(){
     //console.log("Search Field: " + $("#search_field").value());
     //console.log("Search Field: " + $("#search_field").val());
     console.log(document.getElementById('search_field').value);
-
-    var userInput = document.getElementById('search_field').value
+    var userInput = document.getElementById('search_field').value;
+    console.log(userInput);
+    
     if (document.getElementById('search_field').value == ""){
         console.log("Blank field");
         alert("Please enter an address or account number.") // Maybe do something else
