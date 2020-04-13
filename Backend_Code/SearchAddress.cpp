@@ -1,7 +1,9 @@
-/*
+
 #include <iostream>
 #include <string>
 #include <vector>
+
+/*
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
 #include "AccountSnapshot.h"
@@ -13,8 +15,10 @@
 
 // Fix later
 using namespace cgicc;
-//using std::cout;
 */
+
+using std::cout;
+
 
 // MUST Always print out line or you will get 500 error
 int main(){
