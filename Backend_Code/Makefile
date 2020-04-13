@@ -49,12 +49,12 @@ TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 SearchAddress: $(SEARCH_ADDRESS)
 	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-#PutCGI: SearchAddress
-PutCGI: TestJavaScript
-	#chmod 757 SearchAddress
-	chmod 757 TestJavaScript
-	#cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
-	cp TestJavaScript /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
+PutCGI: SearchAddress
+#PutCGI: TestJavaScript SearchAddress
+	chmod 757 SearchAddress
+	#chmod 757 TestJavaScript
+	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
+	#cp TestJavaScript /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
 
 	#echo "Current contents of your cgi-bin directory: "
 	#ls -l /usr/lib/cgi-bin/
