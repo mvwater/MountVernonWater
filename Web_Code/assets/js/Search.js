@@ -65,7 +65,7 @@ function processAddressMatches(results){
     $('#search_results').empty();
     console.log("About to show results");
     $('#search_results').append(showSearchResults(results));
-    console.log("Finished show photos");
+    console.log("Finished show results");
     //$(".open_account").click(openAccount);
     //console.log("button click event was created.");
 }

@@ -9,7 +9,7 @@ CFLAGS 	 = -std=c++14
 USER     = brydon1
 
 #all: SearchAddress PutCGI PutHTML
-all: TestDatabase TestJavaScript PutCGI PutHTML
+all: SearchAddress TestDatabase TestJavaScript PutCGI PutHTML
 #all: TestDatabase
 
 #AccountInfo.o: AccountInfo.cpp AccountInfo.h
