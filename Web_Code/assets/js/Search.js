@@ -14,14 +14,15 @@ function searchDatabase(){
     console.log(document.getElementById('search_field').value);
     var userInput = document.getElementById('search_field').value;
     console.log(userInput);
-    
-    if (document.getElementById('search_field').value == ""){
+
+    if (userInput == ""){
         console.log("Blank field");
         alert("Please enter an address or account number.") // Maybe do something else
     } else {
         console.log("Search field not empty.");
-        console.log(document.getElementById('search_field').value);
+        console.log(userInput);
         setSearchType(searchType);
+        console.log("Search Type: " + searchType);
         if (searchType == "AccountNo"){
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
@@ -30,6 +31,7 @@ function searchDatabase(){
                 error: function(){alert("Error: Could not search by account number.");}
             });
         } else { // searchType == "Address"
+            console.log("Searching by address.");
             console.log("Sending " + userInput);
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAddress.cgi?address=' + userInput,
