@@ -25,7 +25,7 @@ function searchDatabase(){
         console.log(userInput);
         searchType = getSearchType();
         console.log("Search Type: " + searchType);
-        
+
         if (searchType == "AccountNo"){
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
@@ -61,7 +61,7 @@ function getSearchType(){
 // Example result string: 104-23-1*85 Delaware Prk*MOUNT VERNON, OH  43050*T*83-26-19*101 Coshoctan Rd*MOUNT VERNON, OH  43050*F*
 // Function to send info to database
 function processAddressMatches(results){
-    console.log(results);
+    console.log("&" + results + "&");
     $('#search_results').empty();
     console.log("About to show results");
     $('#search_results').append(showSearchResults(results));
@@ -86,10 +86,13 @@ function processSearchResults(results) {
 
 
 function showSearchResults(resultString){
+    console.log("Length of result string: ", resultString.length);
     var accountData = resultString.split('*');
+    //console.log("Account Data: " + accountData);
+    console.log("Account Data: ", accountData);
     var listLength = accountData.length;
 
-    if (listLength < 1){
+    if (listLength < 6){
         return "<h3>Internal Error</h3>";
     } else {
         console.log("We have results.");
