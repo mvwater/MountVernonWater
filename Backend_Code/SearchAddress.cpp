@@ -16,10 +16,8 @@
 // Fix later
 using namespace cgicc;
 
-
 using std::cout;
 using std::endl;
-
 
 // MUST Always print out line or you will get 500 error
 int main(){
@@ -31,12 +29,12 @@ int main(){
   DatabaseBridge databaseBridge;
 
   // Receive vector of AccountSnapshot objects from database
-  
+
   vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
 
   // Send search results to JavaScript 
-  //javaScriptBridge.sendAccountSnapshots(searchResults);
+  javaScriptBridge.sendAccountSnapshots(searchResults);
 
-  cout << "Content-Type: text/plain\n\n" << endl;
+  //cout << "Content-Type: text/plain\n\n" << endl;
   return 0;
 }
