@@ -25,7 +25,7 @@ JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
 TestJavaScript.o: TestJavaScript.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
+	$(CC) $(FLAGS) TestJavaScript.cpp $(CFLAGS)
 
 TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
