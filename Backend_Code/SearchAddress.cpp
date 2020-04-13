@@ -28,11 +28,11 @@ int main(){
 
   //Receive info from web page
   string searchVal = javaScriptBridge.getElement("address", cgi);
-  //DatabaseBridge databaseBridge;
+  DatabaseBridge databaseBridge;
 
   // Receive vector of AccountSnapshot objects from database
   
-  //vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
+  vector<AccountSnapshot> searchResults = databaseBridge.searchByAddress(searchVal);
 
   // Send search results to JavaScript 
   //javaScriptBridge.sendAccountSnapshots(searchResults);
