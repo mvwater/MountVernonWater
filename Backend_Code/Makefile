@@ -8,8 +8,8 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = brydon1
 
-#all: SearchAddress PutCGI PutHTML
-all: SearchAddress TestDatabase TestJavaScript PutCGI PutHTML
+all: SearchAddress PutCGI PutHTML
+#all: SearchAddress TestDatabase TestJavaScript PutCGI PutHTML
 #all: TestDatabase
 
 #AccountInfo.o: AccountInfo.cpp AccountInfo.h
