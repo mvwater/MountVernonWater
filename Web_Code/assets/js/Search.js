@@ -89,6 +89,8 @@ function processSearchResults(results) {
 function showSearchResults(resultString){
     console.log("Length of result string: ", resultString.length);
     var accountData = resultString.split('*');
+    accountData.pop(); // Remove empty string from end of list
+
     //console.log("Account Data: " + accountData);
     console.log("Account Data: ", accountData);
     var listLength = accountData.length;
