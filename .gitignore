@@ -33,3 +33,7 @@
 
 # Macs
 .DS_Store
+
+# SQL
+*.csv
+*.sql
