@@ -90,7 +90,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 			
 			
 			int numComments = commentsByAccountNo(accountNo).size();
-			cout << "NumComments: " << numComments << endl;
+			//cout << "NumComments: " << numComments << endl;
 			bool hasComments(false);
 	    	if (numComments != 0){
 	    		hasComments = true;
@@ -103,7 +103,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 			delete accountSnapshot; // Deallocate memory in accountSnapshot
 	    }
   	} while (statement->getMoreResults());
-  cout << count << endl;
+  //cout << count << endl;
   //cout << "Done."<< endl;
   return accountResultList;
 }
