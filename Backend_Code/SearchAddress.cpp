@@ -4,10 +4,8 @@
 #include <vector>
 
 
-//#include "DatabaseBridge.h"
-//#include "JavaScriptBridge.h"
-
-
+#include "DatabaseBridge.h"
+#include "JavaScriptBridge.h"
 #include "AccountSnapshot.h"
 
 // Stuff for Ajax

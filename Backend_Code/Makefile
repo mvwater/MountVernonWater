@@ -32,11 +32,11 @@ TestJavaScript.o: TestJavaScript.cpp JavaScriptBridge.h DatabaseBridge.h Account
 TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
 
-#SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
-#	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
-
-SearchAddress.o: SearchAddress.cpp AccountSnapshot.h
+SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
+
+#SearchAddress.o: SearchAddress.cpp AccountSnapshot.h
+#	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
@@ -51,11 +51,11 @@ TestJavaScript: $(TEST_JAVASCRIPT)
 TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-#SearchAddress: $(SEARCH_ADDRESS)
-#	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
+SearchAddress: $(SEARCH_ADDRESS)
+	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-SearchAddress: $(TEMP)
-	$(CC) $(TEMP) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
+#SearchAddress: $(TEMP)
+#	$(CC) $(TEMP) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
 PutCGI: SearchAddress
 #PutCGI: TestJavaScript SearchAddress
