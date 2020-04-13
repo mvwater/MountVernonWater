@@ -39,6 +39,6 @@ int main(){
   // Send search results to JavaScript 
   //javaScriptBridge.sendAccountSnapshots(searchResults);
 
-  //cout << "Content-Type: text/plain\n\n" << endl;
+  cout << "Content-Type: text/plain\n\n" << endl;
   return 0;
 }
