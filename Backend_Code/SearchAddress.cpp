@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-/*
+
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
 #include "AccountSnapshot.h"
@@ -15,7 +15,7 @@
 
 // Fix later
 using namespace cgicc;
-*/
+
 
 using std::cout;
 using std::endl;
@@ -37,6 +37,6 @@ int main(){
   // Send search results to JavaScript 
   //javaScriptBridge.sendAccountSnapshots(searchResults);
 
-  cout << "Content-Type: text/plain\n\n" << endl;
+  //cout << "Content-Type: text/plain\n\n" << endl;
   return 0;
 }
