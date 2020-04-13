@@ -23,11 +23,11 @@ using std::endl;
 
 // MUST Always print out line or you will get 500 error
 int main(){
-  //Cgicc cgi; // Ajax object
-  //JavaScriptBridge javaScriptBridge;
+  Cgicc cgi; // Ajax object
+  JavaScriptBridge javaScriptBridge;
 
   //Receive info from web page
-  //string searchVal = javaScriptBridge.getElement("address", cgi);
+  string searchVal = javaScriptBridge.getElement("address", cgi);
   //DatabaseBridge databaseBridge;
 
   // Receive vector of AccountSnapshot objects from database
