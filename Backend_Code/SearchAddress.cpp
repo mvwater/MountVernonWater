@@ -18,6 +18,7 @@ using namespace cgicc;
 */
 
 using std::cout;
+using std::endl;
 
 
 // MUST Always print out line or you will get 500 error
