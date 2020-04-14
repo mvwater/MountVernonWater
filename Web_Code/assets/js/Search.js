@@ -96,7 +96,7 @@ function showSearchResults(resultString){
     var listLength = accountData.length;
 
     if (listLength < 6){
-        return "<h3>Internal Error</h3>";
+        return "<h3>This address is not in the system.</h3>";
     } else {
         console.log("We have results.");
         console.log(listLength);
