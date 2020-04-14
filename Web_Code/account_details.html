@@ -14,13 +14,76 @@
         <div>
             <h2 class="text-left heading" style="margin-top: 0px;padding-top: 10px;">Mount Vernon Water Archives</h2>
         </div>
-        <div class="text-right" style="margin-top: 20px;"><select id="search_type" required="" style="margin-right: 10px;margin-bottom: 10px;display: inline"><optgroup label="Search type"><option value="0" selected="">Account No.</option><option value="1">Address</option></optgroup></select><input type="search"
-                style="margin-right: 0px;padding-top: 0px;padding-bottom: 1px;">
+        <div class="text-right" style="margin-top: 20px;"><select id="search_type" required="" style="margin-right: 10px;margin-bottom: 10px;display: inline"><optgroup label="Search type"><option value="0" selected="">Account No.</option><option value="1">Address</option></optgroup></select>
+            <input type="search" id="search_field" style="margin-right: 0px;padding-top: 0px;padding-bottom: 1px;">
             <p class="text-left" id="search_button" style="display: inline;background-color: #5E628C;padding-bottom: 3px;padding-right: 8px;padding-left: 8px;border-radius: 6px;padding-top: 3px;color: white;margin-left: 10px;">Search</p>
         </div>
     </div>
+    <div id="search_results">
+        <div class="container text-left" style="background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;">
+            <div class="row">
+                <div class="col"><input type="text" id="status" value="Success!" name="status" style="width: 100%;margin-bottom: 10px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><label>Account Number:&nbsp;</label><input type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-left" style="background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;">
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <p><span style="text-decoration: underline;">General Information</span></p>
+                        <fieldset><label>Comments?&nbsp;</label><input type="text" name="comments" placeholder="FALSE"><a id="openComments" href="#" style="margin-left: 10px;">Open Comments</a></fieldset>
+                        <fieldset><label for="AcctStatus">Account Status:&nbsp;</label><input type="text" id="AcctStatus" name="AcctStatus" placeholder="(A)" style="width: 30px;"></fieldset>
+                        <fieldset><label for="StartDt">Start Date:&nbsp;</label><input type="text" id="StartDt" name="StartDt" placeholder="(08-15-2017)" style="width: 100px;"></fieldset>
+                        <fieldset><label for="Name">Name:&nbsp;</label><input type="text" id="Name" name="Name" placeholder="(WATER TREATMENT PLANT)" style="width: 80%;"></fieldset>
+                        <fieldset><label for="Add1">Address 1:&nbsp;</label><input type="text" id="Add1" name="Add1" placeholder="(1550 OLD DELAWARE RD)" style="width: 70%;"></fieldset>
+                        <fieldset><label for="Add2">Address 2:&nbsp;</label><input type="text" id="Add2" name="Add2" style="width: 70%;"></fieldset>
+                        <fieldset><label for="Add3">Address 3:&nbsp;</label><input type="text" id="Add3" name="Add3" style="width: 70%;"></fieldset>
+                        <fieldset><label for="City">City:&nbsp;</label><input type="text" id="City" name="City" placeholder="(MOUNT VERNON)" style="width: 50%;"></fieldset>
+                        <fieldset><label for="State">State:&nbsp;</label><input type="text" id="State" name="State" placeholder="(OH)" style="width: 60px;"></fieldset>
+                        <fieldset><label for="Zip">ZIP:&nbsp;</label><input type="text" id="Zip" name="Zip" placeholder="(43050)" style="width: 90px;"></fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-left" style="background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;">
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>Billing Information</p><button class="btn btn-secondary" type="button" style="margin-right: 10px;">Consumption History</button><button class="btn btn-secondary" type="button" style="margin-right: 10px;">Receivables History</button>
+                    <button
+                        class="btn btn-secondary" type="button">Payment History</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-left" style="background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;">
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col"><button class="btn btn-secondary" type="button">Print/Save Results</button></div>
+            </div>
+        </div>
+    </div> <!--Close search_results-->
+    
+    
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- I think this does jquery-->
+    <script src="assets/js/Search.js"></script> <!-- NOTE: must show up after jquery js file (Not sure which it is yet)-->
+
 </body>
 
 </html>
