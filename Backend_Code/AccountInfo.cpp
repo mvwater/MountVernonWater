@@ -12,17 +12,15 @@ using std::cout;
 
 AccountInfo::AccountInfo(){
 	accountNo = "";
-    status = "";
-    startDate = "";
-    Person resident{"","","","","","",""};
-	Person landlord{"","","","","","",""};
-	Address resAddress{"","","","","",""};
-	Address landAddress{"","","","","",""};
+	status = "";
+	startDate = "";
+	Person resident{"","","","","","","",""};
+	Person landlord{"","","","","","","",""};
 	hasComments = 0;
 
 }
 
-AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address inputResAddress, Address inputLandAddress, bool inputHasComments){
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, bool inputHasComments){
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
@@ -43,19 +41,19 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	landlord.cellNum = inputlandlord.cellNum;
 	landlord.dob = inputlandlord.dob;
 	
-	resAddress.add1 = inputResAddress.add1;
-	resAddress.add2 = inputResAddress.add2;
-	resAddress.add3 = inputResAddress.add3;
-	resAddress.city = inputResAddress.city;
-	resAddress.state = inputResAddress.state;
-	resAddress.zip = inputResAddress.zip;
+	resident.address.add1 = inputresident.address.add1;
+	resident.address.add2 = inputresident.address.add2;
+	resident.address.add3 = inputresident.address.add3;
+	resident.address.city = inputresident.address.city;
+	resident.address.state = inputresident.address.state;
+	resident.address.zip = inputresident.address.zip;
 	
-	landAddress.add1 = inputLandAddress.add1;
-	landAddress.add2 = inputLandAddress.add2;
-	landAddress.add3 = inputLandAddress.add3;
-	landAddress.city = inputLandAddress.city;
-	landAddress.state = inputLandAddress.state;
-	landAddress.zip = inputLandAddress.zip;
+	landlord.address.add1 = inputlandlord.address.add1;
+	landlord.address.add2 = inputlandlord.address.add2;
+	landlord.address.add3 = inputlandlord.address.add3;
+	landlord.address.city = inputlandlord.address.city;
+	landlord.address.state = inputlandlord.address.state;
+	landlord.address.zip = inputlandlord.address.zip;
 	
 	hasComments = inputHasComments;
     

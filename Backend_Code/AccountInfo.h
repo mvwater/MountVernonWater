@@ -3,7 +3,7 @@
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
 //Description: Snapshot of an account
-//Last Changed: April 7th, 2020
+//Last Changed: 19 April 2020
 
 #include <string>
 
@@ -24,7 +24,7 @@ struct Address {
 
 struct Person {
 	string name;
-	//Address address;
+	Address address;
 	string phoneNum;
 	string email;
 	string SScan;
@@ -37,28 +37,20 @@ class AccountInfo {
   public:
   
 	AccountInfo();
-	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Address inputResAddress, Address inputLandAddress, bool inputHasComments);
-    string getAccountNo();
-    string getStatus();
+	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, bool inputHasComments);
+	string getAccountNo();
+	string getStatus();
 	string getstartDate();
 	Person getResident();
 	Person getLandlord();
-	Address getResAddress();
-	Address getLandAddress();
-	bool getHasComments();
-
-    // Default Constructor
-    
-    
+	bool getHasComments();   
 
   private:
-    string accountNo;
-    string status;
-    string startDate;
-    Person resident;
-    Person landlord;
-	Address resAddress;
-	Address landAddress;
+    	string accountNo;
+    	string status;
+	string startDate;
+	Person resident;
+	Person landlord;
 	bool hasComments;
 };
 
