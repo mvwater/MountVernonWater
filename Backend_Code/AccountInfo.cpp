@@ -84,15 +84,6 @@ Person AccountInfo::getLandlord(){
 	return landlord;
 }
 
-Address AccountInfo::getLandAddress(){
-	
-	return landAddress;
-}
-
-Address AccountInfo::getResAddress(){
-	
-	return resAddress;
-}
 
 bool AccountInfo::getHasComments(){
 	
