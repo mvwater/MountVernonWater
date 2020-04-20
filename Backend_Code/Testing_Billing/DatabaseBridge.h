@@ -1,14 +1,6 @@
-//File Name: DatabaseBridge.h
-//Author: M Brydon, S Kim, S Canfield
-//Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, canfield1@kenyon.edu
-//Project: Mount Vernon Water
-//Description: Header file for Database Communication
-//Last Changed: 20 April 2020
-
 #include <string>
 #include <vector>
 #include "AccountInfo.h"
-#include "AccountSnapshot.h"
 
 using std::string;
 
@@ -27,12 +19,12 @@ using std::string;
 
 #define HOST "localhost"
 #define USER "canfield1"
-#define DB "canfield1"
+#define DB "canfield1" 
 #define PASS "S216408"
 
 //#define HOST "174.138.60.6:3306"
 //#define USER "canfield1"
-//#define DB "mvwater"
+//#define DB "mvwater" 
 //#define PASS "mousesandwichhospital"
 
 
@@ -48,17 +40,16 @@ class DatabaseBridge{
     Connection connectToDatabase();
     // Returns sql Connection object
 
-    vector<AccountSnapshot> searchByAddress(string inputAddress);
+    //vector<AccountSnapshot> searchByAddress(string inputAddress);
     // Returns vector of AccountSnapshot objects after searching by address
 
     vector<string> commentsByAccountNo(string accountNo);
+	
+	
+	vector<AccountInfo> searchByAccount(string inputAccount);
+	
+	
     // Returns vector of comments after searching comment database by accountNo
-
-	  vector<AccountInfo> searchByAccount(string inputAccount);
-    // Returns vector of AccountInfo objects after searching account database by accountNo
-
-
-
 
   private:
     const string password = PASS;

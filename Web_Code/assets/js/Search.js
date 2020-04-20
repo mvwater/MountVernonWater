@@ -1,7 +1,5 @@
 var searchType; //Category to be searched by: accountNo or address
-var ajaxUser = "brydon1"; //Your username for ajax calls
-
-// Problem: searchType not defined
+var ajaxUser = "canfield1"; //Your username for ajax calls
 
 $(document).ready(function() {
     console.log("ready!");
@@ -27,11 +25,14 @@ function searchDatabase(){
         console.log("Search Type: " + searchType);
 
         if (searchType == "AccountNo"){
-            $.ajax({
-                url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
-                dataType: 'text', // maybe JSON
-                success: displayAccountInfo, 
-                error: function(){alert("Error: Could not search by account number.");}
+		console.log("Searching by account.");
+		console.log("Sending " + userInput);
+		console.log("/cgi-bin/"+ajaxUser+"_searchByAccount.cgi?accountNo=" + userInput);
+		$.ajax({
+                	url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + userInput, // Var not created yet
+                	dataType: 'text', // maybe JSON
+                	success: processAccount,
+                	error: function(){alert("Error: Could not search by account number.");}
             });
         } else { // searchType == "Address"
             console.log("Searching by address.");
@@ -40,7 +41,7 @@ function searchDatabase(){
             $.ajax({
                 url: '/cgi-bin/' + ajaxUser + '_searchByAddress.cgi?address=' + userInput,
                 dataType: 'text', // maybe JSON
-                success: processAddressMatches, 
+                success: processAddressMatches,
                 error: function(){alert("Error: Could not search by address.");}
             });
         }
@@ -50,7 +51,7 @@ function searchDatabase(){
 // Function to send info to database
 function getSearchType(){
     console.log("Getting searchType");
-    if ($("#search_type").selectedIndex == 0) {
+    if ($("#search_type option:selected").val() == "0") {
         // Search by accountNo
         return "AccountNo";
     } else {
@@ -63,7 +64,7 @@ function getSearchType(){
 // Function to send info to database
 function processAddressMatches(results){
     console.log("&" + results + "&");
-    $('#search_results').empty();
+    $('#search_results').empty(); //$('#account_search).empty();
     console.log("About to show results");
     $('#search_results').append(showSearchResults(results));
     console.log("Finished show results");
@@ -72,10 +73,19 @@ function processAddressMatches(results){
 }
 
 
+function processAccount(results){
+  console.log("&" + results + "&");
+  $('#search_results').empty();
+  console.log("About to show results");
+  $('#search_results').append(displayAccountInfo(results));
+  console.log("Finished show results");
+
+}
+
+
 //Empties photo gallery (again?) builds new gallery using buildGallery function
 /*
 function processSearchResults(results) {
-
     //console.log("Results:"+results);
     $('#artworkResults').empty();
     //console.log("About to show photos");
@@ -149,14 +159,68 @@ function showSearchResults(resultString){
     return result;
 }
 
+// Example result string: 10-59-1*I*12-11-1977*Reinald Mallinar*CITY OF MOUNT VERNON
+function displayAccountInfo(resultString){
 
-// Function to parse info from database
-/*
-function displayAccountInfo(results){
+    console.log("Length of result string: ", resultString.length);
+    var accountData = resultString.split('*');
+    accountData.pop(); // Remove empty string from end of list
 
-}*/
+    //console.log("Account Data: " + accountData);
+    console.log("Account Data: ", accountData);
+    var listLength = accountData.length;
+
+    if (listLength < 6)
+    {
+      return "<h3>Sorry! We could not find an account with this account number. Please try again!</h3>";
+    }
+    else
+    {
+      console.log("We have results.");
+      console.log(listLength);
+
+	  var res_accountNumber = accountData[0];
+
+      var result = "<h3>Success!</h3><div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><label>Account Number:&nbsp;</label><input type='text' id="+res_accountNumber+" value="+res_accountNumber+" name='Account Number' style='width: 100%;margin-bottom: 10px;'></div></div></div>";
 
 
+      var res_accountStatus = accountData[1];
+      var res_startDate = accountData[2];
+      var res_name = accountData[3];
+      var res_add1 = accountData[4];
+      var res_add2 = accountData[5];
+      var res_add3 = accountData[6];
+      var res_city = accountData[7];
+      var res_state = accountData[8];
+      var res_zip = accountData[9];
+      var res_phoneNum = accountData[10];
+      var res_email = accountData[11];
+      var res_sscan = accountData[12];
+      var res_dlnum = accountData[13];
+      var res_cellNum = accountData[14];
+      var res_dob = accountData[15];
 
+      var land_name = accountData[16];
+      var land_add1 = accountData[17];
+      var land_add2 = accountData[18];
+      var land_add3 = accountData[19];
+      var land_city = accountData[20];
+      var land_state = accountData[21];
+      var land_zip = accountData[22];
+      var land_phoneNum = accountData[23];
+      var land_email = accountData[24];
+      var land_sscan = accountData[25];
+      var land_dlnum = accountData[26];
+      var land_cellNum = accountData[27];
+      var land_dob = accountData[28];
 
+      // Move style instructions to css
+      result += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><div><p><span style='text-decoration: underline;'>General Information</span></p><fieldset><label>Comments?&nbsp;</label><input type='text' id='comments' name='comments' placeholder='N/A'><a id='openComments' href='#' style='margin-left: 10px;'>Open Comments</a></fieldset><fieldset><label for='AcctStatus'>Account Status:&nbsp;</label><input type='text' id='"+res_accountStatus+"' value='"+res_accountStatus+"' name='AcctStatus' placeholder='N/A' style='width: 30px;'></fieldset><fieldset><label for='StartDt'>Start Date:&nbsp;</label><input type='text' id='"+res_startDate+"' value='"+res_startDate+"' name='StartDt' placeholder='N/A' style='width: 100px;'></fieldset><fieldset><label for='Name'>Name:&nbsp;</label><input type='text' id='"+res_name+"' value='"+res_name+"' name='Name' placeholder='N/A' style='width: 80%;'></fieldset><fieldset><label for='Add1'>Address 1:&nbsp;</label><input type='text' id='"+res_add1+"' value='"+res_add1+"' name='Add1' placeholder='N/A' style='width: 70%;'></fieldset><fieldset><label for='Add2'>Address 2:&nbsp;</label><input type='text' id='"+res_add2+"'  value='"+res_add2+"'name='Add2' style='width: 70%;'></fieldset><fieldset><label for='Add3'>Address 3:&nbsp;</label><input type='text' id='"+res_add3+"' value='"+res_add3+"' name='Add3' style='width: 70%;'></fieldset><fieldset><label for='City'>City:&nbsp;</label><input type='text' id='"+res_city+"' value='"+res_city+"' name='City' placeholder='N/A' style='width: 50%;'></fieldset><fieldset><label for='State'>State:&nbsp;</label><input type='text' id='"+res_state+"' value='"+res_state+"' name='State' placeholder='N/A' style='width: 60px;'></fieldset><fieldset><label for='Zip'>ZIP:&nbsp;</label><input type='text' id='"+res_zip+"' value='"+res_zip+"' name='Zip' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='PhoneNum'>Phone Number:&nbsp;</label><input type='text' id='"+res_phoneNum+"' value='"+res_phoneNum+"' name='PhoneNum' placeholder='N/A' style='width: 150px;'></fieldset><fieldset><label for='Email'>Email:&nbsp;</label><input type='text' id='"+res_email+"'   value='"+res_email+"' name='Email' placeholder='N/A' style='width: 250px;'></fieldset><fieldset><label for='SScan'>SScan:&nbsp;</label><input type='text' id='"+res_sscan+"' value='"+res_sscan+"' name='SScan' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DLnum'>DLnum:&nbsp;</label><input type='text' id='"+res_dlnum+"' value='"+res_dlnum+"' name='DLnum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='CellNum'>Cell phone number:&nbsp;</label><input type='text' id='"+res_cellNum+"'  value='"+res_cellNum+"'  name='CellNum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DoB'>Date of Birth:&nbsp;</label><input type='text' id='"+res_dob+"'  value='"+res_dob+"' name='DoB' placeholder='N/A' style='width: 90px;'></fieldset></div></div></div></div>";
 
+      result+= "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><p>Billing Information</p><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
+
+      result += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><div><p><span style='text-decoration: underline;'>Landlord Information</span></p><fieldset><label for='Name'>Name:&nbsp;</label><input type='text' id='"+land_name+"' value='"+land_name+"' name='Name' placeholder='N/A' style='width: 80%;'></fieldset><fieldset><label for='Add1'>Address 1:&nbsp;</label><input type='text' id='"+land_add1+"'  value='"+land_add1+"' name='Add1' placeholder='N/A' style='width: 70%;'></fieldset><fieldset><label for='Add2'>Address 2:&nbsp;</label><input type='text' id='"+land_add2+"' value='"+land_add2+"' name='Add2' style='width: 70%;'></fieldset><fieldset><label for='Add3'>Address 3:&nbsp;</label><input type='text' id='"+land_add3+"' value='"+land_add3+"' name='Add3' style='width: 70%;'></fieldset><fieldset><label for='City'>City:&nbsp;</label><input type='text' id='"+land_city+"' value='"+land_city+"' name='City' placeholder='N/A' style='width: 50%;'></fieldset><fieldset><label for='State'>State:&nbsp;</label><input type='text' id='"+land_state+"' value='"+land_state+"' name='State' placeholder='N/A' style='width: 60px;'></fieldset><fieldset><label for='Zip'>ZIP:&nbsp;</label><input type='text' id='"+land_zip+"' value='"+land_zip+"' name='Zip' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='PhoneNum'>Phone Number:&nbsp;</label><input type='text' id='"+land_phoneNum+"' value='"+land_phoneNum+"' name='PhoneNum' placeholder='N/A' style='width: 150px;'></fieldset><fieldset><label for='Email'>Email:&nbsp;</label><input type='text' id='"+land_email+"' value='"+land_email+"' name='Email' placeholder='N/A' style='width: 250px;'></fieldset><fieldset><label for='SScan'>SScan:&nbsp;</label><input type='text' id='"+land_sscan+"' value='"+land_sscan+"' name='SScan' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DLnum'>DLnum:&nbsp;</label><input type='text' id='"+land_dlnum+"' value='"+land_dlnum+"' name='DLnum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='CellNum'>Cell phone number:&nbsp;</label><input type='text' id='"+land_cellNum+"' value='"+land_cellNum+"' name='CellNum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DoB'>Date of Birth:&nbsp;</label><input type='text' id='"+land_dob+"' value='"+land_dob+"' name='DoB' placeholder='N/A' style='width: 90px;'></fieldset></div></div></div></div>";
+
+    }
+  return result;
+}

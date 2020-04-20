@@ -1,71 +1,77 @@
 SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
-TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
-TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
+SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o
+#TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
+#TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
-TEMP = SearchAddress.o AccountSnapshot.o
+TEMP = SearchAddress.o AccountSnapshot.o SearchAccount.o AccountInfo.o
 
 CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
 FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
-USER     = brydon1
+USER     = canfield1
 
-all: SearchAddress PutCGI PutHTML
-#all: SearchAddress TestDatabase TestJavaScript PutCGI PutHTML
-#all: TestDatabase
+all: SearchAccount SearchAddress PutCGI PutHTML
 
-#AccountInfo.o: AccountInfo.cpp AccountInfo.h
-#	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
+
+AccountInfo.o: AccountInfo.cpp AccountInfo.h
+	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
 
 AccountSnapshot.o: AccountSnapshot.cpp AccountSnapshot.h
 	$(CC) $(FLAGS) AccountSnapshot.cpp $(CFLAGS)
 
-DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) DatabaseBridge.cpp $(CFLAGS)
-
-JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountSnapshot.h
+JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountInfo.h AccountSnapshot.h
 	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
-TestJavaScript.o: TestJavaScript.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) TestJavaScript.cpp $(CFLAGS)
+DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h AccountSnapshot.h
+	$(CC) $(FLAGS) DatabaseBridge.cpp $(CFLAGS)
 
-TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
+#TestJavaScript.o: TestJavaScript.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h
+	#$(CC) $(FLAGS) TestJavaScript.cpp $(CFLAGS)
+
+#TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h
+	#$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
+
+
+#TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h
+	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
+
+SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h
+	$(CC) $(FLAGS) SearchAccount.cpp $(CFLAGS)
 
 SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
-#SearchAddress.o: SearchAddress.cpp AccountSnapshot.h
-#	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
-
-TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
-	$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
+#TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
+	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
 # Linking after compiling
-TestDatabase: TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o
-	$(CC) TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
+#TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o
+	#$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
 
-TestJavaScript: $(TEST_JAVASCRIPT)
-	$(CC) $(TEST_JAVASCRIPT) -o TestJavaScript -L/usr/local/lib $(SQL_FLAGS)
 
-TestSearchAddress: $(TEST_SEARCH_ADDRESS)
-	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
+SearchAccount: $(SEARCH_ACCOUNT)
+	$(CC) $(SEARCH_ACCOUNT) -o SearchAccount -L/usr/local/lib $(SQL_FLAGS)
 
 SearchAddress: $(SEARCH_ADDRESS)
 	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-#SearchAddress: $(TEMP)
-#	$(CC) $(TEMP) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
+#TestDatabase: TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o
+	#$(CC) TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
 
-PutCGI: SearchAddress
-#PutCGI: TestJavaScript SearchAddress
+	#TestJavaScript: $(TEST_JAVASCRIPT)
+	#	$(CC) $(TEST_JAVASCRIPT) -o TestJavaScript -L/usr/local/lib $(SQL_FLAGS)
+
+	#TestSearchAddress: $(TEST_SEARCH_ADDRESS)
+	#	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
+
+
+
+PutCGI: SearchAddress SearchAccount
+	chmod 757 SearchAccount
 	chmod 757 SearchAddress
-	#chmod 757 TestJavaScript
+	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount.cgi
 	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
-	#cp TestJavaScript /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
-
-	#echo "Current contents of your cgi-bin directory: "
-	#ls -l /usr/lib/cgi-bin/
 
 PutHTML:
 	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
@@ -74,6 +80,6 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 
 clean:
+	rm -f SearchAccount $(OUT)
 	rm -f SearchAddress $(OUT)
 	#rm -f $(OUT)
-
