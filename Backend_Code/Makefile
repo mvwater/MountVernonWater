@@ -28,7 +28,7 @@ SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountIn
 
 # Linking after compiling
 TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o JavaScriptBridge.o
-        $(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
+	$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
 
 
 SearchAccount: $(SEARCH_ACCOUNT)
