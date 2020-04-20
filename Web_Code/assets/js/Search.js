@@ -48,7 +48,7 @@ function searchDatabase(){
 // Function to send info to database
 function getSearchType(){
     console.log("Getting searchType");
-    if ($("#search_type option:selected").val == 0) {
+    if ($("#search_type option:selected").val() == "0") {
         // Search by accountNo
         return "AccountNo";
     } else {
