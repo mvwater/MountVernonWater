@@ -7,7 +7,9 @@ using namespace std;
 #define ACCOUNTSNAPSHOT_H
 
 struct Address {
-  string streetname;
+  string add1;
+  string add2;
+  string add3;
   string city;
   string state;
   string zip;
@@ -28,7 +30,7 @@ class AccountSnapshot{
     //bool getHasText();
 
     //string returnFullResAddress();
-    string resAddressLine2();
+    string resAddressLastLine();
     // Returns "city, state zip" in string
 
   private:

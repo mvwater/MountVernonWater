@@ -31,7 +31,7 @@ function searchDatabase(){
 		$.ajax({
                 	url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + userInput, // Var not created yet
                 	dataType: 'text', // maybe JSON
-                	success: processAccount, 
+                	success: processAccount,
                 	error: function(){alert("Error: Could not search by account number.");}
             });
         } else { // searchType == "Address"
@@ -41,7 +41,7 @@ function searchDatabase(){
             $.ajax({
                 url: '/cgi-bin/' + ajaxUser + '_searchByAddress.cgi?address=' + userInput,
                 dataType: 'text', // maybe JSON
-                success: processAddressMatches, 
+                success: processAddressMatches,
                 error: function(){alert("Error: Could not search by address.");}
             });
         }
@@ -173,17 +173,17 @@ function displayAccountInfo(resultString){
     if (listLength < 6)
     {
       return "<h3>Sorry! We could not find an account with this account number. Please try again!</h3>";
-    } 
-    else 
+    }
+    else
     {
       console.log("We have results.");
       console.log(listLength);
-	  
+
 	  var res_accountNumber = accountData[0];
-    
+
       var result = "<h3>Success!</h3><div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><label>Account Number:&nbsp;</label><input type='text' id="+res_accountNumber+" value="+res_accountNumber+" name='Account Number' style='width: 100%;margin-bottom: 10px;'></div></div></div>";
-        
-      
+
+
       var res_accountStatus = accountData[1];
       var res_startDate = accountData[2];
       var res_name = accountData[3];
@@ -213,7 +213,7 @@ function displayAccountInfo(resultString){
       var land_dlnum = accountData[26];
       var land_cellNum = accountData[27];
       var land_dob = accountData[28];
-          
+
       // Move style instructions to css
       result += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><div><p><span style='text-decoration: underline;'>General Information</span></p><fieldset><label>Comments?&nbsp;</label><input type='text' id='comments' name='comments' placeholder='N/A'><a id='openComments' href='#' style='margin-left: 10px;'>Open Comments</a></fieldset><fieldset><label for='AcctStatus'>Account Status:&nbsp;</label><input type='text' id='"+res_accountStatus+"' value='"+res_accountStatus+"' name='AcctStatus' placeholder='N/A' style='width: 30px;'></fieldset><fieldset><label for='StartDt'>Start Date:&nbsp;</label><input type='text' id='"+res_startDate+"' value='"+res_startDate+"' name='StartDt' placeholder='N/A' style='width: 100px;'></fieldset><fieldset><label for='Name'>Name:&nbsp;</label><input type='text' id='"+res_name+"' value='"+res_name+"' name='Name' placeholder='N/A' style='width: 80%;'></fieldset><fieldset><label for='Add1'>Address 1:&nbsp;</label><input type='text' id='"+res_add1+"' value='"+res_add1+"' name='Add1' placeholder='N/A' style='width: 70%;'></fieldset><fieldset><label for='Add2'>Address 2:&nbsp;</label><input type='text' id='"+res_add2+"'  value='"+res_add2+"'name='Add2' style='width: 70%;'></fieldset><fieldset><label for='Add3'>Address 3:&nbsp;</label><input type='text' id='"+res_add3+"' value='"+res_add3+"' name='Add3' style='width: 70%;'></fieldset><fieldset><label for='City'>City:&nbsp;</label><input type='text' id='"+res_city+"' value='"+res_city+"' name='City' placeholder='N/A' style='width: 50%;'></fieldset><fieldset><label for='State'>State:&nbsp;</label><input type='text' id='"+res_state+"' value='"+res_state+"' name='State' placeholder='N/A' style='width: 60px;'></fieldset><fieldset><label for='Zip'>ZIP:&nbsp;</label><input type='text' id='"+res_zip+"' value='"+res_zip+"' name='Zip' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='PhoneNum'>Phone Number:&nbsp;</label><input type='text' id='"+res_phoneNum+"' value='"+res_phoneNum+"' name='PhoneNum' placeholder='N/A' style='width: 150px;'></fieldset><fieldset><label for='Email'>Email:&nbsp;</label><input type='text' id='"+res_email+"'   value='"+res_email+"' name='Email' placeholder='N/A' style='width: 250px;'></fieldset><fieldset><label for='SScan'>SScan:&nbsp;</label><input type='text' id='"+res_sscan+"' value='"+res_sscan+"' name='SScan' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DLnum'>DLnum:&nbsp;</label><input type='text' id='"+res_dlnum+"' value='"+res_dlnum+"' name='DLnum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='CellNum'>Cell phone number:&nbsp;</label><input type='text' id='"+res_cellNum+"'  value='"+res_cellNum+"'  name='CellNum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DoB'>Date of Birth:&nbsp;</label><input type='text' id='"+res_dob+"'  value='"+res_dob+"' name='DoB' placeholder='N/A' style='width: 90px;'></fieldset></div></div></div></div>";
 
