@@ -3,7 +3,7 @@
 #include <vector>
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
-#include "AccountSnapshot.h"
+#include "AccountInfo.h"
 
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
@@ -19,13 +19,14 @@ int main(){
   JavaScriptBridge javaScriptBridge;
 
   //Receive info from web page
-  string searchVal = javaScriptBridge.getElement("searchVal", cgi);
+
+  string searchVal = javaScriptBridge.getElement("accountNo", cgi);
   DatabaseBridge databaseBridge;
 
   // Receive vector of AccountSnapshot objects from database
-  vector<AccountSnapshot> searchResults = databaseBridge.searchByAccount(searchVal);
+  vector<AccountInfo> searchResults = databaseBridge.searchByAccount(searchVal);
 
   // Send search results to JavaScript 
-  javaScriptBridge.sendAccountSnapshots(searchResults);
+  javaScriptBridge.sendAccountInfos(searchResults);
   return 0;
 }

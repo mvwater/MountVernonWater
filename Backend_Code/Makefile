@@ -17,7 +17,7 @@ AccountInfo.o: AccountInfo.cpp AccountInfo.h
 JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountInfo.h
 	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
-DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h JavaScriptBridge.h
+DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h
 	$(CC) $(FLAGS) DatabaseBridge.cpp $(CFLAGS)
 
 TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h
@@ -27,12 +27,16 @@ SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountIn
 	$(CC) $(FLAGS) SearchAccount.cpp $(CFLAGS)
 
 # Linking after compiling
+TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o JavaScriptBridge.o
+	$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
+
+
 SearchAccount: $(SEARCH_ACCOUNT)
 	$(CC) $(SEARCH_ACCOUNT) -o SearchAccount -L/usr/local/lib $(SQL_FLAGS)
 
 PutCGI: SearchAccount
-	chmod 757 SearchAddress
-	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccountNo.cgi
+	chmod 757 SearchAccount
+	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount.cgi
 
 PutHTML:
 	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
