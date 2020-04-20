@@ -27,7 +27,7 @@ function searchDatabase(){
         if (searchType == "AccountNo"){
 		console.log("Searching by account.");
 		console.log("Sending " + userInput);
-		console.log("/cgi-bin/"+ajaxUser+"_searchByAccount.cgi?accountNo=" + userInput");
+		console.log("/cgi-bin/"+ajaxUser+"_searchByAccount.cgi?accountNo=" + userInput);
 		$.ajax({
                 	url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + userInput, // Var not created yet
                 	dataType: 'text', // maybe JSON
