@@ -24,7 +24,7 @@ function searchDatabase(){
         searchType = getSearchType();
         console.log("Search Type: " + searchType);
 
-        if (searchType == "AccountNo"){
+        if (searchType == "Account No."){
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
                 dataType: 'text', // maybe JSON
