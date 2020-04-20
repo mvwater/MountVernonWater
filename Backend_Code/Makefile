@@ -31,7 +31,7 @@ SearchAccount: $(SEARCH_ACCOUNT)
 	$(CC) $(SEARCH_ACCOUNT) -o SearchAccount -L/usr/local/lib $(SQL_FLAGS)
 
 PutCGI: SearchAccount
-	chmod 757 SearchAddress
+	chmod 757 SearchAccount
 	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccountNo.cgi
 
 PutHTML:
