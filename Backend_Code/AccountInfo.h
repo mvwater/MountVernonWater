@@ -6,20 +6,23 @@
 //Last Changed: 19 April 2020
 
 #include <string>
+#include "AccountSnapshot.h"
 
 using namespace std;
 
 #ifndef ACCOUNTINFO_H
 #define ACCOUNTINFO_H
 
-struct Address {
-	string add1;
-	string add2;
-	string add3;
-	string city;
-	string state;
-	string zip;
-};
+//struct Address {
+//	string add1;
+//	string add2;
+//	string add3;
+//	string city;
+//	string state;
+//	string zip;
+//};
+
+//Address struct defined in AccountSnapshot.h
 
 
 struct Person {

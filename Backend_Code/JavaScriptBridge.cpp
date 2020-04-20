@@ -12,7 +12,6 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
 	string result, sep("*");
 	result += accountInfo.getAccountNo() + sep + accountInfo.getStatus()+ sep + accountInfo.getstartDate() + sep + accountInfo.getResident().name + sep + accountInfo.getResident().address.add1 + sep + accountInfo.getResident().address.add2 + sep + accountInfo.getResident().address.add3 + sep + accountInfo.getResident().address.city + sep + accountInfo.getResident().address.state + sep + accountInfo.getResident().address.zip + sep + accountInfo.getResident().phoneNum + sep + accountInfo.getResident().email + sep + accountInfo.getResident().SScan + sep + accountInfo.getResident().DLNum + sep + accountInfo.getResident().cellNum + sep + accountInfo.getResident().dob + sep + accountInfo.getLandlord().name + sep + accountInfo.getLandlord().address.add1 + sep + accountInfo.getLandlord().address.add2 + sep + accountInfo.getLandlord().address.add3 + sep + accountInfo.getLandlord().address.city + sep + accountInfo.getLandlord().address.state + sep + accountInfo.getLandlord().address.zip + sep + accountInfo.getLandlord().phoneNum + sep + accountInfo.getLandlord().email + sep + accountInfo.getLandlord().SScan + sep + accountInfo.getLandlord().DLNum + sep + accountInfo.getLandlord().cellNum + sep + accountInfo.getLandlord().dob;
 
-	 Has comments
 	if (accountInfo.getHasComments()){
 		result += "T" + sep;
 	} else {
@@ -76,8 +75,8 @@ string JavaScriptBridge::accountSnapshotsToStr(vector<AccountSnapshot> searchRes
 	AccountSnapshot accountSnapshot;
   	string jsMessage = "";
 	for (uint i=0; i<searchResults.size(); i++){
-	    accountInfo = searchResults.at(i);
-	    jsMessage += printAccountSnapshot(accountInfo);
+	    accountSnapshot = searchResults.at(i);
+	    jsMessage += printAccountSnapshot(accountSnapshot);
 	}
 	return jsMessage;
 }
