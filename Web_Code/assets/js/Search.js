@@ -179,7 +179,7 @@ function displayAccountInfo(resultString){
       console.log("We have results.");
       console.log(listLength);
     
-      var result = "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><input type='text' id='status' value='Success!' name='status' style='width: 100%;margin-bottom: 10px;'></div></div><div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><label>Account Number:&nbsp;</label><input type='text' id='"+res_accountNumber+"' value='"+res_accountNumber+"' name='Account Number' style='width: 100%;margin-bottom: 10px;'></div></div></div>";
+      var result = "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><input type='text' id='status' value='Success!' name='status' style='width: 100%;margin-bottom: 10px;'></div></div><div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><label>Account Number:&nbsp;</label><input type='text' id="+res_accountNumber+" value="+res_accountNumber+" name='Account Number' style='width: 100%;margin-bottom: 10px;'></div></div></div>";
         
       var res_accountNumber = accountData[0];
       var res_accountStatus = accountData[1];
