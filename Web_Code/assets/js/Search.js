@@ -26,7 +26,7 @@ function searchDatabase(){
 
         if (searchType == "AccountNo"){
             $.ajax({
-                url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
+                url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + userInput, // Var not created yet
                 dataType: 'text', // maybe JSON
                 success: processAccount, 
                 error: function(){alert("Error: Could not search by account number.");}
@@ -70,11 +70,11 @@ function processAddressMatches(results){
 }
 
 
-function processAccount(results){
-  console.log("&" + results + "&");
+function processAccount(searchResults){
+  console.log("&" + searchResults + "&");
   $('#search_results').empty();
   console.log("About to show results");
-  $('#search_results').append(displayAccountInfo(results));
+  $('#search_results').append(displayAccountInfo(searchResults));
   console.log("Finished show results");
 
 }
