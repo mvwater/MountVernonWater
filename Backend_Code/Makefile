@@ -1,5 +1,5 @@
-SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
-SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o
+SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o AccountInfo.o
+SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o
 #TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 #TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
@@ -36,10 +36,10 @@ DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h AccountSnaps
 #TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h
 	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
-SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h
+SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h AccountSnapshot.h
 	$(CC) $(FLAGS) SearchAccount.cpp $(CFLAGS)
 
-SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h
+SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 #TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
@@ -65,8 +65,6 @@ SearchAddress: $(SEARCH_ADDRESS)
 	#TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 	#	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-
-
 PutCGI: SearchAddress SearchAccount
 	chmod 757 SearchAccount
 	chmod 757 SearchAddress
@@ -80,6 +78,4 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 
 clean:
-	rm -f SearchAccount $(OUT)
-	rm -f SearchAddress $(OUT)
-	#rm -f $(OUT)
+	rm -f SearchAccount SearchAddress $(OUT)
