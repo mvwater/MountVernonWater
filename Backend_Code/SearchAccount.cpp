@@ -19,7 +19,7 @@ int main(){
   JavaScriptBridge javaScriptBridge;
 
   //Receive info from web page
-  string searchVal = javaScriptBridge.getElement("searchVal", cgi);
+  string searchVal = javaScriptBridge.getElement("account", cgi);
   DatabaseBridge databaseBridge;
 
   // Receive vector of AccountSnapshot objects from database
