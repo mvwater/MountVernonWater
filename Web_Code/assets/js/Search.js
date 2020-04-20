@@ -28,7 +28,7 @@ function searchDatabase(){
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_searchByAccountNo.cgi?accountNo=' + userInput, // Var not created yet
                 dataType: 'text', // maybe JSON
-                success: displayAccountInfo, 
+                success: processAccount, 
                 error: function(){alert("Error: Could not search by account number.");}
             });
         } else { // searchType == "Address"
