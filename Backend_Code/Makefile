@@ -65,8 +65,6 @@ SearchAddress: $(SEARCH_ADDRESS)
 	#TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 	#	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-
-
 PutCGI: SearchAddress SearchAccount
 	chmod 757 SearchAccount
 	chmod 757 SearchAddress
@@ -80,6 +78,4 @@ PutHTML:
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 
 clean:
-	rm -f SearchAccount $(OUT)
-	rm -f SearchAddress $(OUT)
-	#rm -f $(OUT)
+	rm -f SearchAccount SearchAddress $(OUT)
