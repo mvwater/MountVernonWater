@@ -157,7 +157,7 @@ function showSearchResults(resultString){
 }
 
 // Example result string: 10-59-1*I*12-11-1977*Reinald Mallinar*CITY OF MOUNT VERNON
-function displayAccountInfo(results){
+function displayAccountInfo(resultString){
 
     console.log("Length of result string: ", resultString.length);
     var accountData = resultString.split('*');
