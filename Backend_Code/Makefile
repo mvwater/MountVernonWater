@@ -71,11 +71,15 @@ PutCGI: SearchAddress SearchAccount
 	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount.cgi
 	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
 
-PutHTML:
-	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
-
+#PutHTML:
+#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
+#
+#	echo "Current contents of HTML directory: "
+#	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
+#
+PutHTML:                                                                              
+	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/ShaneMvwater
 	echo "Current contents of HTML directory: "
-	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
-
+	ls -l /var/www/html/class/softdev/$(USER)/ShaneMvwater
 clean:
 	rm -f SearchAccount SearchAddress $(OUT)
