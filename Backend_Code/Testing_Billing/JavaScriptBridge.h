@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include "AccountInfo.h"
-#include "AccountSnapshot.h"
 
 #include "cgicc/Cgicc.h"
 #include "cgicc/HTTPHTMLHeader.h"
@@ -17,9 +16,7 @@ class JavaScriptBridge{
   public:
     string printAccountInfo(AccountInfo accountInfo);
 
-    string printAccountSnapshot(AccountSnapshot accountSnapshot);
-
-
+   
     string getElement(string element, Cgicc &cgi);
     //Preconditions: element must be a string corresponding to an ajax element
     //sent from JavaScript. cgi is a Cgicc ajax object.
@@ -28,14 +25,8 @@ class JavaScriptBridge{
     string accountInfosToStr(vector<AccountInfo> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
 
-    string accountSnapshotsToStr(vector<AccountSnapshot> searchResults);
-    // Returns string of AccountInfo objects that will be sent to JavaScript
-
     void sendAccountInfos(vector<AccountInfo> searchResults);
-    //Preconditions:
-    //Postconditions:
-    void sendAccountSnapshots(vector<AccountSnapshot> searchResults);
-    //Preconditions:
+    //Preconditions: 
     //Postconditions:
 
     void sendMessage(string message);

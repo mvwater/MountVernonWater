@@ -3,7 +3,7 @@
 //Email Address: kim3@kenyon.edu, brydon1@kenyon.edu, canfield1@kenyon.edu
 //Dev Project: Mount Vernon Water
 //Description: General class that can communicate with our database
-//Last Changed: 20 April 2020
+//Last Changed: 19 April 2020
 
 #include "DatabaseBridge.h"
 using std::cout;
@@ -49,66 +49,13 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
   	return commentResultList;
 }
 
-vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
-	//cout << "About to create query."<< endl;
-	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + inputAddress + "%';");
 
-	Connection con = connectToDatabase();
-	Statement statement(con->createStatement());
-	//cout << "Creating statement."<< endl;
-	statement->execute(query);
-
-	ResultSet searchMatches;
-	AccountSnapshot *accountSnapshot;
-	vector<AccountSnapshot> accountResultList;
-	int count(0);
-	do {
-	    searchMatches.reset(statement->getResultSet());
-	    while (searchMatches->next()) {
-	    	count++; // Testing
-
-	    	string accountNo = searchMatches -> getString("AccountNo");
-	    	//cout << "AccountNo: " << accountNo << endl;
-	    	Address resAddress;
-
-	    	resAddress.add1 += searchMatches -> getString("TAdd1");
-	    	//cout << "Add1: " << resAddress.add1 << endl;
-	    	resAddress.add2 += searchMatches -> getString("TAdd2");
-	    	//cout << "Add2: " << resAddress.add2 << endl;
-	    	resAddress.add3 += searchMatches -> getString("TAdd3");
-	    	//cout << "Add3: " << resAddress.add3 << endl;
-
-	    	resAddress.city += searchMatches -> getString("TCity");
-	    	//cout << "City: " << resAddress.city << endl;
-	    	resAddress.state += searchMatches -> getString("TState");
-	    	//cout << "State: " << resAddress.state << endl;
-	    	resAddress.zip += searchMatches -> getString("TZip");
-	    	//cout << "Zip: " << resAddress.zip << endl << endl;
-
-
-			int numComments = commentsByAccountNo(accountNo).size();
-			//cout << "NumComments: " << numComments << endl;
-			bool hasComments(false);
-	    	if (numComments != 0){
-	    		hasComments = true;
-	    	}
-
-			//Use pointer to dynamically create accountSnapshot
-			accountSnapshot = new AccountSnapshot(accountNo, resAddress, hasComments);
-			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
-			accountResultList.push_back(*(accountSnapshot));
-			delete accountSnapshot; // Deallocate memory in accountSnapshot
-	    }
-  	} while (statement->getMoreResults());
-  //cout << count << endl;
-  //cout << "Done."<< endl;
-  return accountResultList;
-}
 
 
 vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	//cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
+
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
 	//cout << "Creating statement."<< endl;
@@ -122,53 +69,67 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
 	    	string accountNo = searchMatches -> getString("AccountNo");
-				string status = searchMatches -> getString("AcctStatus");
-				string startDate = searchMatches -> getString("SrtDate");
-
-				Person resident;
-				Person landlord;
-
+			string status = searchMatches -> getString("AcctStatus");
+			string startDate = searchMatches -> getString("SrtDate");
+	    	//cout << "AccountNo: " << accountNo << endl;
+	    	//Address resAddress;
+		//Address landAddress;
+		Person resident;
+		Person landlord;
+	    	
+			
+			//We need address info for account search anyway so we can leave Michaela's resAddress work here
 	    	resident.address.add1 += searchMatches -> getString("TAdd1");
+	    	//cout << "Add1: " << resAddress.add1 << endl;
 	    	resident.address.add2 += searchMatches -> getString("TAdd2");
+	    	//cout << "Add2: " << resAddress.add2 << endl;
 	    	resident.address.add3 += searchMatches -> getString("TAdd3");
-	    	resident.address.city += searchMatches -> getString("TCity");
-	    	resident.address.state += searchMatches -> getString("TState");
-	    	resident.address.zip += searchMatches -> getString("TZip");
+	    	//cout << "Add3: " << resAddress.add3 << endl;
 
-				landlord.address.add1 += searchMatches -> getString("LAdd1");
+	    	resident.address.city += searchMatches -> getString("TCity");
+	    	//cout << "City: " << resAddress.city << endl;
+	    	resident.address.state += searchMatches -> getString("TState");
+	    	//cout << "State: " << resAddress.state << endl;
+	    	resident.address.zip += searchMatches -> getString("TZip");
+	    	//cout << "Zip: " << resAddress.zip << endl << endl;
+			
+		landlord.address.add1 += searchMatches -> getString("LAdd1");
 	    	landlord.address.add2 += searchMatches -> getString("LAdd2");
 	    	landlord.address.add3 += searchMatches -> getString("LAdd3");
 	    	landlord.address.city += searchMatches -> getString("LCity");
 	    	landlord.address.state += searchMatches -> getString("LSt");
 	    	landlord.address.zip += searchMatches -> getString("LZip");
-
-
-				resident.name += searchMatches -> getString("TName");
-				resident.phoneNum += searchMatches -> getString("TPhone");
-				resident.email += searchMatches -> getString("TEmail");
-				resident.SScan += searchMatches -> getString("TSScan");
-				resident.DLNum += searchMatches -> getString("TDL#");
-				resident.cellNum += searchMatches -> getString("TCell#");
-				resident.dob += searchMatches -> getString("TDoB");
-
-				landlord.name += searchMatches -> getString("LName");
-				landlord.phoneNum += searchMatches -> getString("LPhone");
-				landlord.email += searchMatches -> getString("LEmail");
-				landlord.SScan += searchMatches -> getString("LSScan");
-				landlord.DLNum += searchMatches -> getString("LDL#");
+				
+			
+		resident.name += searchMatches -> getString("TName");
+		resident.phoneNum += searchMatches -> getString("TPhone");
+		resident.email += searchMatches -> getString("TEmail");
+		resident.SScan += searchMatches -> getString("TSScan");
+		resident.DLNum += searchMatches -> getString("TDL#");
+		resident.cellNum += searchMatches -> getString("TCell#");
+		resident.dob += searchMatches -> getString("TDoB");
+			
+		landlord.name += searchMatches -> getString("LName");
+		landlord.phoneNum += searchMatches -> getString("LPhone");
+		landlord.email += searchMatches -> getString("LEmail");
+		landlord.SScan += searchMatches -> getString("LSScan");
+		landlord.DLNum += searchMatches -> getString("LDL#");
 			//landlord.cellNum += searchMatches -> getString("LCell#"); maybe make a new column for this
-				landlord.dob += searchMatches -> getString("LDoB");
+		landlord.dob += searchMatches -> getString("LDoB");
 
-
-
-
-
-				int numComments = commentsByAccountNo(accountNo).size();
-			//cout << "NumComments: " << numComments << endl;
-				bool hasComments(false);
+			
+			
+			
+			
+			int numComments = commentsByAccountNo(accountNo).size();
+			cout << "NumComments: " << numComments << endl;
+			bool hasComments(false);
 	    	if (numComments != 0){
-	    			hasComments = true;
+	    		hasComments = true;
 	    	}
+			
+			
+			
 
 			//Use pointer to dynamically create accountSnapshot
 			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, hasComments);
@@ -180,3 +141,4 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
   //cout << "Done."<< endl;
   return accountResultList;
 }
+
