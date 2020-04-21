@@ -5,6 +5,7 @@
 //Description: Snapshot of an account
 //Last Changed: 7 April 2020
 
+#include "AccountSnapshot.h"
 #include "AccountInfo.h"
 #include <iostream>
 
