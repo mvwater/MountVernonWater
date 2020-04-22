@@ -231,7 +231,7 @@ function displayAccountInfo(resultString){
         
 
         for (var i = 0; i < 15; i++){
-            result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='margin-left: 10px;'></fieldset>"
+            result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='margin-left: 10px;width:100%'></fieldset>"
         }
 
         result += "</div></div></div></div>";
