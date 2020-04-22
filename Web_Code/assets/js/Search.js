@@ -69,7 +69,7 @@ function processAddressMatches(results){
     $('#search_results').append(showSearchResults(results));
     console.log("Finished show results");
 
-    $(".open_account").click(function {
+    $(".open_account").click(function() {
         var accountNum = $(this).attr("id");
         console.log("Account Number to be opened: ", accountNum);
         //openAccount(accountNum);
