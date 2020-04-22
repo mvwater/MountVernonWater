@@ -33,8 +33,8 @@ DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h AccountSnaps
 	#$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
 
 
-#TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h
-	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
+TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h AccountSnapshot.h
+	$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
 SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h AccountSnapshot.h
 	$(CC) $(FLAGS) SearchAccount.cpp $(CFLAGS)
@@ -46,8 +46,8 @@ SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSn
 	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
 # Linking after compiling
-#TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o
-	#$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
+TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o
+	$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
 
 
 SearchAccount: $(SEARCH_ACCOUNT)
