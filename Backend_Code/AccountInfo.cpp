@@ -56,7 +56,8 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	landlord.address.state = inputlandlord.address.state;
 	landlord.address.zip = inputlandlord.address.zip;
 	
-	for (int i=0; i<inputbillinginfo.receivables_info.size(); i++){
+	int max1 = inputbillinginfo.receivables_info.size();
+	for (int i=0; i<max1; i++){
 		billinginfo.receivables_info[i].Invoice = inputbillinginfo.receivables_info[i].Invoice;
 		billinginfo.receivables_info[i].Inv_date = inputbillinginfo.receivables_info[i].Inv_date;
 		billinginfo.receivables_info[i].Amount = inputbillinginfo.receivables_info[i].Amount;
@@ -66,8 +67,8 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		billinginfo.receivables_info[i].Refer = inputbillinginfo.receivables_info[i].Refer;
 		billinginfo.receivables_info[i].Balance = inputbillinginfo.receivables_info[i].Balance;
 	}
-	
-	for (int i=0; i<inputbillinginfo.consumption_info.size(); i++){
+	int max2 = inputbillinginfo.consumption_info.size();
+	for (int i=0; i<max2; i++){
 		
 		billinginfo.consumption_info[i].Bill_date = inputbillinginfo.consumption_info[i].Bill_date;
 		billinginfo.consumption_info[i].Beg_read = inputbillinginfo.consumption_info[i].Beg_read;
@@ -78,7 +79,8 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		billinginfo.consumption_info[i].Amount = inputbillinginfo.consumption_info[i].Amount;
 		billinginfo.consumption_info[i].Penalty = inputbillinginfo.consumption_info[i].Penalty;
 	}
-	for (int i=0; i<inputbillinginfo.payments_info.size(); i++){
+	int max3 = inputbillinginfo.payments_info.size();
+	for (int i=0; i<max3; i++){
 		
 		billinginfo.payments_info[i].Pay_date = inputbillinginfo.payments_info[i].Pay_date;
 		billinginfo.payments_info[i].Amount_Paid = inputbillinginfo.payments_info[i].Amount_Paid;
@@ -88,10 +90,10 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		billinginfo.payments_info[i].Seq = inputbillinginfo.payments_info[i].Seq;
 		
 	}
-	
-	for (int i=0; i<inputcomments.comments_list.size(); i++){
+	int max4 = inputcomments.comments_list.size();
+	for (int i=0; i<max4; i++){
 		
-		comments.comment_list[i] = inputcomments.comments_list[i];
+		comments.comments_list[i] = inputcomments.comments_list[i];
 		
 	}
 	
