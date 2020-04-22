@@ -215,14 +215,23 @@ function displayAccountInfo(resultString){
         // Len 15
         var labelNameList = ["Account Status","Start Date","Name","Address 1","Address 2","Address 3","City","State","ZIP","Phone Number","Email","SScan","DLnum","Cell Phone Number","Date of Birth"];
 
+        var labelNameList = ["Account Status","Start Date","Name","Address 1","Address 2","Address 3","City","State","ZIP","Phone Number","Email","SScan","DLnum","Cell Phone Number","Date of Birth"];
+
         // Move style instructions to css
+
+
+
+
 
         result += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><div><p><span style='text-decoration: underline;'>General Information</span></p>";
 
-        result += "<fieldset><label>Comments?&nbsp;</label> <input type='text' id='comments' name='comments' placeholder='N/A'><a id='openComments' href='#' style='margin-left: 10px;'>Open Comments</a></fieldset>"
+        result += "<fieldset><label>Comments?&nbsp;</label> <input type='text' id='comments' name='comments' placeholder='N/A'><a id='openComments' href='#' style='margin-left: 10px;'>Open Comments</a></fieldset>";
+
+
+        
 
         for (var i = 0; i < 15; i++){
-            result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='width: 30px;'></fieldset>"
+            result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='margin-left: 10px;'></fieldset>"
         }
 
         result += "</div></div></div></div>";
