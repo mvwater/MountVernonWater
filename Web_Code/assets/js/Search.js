@@ -70,9 +70,10 @@ function processAddressMatches(results){
     console.log("Finished show results");
 
     $(".open_account").click(function() {
-        var accountNum = $(this).attr("id");
+        var accountNum = $(this).attr("id").replace("open_","");
         console.log("Account Number to be opened: ", accountNum);
-        //openAccount(accountNum);
+
+        openAccount(accountNum);
     });
     console.log("button click event was created.");
 }
