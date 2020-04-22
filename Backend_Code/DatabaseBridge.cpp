@@ -61,6 +61,8 @@ vector<Payments> DatabaseBridge::payments_infoByAccountNo(string accountNo){
 	do {
     	searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
+			Payments paymentsResult;
+			
 	    	paymentsResult.Amount_Paid = searchMatches -> getString("Amount_Paid");
 			paymentsResult.Type = searchMatches -> getString("Type");
 			paymentsResult.Reference = searchMatches -> getString("Reference");
@@ -79,19 +81,21 @@ vector<Consumption> DatabaseBridge::consumption_infoByAccountNo(string accountNo
 	Statement statement(con->createStatement());
 	statement->execute(query);
 
-	ResultSet consumptionMatches;
+	ResultSet searchMatches;
 	vector<Consumption> consumptionResultList;
 	
+	
 	do {
-    	consumptionMatches.reset(statement->getResultSet());
-	    while (consumptionMatches->next()) {
-	    	consumptionResult.Beg_read = consumptionMatches -> getString("Beg_read");
-			consumptionResult.End_read = consumptionMatches -> getString("End_read");
-			consumptionResult.Read_date = consumptionMatches -> getString("Read_date");
-			consumptionResult.Service = consumptionMatches -> getString("Service");
-			consumptionResult.Cons = consumptionMatches -> getString("Cons");
-			consumptionResult.Amount = consumptionMatches -> getString("Amount");
-			consumptionResult.Penalty = consumptionMatches -> getString("Penalty");
+    	searchMatches.reset(statement->getResultSet());
+	    while (searchMatches->next()) {
+			Consumption consumptionResult;
+	    	consumptionResult.Beg_read = searchMatches -> getString("Beg_read");
+			consumptionResult.End_read = searchMatches -> getString("End_read");
+			consumptionResult.Read_date = searchMatches -> getString("Read_date");
+			consumptionResult.Service = searchMatches -> getString("Service");
+			consumptionResult.Cons = searchMatches -> getString("Cons");
+			consumptionResult.Amount = searchMatches -> getString("Amount");
+			consumptionResult.Penalty = searchMatches -> getString("Penalty");
 	    	consumptionResultList.push_back(consumptionResult);
 	    }
   	} while (statement->getMoreResults());
@@ -108,6 +112,7 @@ vector<Receivables> DatabaseBridge::receivables_infoByAccountNo(string accountNo
 	do{
 		searchMatches.reset(statement->getResultSet());
 		while (searchMatches->next()){
+			Receivables receivablesResult;
 			receivablesResult.Invoice = searchMatches -> getString("Invoice");
 			receivablesResult.Inv_date = searchMatches -> getString("Inv_date");
 			receivablesResult.Amount = searchMatches -> getString("Amount");
