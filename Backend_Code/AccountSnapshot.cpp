@@ -15,13 +15,11 @@ AccountSnapshot::AccountSnapshot(){
     //Address resAddress{ "", "", "", "" };
     Address resAddress{ "", "", "", "", "", "" };
     hasComments = 0;
-    //hasText = 0;
 }
 
 // AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments, bool inputHasText){
 AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bool inputHasComments){
     accountNo = inputAccountNo;
-    //resAddress.streetname = inputAddress.streetname;
     resAddress.add1 = inputAddress.add1;
     resAddress.add2 = inputAddress.add2;
     resAddress.add3 = inputAddress.add3;
@@ -29,7 +27,6 @@ AccountSnapshot::AccountSnapshot(string inputAccountNo, Address inputAddress, bo
     resAddress.state = inputAddress.state;
     resAddress.zip = inputAddress.zip;
     hasComments = inputHasComments;
-    //hasText = inputHasText;
 }
 
 string AccountSnapshot::getAccountNo(){
@@ -44,17 +41,10 @@ bool AccountSnapshot::getHasComments(){
     return hasComments;
 }
 
-// bool AccountSnapshot::getHasText(){
-// return hasText;
-// }
-
-//string AccountSnapshot::resAddressLine2(){
-
 // Maybe Delete?
 string AccountSnapshot::resAddressLastLine(){
     string result(resAddress.city);
-    result += ", " + resAddress.state + resAddress.zip;
-   // result += ", " + resAddress.state + " " + resAddress.zip;
+    result += ", " + resAddress.state + " " + resAddress.zip;
     return result;
 }
 

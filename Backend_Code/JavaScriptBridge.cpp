@@ -18,13 +18,6 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
 		result += "F" + sep;
 	}
 
-	/*// Has text
-	if (accountInfo.getHasText()){
-		result += "T" + sep;
-	} else {
-		result += "F" + sep;
-	}*/
-
    return result;
 }
 
@@ -40,18 +33,8 @@ string JavaScriptBridge::printAccountSnapshot(AccountSnapshot accountSnapshot){
 		result += "F" + sep;
 	}
 
-	/*// Has text
-	if (accountSnapshot.getHasText()){
-		result += "T" + sep;
-	} else {
-		result += "F" + sep;
-	}*/
-
    return result;
 }
-
-
-
 
 string JavaScriptBridge::getElement(string element, Cgicc &cgi){
 
@@ -61,6 +44,7 @@ string JavaScriptBridge::getElement(string element, Cgicc &cgi){
   return returnElement;
 }
 
+// Consider making template functions
 string JavaScriptBridge::accountInfosToStr(vector<AccountInfo> searchResults){
 	AccountInfo accountInfo;
   	string jsMessage = "";
