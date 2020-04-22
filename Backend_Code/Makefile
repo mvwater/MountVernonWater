@@ -11,7 +11,7 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = canfield1
 
-all: SearchAccount SearchAddress PutCGI PutHTML
+all: TestDatabase SearchAccount SearchAddress PutCGI PutHTML
 
 
 AccountInfo.o: AccountInfo.cpp AccountInfo.h
