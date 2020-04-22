@@ -4,6 +4,7 @@
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
 #include "AccountInfo.h"
+#include "AccountSnapshot.h"
 
 using std::cout;
 
