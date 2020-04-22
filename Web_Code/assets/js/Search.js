@@ -229,7 +229,7 @@ function displayAccountInfo(resultString){
 
 
         for (var i = 0; i < 15; i++){
-            result += "<p id=res_'" + idNameList[i] + "'><bold>"+labelNameList[i]+":&nbsp;</bold> " + accountData[i+1] + "</p>"
+            result += "<p id=res_'" + idNameList[i] + "'><b>"+labelNameList[i]+":&nbsp;</b> " + accountData[i+1] + "</p>"
         }
 
         result += "</div></div></div></div>";
