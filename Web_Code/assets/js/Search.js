@@ -225,16 +225,16 @@ function displayAccountInfo(resultString){
 	  
 	  results += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><div><p><span style='text-decoration: underline;'>Billing Info Explosion:</span>";
 	  
-	  for (var i = 29; i < listLength; i+=1){
-        count++;
-        if (count == 2000){
-        console.log("Aborting loop.");
-           break;
-        }
-	  	var billing_payments = accountData[i]
-		results += "<p><span>"+billing_payments+"</span></p>";
+	  //for (var i = 29; i < listLength; i+=1){
+      //  count++;
+      //  if (count == 2000){
+      //  console.log("Aborting loop.");
+      //     break;
+      //  }
+	  //	var billing_payments = accountData[i]
+	//	results += "<p><span>"+billing_payments+"</span></p>";
 		
-	  }
+	 // }
 	  
 	  results += "</div></div></div></div>";
 
