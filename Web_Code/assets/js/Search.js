@@ -179,7 +179,13 @@ function displayAccountInfo(resultString){
 
         containerStyle = "background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;";
 
-        var result = "<div class='container'> <div class='container text-left' style='" + containerStyle + "'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
+        var result = "<div class='container text-left' style='" + containerStyle + "'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
+
+        //var result = "<div class='container'> <div class='container text-left' style='" + containerStyle + "'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
+
+
+
+
 
         //"<label>Account Number:&nbsp;</label> <input type='text' id="+res_accountNumber+" value="+res_accountNumber+" name='Account Number' style='width: 100%;margin-bottom: 10px;'> "
 
@@ -239,8 +245,14 @@ function displayAccountInfo(resultString){
             result += "<p id=res_'" + idNameList[i] + "'><b>"+labelNameList[i]+":&nbsp;</b> " + accountData[i+1] + "</p>"
         }
 
-        result += "</div></div></div></div>";
+        result += "</div></div></div>";
+        //result += "</div></div></div></div>";
         
+
+
+
+
+
 /*
         for (var i = 0; i < 15; i++){
             result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='margin-left: 10px;'></fieldset>"
