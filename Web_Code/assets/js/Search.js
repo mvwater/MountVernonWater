@@ -72,14 +72,20 @@ function processAddressMatches(results){
     $(".open_account").click(function() {
         var accountNum = $(this).attr("id").replace("open_","");
         console.log("Account Number to be opened: ", accountNum);
-
         openAccount(accountNum);
     });
     console.log("button click event was created.");
 }
 
+// Use this function in SearchDatabase function
 function openAccount(accountNo){
     console.log("openAccount function blank for now.");
+    $.ajax({
+        url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + accountNo, // Var not created yet
+        dataType: 'text', // maybe JSON
+        success: processAccount,
+        error: function(){alert("Error: Could not search by account number.");}
+    });
 }
 
 function showSearchResults(resultString){
