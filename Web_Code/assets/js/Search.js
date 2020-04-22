@@ -275,7 +275,7 @@ function displayAccountInfo(resultString){
         //result += "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><p><span style='text-decoration: underline;'><h3>General Information</h3></span></p>";
 
 
-        result+= "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><h3>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
+        result+= "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><h3><u>Billing Information</u></h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
 
         //result+= "<div class='container'><div class='container text-left'style='" + containerStyle + "'><div class='><div class='col'><h3>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
