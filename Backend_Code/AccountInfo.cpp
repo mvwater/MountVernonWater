@@ -3,7 +3,7 @@
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
 //Description: Snapshot of an account
-//Last Changed: 7 April 2020
+//Last Changed: 21 April 2020
 
 #include "AccountInfo.h"
 #include <iostream>
