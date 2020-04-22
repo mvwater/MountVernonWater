@@ -223,6 +223,7 @@ function displayAccountInfo(resultString){
 
         for (var i = 0; i < 15; i++){
             result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='width: 30px;'></fieldset>"
+        }
 
         result += "</div></div></div></div>";
 
