@@ -237,7 +237,7 @@ function displayAccountInfo(resultString){
 
 
 
-        result += "<div class='container'><div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><div><p><span style='text-decoration: underline;'>General Information</span></p>";
+        result += "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><div><p><span style='text-decoration: underline;'>General Information</span></p>";
 
 // Get this information!
 // Add data member to AccountInfo class
