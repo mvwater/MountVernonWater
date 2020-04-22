@@ -228,15 +228,20 @@ function displayAccountInfo(resultString){
         result += "<fieldset><label>Comments?&nbsp;</label> <input type='text' id='comments' name='comments' placeholder='N/A'><a id='openComments' href='#' style='margin-left: 10px;'>Open Comments</a></fieldset>";
 
 
-        
-
         for (var i = 0; i < 15; i++){
-            result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='margin-left: 10px;width:100%'></fieldset>"
+            result += "<p id=res_'" + idNameList[i] + "'>"+labelNameList[i]+":&nbsp;<span style='color:white'>" + accountData[i+1] + "</span></p>"
+        }
+
+        result += "</div></div></div></div>";
+        
+/*
+        for (var i = 0; i < 15; i++){
+            result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='margin-left: 10px;'></fieldset>"
         }
 
         result += "</div></div></div></div>";
 
-        
+        */
 
 
 
