@@ -49,6 +49,82 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
   	return commentResultList;
 }
 
+vector<Payments> DatabaseBridge::payments_infoByAccountNo(string accountNo){
+	string query("SELECT * FROM payment WHERE AccountNo = '" + accountNo + "';");
+	Connection con = connectToDatabase();
+	Statement statement(con->createStatement());
+	statement->execute(query);
+
+	ResultSet searchMatches;
+	vector<Payments> paymentsResultList;
+	
+	do {
+    	searchMatches.reset(statement->getResultSet());
+	    while (searchMatches->next()) {
+	    	paymentsResult.Amount_Paid = searchMatches -> getString("Amount_Paid");
+			paymentsResult.Type = searchMatches -> getString("Type");
+			paymentsResult.Reference = searchMatches -> getString("Reference");
+			paymentsResult.Batch = searchMatches -> getString("Batch");
+			paymentsResult.Seq = searchMatches -> getString("Seq");
+			
+	    	paymentsResultList.push_back(paymentsResult);
+	    }
+  	} while (statement->getMoreResults());
+  	return paymentsResultList;
+}
+
+vector<Consumption> DatabaseBridge::consumption_infoByAccountNo(string accountNo){
+	string query("SELECT * FROM consumption WHERE AccountNo = '" + accountNo + "';");
+	Connection con = connectToDatabase();
+	Statement statement(con->createStatement());
+	statement->execute(query);
+
+	ResultSet consumptionMatches;
+	vector<Consumption> consumptionResultList;
+	
+	do {
+    	consumptionMatches.reset(statement->getResultSet());
+	    while (consumptionMatches->next()) {
+	    	consumptionResult.Beg_read = consumptionMatches -> getString("Beg_read");
+			consumptionResult.End_read = consumptionMatches -> getString("End_read");
+			consumptionResult.Read_date = consumptionMatches -> getString("Read_date");
+			consumptionResult.Service = consumptionMatches -> getString("Service");
+			consumptionResult.Cons = consumptionMatches -> getString("Cons");
+			consumptionResult.Amount = consumptionMatches -> getString("Amount");
+			consumptionResult.Penalty = consumptionMatches -> getString("Penalty");
+	    	consumptionResultList.push_back(consumptionResult);
+	    }
+  	} while (statement->getMoreResults());
+  	return consumptionResultList;
+}
+
+vector<Receivables> DatabaseBridge::receivables_infoByAccountNo(string accountNo){
+	string query("SELECT * FROM receivables WHERE AccountNo = '" + accountNo + "';");
+	Connection con = connectToDatabase();
+	Statement statement(con->createStatement());
+	statement->execute(query);
+	ResultSet searchMatches;
+	vector<Receivables> receivablesResultList;
+	do{
+		searchMatches.reset(statement->getResultSet());
+		while (searchMatches->next()){
+			receivablesResult.Invoice = searchMatches -> getString("Invoice");
+			receivablesResult.Inv_date = searchMatches -> getString("Inv_date");
+			receivablesResult.Amount = searchMatches -> getString("Amount");
+			receivablesResult.To_post = searchMatches -> getString("To_post");
+			receivablesResult.Amt_paid = searchMatches -> getString("Amt_paid");
+			receivablesResult.Paid_date = searchMatches -> getString("Paid_date");
+			receivablesResult.Refer = searchMatches -> getString("Refer");
+			receivablesResult.Balance = searchMatches -> getString("Balance");
+			receivablesResultList.push_back(receivablesResult);
+		}
+  	} while (statement->getMoreResults());
+	
+	
+	return receivablesResultList;
+}
+
+
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 	//cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + inputAddress + "%';");
@@ -122,11 +198,12 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
 	    	string accountNo = searchMatches -> getString("AccountNo");
-				string status = searchMatches -> getString("AcctStatus");
-				string startDate = searchMatches -> getString("SrtDate");
+			string status = searchMatches -> getString("AcctStatus");
+			string startDate = searchMatches -> getString("SrtDate");
 
-				Person resident;
-				Person landlord;
+			Person resident;
+			Person landlord;
+			BillingInfo billinginfo;
 
 	    	resident.address.add1 += searchMatches -> getString("TAdd1");
 	    	resident.address.add2 += searchMatches -> getString("TAdd2");
@@ -135,7 +212,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    	resident.address.state += searchMatches -> getString("TState");
 	    	resident.address.zip += searchMatches -> getString("TZip");
 
-				landlord.address.add1 += searchMatches -> getString("LAdd1");
+			landlord.address.add1 += searchMatches -> getString("LAdd1");
 	    	landlord.address.add2 += searchMatches -> getString("LAdd2");
 	    	landlord.address.add3 += searchMatches -> getString("LAdd3");
 	    	landlord.address.city += searchMatches -> getString("LCity");
@@ -143,35 +220,37 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    	landlord.address.zip += searchMatches -> getString("LZip");
 
 
-				resident.name += searchMatches -> getString("TName");
-				resident.phoneNum += searchMatches -> getString("TPhone");
-				resident.email += searchMatches -> getString("TEmail");
-				resident.SScan += searchMatches -> getString("TSScan");
-				resident.DLNum += searchMatches -> getString("TDL#");
-				resident.cellNum += searchMatches -> getString("TCell#");
-				resident.dob += searchMatches -> getString("TDoB");
+			resident.name += searchMatches -> getString("TName");
+			resident.phoneNum += searchMatches -> getString("TPhone");
+			resident.email += searchMatches -> getString("TEmail");
+			resident.SScan += searchMatches -> getString("TSScan");
+			resident.DLNum += searchMatches -> getString("TDL#");
+			resident.cellNum += searchMatches -> getString("TCell#");
+			resident.dob += searchMatches -> getString("TDoB");
 
-				landlord.name += searchMatches -> getString("LName");
-				landlord.phoneNum += searchMatches -> getString("LPhone");
-				landlord.email += searchMatches -> getString("LEmail");
-				landlord.SScan += searchMatches -> getString("LSScan");
-				landlord.DLNum += searchMatches -> getString("LDL#");
+			landlord.name += searchMatches -> getString("LName");
+			landlord.phoneNum += searchMatches -> getString("LPhone");
+			landlord.email += searchMatches -> getString("LEmail");
+			landlord.SScan += searchMatches -> getString("LSScan");
+			landlord.DLNum += searchMatches -> getString("LDL#");
 			//landlord.cellNum += searchMatches -> getString("LCell#"); maybe make a new column for this
-				landlord.dob += searchMatches -> getString("LDoB");
+			landlord.dob += searchMatches -> getString("LDoB");
 
+			billinginfo.payments_info = payments_infoByAccountNo(accountNo);
+			billinginfo.receivables_info = receivables_infoByAccountNo(accountNo);
+			billinginfo.consumption_info = consumption_infoByAccountNo(accountNo);
 
-
-
-
-				int numComments = commentsByAccountNo(accountNo).size();
+			int numComments = commentsByAccountNo(accountNo).size();
 			//cout << "NumComments: " << numComments << endl;
-				bool hasComments(false);
+			bool hasComments(false);
 	    	if (numComments != 0){
 	    			hasComments = true;
 	    	}
+			
+			comments.comment_list = commentsByAccountNo(accountNo);
 
 			//Use pointer to dynamically create accountSnapshot
-			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, hasComments);
+			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, billinginfo, comments);
 			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountInfo));
 			delete accountInfo; // Deallocate memory in accountSnapshot
