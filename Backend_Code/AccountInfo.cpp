@@ -21,7 +21,7 @@ AccountInfo::AccountInfo(){
 
 }
 
-AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, Comments inputcomments){
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, BillingInfo inputbillinginfo, Comments inputcomments){
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
