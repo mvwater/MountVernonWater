@@ -73,8 +73,7 @@ function processAddressMatches(results){
         var accountNum = $(this).attr("id");
         console.log("Account Number to be opened: ", accountNum);
         //openAccount(accountNum);
-
-    };
+    });
     console.log("button click event was created.");
 }
 
