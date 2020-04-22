@@ -3,7 +3,7 @@
 //Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, canfield1@kenyon.edu
 //Project: Mount Vernon Water
 //Description: Header file for Database Communication
-//Last Changed: 20 April 2020
+//Last Changed: 22 April 2020
 
 #include <string>
 #include <vector>
@@ -23,7 +23,6 @@ using std::string;
 
 #ifndef DATABASEBRIDGE_H
 #define DATABASEBRIDGE_H
-
 
 #define HOST "localhost"
 #define USER "canfield1"
@@ -54,7 +53,7 @@ class DatabaseBridge{
     vector<string> commentsByAccountNo(string accountNo);
     // Returns vector of comments after searching comment database by accountNo
 
-	  vector<AccountInfo> searchByAccount(string inputAccount);
+	vector<AccountInfo> searchByAccount(string inputAccount);
     // Returns vector of AccountInfo objects after searching account database by accountNo
 
 
