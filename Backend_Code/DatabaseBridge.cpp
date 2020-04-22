@@ -209,6 +209,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 			Person resident;
 			Person landlord;
 			BillingInfo billinginfo;
+			Comments comments;
 
 	    	resident.address.add1 += searchMatches -> getString("TAdd1");
 	    	resident.address.add2 += searchMatches -> getString("TAdd2");
@@ -252,7 +253,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    			hasComments = true;
 	    	}
 			
-			comments.comment_list = commentsByAccountNo(accountNo);
+			comments.comments_list = commentsByAccountNo(accountNo);
 
 			//Use pointer to dynamically create accountSnapshot
 			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, billinginfo, comments);
