@@ -248,9 +248,9 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 
 			int numComments = commentsByAccountNo(accountNo).size();
 			//cout << "NumComments: " << numComments << endl;
-			bool hasComments(false);
+			bool comments.hasComments(false);
 	    	if (numComments != 0){
-	    			hasComments = true;
+	    			comments.hasComments = true;
 	    	}
 			
 			comments.comments_list = commentsByAccountNo(accountNo);
