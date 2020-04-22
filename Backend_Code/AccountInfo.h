@@ -6,6 +6,7 @@
 //Last Changed: 21 April 2020
 
 #include <string>
+#include <vector>
 #include "AccountSnapshot.h"
 
 using namespace std;
@@ -80,7 +81,7 @@ struct BillingInfo{
 };
 
 struct Comments{
-	vector<string> comments_list;
+	std::vector<string> comments_list;
 	bool hasComments;
 };
 
