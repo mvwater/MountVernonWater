@@ -149,16 +149,23 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	BillingInfo *billingInfo;
 	
+	cout << "Generating Receivables" << endl;
 	vector<Receivables> receivables;
 	receivables = receivablesByAccountNo(accountNo);
 	
+	cout << "Generating Consumption" << endl;
 	vector<Consumption> consumption;
 	consumption = consumptionByAccountNo(accountNo);
 	
+	cout << "Generating Payements" << endl;
 	vector<Payments> payments;
 	payments = paymentsByAccountNo(accountNo);
 	
+	cout << "Prepping BillingInfo object creation" << endl;
+	
 	billingInfo = new BillingInfo(accountNo, receivables, consumption, payments);
+	
+	cout << "Done" << endl;
 	
 	return *billingInfo;
 	
@@ -280,7 +287,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 			
 
 			//Use pointer to dynamically create accountInfo
-			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord);//, comments);
+			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord);
 			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountInfo));
 
