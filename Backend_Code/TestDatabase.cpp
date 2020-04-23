@@ -8,6 +8,7 @@
 #include "BillingInfo.h"
 
 using std::cout;
+using std::vector;
 
 int main(){
 	string searchVal = "104-23-1";
@@ -19,6 +20,7 @@ int main(){
 	// Receive vector of AccountSnapshot objects from database
 	//vector<AccountInfo> searchResults = databaseBridge.searchByAccount2(searchVal);
 	
+	cout << "Making BillingInfo object" << endl;
 	
 	BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
 	
@@ -26,6 +28,8 @@ int main(){
 	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
 
 	JavaScriptBridge javaScriptBridge;
+	
+	cout << "Making Javascript statement" << endl;
 	//cout << javaScriptBridge.accountInfosToStr(searchResults) << endl;
 	
 	cout << javaScriptBridge.billingInfoToStr(searchResult) << endl;
