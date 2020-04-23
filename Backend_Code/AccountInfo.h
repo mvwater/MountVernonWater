@@ -81,7 +81,7 @@ struct BillingInfo{
 };
 
 struct Comments{
-	std::vector<string> comments_list;
+	vector<string> comments_list;
 	bool hasComments;
 };
 
