@@ -146,7 +146,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	statement->execute(query);
 	
 	ResultSet searchMatch;
-	searchMatches.reset(statement->getResultSet());
+	searchMatch.reset(statement->getResultSet());
 	
 	string accountNo = searchMatch -> getString("AccountNo");
 	
