@@ -77,5 +77,11 @@ PutHTML:
 	echo "Current contents of HTML directory: "
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 
+#PutHTML:
+#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+
+#	echo "Current contents of HTML directory: "
+#	ls -l /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+
 clean:
 	rm -f SearchAccount SearchAddress $(OUT)
