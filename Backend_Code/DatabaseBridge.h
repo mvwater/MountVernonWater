@@ -34,7 +34,6 @@ using std::string;
 //#define DB "mvwater"
 //#define PASS "mousesandwichhospital"
 
-
 typedef std::unique_ptr<sql::Statement> Statement;
 typedef sql::Driver Driver;
 typedef std::unique_ptr<sql::Connection> Connection;
@@ -55,9 +54,6 @@ class DatabaseBridge{
 
 	vector<AccountInfo> searchByAccount(string inputAccount);
     // Returns vector of AccountInfo objects after searching account database by accountNo
-
-
-
 
   private:
     const string password = PASS;

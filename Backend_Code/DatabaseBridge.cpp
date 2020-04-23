@@ -122,11 +122,11 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
 	    	string accountNo = searchMatches -> getString("AccountNo");
-				string status = searchMatches -> getString("AcctStatus");
-				string startDate = searchMatches -> getString("SrtDate");
+			string status = searchMatches -> getString("AcctStatus");
+			string startDate = searchMatches -> getString("SrtDate");
 
-				Person resident;
-				Person landlord;
+			Person resident;
+			Person landlord;
 
 	    	resident.address.add1 += searchMatches -> getString("TAdd1");
 	    	resident.address.add2 += searchMatches -> getString("TAdd2");
@@ -135,7 +135,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    	resident.address.state += searchMatches -> getString("TState");
 	    	resident.address.zip += searchMatches -> getString("TZip");
 
-				landlord.address.add1 += searchMatches -> getString("LAdd1");
+			landlord.address.add1 += searchMatches -> getString("LAdd1");
 	    	landlord.address.add2 += searchMatches -> getString("LAdd2");
 	    	landlord.address.add3 += searchMatches -> getString("LAdd3");
 	    	landlord.address.city += searchMatches -> getString("LCity");
@@ -143,31 +143,29 @@ vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
 	    	landlord.address.zip += searchMatches -> getString("LZip");
 
 
-				resident.name += searchMatches -> getString("TName");
-				resident.phoneNum += searchMatches -> getString("TPhone");
-				resident.email += searchMatches -> getString("TEmail");
-				resident.SScan += searchMatches -> getString("TSScan");
-				resident.DLNum += searchMatches -> getString("TDL#");
-				resident.cellNum += searchMatches -> getString("TCell#");
-				resident.dob += searchMatches -> getString("TDoB");
+			resident.name += searchMatches -> getString("TName");
+			resident.phoneNum += searchMatches -> getString("TPhone");
+			resident.email += searchMatches -> getString("TEmail");
+			resident.SScan += searchMatches -> getString("TSScan");
+			resident.DLNum += searchMatches -> getString("TDL#");
+			resident.cellNum += searchMatches -> getString("TCell#");
+			resident.dob += searchMatches -> getString("TDoB");
 
-				landlord.name += searchMatches -> getString("LName");
-				landlord.phoneNum += searchMatches -> getString("LPhone");
-				landlord.email += searchMatches -> getString("LEmail");
-				landlord.SScan += searchMatches -> getString("LSScan");
-				landlord.DLNum += searchMatches -> getString("LDL#");
-			//landlord.cellNum += searchMatches -> getString("LCell#"); maybe make a new column for this
-				landlord.dob += searchMatches -> getString("LDoB");
+			landlord.name += searchMatches -> getString("LName");
+			landlord.phoneNum += searchMatches -> getString("LPhone");
+			landlord.email += searchMatches -> getString("LEmail");
+			landlord.SScan += searchMatches -> getString("LSScan");
+			landlord.DLNum += searchMatches -> getString("LDL#");
 
+			// Testing
+			landlord.cellNum += searchMatches -> getString("LCell#"); 
+			landlord.dob += searchMatches -> getString("LDoB");
 
-
-
-
-				int numComments = commentsByAccountNo(accountNo).size();
+			int numComments = commentsByAccountNo(accountNo).size();
 			//cout << "NumComments: " << numComments << endl;
-				bool hasComments(false);
+			bool hasComments(false);
 	    	if (numComments != 0){
-	    			hasComments = true;
+	    		hasComments = true;
 	    	}
 
 			//Use pointer to dynamically create accountSnapshot
