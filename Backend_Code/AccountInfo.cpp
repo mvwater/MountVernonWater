@@ -62,15 +62,25 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	for (uint i=0; i<inputbillinginfo.receivables_info.size(); i++){
 		cout << i << endl;
 		billinginfo.receivables_info[i].Invoice = inputbillinginfo.receivables_info[i].Invoice;
+		cout << "Invoice" << endl;
 		billinginfo.receivables_info[i].Inv_date = inputbillinginfo.receivables_info[i].Inv_date;
+		cout << "Inv_date" << endl;
 		billinginfo.receivables_info[i].Amount = inputbillinginfo.receivables_info[i].Amount;
+		cout << "Amount" << endl;
 		billinginfo.receivables_info[i].To_post = inputbillinginfo.receivables_info[i].To_post;
+		cout << "To_post" << endl;
 		billinginfo.receivables_info[i].Amt_paid = inputbillinginfo.receivables_info[i].Amt_paid;
+		cout << "Amt_paid" << endl;
 		billinginfo.receivables_info[i].Paid_date = inputbillinginfo.receivables_info[i].Paid_date;
+		cout << "Paid_date" << endl;
 		billinginfo.receivables_info[i].Refer = inputbillinginfo.receivables_info[i].Refer;
+		cout << "Refer" << endl;
 		billinginfo.receivables_info[i].Balance = inputbillinginfo.receivables_info[i].Balance;
+		cout << "Balance" << endl;
 		cout << "Done with iteration " << i << endl;
 	}
+	
+
 	
 	cout << "AccountInfo.cpp:Adding consumption info" << endl;
 	for (uint i=0; i<inputbillinginfo.consumption_info.size(); i++){
