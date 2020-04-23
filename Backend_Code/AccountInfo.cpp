@@ -21,7 +21,7 @@ AccountInfo::AccountInfo(){
 
 }
 
-AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, BillingInfo inputbillinginfo, Comments inputcomments){
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, BillingInfo inputbillinginfo){//, Comments inputcomments);
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
@@ -93,15 +93,15 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		
 	}
 	
-	cout << "AccountInfo.cpp: Adding comments info" << endl;
-	for (uint i=0; i<inputcomments.comments_list.size(); i++){
+	//cout << "AccountInfo.cpp: Adding comments info" << endl;
+	//for (uint i=0; i<inputcomments.comments_list.size(); i++){
 		
-		comments.comments_list[i] = inputcomments.comments_list[i];
+	//	comments.comments_list[i] = inputcomments.comments_list[i];
 		
-	}
-	cout << "AccountInfo.cpp: initializing hasComments" << endl;
+	//}
+	//cout << "AccountInfo.cpp: initializing hasComments" << endl;
 	
-	comments.hasComments = inputcomments.hasComments;
+	//comments.hasComments = inputcomments.hasComments;
 	
 	cout << "AccountInfo.cpp: Done with constructor" << endl;
     
@@ -137,13 +137,13 @@ BillingInfo AccountInfo::getBillingInfo(){
 	return billinginfo;
 }
 
-Comments AccountInfo::getComments(){
+//Comments AccountInfo::getComments(){
 	
-	return comments;
-}
+//	return comments;
+//}
 
-bool AccountInfo::getHasComments(){
+//bool AccountInfo::getHasComments(){
 	
-	return comments.hasComments;
-}
+//	return comments.hasComments;
+//}
 

@@ -257,19 +257,19 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 			//cout << billinginfo.consumption_info << endl;
 
 
-			int numComments = commentsByAccountNo(accountNo).size();
+			//int numComments = commentsByAccountNo(accountNo).size();
 			//cout << "NumComments: " << numComments << endl;
-			comments.hasComments= false;
-	    	if (numComments != 0){
-	    			comments.hasComments = true;
-	    	}
+			//comments.hasComments= false;
+	    	//if (numComments != 0){
+	    	//		comments.hasComments = true;
+	    	//}
 			
-			comments.comments_list = commentsByAccountNo(accountNo);
-			cout << "Added comments" << endl;
+			//comments.comments_list = commentsByAccountNo(accountNo);
+			//cout << "Added comments" << endl;
 			//cout << comments.comments_list << endl;
 
 			//Use pointer to dynamically create accountSnapshot
-			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, billinginfo, comments);
+			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, billinginfo);//, comments);
 			cout << "Made new account" << endl;
 			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountInfo));

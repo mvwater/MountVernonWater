@@ -80,24 +80,24 @@ struct BillingInfo{
 	vector<Payments> payments_info;
 };
 
-struct Comments{
-	vector<string> comments_list;
-	bool hasComments;
-};
+//struct Comments{
+//	vector<string> comments_list;
+//	bool hasComments;
+//};
 
 class AccountInfo {
   public:
   
 	AccountInfo();
-	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, BillingInfo inputbillinginfo, Comments inputcomments);
+	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, BillingInfo inputbillinginfo);//, Comments inputcomments);
 	string getAccountNo();
 	string getStatus();
 	string getstartDate();
 	Person getResident();
 	Person getLandlord();
 	BillingInfo getBillingInfo();
-	Comments getComments();  
-	bool getHasComments();
+	//Comments getComments();  
+	//bool getHasComments();
 
   private:
     string accountNo;
@@ -106,7 +106,7 @@ class AccountInfo {
 	Person resident;
 	Person landlord;
 	BillingInfo billinginfo;
-	Comments comments;
+	//Comments comments;
 };
 
 #endif //ACCOUNTINFO_H
