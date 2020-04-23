@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "AccountInfo.h"
+#include "BillingInfo.h"
 #include "AccountSnapshot.h"
 
 #include "cgicc/Cgicc.h"
@@ -16,6 +17,8 @@ using namespace cgicc;
 class JavaScriptBridge{
   public:
     string printAccountInfo(AccountInfo accountInfo);
+	
+	string printBillingInfo(BillingInfo billingInfo);
 
     string printAccountSnapshot(AccountSnapshot accountSnapshot);
 
@@ -27,11 +30,16 @@ class JavaScriptBridge{
 
     string accountInfosToStr(vector<AccountInfo> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
-
+	
+	string billingInfoToStr(BillingInfo searchResult);
+	// Returns string of BillingInfo that will be sent to JavaScript
+ 
     string accountSnapshotsToStr(vector<AccountSnapshot> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
 
     void sendAccountInfos(vector<AccountInfo> searchResults);
+	
+	void sendBillingInfo(BillingInfo searchResult);
     //Preconditions:
     //Postconditions:
     void sendAccountSnapshots(vector<AccountSnapshot> searchResults);

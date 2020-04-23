@@ -1,5 +1,7 @@
 SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o AccountInfo.o
 SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o
+SEARCH_BILLING = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o BillingInfo.o 
+
 #TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 #TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
@@ -11,19 +13,22 @@ FLAGS	 = -g -c -Wall
 CFLAGS 	 = -std=c++14
 USER     = canfield1
 
-all: TestDatabase SearchAccount SearchAddress PutCGI PutHTML
+all: TestDatabase SearchAccount SearchBilling SearchAddress PutCGI PutHTML
 
 
 AccountInfo.o: AccountInfo.cpp AccountInfo.h
 	$(CC) $(FLAGS) AccountInfo.cpp $(CFLAGS)
+	
+BillingInfo.o: BillingInfo.cpp BillingInfo.h
+	$(CC) $(FLAGS) BillingInfo.cpp $(CFLAGS)
 
 AccountSnapshot.o: AccountSnapshot.cpp AccountSnapshot.h
 	$(CC) $(FLAGS) AccountSnapshot.cpp $(CFLAGS)
 
-JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountInfo.h AccountSnapshot.h
+JavaScriptBridge.o: JavaScriptBridge.cpp JavaScriptBridge.h AccountInfo.h AccountSnapshot.h BillingInfo.h
 	$(CC) $(FLAGS) JavaScriptBridge.cpp $(CFLAGS)
 
-DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h AccountSnapshot.h
+DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h AccountSnapshot.h BillingInfo.h
 	$(CC) $(FLAGS) DatabaseBridge.cpp $(CFLAGS)
 
 #TestJavaScript.o: TestJavaScript.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h
@@ -33,25 +38,28 @@ DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h AccountSnaps
 	#$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
 
 
-TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h AccountSnapshot.h
+TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h AccountSnapshot.h BillingInfo.h
 	$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
-SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h AccountSnapshot.h
+SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h AccountSnapshot.h BillingInfo.h
 	$(CC) $(FLAGS) SearchAccount.cpp $(CFLAGS)
 
-SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h
+SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 #TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
 	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
 # Linking after compiling
-TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o
-	$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
+TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o JavaScriptBridge.o
+	$(CC) TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
 
 
 SearchAccount: $(SEARCH_ACCOUNT)
 	$(CC) $(SEARCH_ACCOUNT) -o SearchAccount -L/usr/local/lib $(SQL_FLAGS)
+	
+SearchBilling: $(SEARCH_BILLING)
+	$(CC) $(SEARCH_BILLING) -o SearchBilling -L/usr/local/lib $(SQL_FLAGS)
 
 SearchAddress: $(SEARCH_ADDRESS)
 	$(CC) $(SEARCH_ADDRESS) -o SearchAddress -L/usr/local/lib $(SQL_FLAGS)
@@ -68,8 +76,11 @@ SearchAddress: $(SEARCH_ADDRESS)
 PutCGI: SearchAddress SearchAccount
 	chmod 757 SearchAccount
 	chmod 757 SearchAddress
+	chmod 757 SearchBilling
+	
 	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount2.cgi
 	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
+	cp SearchBilling /usr/lib/cgi-bin/$(USER)_billingInfoByAccountNo.cgi
 
 #PutHTML:
 #	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
@@ -82,4 +93,4 @@ PutHTML:
 	echo "Current contents of HTML directory: "
 	ls -l /var/www/html/class/softdev/$(USER)/ShaneMvwater
 clean:
-	rm -f SearchAccount SearchAddress $(OUT)
+	rm -f SearchAccount SearchAddress SearchBilling $(OUT)

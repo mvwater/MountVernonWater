@@ -3,7 +3,7 @@
 //Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, canfield1@kenyon.edu
 //Project: Mount Vernon Water
 //Description: Header file for Database Communication
-//Last Changed: 21 April 2020
+//Last Changed: 23 April 2020
 
 #include <string>
 #include <vector>
@@ -54,16 +54,18 @@ class DatabaseBridge{
     vector<string> commentsByAccountNo(string accountNo);
     // Returns vector of comments after searching comment database by accountNo
 	
-	vector<Payments> payments_infoByAccountNo(string accountNo);
+	vector<Payments> paymentsByAccountNo(string accountNo);
 	// Returns vector of payments structs after searcching payment database by accountNo	
 	
-	vector<Consumption> consumption_infoByAccountNo(string accountNo);
+	vector<Consumption> consumptionByAccountNo(string accountNo);
 	// Returns vector of consumption structs after searching consumption database by accountNo	
 	
-	vector<Receivables> receivables_infoByAccountNo(string accountNo);
+	vector<Receivables> receivablesByAccountNo(string accountNo);
 	// Returns vector of receivable structs after searching receivables database by accountNo
 
-	vector<AccountInfo> searchByAccount2(string inputAccount);
+	BillingInfo billingInfoByAccountNo(string inputAccountNo);
+
+	vector<AccountInfo> searchByAccount2(string inputAccountNo);
     // Returns vector of AccountInfo objects after searching account database by accountNo
 
 

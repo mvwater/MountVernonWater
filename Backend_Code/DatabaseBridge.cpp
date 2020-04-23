@@ -3,7 +3,7 @@
 //Email Address: kim3@kenyon.edu, brydon1@kenyon.edu, canfield1@kenyon.edu
 //Dev Project: Mount Vernon Water
 //Description: General class that can communicate with our database
-//Last Changed: 20 April 2020
+//Last Changed: 23 April 2020
 
 #include "DatabaseBridge.h"
 using std::cout;
@@ -37,19 +37,19 @@ vector<string> DatabaseBridge::commentsByAccountNo(string accountNo){
 	Statement statement(con->createStatement());
 	statement->execute(query);
 
-	ResultSet commentMatches;
+	ResultSet searchMatches;
 	vector<string> commentResultList;
 	do {
-    	commentMatches.reset(statement->getResultSet());
-	    while (commentMatches->next()) {
-	    	string comment = commentMatches -> getString("Comment");
+    	searchMatches.reset(statement->getResultSet());
+	    while (searchMatches->next()) {
+	    	string comment = searchMatches -> getString("Comment");
 	    	commentResultList.push_back(comment);
 	    }
   	} while (statement->getMoreResults());
   	return commentResultList;
 }
 
-vector<Payments> DatabaseBridge::payments_infoByAccountNo(string accountNo){
+vector<Payments> DatabaseBridge::paymentsByAccountNo(string accountNo){
 	string query("SELECT * FROM payment WHERE AccountNo = '" + accountNo + "';");
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
@@ -75,7 +75,7 @@ vector<Payments> DatabaseBridge::payments_infoByAccountNo(string accountNo){
   	return paymentsResultList;
 }
 
-vector<Consumption> DatabaseBridge::consumption_infoByAccountNo(string accountNo){
+vector<Consumption> DatabaseBridge::consumptionByAccountNo(string accountNo){
 	string query("SELECT * FROM consumption WHERE AccountNo = '" + accountNo + "';");
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
@@ -102,7 +102,7 @@ vector<Consumption> DatabaseBridge::consumption_infoByAccountNo(string accountNo
   	return consumptionResultList;
 }
 
-vector<Receivables> DatabaseBridge::receivables_infoByAccountNo(string accountNo){
+vector<Receivables> DatabaseBridge::receivablesByAccountNo(string accountNo){
 	string query("SELECT * FROM receivables WHERE AccountNo = '" + accountNo + "';");
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
@@ -132,6 +132,36 @@ vector<Receivables> DatabaseBridge::receivables_infoByAccountNo(string accountNo
 	
 	return receivablesResultList;
 }
+
+
+BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
+	
+	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
+	Connection con = connectToDatabase();
+	Statement statement(con->createStatement());
+	//cout << "Creating statement."<< endl;
+	statement->execute(query);
+	
+	string accountNo = searchMatches -> getString("AccountNo");
+	
+	BillingInfo billingInfo;
+	
+	vector<Receivables> receivables;
+	receivables = receivablesByAccountNo(accountNo);
+	
+	vector<Consumption> consumption;
+	consumption = consumptionByAccountNo(accountNo);
+	
+	vector<Payments> = payments;
+	payments = paymentsByAccountNo(accountNo);
+	
+	billingInfo = new BillingInfo(accountNo, payments, consumption, receivables);
+	
+	return billingInfo;
+	
+}
+
+
 
 
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
@@ -192,6 +222,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 
 
 vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
+	
 	//cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
 	Connection con = connectToDatabase();
@@ -212,8 +243,6 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 
 			Person resident;
 			Person landlord;
-			BillingInfo billinginfo;
-			//Comments comments;
 
 	    	resident.address.add1 += searchMatches -> getString("TAdd1");
 	    	resident.address.add2 += searchMatches -> getString("TAdd2");
@@ -246,42 +275,15 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 			//landlord.cellNum += searchMatches -> getString("LCell#"); maybe make a new column for this
 			landlord.dob += searchMatches -> getString("LDoB");
 			
-			cout << "Adding billing info" << endl;
 
-			billinginfo.payments_info = payments_infoByAccountNo(accountNo);
-			cout << "Added payments" << endl;
-			//cout << billinginfo.payments_info << endl;
-			billinginfo.receivables_info = receivables_infoByAccountNo(accountNo);
-			cout << "Added receivables" << endl;
-			//cout << billinginfo.receivables_info << endl;
-
-
-			billinginfo.consumption_info = consumption_infoByAccountNo(accountNo);
-			cout << "Added consumption" << endl;
-			//cout << billinginfo.consumption_info << endl;
-
-
-			//int numComments = commentsByAccountNo(accountNo).size();
-			//cout << "NumComments: " << numComments << endl;
-			//comments.hasComments= false;
-	    	//if (numComments != 0){
-	    	//		comments.hasComments = true;
-	    	//}
-			
-			//comments.comments_list = commentsByAccountNo(accountNo);
-			//cout << "Added comments" << endl;
-			//cout << comments.comments_list << endl;
-
-			//Use pointer to dynamically create accountSnapshot
-			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, billinginfo);//, comments);
-			cout << "Made new account" << endl;
+			//Use pointer to dynamically create accountInfo
+			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord);//, comments);
 			//accountSnapshot = new AccountSnapshot(accountNo, resAddress, true);
 			accountResultList.push_back(*(accountInfo));
-			cout << "Added to account list" << endl;
 
-			delete accountInfo; // Deallocate memory in accountSnapshot
+			delete accountInfo; // Deallocate memory in accountInfo
 	    }
   	} while (statement->getMoreResults());
-  //cout << "Done."<< endl;
-  return accountResultList;
+	//cout << "Done."<< endl;
+	return accountResultList;
 }

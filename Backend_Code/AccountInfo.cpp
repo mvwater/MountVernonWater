@@ -1,9 +1,9 @@
-//File Name: AccountSnapshot.cpp
+//File Name: AccountInfo.cpp
 //Author: Shane, Michaela, and Sejin
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
-//Description: Snapshot of an account
-//Last Changed: 21 April 2020
+//Description: Full Account Information
+//Last Changed: 23 April 2020
 
 #include "AccountInfo.h"
 #include <iostream>
@@ -16,12 +16,10 @@ AccountInfo::AccountInfo(){
 	startDate = "";
 	Person resident{"","","","","","","",""};
 	Person landlord{"","","","","","","",""};
-	BillingInfo billinginfo;
-	//Comments comments;
 
 }
 
-AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, BillingInfo inputbillinginfo){//, Comments inputcomments);
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord){
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
@@ -56,67 +54,6 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	landlord.address.state = inputlandlord.address.state;
 	landlord.address.zip = inputlandlord.address.zip;
 	
-	cout << "AccountInfo.cpp:Adding receivable info" << endl;
-	cout << inputbillinginfo.receivables_info.size() << endl;
-	
-	for (uint i=0; i<inputbillinginfo.receivables_info.size(); i++){
-		cout << i << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].Invoice);
-		cout << "Invoice" << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].Inv_date);
-		cout << "Inv_date" << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].Amount);
-		cout << "Amount" << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].To_post);
-		cout << "To_post" << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].Amt_paid);
-		cout << "Amt_paid" << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].Paid_date);
-		cout << "Paid_date" << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].Refer);
-		cout << "Refer" << endl;
-		billinginfo.receivables_info[i].push_back(inputbillinginfo.receivables_info[i].Balance);
-		cout << "Balance" << endl;
-		cout << "Done with iteration " << i << endl;
-	}
-	
-
-	
-	cout << "AccountInfo.cpp:Adding consumption info" << endl;
-	for (uint i=0; i<inputbillinginfo.consumption_info.size(); i++){
-		
-		billinginfo.consumption_info[i].Bill_date = inputbillinginfo.consumption_info[i].Bill_date;
-		billinginfo.consumption_info[i].Beg_read = inputbillinginfo.consumption_info[i].Beg_read;
-		billinginfo.consumption_info[i].End_read = inputbillinginfo.consumption_info[i].End_read;
-		billinginfo.consumption_info[i].Read_date = inputbillinginfo.consumption_info[i].Read_date;
-		billinginfo.consumption_info[i].Service = inputbillinginfo.consumption_info[i].Service;
-		billinginfo.consumption_info[i].Cons = inputbillinginfo.consumption_info[i].Cons;
-		billinginfo.consumption_info[i].Amount = inputbillinginfo.consumption_info[i].Amount;
-		billinginfo.consumption_info[i].Penalty = inputbillinginfo.consumption_info[i].Penalty;
-	}
-	cout << "AccountInfo.cpp:Adding payments info" << endl;
-	for (uint i=0; i<inputbillinginfo.payments_info.size(); i++){
-		
-		billinginfo.payments_info[i].Pay_date = inputbillinginfo.payments_info[i].Pay_date;
-		billinginfo.payments_info[i].Amount_Paid = inputbillinginfo.payments_info[i].Amount_Paid;
-		billinginfo.payments_info[i].Type = inputbillinginfo.payments_info[i].Type;
-		billinginfo.payments_info[i].Reference = inputbillinginfo.payments_info[i].Reference;
-		billinginfo.payments_info[i].Batch = inputbillinginfo.payments_info[i].Batch;
-		billinginfo.payments_info[i].Seq = inputbillinginfo.payments_info[i].Seq;
-		
-	}
-	
-	//cout << "AccountInfo.cpp: Adding comments info" << endl;
-	//for (uint i=0; i<inputcomments.comments_list.size(); i++){
-		
-	//	comments.comments_list[i] = inputcomments.comments_list[i];
-		
-	//}
-	//cout << "AccountInfo.cpp: initializing hasComments" << endl;
-	
-	//comments.hasComments = inputcomments.hasComments;
-	
-	cout << "AccountInfo.cpp: Done with constructor" << endl;
     
 }
 
@@ -145,18 +82,4 @@ Person AccountInfo::getLandlord(){
 	return landlord;
 }
 
-BillingInfo AccountInfo::getBillingInfo(){
-	
-	return billinginfo;
-}
-
-//Comments AccountInfo::getComments(){
-	
-//	return comments;
-//}
-
-//bool AccountInfo::getHasComments(){
-	
-//	return comments.hasComments;
-//}
 

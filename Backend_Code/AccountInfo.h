@@ -1,9 +1,9 @@
-//File Name: AccountSnapshot.cpp
+//File Name: AccountInfo.h
 //Author: Shane, Michaela, and Sejin
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
-//Description: Snapshot of an account
-//Last Changed: 21 April 2020
+//Description: Full Account Information
+//Last Changed: 23 April 2020
 
 #include <string>
 #include <vector>
@@ -37,67 +37,19 @@ struct Person {
 	string dob;
 };
 
-struct Payments{
-	
-	string Pay_date;
-	string Amount_Paid;
-	string Type;
-	string Reference;
-	string Batch; 
-	string Seq;
 
-};
-
-struct Consumption{
-	
-	string Bill_date;
-	string Beg_read;
-	string End_read;
-	string Read_date;
-	string Service;
-	string Cons;
-	string Amount; 
-	string Penalty;
-
-};
-
-struct Receivables{
-	
-	string Invoice;
-	string Inv_date;
-	string Amount;
-	string To_post;
-	string Amt_paid; 
-	string Paid_date;
-	string Refer;
-	string Balance;
-
-};
-
-struct BillingInfo{
-	vector<Receivables> receivables_info;
-	vector<Consumption> consumption_info;
-	vector<Payments> payments_info;
-};
-
-//struct Comments{
-//	vector<string> comments_list;
-//	bool hasComments;
-//};
 
 class AccountInfo {
   public:
   
 	AccountInfo();
-	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, BillingInfo inputbillinginfo);//, Comments inputcomments);
+	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord);
 	string getAccountNo();
 	string getStatus();
 	string getstartDate();
 	Person getResident();
 	Person getLandlord();
-	BillingInfo getBillingInfo();
-	//Comments getComments();  
-	//bool getHasComments();
+
 
   private:
     string accountNo;
@@ -105,8 +57,7 @@ class AccountInfo {
 	string startDate;
 	Person resident;
 	Person landlord;
-	BillingInfo billinginfo;
-	//Comments comments;
+
 };
 
 #endif //ACCOUNTINFO_H
