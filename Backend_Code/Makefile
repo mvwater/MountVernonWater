@@ -46,6 +46,9 @@ SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountIn
 
 SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
+	
+SearchBilling.o: SearchBilling.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h
+	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 #TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
 	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
