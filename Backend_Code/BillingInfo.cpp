@@ -13,14 +13,11 @@ using std::vector;
 
 BillingInfo::BillingInfo(){
 	accountNo + "";
-	vector<Receivables> blank_receivables;
-	receivables = blank_receivables;
+	vector<Receivables> receivables;
 	
-	vector<Consumption> blank_consumption;
-	consumption = blank_receivables;
+	vector<Consumption> consumption;
 	
-	vector<Payments> blank_payments;
-	payments = blank_payments;
+	vector<Payments> payments;
 }
 
 BillingInfo::BillingInfo(string input_accountNo, vector<Receivables> input_receivables, vector<Consumption> input_consumption, vector<Payments> input_payments){
