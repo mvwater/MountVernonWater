@@ -12,18 +12,18 @@ using std::cout;
 
 BillingInfo::BillingInfo(){
 	vector<Receivables> blank_receivables;
-	receivables = blank_receivables;
+	Receivables receivables = blank_receivables;
 	
 	vector<Consumption> blank_consumption;
-	consumption = blank_receivables;
+	Consumption consumption = blank_receivables;
 	
 	vector<Payments> blank_payments;
-	payments = blank_payments;
+	Payments payments = blank_payments;
 }
 
 BillingInfo::BillingInfo(string input_accountNo, vector<Receivables> input_receivables, vector<Consumption> input_consumption, vector<Payments> input_payments){
 	
-    accountNo = inputAccountNo;
+    accountNo = input_accountNo;
     
 	receivables = input_receivables;
 	consumption = input_consumption;
@@ -39,16 +39,16 @@ string BillingInfo::getAccountNo(){
 
 
 
-Receivables BillingInfo::getReceivables(){
+vector<Receivables> BillingInfo::getReceivables(){
 	return receivables;
 }
 
 
-Consumption BillingInfo::getConsumption(){
+vector<Consumption> BillingInfo::getConsumption(){
 	return consumption;
 }
 
 
-Payments BillingInfo::getPayments(){
+vector<Payments> BillingInfo::getPayments(){
 	return payments;
 }
