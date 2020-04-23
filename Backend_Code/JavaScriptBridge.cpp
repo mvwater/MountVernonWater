@@ -14,25 +14,23 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
 	
 	//Adding BillingInfo
 	for (uint i = 0; i<accountInfo.getBillingInfo().receivables_info.size(); i ++){
-		for (uint j = 0; i<accountInfo.getBillingInfo().receivables_info[i].size(); j ++){
-			result += accountInfo.getBillingInfo().receivables_info[i][j];
-			result += sep;
+			result += accountInfo.getBillingInfo().receivables_info[i].Invoice + sep + accountInfo.getBillingInfo().receivables_info[i].Inv_date + sep + accountInfo.getBillingInfo().receivables_info[i].Amount + sep + accountInfo.getBillingInfo().receivables_info[i].To_post + sep + accountInfo.getBillingInfo().receivables_info[i].Amt_paid + sep + accountInfo.getBillingInfo().receivables_info[i].Paid_date + sep + accountInfo.getBillingInfo().receivables_info[i].Refer + sep + accountInfo.getBillingInfo().receivables_info[i].Balance + sep;
+			//result += sep;
 		}
 	}
 	
 	for (uint i = 0; i<accountInfo.getBillingInfo().consumption_info.size(); i ++){
-		for (uint j = 0; i<accountInfo.getBillingInfo().consumption_info[i].size(); j ++){
-			result += accountInfo.getBillingInfo().consumption_info[i][j];
-			result += sep;
-		}
+		result += accountInfo.getBillingInfo().consumption_info[i].Bill_date + sep + accountInfo.getBillingInfo().consumption_info[i].Beg_read + sep + accountInfo.getBillingInfo().consumption_info[i].End_read + sep + accountInfo.getBillingInfo().consumption_info[i].Read_date + sep + accountInfo.getBillingInfo().consumption_info[i].Service + sep + accountInfo.getBillingInfo().consumption_info[i].Cons + sep + accountInfo.getBillingInfo().consumption_info[i].Amount + sep + accountInfo.getBillingInfo().consumption_info[i].Penalty + sep;
+			//result += sep;
 	}
 	
 	for (uint i = 0; i<accountInfo.getBillingInfo().payments_info.size(); i ++){
-		for (uint j = 0; i<accountInfo.getBillingInfo().payments_info[i].size(); j ++){
-			result += accountInfo.getBillingInfo().payments_info[i][j];
-			result += sep;
+			result += accountInfo.getBillingInfo().payments_info[i].Pay_date + sep + accountInfo.getBillingInfo().payments_info[i].Amount_Paid + sep + accountInfo.getBillingInfo().payments_info[i].Type + sep + accountInfo.getBillingInfo().payments_info[i].Reference + sep + accountInfo.getBillingInfo().payments_info[i].Batch + sep + accountInfo.getBillingInfo().payments_info[i].Seq + sep;
+			//result += sep;
 		}
 	}
+	
+
 		
 	//result += accountInfo.getBillingInfo().receivables_info[i] + sep + accountInfo.getBillingInfo().payments_info + sep + accountInfo.getBillingInfo().consumption_info + sep;
 
