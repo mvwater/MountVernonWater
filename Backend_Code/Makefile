@@ -68,7 +68,7 @@ SearchAddress: $(SEARCH_ADDRESS)
 PutCGI: SearchAddress SearchAccount
 	chmod 757 SearchAccount
 	chmod 757 SearchAddress
-	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount.cgi
+	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount2.cgi
 	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
 
 #PutHTML:
