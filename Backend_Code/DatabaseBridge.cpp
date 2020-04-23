@@ -241,10 +241,17 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 			landlord.DLNum += searchMatches -> getString("LDL#");
 			//landlord.cellNum += searchMatches -> getString("LCell#"); maybe make a new column for this
 			landlord.dob += searchMatches -> getString("LDoB");
+			
+			cout << "Adding billing info" << endl;
 
 			billinginfo.payments_info = payments_infoByAccountNo(accountNo);
+			cout << "Added payments" << endl;
 			billinginfo.receivables_info = receivables_infoByAccountNo(accountNo);
+			cout << "Added receivables" << endl;
+
 			billinginfo.consumption_info = consumption_infoByAccountNo(accountNo);
+			cout << "Added consumption" << endl;
+
 
 			int numComments = commentsByAccountNo(accountNo).size();
 			//cout << "NumComments: " << numComments << endl;
