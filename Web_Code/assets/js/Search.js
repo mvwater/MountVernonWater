@@ -241,7 +241,7 @@ function displayAccountInfo(resultString){
         result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><div class='col'><h3 style='padding: 30px;'>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
         // Landlord Information Container
-        result += "<div class='container text-left' style='" + containerStyle + "20px;'> <div class='row'> <div class='col'> <h3 style='padding: 20px;'>Landlord Information</h3> ";
+        result += "<div class='container text-left' style='" + containerStyle + "120px;'> <div class='row'> <div class='col'> <h3 style='padding: 20px;'>Landlord Information</h3> ";
 
         // Iterates through landlord data
         for (var i = 2; i < 15; i++){
