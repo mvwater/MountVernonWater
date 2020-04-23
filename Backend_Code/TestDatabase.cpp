@@ -16,7 +16,7 @@ int main(){
 
 	DatabaseBridge databaseBridge;
 	// Receive vector of AccountSnapshot objects from database
-	vector<AccountInfo> searchResults = databaseBridge.searchByAccount(searchVal);
+	vector<AccountInfo> searchResults = databaseBridge.searchByAccount2(searchVal);
 	
 
 	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
