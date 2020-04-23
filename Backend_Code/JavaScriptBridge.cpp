@@ -78,7 +78,7 @@ string JavaScriptBridge::accountInfosToStr(vector<AccountInfo> searchResults){
 	return jsMessage;
 }
 
-string JavaScriptBridge::accountBillingToStr(BillingInfo searchResult){
+string JavaScriptBridge::billingInfoToStr(BillingInfo searchResult){
 	BillingInfo billingInfo;
 	billingInfo = searchResult;
   	string jsMessage = "";
