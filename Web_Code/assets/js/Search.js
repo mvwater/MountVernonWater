@@ -234,7 +234,7 @@ function displayAccountInfo(resultString){
 
 
 
-        result += "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><p><span style='text-decoration: underline;'><h3>General Information</h3></span></p>";
+        result += "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><p><span style='padding-left: 10px;'><h3>General Information</h3></span></p>";
 
 // Get this information!
 // Add data member to AccountInfo class
@@ -242,7 +242,7 @@ function displayAccountInfo(resultString){
 
 
         // EDIT href
-        result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + " <button id='view_comments' class='btn btn-secondary' href='#' type='button' style='margin-right: 10px;'>View Comments</button>";
+        result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + " <button id='view_comments' class='btn btn-secondary' href='#' type='button' style='padding-left: 10px;'>View Comments</button>";
 
         //<a id='viewComments' href='#' style='margin-left: 10px;'>View Comments</a>
 
@@ -275,7 +275,7 @@ function displayAccountInfo(resultString){
         //result += "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><p><span style='text-decoration: underline;'><h3>General Information</h3></span></p>";
 
 
-        result+= "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><h3 style='padding-left: 20px;'>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
+        result+= "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><h3 style='padding: 20px;'>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
 
         //result+= "<div class='container'><div class='container text-left'style='" + containerStyle + "'><div class='><div class='col'><h3>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
