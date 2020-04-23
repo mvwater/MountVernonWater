@@ -136,6 +136,7 @@ vector<Receivables> DatabaseBridge::receivablesByAccountNo(string accountNo){
 
 BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
+	cout << "billingInfoByAccountNo function starting..." << endl;
 	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
