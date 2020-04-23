@@ -56,6 +56,8 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	landlord.address.state = inputlandlord.address.state;
 	landlord.address.zip = inputlandlord.address.zip;
 	
+	cout << "AccountInfo.cpp:Adding receivable info" << endl;
+	
 	for (uint i=0; i<inputbillinginfo.receivables_info.size(); i++){
 		billinginfo.receivables_info[i].Invoice = inputbillinginfo.receivables_info[i].Invoice;
 		billinginfo.receivables_info[i].Inv_date = inputbillinginfo.receivables_info[i].Inv_date;
@@ -66,6 +68,8 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		billinginfo.receivables_info[i].Refer = inputbillinginfo.receivables_info[i].Refer;
 		billinginfo.receivables_info[i].Balance = inputbillinginfo.receivables_info[i].Balance;
 	}
+	
+	cout << "AccountInfo.cpp:Adding consumption info" << endl;
 	for (uint i=0; i<inputbillinginfo.consumption_info.size(); i++){
 		
 		billinginfo.consumption_info[i].Bill_date = inputbillinginfo.consumption_info[i].Bill_date;
@@ -77,6 +81,7 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		billinginfo.consumption_info[i].Amount = inputbillinginfo.consumption_info[i].Amount;
 		billinginfo.consumption_info[i].Penalty = inputbillinginfo.consumption_info[i].Penalty;
 	}
+	cout << "AccountInfo.cpp:Adding payments info" << endl;
 	for (uint i=0; i<inputbillinginfo.payments_info.size(); i++){
 		
 		billinginfo.payments_info[i].Pay_date = inputbillinginfo.payments_info[i].Pay_date;
@@ -87,6 +92,8 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		billinginfo.payments_info[i].Seq = inputbillinginfo.payments_info[i].Seq;
 		
 	}
+	
+	cout << "AccountInfo.cpp: Adding comments info" << endl;
 	for (uint i=0; i<inputcomments.comments_list.size(); i++){
 		
 		comments.comments_list[i] = inputcomments.comments_list[i];
