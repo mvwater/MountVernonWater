@@ -256,7 +256,7 @@ function displayAccountInfo(resultString){
             result += "<p id=res_'" + idNameList[i] + "'><b>"+labelNameList[i]+":&nbsp;</b> " + accountData[i+1] + "</p>"
         }
 
-        result += "</div> <div class='col' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button' style='padding-left: 100px;'>View Comments</button> </div></div></div>";
+        result += "</div> <div class='col' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div>";
 
 
 
