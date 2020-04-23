@@ -17,7 +17,7 @@ AccountInfo::AccountInfo(){
 	Person resident{"","","","","","","",""};
 	Person landlord{"","","","","","","",""};
 	BillingInfo billinginfo;
-	Comments comments;
+	//Comments comments;
 
 }
 
