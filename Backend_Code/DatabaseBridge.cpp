@@ -147,7 +147,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	string accountNo = searchMatch -> getString("AccountNo");
 	
-	BillingInfo billingInfo;
+	BillingInfo *billingInfo;
 	
 	vector<Receivables> receivables;
 	receivables = receivablesByAccountNo(accountNo);
@@ -158,9 +158,9 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	vector<Payments> payments;
 	payments = paymentsByAccountNo(accountNo);
 	
-	billingInfo = new BillingInfo(accountNo, payments, consumption, receivables);
+	billingInfo = new BillingInfo(accountNo, receivables, consumption, payments);
 	
-	return billingInfo;
+	return *billingInfo;
 	
 }
 

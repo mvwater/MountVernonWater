@@ -2,7 +2,7 @@
 //Author: Shane, Michaela, and Sejin
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
-//Description: Billing (Payments, Consumption, Receivables) Information for Account
+//Description: Billing (Receivables, Consumption, Payments) Information for Account
 //Last Changed: 23 April 2020
 
 #include <string>
@@ -13,14 +13,16 @@ using namespace std;
 #ifndef BILLINGINFO_H
 #define BILLINGINFO_H
 
-struct Payments{
+struct Receivables{
 	
-	string Pay_date;
-	string Amount_Paid;
-	string Type;
-	string Reference;
-	string Batch; 
-	string Seq;
+	string Invoice;
+	string Inv_date;
+	string Amount;
+	string To_post;
+	string Amt_paid; 
+	string Paid_date;
+	string Refer;
+	string Balance;
 
 };
 
@@ -37,18 +39,18 @@ struct Consumption{
 
 };
 
-struct Receivables{
+struct Payments{
 	
-	string Invoice;
-	string Inv_date;
-	string Amount;
-	string To_post;
-	string Amt_paid; 
-	string Paid_date;
-	string Refer;
-	string Balance;
+	string Pay_date;
+	string Amount_Paid;
+	string Type;
+	string Reference;
+	string Batch; 
+	string Seq;
 
 };
+
+
 
 
 class BillingInfo {
@@ -65,9 +67,9 @@ class BillingInfo {
 
   private:
 	string accountNo;
-    vector<Receivables>  receivables;
-	vector<Consumption>  consumption;
-	vector<Payments>  payments;
+    vector<Receivables> receivables;
+	vector<Consumption> consumption;
+	vector<Payments> payments;
 };
 
 #endif //BILLINGINFO_H
