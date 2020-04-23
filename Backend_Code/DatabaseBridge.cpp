@@ -152,7 +152,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	vector<Consumption> consumption;
 	consumption = consumptionByAccountNo(accountNo);
 	
-	vector<Payments> = payments;
+	vector<Payments> payments;
 	payments = paymentsByAccountNo(accountNo);
 	
 	billingInfo = new BillingInfo(accountNo, payments, consumption, receivables);
