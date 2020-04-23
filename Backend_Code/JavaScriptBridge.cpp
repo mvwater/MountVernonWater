@@ -14,18 +14,24 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
 	
 	//Adding BillingInfo
 	for (uint i = 0; i<accountInfo.getBillingInfo().receivables_info.size(); i ++){
-		result += accountInfo.getBillingInfo().receivables_info[i];
-		result += sep;
+		for (uint j = 0; i<accountInfo.getBillingInfo().receivables_info[i].size(); j ++){
+			result += accountInfo.getBillingInfo().receivables_info[i][j];
+			result += sep;
+		}
 	}
 	
 	for (uint i = 0; i<accountInfo.getBillingInfo().consumption_info.size(); i ++){
-		result += accountInfo.getBillingInfo().consumption_info[i];
-		result += sep;
+		for (uint j = 0; i<accountInfo.getBillingInfo().consumption_info[i].size(); j ++){
+			result += accountInfo.getBillingInfo().consumption_info[i][j];
+			result += sep;
+		}
 	}
 	
 	for (uint i = 0; i<accountInfo.getBillingInfo().payments_info.size(); i ++){
-		result += accountInfo.getBillingInfo().payments_info[i];
-		result += sep;
+		for (uint j = 0; i<accountInfo.getBillingInfo().payments_info[i].size(); j ++){
+			result += accountInfo.getBillingInfo().payments_info[i][j];
+			result += sep;
+		}
 	}
 		
 	//result += accountInfo.getBillingInfo().receivables_info[i] + sep + accountInfo.getBillingInfo().payments_info + sep + accountInfo.getBillingInfo().consumption_info + sep;
