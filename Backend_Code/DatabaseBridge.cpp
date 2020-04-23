@@ -140,11 +140,13 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
-	//cout << "Creating statement."<< endl;
+	
+	cout << "Creating statement."<< endl;
+	
 	statement->execute(query);
 	
 	ResultSet searchMatch;
-	
+	searchMatches.reset(statement->getResultSet());
 	
 	string accountNo = searchMatch -> getString("AccountNo");
 	
