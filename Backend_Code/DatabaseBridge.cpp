@@ -246,7 +246,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 
 			billinginfo.payments_info = payments_infoByAccountNo(accountNo);
 			cout << "Added payments" << endl;
-			cout << billinginfo.payments_info << endl;
+			//cout << billinginfo.payments_info << endl;
 			billinginfo.receivables_info = receivables_infoByAccountNo(accountNo);
 			cout << "Added receivables" << endl;
 			cout << billinginfo.receivables_info << endl;
@@ -254,7 +254,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 
 			billinginfo.consumption_info = consumption_infoByAccountNo(accountNo);
 			cout << "Added consumption" << endl;
-			cout << billinginfo.consumption_info << endl;
+			//cout << billinginfo.consumption_info << endl;
 
 
 			int numComments = commentsByAccountNo(accountNo).size();
@@ -266,7 +266,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 			
 			comments.comments_list = commentsByAccountNo(accountNo);
 			cout << "Added comments" << endl;
-			cout << comments.comments_list << endl;
+			//cout << comments.comments_list << endl;
 
 			//Use pointer to dynamically create accountSnapshot
 			accountInfo = new AccountInfo(accountNo, status, startDate, resident, landlord, billinginfo, comments);
