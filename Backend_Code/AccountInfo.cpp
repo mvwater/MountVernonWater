@@ -59,6 +59,7 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	cout << "AccountInfo.cpp:Adding receivable info" << endl;
 	
 	for (uint i=0; i<inputbillinginfo.receivables_info.size(); i++){
+		cout << i << endl;
 		billinginfo.receivables_info[i].Invoice = inputbillinginfo.receivables_info[i].Invoice;
 		billinginfo.receivables_info[i].Inv_date = inputbillinginfo.receivables_info[i].Inv_date;
 		billinginfo.receivables_info[i].Amount = inputbillinginfo.receivables_info[i].Amount;
