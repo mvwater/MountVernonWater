@@ -9,6 +9,7 @@
 #include <vector>
 #include "AccountInfo.h"
 #include "AccountSnapshot.h"
+#include "BillingInfo.h"
 
 using std::string;
 
