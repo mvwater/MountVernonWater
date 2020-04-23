@@ -1,11 +1,11 @@
-SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o AccountInfo.o
-SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o
-SEARCH_BILLING = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o BillingInfo.o 
+SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o AccountInfo.o BillingInfo.o
+SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o
+SEARCH_BILLING = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o 
 
 #TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 #TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
-TEMP = SearchAddress.o AccountSnapshot.o SearchAccount.o AccountInfo.o
+TEMP = SearchAddress.o AccountSnapshot.o SearchAccount.o AccountInfo.o BillingInfo.o 
 
 CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
