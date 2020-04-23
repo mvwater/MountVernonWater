@@ -112,10 +112,14 @@ vector<Receivables> DatabaseBridge::receivables_infoByAccountNo(string accountNo
 	do{
 		searchMatches.reset(statement->getResultSet());
 		while (searchMatches->next()){
+			cout << "Starting to grab from database" << endl;
 			Receivables receivablesResult;
 			receivablesResult.Invoice = searchMatches -> getString("Invoice");
+			cout << "Invoice" << endl;
 			receivablesResult.Inv_date = searchMatches -> getString("Inv_date");
+			cout << "Inv_date" << endl;
 			receivablesResult.Amount = searchMatches -> getString("Amount");
+					cout << "Amount" << endl;
 			receivablesResult.To_post = searchMatches -> getString("To_post");
 			receivablesResult.Amt_paid = searchMatches -> getString("Amt_paid");
 			receivablesResult.Paid_date = searchMatches -> getString("Paid_date");
