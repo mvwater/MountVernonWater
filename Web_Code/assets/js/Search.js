@@ -177,19 +177,13 @@ function displayAccountInfo(resultString){
 
         var res_accountNumber = accountData[0];
 
+        // Same style used in each section container
         containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
 
+        // Account Number in separate container
         var result = "<div class='container text-left' style='" + containerStyle + "0px;'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
 
-        //var result = "<div class='container'> <div class='container text-left' style='" + containerStyle + "'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
-
-
-        //"<label>Account Number:&nbsp;</label> <input type='text' id="+res_accountNumber+" value="+res_accountNumber+" name='Account Number' style='width: 100%;margin-bottom: 10px;'> "
-
-
-        //var result = "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;'><div class=row'><div class='col'><p id='res_account_number'><b>Account Number:&nbsp;</b>"+res_accountNumber[i] + "</p>";
-
-
+/*
         var res_accountStatus = accountData[1];
         var res_startDate = accountData[2];
         var res_name = accountData[3];
@@ -218,110 +212,45 @@ function displayAccountInfo(resultString){
         var land_sscan = accountData[25];
         var land_dlnum = accountData[26];
         var land_cellNum = accountData[27];
-        var land_dob = accountData[28];
+        var land_dob = accountData[28];*/
 
         var idNameList = ["account_status","start_date","name","add1","add2","add3","city","state","zip","phoneNum","email","sscan","dlnum","cellNum","dob","land_name","land_add1","land_add2","land_add3","land_city","land_state","land_zip","land_phoneNum","land_email","land_sscan","land_dlnum","land_cellNum","land_dob"];
 
-        // Len 15
         var labelNameList = ["Account Status","Start Date","Name","Address 1","Address 2","Address 3","City","State","ZIP","Phone Number","Email","SScan","DLnum","Cell Phone Number","Date of Birth"];
 
-        // Move style instructions to css
-
+        // General Information Container
         result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
 
-
-
-
-
-// Get this information!
-// Add data member to AccountInfo class
+        // Get this information!
+        // Add data member to AccountInfo class
         var hasComments = 'No';
 
         // EDIT href
         result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
 
 
+        // Loops through resident information
         for (var i = 0; i < 15; i++){
             result += "<p id=res_'" + idNameList[i] + "'><b>"+labelNameList[i]+":&nbsp;</b> " + accountData[i+1] + "</p>";
         }
 
+        // Puts comment button in second column
         result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div>";
 
-        
+        // Billing Information Container
+        result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><div class='col'><h3 style='padding: 30px;'>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
-
-
-
-
-/*
-        for (var i = 0; i < 15; i++){
-            result += "<fieldset><label for='res_"+ idNameList[i] +"'>"+labelNameList[i]+":&nbsp;</label><input type='text' id=res_'"+ idNameList[i] +"' value='" + accountData[i+1]+ "' name='AcctStatus' placeholder='N/A' style='margin-left: 10px;'></fieldset>"
-        }
-
-        result += "</div></div></div></div>";
-
-        */
-
-
-
-        //result += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><div><p><span style='text-decoration: underline;'>General Information</span></p><fieldset><label>Comments?&nbsp;</label><input type='text' id='comments' name='comments' placeholder='N/A'><a id='openComments' href='#' style='margin-left: 10px;'>Open Comments</a></fieldset><fieldset><label for='AcctStatus'>Account Status:&nbsp;</label><input type='text' id='"+res_accountStatus+"' value='"+res_accountStatus+"' name='AcctStatus' placeholder='N/A' style='width: 30px;'></fieldset><fieldset><label for='StartDt'>Start Date:&nbsp;</label><input type='text' id='"+res_startDate+"' value='"+res_startDate+"' name='StartDt' placeholder='N/A' style='width: 100px;'></fieldset><fieldset><label for='Name'>Name:&nbsp;</label><input type='text' id='"+res_name+"' value='"+res_name+"' name='Name' placeholder='N/A' style='width: 80%;'></fieldset><fieldset><label for='Add1'>Address 1:&nbsp;</label><input type='text' id='"+res_add1+"' value='"+res_add1+"' name='Add1' placeholder='N/A' style='width: 70%;'></fieldset><fieldset><label for='Add2'>Address 2:&nbsp;</label><input type='text' id='"+res_add2+"'  value='"+res_add2+"'name='Add2' style='width: 70%;'></fieldset><fieldset><label for='Add3'>Address 3:&nbsp;</label><input type='text' id='"+res_add3+"' value='"+res_add3+"' name='Add3' style='width: 70%;'></fieldset><fieldset><label for='City'>City:&nbsp;</label><input type='text' id='"+res_city+"' value='"+res_city+"' name='City' placeholder='N/A' style='width: 50%;'></fieldset><fieldset><label for='State'>State:&nbsp;</label><input type='text' id='"+res_state+"' value='"+res_state+"' name='State' placeholder='N/A' style='width: 60px;'></fieldset><fieldset><label for='Zip'>ZIP:&nbsp;</label><input type='text' id='"+res_zip+"' value='"+res_zip+"' name='Zip' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='PhoneNum'>Phone Number:&nbsp;</label><input type='text' id='"+res_phoneNum+"' value='"+res_phoneNum+"' name='PhoneNum' placeholder='N/A' style='width: 150px;'></fieldset><fieldset><label for='Email'>Email:&nbsp;</label><input type='text' id='"+res_email+"'   value='"+res_email+"' name='Email' placeholder='N/A' style='width: 250px;'></fieldset><fieldset><label for='SScan'>SScan:&nbsp;</label><input type='text' id='"+res_sscan+"' value='"+res_sscan+"' name='SScan' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DLnum'>DLnum:&nbsp;</label><input type='text' id='"+res_dlnum+"' value='"+res_dlnum+"' name='DLnum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='CellNum'>Cell phone number:&nbsp;</label><input type='text' id='"+res_cellNum+"'  value='"+res_cellNum+"'  name='CellNum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DoB'>Date of Birth:&nbsp;</label><input type='text' id='"+res_dob+"'  value='"+res_dob+"' name='DoB' placeholder='N/A' style='width: 90px;'></fieldset></div></div></div></div>";
-
-        //result += "<div class='container text-left' style='" + containerStyle + "'><div class='row'><div class='col'><p><span style='text-decoration: underline;'><h3>General Information</h3></span></p>";
-
-
-        result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><div class='col'><h3 style='padding: 20px;'>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
-
-
-        //result+= "<div class='container'><div class='container text-left'style='" + containerStyle + "'><div class='><div class='col'><h3>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
-
-/*
-        var idNameList = ["account_status","start_date","name","add1","add2","add3","city","state","zip","phoneNum","email","sscan","dlnum","cellNum","dob","land_name","land_add1","land_add2","land_add3","land_city","land_state","land_zip","land_phoneNum","land_email","land_sscan","land_dlnum","land_cellNum","land_dob"];
-
-        // Len 15
-        var labelNameList = ["Account Status","Start Date","Name","Address 1","Address 2","Address 3","City","State","ZIP","Phone Number","Email","SScan","DLnum","Cell Phone Number","Date of Birth"];
-
-
-*/
-
-
-
-
+        // Landlord Information Container
         result += "<div class='container text-left' style='" + containerStyle + "20px;'> <div class='row'> <div class='col'> <h3 style='padding: 20px;'>Landlord Information</h3> ";
 
-/*
-
-        var land_name = accountData[16];
-        var land_add1 = accountData[17];
-        var land_add2 = accountData[18];
-        var land_add3 = accountData[19];
-        var land_city = accountData[20];
-        var land_state = accountData[21];
-        var land_zip = accountData[22];
-        var land_phoneNum = accountData[23];
-        var land_email = accountData[24];
-        var land_sscan = accountData[25];
-        var land_dlnum = accountData[26];
-        var land_cellNum = accountData[27];
-        var land_dob = accountData[28];*/
-
-
-
-
+        // Iterates through landlord data
         for (var i = 2; i < 15; i++){
             result += "<p id=land_'" + idNameList[i] + "'><b>"+labelNameList[i]+":&nbsp;</b> " + accountData[i+14] + "</p>";
         }
 
-
-
-        //result += "<fieldset><label for='Name'>Name:&nbsp;</label><input type='text' id='"+land_name+"' value='"+land_name+"' name='Name' placeholder='N/A' style='width: 80%;'></fieldset><fieldset><label for='Add1'>Address 1:&nbsp;</label><input type='text' id='"+land_add1+"'  value='"+land_add1+"' name='Add1' placeholder='N/A' style='width: 70%;'></fieldset><fieldset><label for='Add2'>Address 2:&nbsp;</label><input type='text' id='"+land_add2+"' value='"+land_add2+"' name='Add2' style='width: 70%;'></fieldset><fieldset><label for='Add3'>Address 3:&nbsp;</label><input type='text' id='"+land_add3+"' value='"+land_add3+"' name='Add3' style='width: 70%;'></fieldset><fieldset><label for='City'>City:&nbsp;</label><input type='text' id='"+land_city+"' value='"+land_city+"' name='City' placeholder='N/A' style='width: 50%;'></fieldset><fieldset><label for='State'>State:&nbsp;</label><input type='text' id='"+land_state+"' value='"+land_state+"' name='State' placeholder='N/A' style='width: 60px;'></fieldset><fieldset><label for='Zip'>ZIP:&nbsp;</label><input type='text' id='"+land_zip+"' value='"+land_zip+"' name='Zip' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='PhoneNum'>Phone Number:&nbsp;</label><input type='text' id='"+land_phoneNum+"' value='"+land_phoneNum+"' name='PhoneNum' placeholder='N/A' style='width: 150px;'></fieldset><fieldset><label for='Email'>Email:&nbsp;</label><input type='text' id='"+land_email+"' value='"+land_email+"' name='Email' placeholder='N/A' style='width: 250px;'></fieldset><fieldset><label for='SScan'>SScan:&nbsp;</label><input type='text' id='"+land_sscan+"' value='"+land_sscan+"' name='SScan' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DLnum'>DLnum:&nbsp;</label><input type='text' id='"+land_dlnum+"' value='"+land_dlnum+"' name='DLnum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='CellNum'>Cell phone number:&nbsp;</label><input type='text' id='"+land_cellNum+"' value='"+land_cellNum+"' name='CellNum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DoB'>Date of Birth:&nbsp;</label><input type='text' id='"+land_dob+"' value='"+land_dob+"' name='DoB' placeholder='N/A' style='width: 90px;'></fieldset></div></div></div>";
-
-
         result += "</div></div></div>";
 
-
-
-        //result += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><div><p><span style='text-decoration: underline;'>Landlord Information</span></p><fieldset><label for='Name'>Name:&nbsp;</label><input type='text' id='"+land_name+"' value='"+land_name+"' name='Name' placeholder='N/A' style='width: 80%;'></fieldset><fieldset><label for='Add1'>Address 1:&nbsp;</label><input type='text' id='"+land_add1+"'  value='"+land_add1+"' name='Add1' placeholder='N/A' style='width: 70%;'></fieldset><fieldset><label for='Add2'>Address 2:&nbsp;</label><input type='text' id='"+land_add2+"' value='"+land_add2+"' name='Add2' style='width: 70%;'></fieldset><fieldset><label for='Add3'>Address 3:&nbsp;</label><input type='text' id='"+land_add3+"' value='"+land_add3+"' name='Add3' style='width: 70%;'></fieldset><fieldset><label for='City'>City:&nbsp;</label><input type='text' id='"+land_city+"' value='"+land_city+"' name='City' placeholder='N/A' style='width: 50%;'></fieldset><fieldset><label for='State'>State:&nbsp;</label><input type='text' id='"+land_state+"' value='"+land_state+"' name='State' placeholder='N/A' style='width: 60px;'></fieldset><fieldset><label for='Zip'>ZIP:&nbsp;</label><input type='text' id='"+land_zip+"' value='"+land_zip+"' name='Zip' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='PhoneNum'>Phone Number:&nbsp;</label><input type='text' id='"+land_phoneNum+"' value='"+land_phoneNum+"' name='PhoneNum' placeholder='N/A' style='width: 150px;'></fieldset><fieldset><label for='Email'>Email:&nbsp;</label><input type='text' id='"+land_email+"' value='"+land_email+"' name='Email' placeholder='N/A' style='width: 250px;'></fieldset><fieldset><label for='SScan'>SScan:&nbsp;</label><input type='text' id='"+land_sscan+"' value='"+land_sscan+"' name='SScan' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DLnum'>DLnum:&nbsp;</label><input type='text' id='"+land_dlnum+"' value='"+land_dlnum+"' name='DLnum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='CellNum'>Cell phone number:&nbsp;</label><input type='text' id='"+land_cellNum+"' value='"+land_cellNum+"' name='CellNum' placeholder='N/A' style='width: 90px;'></fieldset><fieldset><label for='DoB'>Date of Birth:&nbsp;</label><input type='text' id='"+land_dob+"' value='"+land_dob+"' name='DoB' placeholder='N/A' style='width: 90px;'></fieldset></div></div></div></div>";
-
     }
+
   return result;
 }
