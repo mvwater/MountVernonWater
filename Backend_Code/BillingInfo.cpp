@@ -11,6 +11,7 @@
 using std::cout;
 
 BillingInfo::BillingInfo(){
+	accountNo + "";
 	vector<Receivables> blank_receivables;
 	receivables = blank_receivables;
 	
