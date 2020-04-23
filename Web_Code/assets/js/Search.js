@@ -221,9 +221,11 @@ function displayAccountInfo(resultString){
         // General Information Container
         result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
 
-        // Get this information!
         // Add data member to AccountInfo class
         var hasComments = 'No';
+        if (accountData[29] == "T"){
+            hasComments = 'Yes';
+        }
 
         // EDIT href
         result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
@@ -239,17 +241,10 @@ function displayAccountInfo(resultString){
 
         // Billing Information Container
 
-
-        "<div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'>";
-
         result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
-        //result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><div class='col'><h3 style='padding: 30px;'>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
-
         // Landlord Information Container
-        result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'><h3 style='padding: 20px;'>LandlordI Information</h3></div><div class='row'> <div class='col'>";
-
-        //result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'> <div class='col'> <h3 style='padding: 20px;'>Landlord Information</h3> ";
+        result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'><h3 style='padding: 20px;'>Landlord Information</h3></div><div class='row'> <div class='col'>";
 
         // Iterates through landlord data
         for (var i = 2; i < 15; i++){
