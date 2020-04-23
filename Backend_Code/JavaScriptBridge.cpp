@@ -27,7 +27,7 @@ string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 	}
 	
 	for (uint i = 0; i<billingInfo.getConsumption().size(); i ++){
-		result += billingInfo.getConsconsumption()[i].Bill_date + sep + billingInfo.getConsconsumption()[i].Beg_read + sep + billingInfo.getConsconsumption()[i].End_read + sep + billingInfo.getConsconsumption()[i].Read_date + sep + billingInfo.getConsconsumption()[i].Service + sep + billingInfo.getConsconsumption()[i].Cons + sep + billingInfo.getConsconsumption()[i].Amount + sep + billingInfo.getConsconsumption()[i].Penalty + sep;
+		result += billingInfo.getConsumption()[i].Bill_date + sep + billingInfo.getConsumption()[i].Beg_read + sep + billingInfo.getConsumption()[i].End_read + sep + billingInfo.getConsumption()[i].Read_date + sep + billingInfo.getConsumption()[i].Service + sep + billingInfo.getConsumption()[i].Cons + sep + billingInfo.getConsumption()[i].Amount + sep + billingInfo.getConsumption()[i].Penalty + sep;
 	}
 	
 	for (uint i = 0; i<billingInfo.getPayments().size(); i ++){
@@ -83,7 +83,7 @@ string JavaScriptBridge::billingInfoToStr(BillingInfo searchResult){
 	billingInfo = searchResult;
   	string jsMessage = "";
 	
-	jMessage += printBillingInfo(billingInfo);
+	jsMessage += printBillingInfo(billingInfo);
 	
 	return jsMessage;
 }
@@ -107,7 +107,7 @@ void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResult
 }
 
 void JavaScriptBridge::sendBillingInfo(BillingInfo searchResult){
-	sendMessage(accountBillingToStr(searchResult));
+	sendMessage(billingInfoToStr(searchResult));
 }
 
 void JavaScriptBridge::sendMessage(string message){
