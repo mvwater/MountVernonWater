@@ -181,7 +181,7 @@ function displayAccountInfo(resultString){
         containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
 
         // Account Number in separate container
-        var result = "<div class='container text-left' style='background-color: #CCCCFF;padding-bottom: 5px;padding-top: 10px;margin-top: 15px;margin-bottom: 0px;'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
+        var result = "<div class='container text-left' style='background-color: #CCCCFF;padding-bottom: 5px;padding-top: 15px;margin-top: 15px;margin-bottom: 0px;'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
 
 /*
         var res_accountStatus = accountData[1];
