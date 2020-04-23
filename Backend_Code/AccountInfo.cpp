@@ -102,7 +102,7 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	
 	comments.hasComments = inputcomments.hasComments;
 	
-	
+	cout << "AccountInfo.cpp: Done with constructor" << endl;
     
 }
 
