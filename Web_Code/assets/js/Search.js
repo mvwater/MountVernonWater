@@ -247,7 +247,7 @@ function displayAccountInfo(resultString){
 
 
         // EDIT href
-        result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + " <button id='view_comments' class='btn btn-secondary' href='#' type='button' style='padding-left: 100px;'>View Comments</button>";
+        result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
 
         //<a id='viewComments' href='#' style='margin-left: 10px;'>View Comments</a>
 
