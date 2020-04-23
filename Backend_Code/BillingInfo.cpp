@@ -9,6 +9,7 @@
 #include <iostream>
 
 using std::cout;
+using std::vector;
 
 BillingInfo::BillingInfo(){
 	accountNo + "";
