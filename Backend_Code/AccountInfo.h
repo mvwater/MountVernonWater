@@ -49,8 +49,8 @@ class AccountInfo {
 	bool getHasComments();   
 
   private:
-    	string accountNo;
-    	string status;
+    string accountNo;
+    string status;
 	string startDate;
 	Person resident;
 	Person landlord;
