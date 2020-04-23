@@ -26,7 +26,7 @@ int main(){
 	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
 
 	JavaScriptBridge javaScriptBridge;
-	#cout << javaScriptBridge.accountInfosToStr(searchResults) << endl;
+	//cout << javaScriptBridge.accountInfosToStr(searchResults) << endl;
 	
 	cout << javaScriptBridge.billingInfoToStr(searchResult) << endl;
 	return 0;
