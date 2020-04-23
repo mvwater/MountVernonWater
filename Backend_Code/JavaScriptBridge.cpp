@@ -22,16 +22,16 @@ string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 	string result, sep("*");
 	
 	//Adding BillingInfo
-	for (uint i = 0; i<billingInfo.receivables.size(); i ++){
-		result += billingInfo.receivables[i].Invoice + sep + billingInfo.receivables[i].Inv_date + sep + billingInfo.receivables[i].Amount + sep + billingInfo.receivables[i].To_post + sep + billingInfo.receivables[i].Amt_paid + sep + billingInfo.receivables[i].Paid_date + sep + billingInfo.receivables[i].Refer + sep + billingInfo.receivables[i].Balance + sep;
+	for (uint i = 0; i<billingInfo.getReceivables().size(); i ++){
+		result += billingInfo.getReceivables().receivables[i].Invoice + sep + billingInfo.getReceivables().receivables[i].Inv_date + sep + billingInfo.getReceivables().receivables[i].Amount + sep + billingInfo.getReceivables().receivables[i].To_post + sep + billingInfo.getReceivables().receivables[i].Amt_paid + sep + billingInfo.getReceivables().receivables[i].Paid_date + sep + billingInfo.getReceivables().receivables[i].Refer + sep + billingInfo.getReceivables().receivables[i].Balance + sep;
 	}
 	
-	for (uint i = 0; i<billingInfo.consumption.size(); i ++){
-		result += billingInfo.consumption[i].Bill_date + sep + billingInfo.consumption[i].Beg_read + sep + billingInfo.consumption[i].End_read + sep + billingInfo.consumption[i].Read_date + sep + billingInfo.consumption[i].Service + sep + billingInfo.consumption[i].Cons + sep + billingInfo.consumption[i].Amount + sep + billingInfo.consumption[i].Penalty + sep;
+	for (uint i = 0; i<billingInfo.getConsumption().size(); i ++){
+		result += billingInfo.getConsconsumption().consumption[i].Bill_date + sep + billingInfo.getConsconsumption().consumption[i].Beg_read + sep + billingInfo.getConsconsumption().consumption[i].End_read + sep + billingInfo.getConsconsumption().consumption[i].Read_date + sep + billingInfo.getConsconsumption().consumption[i].Service + sep + billingInfo.getConsconsumption().consumption[i].Cons + sep + billingInfo.getConsconsumption().consumption[i].Amount + sep + billingInfo.getConsconsumption().consumption[i].Penalty + sep;
 	}
 	
-	for (uint i = 0; i<billingInfo.payments.size(); i ++){
-		result += billingInfo.payments[i].Pay_date + sep + billingInfo.payments[i].Amount_Paid + sep + billingInfo.payments[i].Type + sep + billingInfo.payments[i].Reference + sep + billingInfo.payments[i].Batch + sep + billingInfo.payments[i].Seq + sep;
+	for (uint i = 0; i<billingInfo.getPayments().size(); i ++){
+		result += billingInfo.getPayments().payments[i].Pay_date + sep + billingInfo.getPayments().payments[i].Amount_Paid + sep + billingInfo.getPayments().payments[i].Type + sep + billingInfo.getPayments().payments[i].Reference + sep + billingInfo.getPayments().payments[i].Batch + sep + billingInfo.getPayments().payments[i].Seq + sep;
 	}
 
 
