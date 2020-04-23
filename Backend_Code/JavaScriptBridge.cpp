@@ -13,7 +13,19 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
 	result += accountInfo.getAccountNo() + sep + accountInfo.getStatus()+ sep + accountInfo.getstartDate() + sep + accountInfo.getResident().name + sep + accountInfo.getResident().address.add1 + sep + accountInfo.getResident().address.add2 + sep + accountInfo.getResident().address.add3 + sep + accountInfo.getResident().address.city + sep + accountInfo.getResident().address.state + sep + accountInfo.getResident().address.zip + sep + accountInfo.getResident().phoneNum + sep + accountInfo.getResident().email + sep + accountInfo.getResident().SScan + sep + accountInfo.getResident().DLNum + sep + accountInfo.getResident().cellNum + sep + accountInfo.getResident().dob + sep + accountInfo.getLandlord().name + sep + accountInfo.getLandlord().address.add1 + sep + accountInfo.getLandlord().address.add2 + sep + accountInfo.getLandlord().address.add3 + sep + accountInfo.getLandlord().address.city + sep + accountInfo.getLandlord().address.state + sep + accountInfo.getLandlord().address.zip + sep + accountInfo.getLandlord().phoneNum + sep + accountInfo.getLandlord().email + sep + accountInfo.getLandlord().SScan + sep + accountInfo.getLandlord().DLNum + sep + accountInfo.getLandlord().cellNum + sep + accountInfo.getLandlord().dob + sep;
 	
 	//Adding BillingInfo
-	result += accountInfo.getBillingInfo().receivables_info + sep + accountInfo.getBillingInfo().payments_info + sep + accountInfo.getBillingInfo().consumption_info + sep;
+	for (uint i = 0; i<accountInfo.getBillingInfo().receivables_info.size(); i ++){
+		result += accountInfo.getBillingInfo().receivables_info[i] + sep;
+	}
+	
+	for (uint i = 0; i<accountInfo.getBillingInfo().consumption_info.size(); i ++){
+		result += accountInfo.getBillingInfo().consumption_info[i] + sep;
+	}
+	
+	for (uint i = 0; i<accountInfo.getBillingInfo().payments_info.size(); i ++){
+		result += accountInfo.getBillingInfo().payments_info[i] + sep;
+	}
+		
+	//result += accountInfo.getBillingInfo().receivables_info[i] + sep + accountInfo.getBillingInfo().payments_info + sep + accountInfo.getBillingInfo().consumption_info + sep;
 
 	//if (accountInfo.getHasComments()){
 	//	result += "T" + sep;
