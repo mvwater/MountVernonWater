@@ -12,7 +12,7 @@ using std::cout;
 using std::vector;
 
 BillingInfo::BillingInfo(){
-	accountNo + "";
+	accountNo = "";
 	vector<Receivables> receivables;
 	
 	vector<Consumption> consumption;
