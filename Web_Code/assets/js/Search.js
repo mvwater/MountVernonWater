@@ -274,24 +274,41 @@ function displayAccountInfo(resultString){
 
         //result+= "<div class='container'><div class='container text-left'style='" + containerStyle + "'><div class='><div class='col'><h3>Billing Information</h3><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
-
+/*
         var idNameList = ["account_status","start_date","name","add1","add2","add3","city","state","zip","phoneNum","email","sscan","dlnum","cellNum","dob","land_name","land_add1","land_add2","land_add3","land_city","land_state","land_zip","land_phoneNum","land_email","land_sscan","land_dlnum","land_cellNum","land_dob"];
 
         // Len 15
         var labelNameList = ["Account Status","Start Date","Name","Address 1","Address 2","Address 3","City","State","ZIP","Phone Number","Email","SScan","DLnum","Cell Phone Number","Date of Birth"];
 
 
-
+*/
 
 
 
 
         result += "<div class='container text-left' style='" + containerStyle + "20px;'> <div class='row'> <div class='col'> <h3 style='padding: 20px;'>Landlord Information</h3> ";
 
+/*
+
+        var land_name = accountData[16];
+        var land_add1 = accountData[17];
+        var land_add2 = accountData[18];
+        var land_add3 = accountData[19];
+        var land_city = accountData[20];
+        var land_state = accountData[21];
+        var land_zip = accountData[22];
+        var land_phoneNum = accountData[23];
+        var land_email = accountData[24];
+        var land_sscan = accountData[25];
+        var land_dlnum = accountData[26];
+        var land_cellNum = accountData[27];
+        var land_dob = accountData[28];*/
+
+
 
 
         for (var i = 2; i < 15; i++){
-            result += "<p id=land_'" + idNameList[i] + "'><b>"+labelNameList[i]+":&nbsp;</b> " + accountData[i+16] + "</p>";
+            result += "<p id=land_'" + idNameList[i] + "'><b>"+labelNameList[i]+":&nbsp;</b> " + accountData[i+14] + "</p>";
         }
 
 
