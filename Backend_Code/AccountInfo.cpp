@@ -99,6 +99,7 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 		comments.comments_list[i] = inputcomments.comments_list[i];
 		
 	}
+	cout << "AccountInfo.cpp: initializing hasComments" << endl;
 	
 	comments.hasComments = inputcomments.hasComments;
 	
