@@ -60,9 +60,9 @@ class BillingInfo {
 	BillingInfo(string input_accountNo, vector<Receivables> input_receivables, vector<Consumption> input_consumption, vector<Payments> input_payments);
 	
 	string getAccountNo();
-	vector<Receivables> getReceivables;
-	vector<Consumption> getConsumption;
-	vector<Payments> getPayments;
+	vector<Receivables> getReceivables();
+	vector<Consumption> getConsumption();
+	vector<Payments> getPayments();
 	
 
   private:
