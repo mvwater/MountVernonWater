@@ -16,7 +16,7 @@ AccountInfo::AccountInfo(){
 	startDate = "";
 	Person resident{"","","","","","","",""};
 	Person landlord{"","","","","","","",""};
-	BillingInfo billinginfo{{"","","","","","","",""},{"","","","","","","",""},{"","","","","",""}}
+	BillingInfo billinginfo{{"","","","","","","",""},{"","","","","","","",""},{"","","","","",""}};
 	//Comments comments;
 
 }
