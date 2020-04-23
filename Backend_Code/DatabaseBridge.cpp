@@ -142,7 +142,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	//cout << "Creating statement."<< endl;
 	statement->execute(query);
 	
-	Result searchMatch;
+	ResultSet searchMatch;
 	
 	
 	string accountNo = searchMatch -> getString("AccountNo");
