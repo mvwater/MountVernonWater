@@ -63,7 +63,7 @@ class DatabaseBridge{
 	vector<Receivables> receivables_infoByAccountNo(string accountNo);
 	// Returns vector of receivable structs after searching receivables database by accountNo
 
-	vector<AccountInfo> searchByAccount(string inputAccount);
+	vector<AccountInfo> searchByAccount2(string inputAccount);
     // Returns vector of AccountInfo objects after searching account database by accountNo
 
 

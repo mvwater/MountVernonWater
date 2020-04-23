@@ -187,7 +187,7 @@ vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
 }
 
 
-vector<AccountInfo> DatabaseBridge::searchByAccount(string inputAccountNo){
+vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 	//cout << "About to create query."<< endl;
 	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
 	Connection con = connectToDatabase();
