@@ -249,7 +249,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 			//cout << billinginfo.payments_info << endl;
 			billinginfo.receivables_info = receivables_infoByAccountNo(accountNo);
 			cout << "Added receivables" << endl;
-			cout << billinginfo.receivables_info << endl;
+			//cout << billinginfo.receivables_info << endl;
 
 
 			billinginfo.consumption_info = consumption_infoByAccountNo(accountNo);
