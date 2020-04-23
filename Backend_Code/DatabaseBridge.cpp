@@ -209,7 +209,7 @@ vector<AccountInfo> DatabaseBridge::searchByAccount2(string inputAccountNo){
 			Person resident;
 			Person landlord;
 			BillingInfo billinginfo;
-			Comments comments;
+			//Comments comments;
 
 	    	resident.address.add1 += searchMatches -> getString("TAdd1");
 	    	resident.address.add2 += searchMatches -> getString("TAdd2");
