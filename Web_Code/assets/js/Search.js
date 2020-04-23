@@ -221,7 +221,6 @@ function displayAccountInfo(resultString){
         // General Information Container
         result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
 
-        // Add data member to AccountInfo class
         var hasComments = 'No';
         if (accountData[29] == "T"){
             hasComments = 'Yes';
@@ -229,7 +228,6 @@ function displayAccountInfo(resultString){
 
         // EDIT href
         result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
-
 
         // Loops through resident information
         for (var i = 0; i < 15; i++){
@@ -240,7 +238,6 @@ function displayAccountInfo(resultString){
         result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div>";
 
         // Billing Information Container
-
         result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
         // Landlord Information Container
