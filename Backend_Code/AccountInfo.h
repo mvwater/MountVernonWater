@@ -1,11 +1,12 @@
-//File Name: AccountSnapshot.cpp
+//File Name: AccountInfo.h
 //Author: Shane, Michaela, and Sejin
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
-//Description: Snapshot of an account
-//Last Changed: 19 April 2020
+//Description: Full Account Information
+//Last Changed: 23 April 2020
 
 #include <string>
+#include <vector>
 #include "AccountSnapshot.h"
 
 using namespace std;
@@ -36,17 +37,19 @@ struct Person {
 	string dob;
 };
 
+
+
 class AccountInfo {
   public:
   
 	AccountInfo();
-	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, bool inputHasComments);
+	AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord);
 	string getAccountNo();
 	string getStatus();
 	string getstartDate();
 	Person getResident();
 	Person getLandlord();
-	bool getHasComments();   
+
 
   private:
     string accountNo;
@@ -54,7 +57,7 @@ class AccountInfo {
 	string startDate;
 	Person resident;
 	Person landlord;
-	bool hasComments;
+
 };
 
 #endif //ACCOUNTINFO_H

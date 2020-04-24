@@ -1,9 +1,9 @@
-//File Name: AccountSnapshot.cpp
+//File Name: AccountInfo.cpp
 //Author: Shane, Michaela, and Sejin
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
-//Description: Snapshot of an account
-//Last Changed: 7 April 2020
+//Description: Full Account Information
+//Last Changed: 23 April 2020
 
 #include "AccountSnapshot.h"
 #include "AccountInfo.h"
@@ -17,11 +17,10 @@ AccountInfo::AccountInfo(){
 	startDate = "";
 	Person resident{"","","","","","","",""};
 	Person landlord{"","","","","","","",""};
-	hasComments = 0;
 
 }
 
-AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord, bool inputHasComments){
+AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string inputstartDate, Person inputresident, Person inputlandlord){
     accountNo = inputAccountNo;
     status = inputStatus;
     startDate = inputstartDate;
@@ -56,7 +55,6 @@ AccountInfo::AccountInfo(string inputAccountNo, string inputStatus, string input
 	landlord.address.state = inputlandlord.address.state;
 	landlord.address.zip = inputlandlord.address.zip;
 	
-	hasComments = inputHasComments;
     
 }
 
@@ -85,9 +83,4 @@ Person AccountInfo::getLandlord(){
 	return landlord;
 }
 
-
-bool AccountInfo::getHasComments(){
-	
-	return hasComments;
-}
 

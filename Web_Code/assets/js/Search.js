@@ -27,7 +27,11 @@ function searchDatabase(){
         if (searchType == "AccountNo"){
             console.log("Searching by account.");
             console.log("Sending " + userInput);
+<<<<<<< HEAD
+            console.log("/cgi-bin/"+ajaxUser+"_searchByAccount2.cgi?accountNo=" + userInput);
+=======
             console.log("/cgi-bin/"+ajaxUser+"_searchByAccount.cgi?accountNo=" + userInput);
+>>>>>>> master
             openAccount(userInput);
         } else { // searchType == "Address"
             console.log("Searching by address.");
@@ -76,7 +80,11 @@ function processAddressMatches(results){
 function openAccount(accountNo){
     console.log("openAccount function blank for now.");
     $.ajax({
+<<<<<<< HEAD
+        url: '/cgi-bin/'+ajaxUser+'_searchByAccount2.cgi?accountNo=' + accountNo, // Var not created yet
+=======
         url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + accountNo, // Var not created yet
+>>>>>>> master
         dataType: 'text', // maybe JSON
         success: processAccount,
         error: function(){alert("Error: Could not search by account number.");}
@@ -174,6 +182,7 @@ function displayAccountInfo(resultString){
     {
         console.log("We have results.");
         console.log(listLength);
+<<<<<<< HEAD
 
         var res_accountNumber = accountData[0];
 
@@ -226,6 +235,60 @@ function displayAccountInfo(resultString){
             hasComments = 'Yes';
         }
 
+=======
+
+        var res_accountNumber = accountData[0];
+
+        // Same style used in each section container
+        containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
+
+        // Account Number in separate container
+        var result = "<div class='container text-left' style='background-color: #CCCCFF;padding-bottom: 5px;padding-top: 15px;margin-top: 15px;margin-bottom: 0px;'> <div class='row'><div class='col'> <p id='res_account_number'><b>Account Number:&nbsp;</b>" + res_accountNumber + "</p> </div></div></div>";
+
+/*
+        var res_accountStatus = accountData[1];
+        var res_startDate = accountData[2];
+        var res_name = accountData[3];
+        var res_add1 = accountData[4];
+        var res_add2 = accountData[5];
+        var res_add3 = accountData[6];
+        var res_city = accountData[7];
+        var res_state = accountData[8];
+        var res_zip = accountData[9];
+        var res_phoneNum = accountData[10];
+        var res_email = accountData[11];
+        var res_sscan = accountData[12];
+        var res_dlnum = accountData[13];
+        var res_cellNum = accountData[14];
+        var res_dob = accountData[15];
+
+        var land_name = accountData[16];
+        var land_add1 = accountData[17];
+        var land_add2 = accountData[18];
+        var land_add3 = accountData[19];
+        var land_city = accountData[20];
+        var land_state = accountData[21];
+        var land_zip = accountData[22];
+        var land_phoneNum = accountData[23];
+        var land_email = accountData[24];
+        var land_sscan = accountData[25];
+        var land_dlnum = accountData[26];
+        var land_cellNum = accountData[27];
+        var land_dob = accountData[28];*/
+
+        var idNameList = ["account_status","start_date","name","add1","add2","add3","city","state","zip","phoneNum","email","sscan","dlnum","cellNum","dob","land_name","land_add1","land_add2","land_add3","land_city","land_state","land_zip","land_phoneNum","land_email","land_sscan","land_dlnum","land_cellNum","land_dob"];
+
+        var labelNameList = ["Account Status","Start Date","Name","Address 1","Address 2","Address 3","City","State","ZIP","Phone Number","Email","SScan","DLnum","Cell Phone Number","Date of Birth"];
+
+        // General Information Container
+        result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
+
+        var hasComments = 'No';
+        if (accountData[29] == "T"){
+            hasComments = 'Yes';
+        }
+
+>>>>>>> master
         // EDIT href
         result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
 
@@ -252,4 +315,8 @@ function displayAccountInfo(resultString){
     }
 
   return result;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

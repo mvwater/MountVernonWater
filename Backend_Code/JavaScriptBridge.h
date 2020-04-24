@@ -1,8 +1,17 @@
+//File Name: JavaScript.h
+//Author: Shane, Michaela, and Sejin
+//Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
+//Assignment: Mount Vernon City Water Database
+//Description: Header file for Javascript functions
+//Last Changed: 24 April 2020
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include "AccountInfo.h"
+#include "BillingInfo.h"
 #include "AccountSnapshot.h"
+#include "CommentInfo.h"
 
 #include "cgicc/Cgicc.h"
 #include "cgicc/HTTPHTMLHeader.h"
@@ -16,6 +25,10 @@ using namespace cgicc;
 class JavaScriptBridge{
   public:
     string printAccountInfo(AccountInfo accountInfo);
+	
+	string printBillingInfo(BillingInfo billingInfo);
+	
+	string printCommentInfo(CommentInfo commentInfo);
 
     string printAccountSnapshot(AccountSnapshot accountSnapshot);
 
@@ -27,13 +40,23 @@ class JavaScriptBridge{
 
     string accountInfosToStr(vector<AccountInfo> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
-
+	
+	string billingInfoToStr(BillingInfo searchResult);
+	// Returns string of BillingInfo that will be sent to JavaScript
+	
+	string commentInfoToStr(CommentInfo searchResult);
+ 
     string accountSnapshotsToStr(vector<AccountSnapshot> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
 
     void sendAccountInfos(vector<AccountInfo> searchResults);
+	
+	void sendBillingInfo(BillingInfo searchResult);
     //Preconditions:
     //Postconditions:
+	
+	void sendCommentInfo(CommentInfo searchResult);
+	
     void sendAccountSnapshots(vector<AccountSnapshot> searchResults);
     //Preconditions:
     //Postconditions:

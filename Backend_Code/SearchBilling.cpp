@@ -4,7 +4,8 @@
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
 #include "AccountInfo.h"
-#include "AccountSnapshot.h"
+#include "BillingInfo.h"
+
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
 #include "cgicc/HTTPHTMLHeader.h"
@@ -23,10 +24,10 @@ int main(){
   string searchVal = javaScriptBridge.getElement("accountNo", cgi);
   DatabaseBridge databaseBridge;
 
-  // Receive vector of AccountSnapshot objects from database
-  vector<AccountInfo> searchResults = databaseBridge.searchByAccount2(searchVal);
+  // Receive a BillingInfo object from from database
+  BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
 
   // Send search results to JavaScript 
-  javaScriptBridge.sendAccountInfos(searchResults);
+  javaScriptBridge.sendBillingInfo(searchResult);
   return 0;
 }
