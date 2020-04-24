@@ -147,17 +147,18 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	ResultSet searchMatches;
 	cout << "Declaring BillingInfo Object"<< endl;
-	BillingInfo billingInfo;
+	BillingInfo *billingInfo;
 	searchMatches.reset(statement->getResultSet());
 	cout << "Starting loop"<< endl;
-
+	
+	vector<BillingInfo> billingResultList;
 	
 	do {
 	    searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
-			string accountNo = searchMatches -> getString("AccountNo");
-		
 			
+			string accountNo = searchMatches -> getString("AccountNo");
+			cout << "Account No grabbed" << endl;
 		
 			cout << "Generating Receivables" << endl;
 			vector<Receivables> receivables;
@@ -173,13 +174,14 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 			
 			cout << "Prepping BillingInfo object creation" << endl;
 			
-			billingInfo = BillingInfo(accountNo, receivables, consumption, payments);
-			
+			billingInfo = new BillingInfo(accountNo, receivables, consumption, payments);
+			billingResultList.push_back(*(billingInfo));
+			delete billingInfo;
 			cout << "Done" << endl;
 		}	
   	} while (statement->getMoreResults());		
 	
-	return billingInfo;
+	return billingResultList[0];
 	
 }
 
