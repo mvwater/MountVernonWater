@@ -3,13 +3,14 @@
 //Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, canfield1@kenyon.edu
 //Project: Mount Vernon Water
 //Description: Header file for Database Communication
-//Last Changed: 23 April 2020
+//Last Changed: 24 April 2020
 
 #include <string>
 #include <vector>
 #include "AccountInfo.h"
 #include "AccountSnapshot.h"
 #include "BillingInfo.h"
+#include "CommentInfo.h"
 
 using std::string;
 
@@ -65,7 +66,11 @@ class DatabaseBridge{
 	// Returns vector of receivable structs after searching receivables database by accountNo
 
 	BillingInfo billingInfoByAccountNo(string inputAccountNo);
-
+	// Returns a BillingInfo object after searching by accountNo
+	
+	CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo)
+	// Returns a CommentInfo object after searching by accountNo
+	
 	vector<AccountInfo> searchByAccount2(string inputAccountNo);
     // Returns vector of AccountInfo objects after searching account database by accountNo
 

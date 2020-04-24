@@ -1,9 +1,9 @@
-//File Name: AccountSnapshot.cpp
+//File Name: BillingInfo.h
 //Author: Shane, Michaela, and Sejin
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
-//Description: Billing (Receivables, Consumption, Payments) Information for Account
-//Last Changed: 23 April 2020
+//Description: Header file for Account Billing Information
+//Last Changed: 24 April 2020
 
 #include <string>
 #include <vector>

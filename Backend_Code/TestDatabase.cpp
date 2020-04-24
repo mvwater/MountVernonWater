@@ -6,6 +6,7 @@
 #include "AccountInfo.h"
 #include "AccountSnapshot.h"
 #include "BillingInfo.h"
+#include "CommentInfo.h"
 
 using std::cout;
 using std::vector;
@@ -20,9 +21,11 @@ int main(){
 	// Receive vector of AccountSnapshot objects from database
 	//vector<AccountInfo> searchResults = databaseBridge.searchByAccount2(searchVal);
 	
-	cout << "Making BillingInfo object" << endl;
+	cout << "Making CommentInfo object" << endl;
 	
-	BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
+	//BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
+	
+	CommentInfo searchResult = databaseBridge.commentInfoByAccountNo(searchVal);
 	
 
 	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
@@ -32,6 +35,8 @@ int main(){
 	cout << "Making Javascript statement" << endl;
 	//cout << javaScriptBridge.accountInfosToStr(searchResults) << endl;
 	
-	cout << javaScriptBridge.billingInfoToStr(searchResult) << endl;
+	//cout << javaScriptBridge.billingInfoToStr(searchResult) << endl;
+	cout << javaScriptBridge.commentInfoToStr(searchResult) << endl;
+
 	return 0;
 }

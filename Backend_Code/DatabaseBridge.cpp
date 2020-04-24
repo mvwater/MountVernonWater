@@ -3,7 +3,7 @@
 //Email Address: kim3@kenyon.edu, brydon1@kenyon.edu, canfield1@kenyon.edu
 //Dev Project: Mount Vernon Water
 //Description: General class that can communicate with our database
-//Last Changed: 23 April 2020
+//Last Changed: 24 April 2020
 
 #include "DatabaseBridge.h"
 using std::cout;
@@ -134,6 +134,42 @@ vector<Receivables> DatabaseBridge::receivablesByAccountNo(string accountNo){
 }
 
 
+CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo){
+	string query("SELECT * FROM comments WHERE AccountNo = '" + accountNo + "';");
+	Connection con = connectToDatabase();
+	Statement statement(con->createStatement());
+	statement->execute(query);
+
+	ResultSet searchMatches;
+	CommentInfo *commentInfo;
+	vector<CommentInfo> commentResultList;
+
+	do {
+    	searchMatches.reset(statement->getResultSet());
+	    while (searchMatches->next()) {
+			string accountNo = searchMatches -> getString("AccountNo");
+			
+			vector<strings> comments;
+			comments = commentsByAccountNo(accountNo);
+			
+			int numComments = comments.size();
+			
+			bool hasComments=false;
+	    	if (numComments != 0){
+	    		hasComments = true;
+	    	}
+			
+			
+			commentInfo = new CommentInfo(accountNo, comments, hasComments);
+			commentResultList.push_back(*(commentInfo));
+			delete commentInfo;
+			cout << "Done" << endl;
+	    	commentResultList.push_back(comment);
+	    }
+  	} while (statement->getMoreResults());
+  	return commentResultList[0];
+}
+
 BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	cout << "billingInfoByAccountNo function starting..." << endl;
@@ -155,7 +191,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	do {
 	    searchMatches.reset(statement->getResultSet());
-		cout << "searchMatches.reset(statement->getResultSet());" << endl;
+		//cout << "searchMatches.reset(statement->getResultSet());" << endl;
 	    while (searchMatches->next()) {
 			//cout << "while (searchMatches->next()) {" << endl;
 			cout << "Getting account number" << endl;

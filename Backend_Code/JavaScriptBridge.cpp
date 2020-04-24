@@ -3,7 +3,7 @@
 //Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, canfield1@kenyon.edu
 //Project: Mount Vernon Water
 //Description: Sends output and gets input to and from JavaScript through Ajax
-//Last Changed: 23 April 2020
+//Last Changed: 24 April 2020
 
 #include "JavaScriptBridge.h"
 
@@ -37,6 +37,15 @@ string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 
    return result;
 }
+
+
+string JavaScriptBridge::printCommentInfo(CommentInfo commentInfo){
+	string result, sep("*");
+	for (uint i = 0; i<commentInfo.getComments().size(); i ++){
+		result += commentInfo.getComments[i] + sep;
+	}
+}
+
 
 string JavaScriptBridge::printAccountSnapshot(AccountSnapshot accountSnapshot){
 	string result, sep("*");
@@ -88,6 +97,16 @@ string JavaScriptBridge::billingInfoToStr(BillingInfo searchResult){
 	return jsMessage;
 }
 
+string JavaScriptBridge::commentInfoToStr(CommentInfo searchResult){
+	CommentInfo commentInfo;
+	commentInfo = searchResult;
+  	string jsMessage = "";
+	
+	jsMessage += printCommentInfo(commentInfo);
+	
+	return jsMessage;
+}
+
 string JavaScriptBridge::accountSnapshotsToStr(vector<AccountSnapshot> searchResults){
 	AccountSnapshot accountSnapshot;
   	string jsMessage = "";
@@ -108,6 +127,10 @@ void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResult
 
 void JavaScriptBridge::sendBillingInfo(BillingInfo searchResult){
 	sendMessage(billingInfoToStr(searchResult));
+}
+
+void JavaScriptBridge::sendCommentInfo(CommentInfo searchResult){
+	sendMessage(commentInfoToStr(searchResult));
 }
 
 void JavaScriptBridge::sendMessage(string message){
