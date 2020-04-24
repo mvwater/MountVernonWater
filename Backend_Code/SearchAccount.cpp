@@ -24,7 +24,7 @@ int main(){
   DatabaseBridge databaseBridge;
 
   // Receive vector of AccountSnapshot objects from database
-  vector<AccountInfo> searchResults = databaseBridge.searchByAccount2(searchVal);
+  vector<AccountInfo> searchResults = databaseBridge.searchByAccount(searchVal);
 
   // Send search results to JavaScript 
   javaScriptBridge.sendAccountInfos(searchResults);

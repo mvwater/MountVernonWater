@@ -84,13 +84,13 @@ SearchComments: $(SEARCH_COMMENTS)
 	#TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 	#	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-PutCGI: SearchAddress SearchAccount
+PutCGI: SearchAddress SearchAccount SearchBilling SearchComments
 	chmod 757 SearchAccount
 	chmod 757 SearchAddress
 	chmod 757 SearchBilling
 	chmod 757 SearchComments
 	
-	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount2.cgi
+	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount.cgi
 	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
 	cp SearchBilling /usr/lib/cgi-bin/$(USER)_billingInfoByAccountNo.cgi
 	cp SearchComments /usr/lib/cgi-bin/$(USER)_commentInfoByAccountNo.cgi
@@ -102,11 +102,8 @@ PutCGI: SearchAddress SearchAccount
 #	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 #
 PutHTML:                                                                              
-	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/ShaneMvwater
+	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
 	echo "Current contents of HTML directory: "
-<<<<<<< HEAD
-	ls -l /var/www/html/class/softdev/$(USER)/ShaneMvwater
-=======
 	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
 
 #PutHTML:
@@ -115,6 +112,5 @@ PutHTML:
 #	echo "Current contents of HTML directory: "
 #	ls -l /var/www/html/class/softdev/$(USER)/MichaelaMvwater
 
->>>>>>> master
 clean:
 	rm -f SearchAccount SearchAddress SearchBilling SearchComments $(OUT)
