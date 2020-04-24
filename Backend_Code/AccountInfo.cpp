@@ -5,6 +5,7 @@
 //Description: Full Account Information
 //Last Changed: 23 April 2020
 
+#include "AccountSnapshot.h"
 #include "AccountInfo.h"
 #include <iostream>
 

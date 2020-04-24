@@ -4,7 +4,7 @@
 #include "DatabaseBridge.h"
 #include "JavaScriptBridge.h"
 #include "AccountInfo.h"
-
+#include "AccountSnapshot.h"
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
 #include "cgicc/HTTPHTMLHeader.h"

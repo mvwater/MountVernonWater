@@ -11,8 +11,16 @@
 
 string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
 	string result, sep("*");
+<<<<<<< HEAD
 	result += accountInfo.getAccountNo() + sep + accountInfo.getStatus()+ sep + accountInfo.getstartDate() + sep + accountInfo.getResident().name + sep + accountInfo.getResident().address.add1 + sep + accountInfo.getResident().address.add2 + sep + accountInfo.getResident().address.add3 + sep + accountInfo.getResident().address.city + sep + accountInfo.getResident().address.state + sep + accountInfo.getResident().address.zip + sep + accountInfo.getResident().phoneNum + sep + accountInfo.getResident().email + sep + accountInfo.getResident().SScan + sep + accountInfo.getResident().DLNum + sep + accountInfo.getResident().cellNum + sep + accountInfo.getResident().dob + sep + accountInfo.getLandlord().name + sep + accountInfo.getLandlord().address.add1 + sep + accountInfo.getLandlord().address.add2 + sep + accountInfo.getLandlord().address.add3 + sep + accountInfo.getLandlord().address.city + sep + accountInfo.getLandlord().address.state + sep + accountInfo.getLandlord().address.zip + sep + accountInfo.getLandlord().phoneNum + sep + accountInfo.getLandlord().email + sep + accountInfo.getLandlord().SScan + sep + accountInfo.getLandlord().DLNum + sep + accountInfo.getLandlord().cellNum + sep + accountInfo.getLandlord().dob + sep;
 	
+=======
+	// Resident
+	result += accountInfo.getAccountNo() + sep + accountInfo.getStatus()+ sep + accountInfo.getstartDate() + sep + accountInfo.getResident().name + sep + accountInfo.getResident().address.add1 + sep + accountInfo.getResident().address.add2 + sep + accountInfo.getResident().address.add3 + sep + accountInfo.getResident().address.city + sep + accountInfo.getResident().address.state + sep + accountInfo.getResident().address.zip + sep + accountInfo.getResident().phoneNum + sep + accountInfo.getResident().email + sep + accountInfo.getResident().SScan + sep + accountInfo.getResident().DLNum + sep + accountInfo.getResident().cellNum + sep + accountInfo.getResident().dob + sep;
+
+	// Landlord
+	result +=  accountInfo.getLandlord().name + sep + accountInfo.getLandlord().address.add1 + sep + accountInfo.getLandlord().address.add2 + sep + accountInfo.getLandlord().address.add3 + sep + accountInfo.getLandlord().address.city + sep + accountInfo.getLandlord().address.state + sep + accountInfo.getLandlord().address.zip + sep + accountInfo.getLandlord().phoneNum + sep + accountInfo.getLandlord().email + sep + accountInfo.getLandlord().SScan + sep + accountInfo.getLandlord().DLNum + sep + accountInfo.getLandlord().cellNum + sep + accountInfo.getLandlord().dob + sep;
+>>>>>>> master
 
    return result;
 }
@@ -34,7 +42,10 @@ string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 		result += billingInfo.getPayments()[i].Pay_date + sep + billingInfo.getPayments()[i].Amount_Paid + sep + billingInfo.getPayments()[i].Type + sep + billingInfo.getPayments()[i].Reference + sep + billingInfo.getPayments()[i].Batch + sep + billingInfo.getPayments()[i].Seq + sep;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
    return result;
 }
 
@@ -60,13 +71,6 @@ string JavaScriptBridge::printAccountSnapshot(AccountSnapshot accountSnapshot){
 		result += "F" + sep;
 	}
 
-	/*// Has text
-	if (accountSnapshot.getHasText()){
-		result += "T" + sep;
-	} else {
-		result += "F" + sep;
-	}*/
-
    return result;
 }
 
@@ -78,6 +82,7 @@ string JavaScriptBridge::getElement(string element, Cgicc &cgi){
   return returnElement;
 }
 
+// Consider making template functions
 string JavaScriptBridge::accountInfosToStr(vector<AccountInfo> searchResults){
 	AccountInfo accountInfo;
   	string jsMessage = "";

@@ -104,6 +104,17 @@ PutCGI: SearchAddress SearchAccount
 PutHTML:                                                                              
 	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/ShaneMvwater
 	echo "Current contents of HTML directory: "
+<<<<<<< HEAD
 	ls -l /var/www/html/class/softdev/$(USER)/ShaneMvwater
+=======
+	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
+
+#PutHTML:
+#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+
+#	echo "Current contents of HTML directory: "
+#	ls -l /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+
+>>>>>>> master
 clean:
 	rm -f SearchAccount SearchAddress SearchBilling SearchComments $(OUT)
