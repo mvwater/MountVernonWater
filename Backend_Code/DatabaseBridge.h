@@ -68,7 +68,7 @@ class DatabaseBridge{
 	BillingInfo billingInfoByAccountNo(string inputAccountNo);
 	// Returns a BillingInfo object after searching by accountNo
 	
-	CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo)
+	CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo);
 	// Returns a CommentInfo object after searching by accountNo
 	
 	vector<AccountInfo> searchByAccount2(string inputAccountNo);

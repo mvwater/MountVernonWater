@@ -18,16 +18,16 @@ using namespace std;
 class CommentInfo {
   public:
 	CommentInfo();
-	CommentInfo(string input_accountNo, vector<strings> input_comments, bool input_hasComments);
+	CommentInfo(string input_accountNo, vector<string> input_comments, bool input_hasComments);
 	
 	string getAccountNo();
-	vector<strings> getComments();
+	vector<string> getComments();
 	bool getHasComments();
 	
 
   private:
 	string accountNo;
-    vector<strings> comments;
+    vector<string> comments;
 	bool input_hasComments;
 };
 

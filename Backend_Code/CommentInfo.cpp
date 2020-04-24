@@ -13,11 +13,11 @@ using std::vector;
 
 CommentInfo::CommentInfo(){
 	accountNo = "";
-	vector<strings> comments;
+	vector<string> comments;
 	hasComments = 0;
 }
 
-CommentInfo::CommentInfo(string input_accountNo, vector<strings> input_comments, bool input_hasComments){
+CommentInfo::CommentInfo(string input_accountNo, vector<string> input_comments, bool input_hasComments){
 	
     accountNo = input_accountNo;
 	comments = input_comments;
