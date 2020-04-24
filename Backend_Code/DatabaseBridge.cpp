@@ -138,18 +138,18 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	cout << "billingInfoByAccountNo function starting..." << endl;
 	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
+
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
-	
 	cout << "Creating statement."<< endl;
-	
 	statement->execute(query);
-	
+
 	ResultSet searchMatches;
+	
 	cout << "Declaring BillingInfo Object"<< endl;
 	BillingInfo *billingInfo;
-	searchMatches.reset(statement->getResultSet());
-	cout << "Starting loop"<< endl;
+	//searchMatches.reset(statement->getResultSet());
+	//cout << "Starting loop"<< endl;
 	
 	vector<BillingInfo> billingResultList;
 	
@@ -157,7 +157,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	    searchMatches.reset(statement->getResultSet());
 		cout << "searchMatches.reset(statement->getResultSet());" << endl;
 	    //while (searchMatches->next()) {
-			cout << "while (searchMatches->next()) {" << endl;
+			//cout << "while (searchMatches->next()) {" << endl;
 			cout << "Getting account number" << endl;
 			string accountNo = searchMatches -> getString("AccountNo");
 			cout << "Account No grabbed" << endl;
