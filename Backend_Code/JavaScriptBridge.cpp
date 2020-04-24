@@ -44,6 +44,7 @@ string JavaScriptBridge::printCommentInfo(CommentInfo commentInfo){
 	for (uint i = 0; i<commentInfo.getComments().size(); i ++){
 		result += commentInfo.getComments()[i] + sep;
 	}
+	return result;
 }
 
 
