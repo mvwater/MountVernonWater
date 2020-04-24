@@ -14,7 +14,7 @@ using std::vector;
 CommentInfo::CommentInfo(){
 	accountNo = "";
 	vector<string> comments;
-	hasComments = 0;
+	bool hasComments = 0;
 }
 
 CommentInfo::CommentInfo(string input_accountNo, vector<string> input_comments, bool input_hasComments){
