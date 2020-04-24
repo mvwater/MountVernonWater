@@ -174,7 +174,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 		}	
   	} while (statement->getMoreResults());		
 	
-	return *billingInfo;
+	return billingInfo;
 	
 }
 
