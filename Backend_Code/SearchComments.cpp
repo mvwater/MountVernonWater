@@ -5,6 +5,7 @@
 #include "JavaScriptBridge.h"
 #include "AccountInfo.h"
 #include "BillingInfo.h"
+#include "CommentInfo.h"
 
 // Stuff for Ajax
 #include "cgicc/Cgicc.h"
@@ -25,9 +26,11 @@ int main(){
   DatabaseBridge databaseBridge;
 
   // Receive a BillingInfo object from from database
-  BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
+  //BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
+  
+  CommentInfo searchResult = databaseBridge.commentInfoByAccountNo(searchVal);
 
   // Send search results to JavaScript 
-  javaScriptBridge.sendBillingInfo(searchResult);
+  javaScriptBridge.sendCommentInfo(searchResult);
   return 0;
 }
