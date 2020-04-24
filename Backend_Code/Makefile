@@ -7,7 +7,7 @@ SEARCH_COMMENTS = SearchComments.o JavaScriptBridge.o DatabaseBridge.o AccountIn
 #TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 #TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
-TEMP = SearchAddress.o AccountSnapshot.o SearchAccount.o AccountInfo.o BillingInfo.o CommentInfo.o
+TEMP = SearchAddress.o AccountSnapshot.o SearchBilling.o SearchComments.o SearchAccount.o AccountInfo.o BillingInfo.o CommentInfo.o
 
 CC	 = g++
 SQL_FLAGS = -lcgicc -lmysqlcppconn
