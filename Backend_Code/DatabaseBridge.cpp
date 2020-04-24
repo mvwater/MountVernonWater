@@ -146,13 +146,15 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	statement->execute(query);
 	
 	ResultSet searchMatches;
+	BillingInfo billingInfo;
 	searchMatches.reset(statement->getResultSet());
+	
 	do {
 	    searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
 			string accountNo = searchMatches -> getString("AccountNo");
 		
-			BillingInfo billingInfo;
+			
 		
 			cout << "Generating Receivables" << endl;
 			vector<Receivables> receivables;
