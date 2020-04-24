@@ -159,7 +159,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	    //while (searchMatches->next()) {
 			//cout << "while (searchMatches->next()) {" << endl;
 			cout << "Getting account number" << endl;
-			string accountNo += searchMatches -> getString("AccountNo");
+			string accountNo = searchMatches -> getString("AccountNo");
 			cout << "Account No grabbed" << endl;
 		
 			cout << "Generating Receivables" << endl;
