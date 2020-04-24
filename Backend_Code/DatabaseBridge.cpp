@@ -146,8 +146,11 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	statement->execute(query);
 	
 	ResultSet searchMatches;
+	cout << "Declaring BillingInfo Object"<< endl;
 	BillingInfo billingInfo;
 	searchMatches.reset(statement->getResultSet());
+	cout << "Starting loop"<< endl;
+
 	
 	do {
 	    searchMatches.reset(statement->getResultSet());
