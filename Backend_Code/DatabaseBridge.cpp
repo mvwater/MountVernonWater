@@ -145,30 +145,34 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	statement->execute(query);
 	
-	ResultSet searchMatch;
-	searchMatch.reset(statement->getResultSet());
-	
-	string accountNo = searchMatch -> getString("AccountNo");
-	
-	BillingInfo *billingInfo;
-	
-	cout << "Generating Receivables" << endl;
-	vector<Receivables> receivables;
-	receivables = receivablesByAccountNo(accountNo);
-	
-	cout << "Generating Consumption" << endl;
-	vector<Consumption> consumption;
-	consumption = consumptionByAccountNo(accountNo);
-	
-	cout << "Generating Payements" << endl;
-	vector<Payments> payments;
-	payments = paymentsByAccountNo(accountNo);
-	
-	cout << "Prepping BillingInfo object creation" << endl;
-	
-	billingInfo = new BillingInfo(accountNo, receivables, consumption, payments);
-	
-	cout << "Done" << endl;
+	ResultSet searchMatches;
+	searchMatches.reset(statement->getResultSet());
+	do {
+	    searchMatches.reset(statement->getResultSet());
+	    while (searchMatches->next()) {
+			string accountNo = searchMatches -> getString("AccountNo");
+		
+			BillingInfo *billingInfo;
+		
+			cout << "Generating Receivables" << endl;
+			vector<Receivables> receivables;
+			receivables = receivablesByAccountNo(accountNo);
+			
+			cout << "Generating Consumption" << endl;
+			vector<Consumption> consumption;
+			consumption = consumptionByAccountNo(accountNo);
+			
+			cout << "Generating Payements" << endl;
+			vector<Payments> payments;
+			payments = paymentsByAccountNo(accountNo);
+			
+			cout << "Prepping BillingInfo object creation" << endl;
+			
+			billingInfo = new BillingInfo(accountNo, receivables, consumption, payments);
+			
+			cout << "Done" << endl;
+		}	
+  	} while (statement->getMoreResults());		
 	
 	return *billingInfo;
 	
