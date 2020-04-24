@@ -154,7 +154,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	vector<BillingInfo> billingResultList;
 	
 	//do {
-	    searchMatches.reset(statement->getResultSet());
+	    //searchMatches.reset(statement->getResultSet());
 		cout << "searchMatches.reset(statement->getResultSet());" << endl;
 	    //while (searchMatches->next()) {
 			//cout << "while (searchMatches->next()) {" << endl;
