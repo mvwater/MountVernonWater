@@ -153,10 +153,10 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	vector<BillingInfo> billingResultList;
 	
-	//do {
-	    //searchMatches.reset(statement->getResultSet());
+	do {
+	    searchMatches.reset(statement->getResultSet());
 		cout << "searchMatches.reset(statement->getResultSet());" << endl;
-	    //while (searchMatches->next()) {
+	    while (searchMatches->next()) {
 			//cout << "while (searchMatches->next()) {" << endl;
 			cout << "Getting account number" << endl;
 			string accountNo = searchMatches -> getString("AccountNo");
@@ -180,8 +180,8 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 			billingResultList.push_back(*(billingInfo));
 			delete billingInfo;
 			cout << "Done" << endl;
-		//}	
-  	//} while (statement->getMoreResults());		
+		}	
+  	} while (statement->getMoreResults());		
 	
 	return billingResultList[0];
 	
