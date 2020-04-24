@@ -135,7 +135,7 @@ vector<Receivables> DatabaseBridge::receivablesByAccountNo(string accountNo){
 
 
 CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo){
-	string query("SELECT * FROM comments WHERE AccountNo = '" + accountNo + "';");
+	string query("SELECT * FROM comments WHERE AccountNo = '" + inputAccountNo + "';");
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
 	statement->execute(query);
@@ -149,7 +149,7 @@ CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo){
 	    while (searchMatches->next()) {
 			string accountNo = searchMatches -> getString("AccountNo");
 			
-			vector<strings> comments;
+			vector<string> comments;
 			comments = commentsByAccountNo(accountNo);
 			
 			int numComments = comments.size();
@@ -164,7 +164,6 @@ CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo){
 			commentResultList.push_back(*(commentInfo));
 			delete commentInfo;
 			cout << "Done" << endl;
-	    	commentResultList.push_back(comment);
 	    }
   	} while (statement->getMoreResults());
   	return commentResultList[0];
