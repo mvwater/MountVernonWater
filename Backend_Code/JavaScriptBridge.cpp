@@ -42,7 +42,7 @@ string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 string JavaScriptBridge::printCommentInfo(CommentInfo commentInfo){
 	string result, sep("*");
 	for (uint i = 0; i<commentInfo.getComments().size(); i ++){
-		result += commentInfo.getComments[i] + sep;
+		result += commentInfo.getComments()[i] + sep;
 	}
 }
 
