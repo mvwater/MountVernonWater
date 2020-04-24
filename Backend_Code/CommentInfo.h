@@ -28,7 +28,7 @@ class CommentInfo {
   private:
 	string accountNo;
     vector<string> comments;
-	bool input_hasComments;
+	bool hasComments;
 };
 
 #endif //COMMENTINFO_H
