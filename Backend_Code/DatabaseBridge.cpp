@@ -155,8 +155,10 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 	
 	do {
 	    searchMatches.reset(statement->getResultSet());
+		cout << "searchMatches.reset(statement->getResultSet());" << endl;
 	    while (searchMatches->next()) {
-			
+			cout << "while (searchMatches->next()) {" << endl;
+			cout << "Getting account number" << endl;
 			string accountNo = searchMatches -> getString("AccountNo");
 			cout << "Account No grabbed" << endl;
 		
