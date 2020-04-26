@@ -20,6 +20,8 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
    return result;
 }
 
+
+// CANNOT PARSE; must edit
 string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 	
 	string result, sep("*");

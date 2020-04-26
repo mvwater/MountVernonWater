@@ -148,11 +148,35 @@ function showSearchResults(resultString){
 }
 
 function processAccount(results){
-  console.log("&" + results + "&");
-  $('#search_results').empty();
-  console.log("About to show results");
-  $('#search_results').append(displayAccountInfo(results));
-  console.log("Finished show results");
+    console.log("&" + results + "&");
+    $('#search_results').empty();
+    console.log("About to show results");
+    $('#search_results').append(displayAccountInfo(results));
+    console.log("Finished show results");
+
+    // View Comments Button
+    $("#view_comments").click(function() {
+        viewComments(); // MAKE ME
+    });
+    console.log("View comments click event was created.");
+
+    // Consumption History Button
+    $("#view_consumption_history").click(function() {
+        viewConsumptionHistory(); // MAKE ME
+    });
+    console.log("Consumption click event was created.");
+
+    // Recievables History Button
+    $("#view_recievables_history").click(function() {
+        viewRecievablesHistory(); // MAKE ME
+    });
+    console.log("Recievables click event was created.");
+
+    // Payment History Button
+    $("#view_payment_history").click(function() {
+        viewPaymentHistory(); // MAKE ME
+    });
+    console.log("Payment click event was created.");
 
 }
 
@@ -227,7 +251,6 @@ function displayAccountInfo(resultString){
             hasComments = 'Yes';
         }
 
-
         // EDIT href
         result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
 
@@ -240,7 +263,7 @@ function displayAccountInfo(resultString){
         result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div>";
 
         // Billing Information Container
-        result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
+        result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
         // Landlord Information Container
         result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'><h3 style='padding: 20px;'>Landlord Information</h3></div><div class='row'> <div class='col'>";
@@ -255,4 +278,64 @@ function displayAccountInfo(resultString){
 
   return result;
 }
+
+function viewComments(accountNo) {
+    $.ajax({
+        url: '/cgi-bin/'+ajaxUser+'_commentInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+        dataType: 'text', // maybe JSON
+        success: processComments,
+        error: function(){alert("Error: Could not search by account number.");}
+    });
+}
+
+function processComments(results){
+    console.log("Nothing");
+    console.log(results);
+}
+
+function viewBillingInfo(accountNo, infoType){
+    $.ajax({
+        url: '/cgi-bin/'+ajaxUser+'_billingInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+        dataType: 'text', // maybe JSON
+        success: processInfo,
+        error: function(){alert("Error: Could not search by account number.");}
+    });
+}
+
+function processInfo(results){
+    console.log("Nothing");
+    console.log(results);
+}
+
+/*
+function viewConsumptionHistory(accountNo) {
+    $.ajax({
+        url: '/cgi-bin/'+ajaxUser+'_billingInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+        dataType: 'text', // maybe JSON
+        success: processComments,
+        error: function(){alert("Error: Could not search by account number.");}
+    });
+}
+
+function viewRecievablesHistory(accountNo) {
+    $.ajax({
+        url: '/cgi-bin/'+ajaxUser+'_billingInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+        dataType: 'text', // maybe JSON
+        success: processComments,
+        error: function(){alert("Error: Could not search by account number.");}
+    });
+}
+
+function viewPaymentHistory(accountNo) {
+    $.ajax({
+        url: '/cgi-bin/'+ajaxUser+'_billingInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+        dataType: 'text', // maybe JSON
+        success: processComments,
+        error: function(){alert("Error: Could not search by account number.");}
+    });
+}*/
+
+
+
+
 
