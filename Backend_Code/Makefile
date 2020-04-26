@@ -3,7 +3,6 @@ SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo
 SEARCH_BILLING = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o CommentInfo.o
 SEARCH_COMMENTS = SearchComments.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o CommentInfo.o
 
-
 #TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 #TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 
@@ -95,22 +94,16 @@ PutCGI: SearchAddress SearchAccount SearchBilling SearchComments
 	cp SearchBilling /usr/lib/cgi-bin/$(USER)_billingInfoByAccountNo.cgi
 	cp SearchComments /usr/lib/cgi-bin/$(USER)_commentInfoByAccountNo.cgi
 
-#PutHTML:
+#PutHTML:                                                                              
 #	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
-#
 #	echo "Current contents of HTML directory: "
 #	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
-#
-PutHTML:                                                                              
-	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
+
+PutHTML:
+	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+
 	echo "Current contents of HTML directory: "
-	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
-
-#PutHTML:
-#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/MichaelaMvwater
-
-#	echo "Current contents of HTML directory: "
-#	ls -l /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+	ls -l /var/www/html/class/softdev/$(USER)/MichaelaMvwater
 
 clean:
 	rm -f SearchAccount SearchAddress SearchBilling SearchComments $(OUT)
