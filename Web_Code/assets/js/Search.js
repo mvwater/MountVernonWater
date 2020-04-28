@@ -152,7 +152,7 @@ function processAccount(results){
     $('#search_results').empty();
     console.log("About to show results");
 
-    var accountData = resultString.split('*');
+    var accountData = results.split('*');
     accountData.pop(); // Remove empty string from end of list
 
     $('#search_results').append(displayAccountInfo(accountData));
@@ -187,7 +187,7 @@ function processAccount(results){
 }
 
 // Example result string: 10-59-1*I*12-11-1977*Reinald Mallinar*CITY OF MOUNT VERNON
-function displayAccountInfo(resultString){
+function displayAccountInfo(accountData){
 
     //console.log("Length of result string: ", resultString.length);
     //var accountData = resultString.split('*');
