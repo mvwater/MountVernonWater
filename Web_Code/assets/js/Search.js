@@ -151,30 +151,36 @@ function processAccount(results){
     console.log("&" + results + "&");
     $('#search_results').empty();
     console.log("About to show results");
-    $('#search_results').append(displayAccountInfo(results));
-    console.log("Finished show results");
 
+    var accountData = resultString.split('*');
+    accountData.pop(); // Remove empty string from end of list
+
+    $('#search_results').append(displayAccountInfo(accountData));
+    console.log("Finished show results");
+    // Get account number for click events
+    var accountNumber = accountData[0];
+    
     // View Comments Button
     $("#view_comments").click(function() {
-        viewComments(); // MAKE ME
+        viewComments(accountNumber); // MAKE ME
     });
     console.log("View comments click event was created.");
 
     // Consumption History Button
     $("#view_consumption_history").click(function() {
-        viewConsumptionHistory(); // MAKE ME
+        viewConsumptionHistory(accountNumber); // MAKE ME
     });
     console.log("Consumption click event was created.");
 
     // Recievables History Button
     $("#view_recievables_history").click(function() {
-        viewRecievablesHistory(); // MAKE ME
+        viewRecievablesHistory(accountNumber); // MAKE ME
     });
     console.log("Recievables click event was created.");
 
     // Payment History Button
     $("#view_payment_history").click(function() {
-        viewPaymentHistory(); // MAKE ME
+        viewPaymentHistory(accountNumber); // MAKE ME
     });
     console.log("Payment click event was created.");
 
@@ -183,15 +189,15 @@ function processAccount(results){
 // Example result string: 10-59-1*I*12-11-1977*Reinald Mallinar*CITY OF MOUNT VERNON
 function displayAccountInfo(resultString){
 
-    console.log("Length of result string: ", resultString.length);
-    var accountData = resultString.split('*');
-    accountData.pop(); // Remove empty string from end of list
+    //console.log("Length of result string: ", resultString.length);
+    //var accountData = resultString.split('*');
+    //accountData.pop(); // Remove empty string from end of list
 
     //console.log("Account Data: " + accountData);
     console.log("Account Data: ", accountData);
     var listLength = accountData.length;
 
-    if (listLength < 6)
+    if (listLength < 6) // WHY did you choose 6 again?
     {
       return "<h3>Sorry! We could not find an account with this account number. Please try again!</h3>";
     }
