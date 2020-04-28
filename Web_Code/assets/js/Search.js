@@ -286,11 +286,14 @@ function displayAccountInfo(accountData){
 }
 
 function viewComments(accountNo) {
+    console.log("About to perform ajax for view comments.");
+    console.log("Sending", accountNo);
+
     $.ajax({
         url: '/cgi-bin/'+ajaxUser+'_commentInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
         dataType: 'text', // maybe JSON
         success: processComments,
-        error: function(){alert("Error: Could not search by account number.");}
+        error: function(){alert("Error: Could not get comments.");}
     });
 }
 
