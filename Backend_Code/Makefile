@@ -38,24 +38,25 @@ DatabaseBridge.o: DatabaseBridge.cpp DatabaseBridge.h AccountInfo.h AccountSnaps
 #TestSearchAddress.o: TestSearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h
 	#$(CC) $(FLAGS) TestSearchAddress.cpp $(CFLAGS)
 
-
 TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountInfo.h AccountSnapshot.h BillingInfo.h CommentInfo.h
 	$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
 
-SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h AccountSnapshot.h BillingInfo.h CommentInfo.o
+SearchAccount.o: SearchAccount.cpp JavaScriptBridge.h DatabaseBridge.h AccountInfo.h AccountSnapshot.h BillingInfo.h CommentInfo.h
 	$(CC) $(FLAGS) SearchAccount.cpp $(CFLAGS)
 
-SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.o
+SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 	
-SearchBilling.o: SearchBilling.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.o
+SearchBilling.o: SearchBilling.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.h
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 	
-SearchComments.o: SearchComments.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.o
+SearchComments.o: SearchComments.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.h
 	$(CC) $(FLAGS) SearchComments.cpp $(CFLAGS)
 
 #TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
 	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
+
+
 
 # Linking after compiling
 TestDatabase: TestDatabase.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o CommentInfo.o JavaScriptBridge.o
