@@ -159,11 +159,10 @@ CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo){
 	    		hasComments = true;
 	    	}
 
-
 			commentInfo = new CommentInfo(accountNo, comments, hasComments);
 			commentResultList.push_back(*(commentInfo));
 			delete commentInfo;
-			cout << "Done" << endl;
+			//cout << "Done" << endl;
 	    }
   	} while (statement->getMoreResults());
   	return commentResultList[0];
