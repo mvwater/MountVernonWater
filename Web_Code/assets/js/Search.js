@@ -270,7 +270,7 @@ function displayAccountInfo(accountData){
 
 
         // Adding hidden div for comments
-        result += "<div id="display_comments_here" class='container text-left' style='" + containerStyle + "0px;display:'none'></div>";
+        result += "<div id='display_comments_here' class='container text-left' style='" + containerStyle + "0px;display:'none'></div>";
 
 
  
