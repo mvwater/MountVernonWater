@@ -161,7 +161,7 @@ function processAccount(results){
     var accountNumber = accountData[0];
     
     // View Comments Button
-    $("#toggle_comments").onclick(function() {
+    $("#toggle_comments").click(function() {
         toggleComments(accountNumber); // MAKE ME
         $(this).value = "Close Comments";
     });
