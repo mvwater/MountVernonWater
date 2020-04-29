@@ -180,7 +180,6 @@ function processAccount(results){
     $("#toggle_recievables").click(function() {
         // MUST make processRecievables function
         //toggleButton(accountNumber,this,"Recievables History", "recievables", processRecievables,haveRecievables);
-        viewRecievablesHistory(accountNumber); // MAKE ME
     });
     console.log("Recievables click event was created.");
 
@@ -188,7 +187,6 @@ function processAccount(results){
     $("#toggle_payment").click(function() {
         // MUST make processPayment function
         //toggleButton(accountNumber,this,"Payment History", "payment", processPayment,havePayment);
-        viewPaymentHistory(accountNumber); // MAKE ME
     });
     console.log("Payment click event was created.");
 
