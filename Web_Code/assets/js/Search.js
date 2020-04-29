@@ -202,20 +202,34 @@ function processAccount(results){
 }
 
 //var buttonBools = {"Comments":false,"Consumption History":false,"Recievables History":false,"Payment History":false};
-
-var buttonBools = {comment:false,consumption:false};
-
-
-
+//var buttonBools = {comment:false,consumption:false};
 
 var haveComments = false;
-var haveConsumptionHistory = false;
+var haveConsumption = false;
+var haveRecievables = false;
+var havePayment = false;
 
-function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used,boolKey){
+// Come up with solution for boolean problem
+
+function swapBool(buttonLabel){
+    if (buttonLabel == "Comments"){
+        haveComments = !haveComments;
+    } else if (buttonLabel == "Recievables History"){
+        haveRecievables = !haveComments;
+    } else if (buttonLabel == "Consuption History"){
+        haveConsumption = !haveComments;
+    } else { // Payment History
+        havePayment = !haveComments;
+    }
+}
+
+
+
+function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used){
 
     if (buttonObj.value == "View " + buttonLabel){ 
         console.log("Value: ", buttonObj.value);
-        if (used.boolKey){
+        if (used){
             console.log("Already used button");
             $('#display_' + cgiString + '_here').show();
         } else {
@@ -228,7 +242,8 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
                 success: processFunction,
                 error: function(){alert("Error: Button failed.");}
             });
-            used.boolKey = true;
+            swapBool(buttonLabel); // Testing
+            //used = true;
         }
 
         // Swap button name
