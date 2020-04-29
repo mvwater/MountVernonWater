@@ -162,16 +162,26 @@ function processAccount(results){
     
     // View Comments Button
     $("#toggle_comments").click(function() {
-        toggleComments(accountNumber,this); // MAKE ME
+        //toggleComments(accountNumber,this);
+
+        // Testing
+        toggleButton(accountNumber,this,"Comments", "comments", processComments,buttonBools);
         console.log("Toggled comments.");
     });
     console.log("View comments click event was created.");
 
     // Consumption History Button
+    $("#toggle_consumption_history").click(function() {
+        console.log("Consumption click event was initiated.");
+        toggleConsumptionHistory(accountNumber); // MAKE ME
+    });
+    console.log("Consumption click event was created.");
+
+    /*// Consumption History Button
     $("#view_consumption_history").click(function() {
         viewConsumptionHistory(accountNumber); // MAKE ME
     });
-    console.log("Consumption click event was created.");
+    console.log("Consumption click event was created.");*/
 
     // Recievables History Button
     $("#view_recievables_history").click(function() {
@@ -186,6 +196,151 @@ function processAccount(results){
     console.log("Payment click event was created.");
 
 }
+
+var buttonBools = {"Comments":false,"Consumption History":false,"Recievables History":false,"Payment History":false,};
+
+function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used){
+
+    if (buttonObj.value == "View " + buttonLabel){ 
+        console.log("Value: ", buttonObj.value);
+        if (used.buttonLabel){
+            console.log("Already used button");
+            $('#display_' + cgiString + '_here').show();
+        } else {
+            console.log("About to send query with ajax");
+            console.log("Sending", accountNo);
+
+            $.ajax({
+                url: '/cgi-bin/'+ajaxUser+'_' + cgiString + 'ByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+                dataType: 'text', // maybe JSON
+                success: processFunction,
+                error: function(){alert("Error: Button failed.");}
+            });
+            used.buttonLabel = true;
+        }
+
+        // Swap button name
+        buttonObj.value = "Close " + buttonLabel;
+        $(buttonObj).text("Close " + buttonLabel);
+    } else {
+        console.log("Hiding content.");
+        $('#display_' + cgiString + '_here').hide(); // CHANGE ME
+        buttonObj.value = "View " + buttonLabel;
+        $(buttonObj).text("View " + buttonLabel);
+    }
+}
+
+
+
+
+// Consumption History Button Code
+/*
+var haveConsumptionHistory = false;
+
+function toggleConsumptionHistory(accountNo,buttonObj){
+    if (buttonObj.value == "View Consumption History"){
+        console.log("Value: ", buttonObj.value);
+        if (haveConsumptionHistory){
+            console.log("Already obtained consumption history");
+            $('#display_consumption_here').show(); // CHANGE
+        } else {
+            console.log("About to perform ajax to obtain consumption history.");
+            console.log("Sending", accountNo);
+
+            $.ajax({
+                url: '/cgi-bin/'+ajaxUser+'_consumptionByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+                dataType: 'text', // maybe JSON
+                success: processConsumption,
+                error: function(){alert("Error: Could not get comments.");}
+            });
+            haveConsumptionHistory = true;
+        }
+
+        // Swap button name
+        buttonObj.value = "Close Consumption History";
+        $(buttonObj).text("Close Consumption History");
+    } else {
+        console.log("Hiding content.");
+        $('#display_consumption_here').hide();
+        buttonObj.value = "View Consumption";
+        $(buttonObj).text("View Consumption");
+    }
+}*/
+
+
+
+
+/*
+function processConsumption(results){
+  console.log("&" + results + "&");
+  $('#search_results').empty();
+  console.log("About to show results");
+  $('#search_results').append(displayConsumptionInfo(results));
+  console.log("Finished show results");
+}
+
+function displayConsumptionInfo(resultString){
+  console.log("Length of result string: ", resultString.length);
+  var accountData = resultString.split('*');
+  accountData.pop(); // Remove empty string from end of list
+
+  //console.log("Account Data: " + accountData);
+  console.log("Account Data: ", accountData);
+  var listLength = accountData.length;
+
+  if (listLength < 1)
+  {
+    return "<h3>Sorry! We could not find an consumption details associated with this account number. </h3>";
+  }
+  else
+  {
+      console.log("We have results.");
+      console.log(listLength);
+      //console.log(accountData[0])
+      //var res_accountNumber = accountData[0];
+
+      //var result = displayAccountInfoMinimal(res_accountNumber);
+      // Same style used in each section container
+      //containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
+
+      // Account Number in separate container
+      //result += "<p id=res_'accountNo'><b>AccountNo:&nbsp;</b> "+accountData[0]+"</p>";";
+
+      //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Consumption Information</h3></div><div class='row'><div class='col'>";
+      var result = "";
+      result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th>Account No.</th><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
+
+      var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
+
+      //var labelNameList = ["AccountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
+
+      // Consumption Information Container
+      //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
+
+      // Loops through list
+
+      for (var i = 0; i < listLength; i++){
+            result += "<tr><td><tr id=res_'" + idNameList[i] + "'>" + accountData[i] + "</td></tr>";
+          }
+        //}
+      //}
+      result += "</tbody></table></div></div>";
+      //result += displayPrintButton();
+
+    return result;
+  }
+}*/
+
+
+
+
+
+
+
+
+
+
+
 
 // Example result string: 10-59-1*I*12-11-1977*Reinald Mallinar*CITY OF MOUNT VERNON
 function displayAccountInfo(accountData){
@@ -273,7 +428,20 @@ function displayAccountInfo(accountData){
         result += "<div id='display_comments_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Billing Information Container
-        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
+        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button' value='View Payment History'>Payment History</button></div></div></div>";
+
+        // Adding hidden div for consumption history
+        result += "<div id='display_consumption_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
+
+        // Adding hidden div for recievables history
+        result += "<div id='display_recievables_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
+
+        // Adding hidden div for payment history
+        result += "<div id='display_payment_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
+
+//"View Consumption History"
+
+
 
         // Landlord Information Container
         result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'><h3 style='padding: 20px;'>Landlord Information</h3></div><div class='row'> <div class='col'>";
