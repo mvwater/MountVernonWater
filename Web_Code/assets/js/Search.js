@@ -161,8 +161,8 @@ function processAccount(results){
     var accountNumber = accountData[0];
     
     // View Comments Button
-    $("#view_comments").click(function() {
-        viewComments(accountNumber); // MAKE ME
+    $("#toggle_comments").onclick(function() {
+        toggleComments(accountNumber); // MAKE ME
     });
     console.log("View comments click event was created.");
 
@@ -266,7 +266,7 @@ function displayAccountInfo(accountData){
         }
 
         // Puts comment button in second column
-        result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div></div>"; 
+        result += "</div> <div class='col-4' style='right-align'> <button id='toggle_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div></div>"; 
 
 
         // Adding hidden div for comments
@@ -290,14 +290,25 @@ function displayAccountInfo(accountData){
 }
 
 
+
+
+
+
+
+
+
 // Change functionality of button to hide comments after 
 // Change name of button to "Hide Comments"
 // Make it so user can only add comments one time
 // Make it so query can only happen once
 
-function viewComments(accountNo) {
+function toggleComments(accountNo) {
     console.log("About to perform ajax for view comments.");
     console.log("Sending", accountNo);
+
+    //if (){
+
+    //}
 
     $.ajax({
         url: '/cgi-bin/'+ajaxUser+'_commentInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
