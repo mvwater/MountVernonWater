@@ -165,7 +165,7 @@ function processAccount(results){
         //toggleComments(accountNumber,this);
 
         // Testing
-        toggleButton(accountNumber,this,"Comments", "comments", processComments,buttonBools);
+        toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,buttonBools);
         console.log("Toggled comments.");
     });
     console.log("View comments click event was created.");
