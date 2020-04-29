@@ -147,6 +147,10 @@ function showSearchResults(resultString){
     return result;
 }
 
+
+
+
+
 function processAccount(results){
     console.log("&" + results + "&");
     $('#search_results').empty();
@@ -162,11 +166,12 @@ function processAccount(results){
     
     // View Comments Button
     $("#toggle_comments").click(function() {
-        console.log($(this).val());
-        console.log(this.value);
-        toggleComments(accountNumber); // MAKE ME
-        console.log('New code here.');
-        $(this).text("Close Comments");
+        //console.log($(this).val());
+        //console.log(this.value);
+
+        toggleComments(accountNumber,this); // MAKE ME
+        console.log('Brand new code here.');
+        //$(this).text("Close Comments");
     });
     console.log("View comments click event was created.");
 
@@ -305,20 +310,34 @@ function displayAccountInfo(accountData){
 // Make it so user can only add comments one time
 // Make it so query can only happen once
 
-function toggleComments(accountNo) {
+var haveComments = false;
+
+function toggleComments(accountNo,buttonObj) {
     console.log("About to perform ajax for view comments.");
     console.log("Sending", accountNo);
 
-    //if (){
+    if (buttonObj.value == "View Comments"){
+        if (haveComments){
+            $('#display_comments_here').show(); 
+        } else {
+            console.log("About to perform ajax for view comments.");
+            console.log("Sending", accountNo);
 
-    //}
+            $.ajax({
+                url: '/cgi-bin/'+ajaxUser+'_commentInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+                dataType: 'text', // maybe JSON
+                success: processComments,
+                error: function(){alert("Error: Could not get comments.");}
+            });
+        }
 
-    $.ajax({
-        url: '/cgi-bin/'+ajaxUser+'_commentInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
-        dataType: 'text', // maybe JSON
-        success: processComments,
-        error: function(){alert("Error: Could not get comments.");}
-    });
+        // Swap button name
+        $(this).text("Close Comments");
+    } else {
+        // Hide comments
+        $('#display_comments_here').hide();
+        $(this).text("View Comments");
+    }
 }
 
 function processComments(results){
