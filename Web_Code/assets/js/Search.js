@@ -332,11 +332,13 @@ function toggleComments(accountNo,buttonObj) {
         }
 
         // Swap button name
-        $(this).text("Close Comments");
+        buttonObj.value = "Close Comments";
+        $(buttonObj).text("Close Comments");
     } else {
         // Hide comments
         $('#display_comments_here').hide();
-        $(this).text("View Comments");
+        buttonObj.value = "View Comments";
+        $(buttonObj).text("View Comments");
     }
 }
 
