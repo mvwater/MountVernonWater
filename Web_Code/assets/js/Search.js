@@ -147,10 +147,6 @@ function showSearchResults(resultString){
     return result;
 }
 
-
-
-
-
 function processAccount(results){
     console.log("&" + results + "&");
     $('#search_results').empty();
@@ -166,12 +162,8 @@ function processAccount(results){
     
     // View Comments Button
     $("#toggle_comments").click(function() {
-        //console.log($(this).val());
-        //console.log(this.value);
-
         toggleComments(accountNumber,this); // MAKE ME
-        console.log('Brand new code here.');
-        //$(this).text("Close Comments");
+        console.log("Toggled comments.");
     });
     console.log("View comments click event was created.");
 
@@ -297,14 +289,6 @@ function displayAccountInfo(accountData){
   return result;
 }
 
-
-
-
-
-
-
-
-
 // Change functionality of button to hide comments after 
 // Change name of button to "Hide Comments"
 // Make it so user can only add comments one time
@@ -346,16 +330,12 @@ function toggleComments(accountNo,buttonObj) {
 function processComments(results){
     var comments = results.split('*');
     comments.pop(); // Remove empty string from end of list
-
-    console.log("Comments: ", comments);
-
     $('#display_comments_here').append(commentOutput(comments));
     $('#display_comments_here').show(); 
-    console.log(results);
+    //console.log(results);
 }
 
 function commentOutput(commentList){
-
     console.log("Comments: ", commentList);
     var numComments = commentList.length;
     var result = "";
@@ -368,7 +348,7 @@ function commentOutput(commentList){
 
     result += "</div></div>";
     
-    console.log(result);
+    //console.log(result);
     return result;
 }
 
