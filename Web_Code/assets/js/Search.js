@@ -425,7 +425,7 @@ function displayAccountInfo(accountData){
         result += "</div> <div class='col-4' style='right-align'> <button id='toggle_comments' class='btn btn-secondary' href='#' type='button' value='View Comments'>View Comments</button> </div></div></div></div>"; 
 
         // Adding hidden div for comments
-        result += "<div id='display_comments_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
+        result += "<div id='display_commentInfo_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Billing Information Container
         result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button' value='View Payment History'>Payment History</button></div></div></div>";
@@ -469,7 +469,7 @@ function toggleComments(accountNo,buttonObj) {
         console.log("Value: ", buttonObj.value);
         if (haveComments){
             console.log("Already got comments");
-            $('#display_comments_here').show(); 
+            $('#display_commentInfo_here').show(); 
         } else {
             console.log("About to perform ajax to obtain comments.");
             console.log("Sending", accountNo);
@@ -489,7 +489,7 @@ function toggleComments(accountNo,buttonObj) {
     } else {
         // Hide comments
         console.log("Hiding comments");
-        $('#display_comments_here').hide();
+        $('#display_commentInfo_here').hide();
         buttonObj.value = "View Comments";
         $(buttonObj).text("View Comments");
     }
@@ -498,8 +498,8 @@ function toggleComments(accountNo,buttonObj) {
 function processComments(results){
     var comments = results.split('*');
     comments.pop(); // Remove empty string from end of list
-    $('#display_comments_here').append(commentOutput(comments));
-    $('#display_comments_here').show(); 
+    $('#display_commentInfo_here').append(commentOutput(comments));
+    $('#display_commentInfo_here').show(); 
     //console.log(results);
 }
 
