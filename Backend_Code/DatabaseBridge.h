@@ -69,9 +69,7 @@ class DatabaseBridge{
 	CommentInfo commentInfoByAccountNo(string inputAccountNo);
 	// Returns a CommentInfo object after searching by accountNo
 	
-	//vector<AccountInfo> searchByAccount2(string inputAccountNo);
-
-	vector<AccountInfo> searchByAccount(string inputAccount);
+	vector<AccountInfo> searchByAccount(string inputAccountNo);
     // Returns vector of AccountInfo objects after searching account database by accountNo
 
   private:
