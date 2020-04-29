@@ -289,6 +289,12 @@ function displayAccountInfo(accountData){
   return result;
 }
 
+
+// Change functionality of button to hide comments after 
+// Change name of button to "Hide Comments"
+// Make it so user can only add comments one time
+// Make it so query can only happen once
+
 function viewComments(accountNo) {
     console.log("About to perform ajax for view comments.");
     console.log("Sending", accountNo);
