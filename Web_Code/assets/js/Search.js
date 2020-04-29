@@ -163,7 +163,11 @@ function processAccount(results){
     // View Comments Button
     $("#toggle_comments").click(function() {
         toggleComments(accountNumber); // MAKE ME
-        $(this).value = "Close Comments";
+        console.log($(this).text);
+        console.log($(this).value);
+        $(this).text = "Close Comments";
+        console.log($(this).text);
+        console.log($(this).value);
     });
     console.log("View comments click event was created.");
 
