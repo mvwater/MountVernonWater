@@ -270,7 +270,7 @@ function displayAccountInfo(accountData){
 
 
         // Adding hidden div for comments
-        result += "<div id='display_comments_here' class='container text-left' style='" + containerStyle + "0px;display:none></div>";
+        result += "<div id='display_comments_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
 
  
@@ -280,7 +280,7 @@ function displayAccountInfo(accountData){
 
 
         // Billing Information Container
-        result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
+        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
         // Landlord Information Container
         result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'><h3 style='padding: 20px;'>Landlord Information</h3></div><div class='row'> <div class='col'>";
