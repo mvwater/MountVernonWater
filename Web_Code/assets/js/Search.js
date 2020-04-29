@@ -148,9 +148,6 @@ function showSearchResults(resultString){
 }
 
 
-
-
-
 function processAccount(results){
     console.log("&" + results + "&");
     $('#search_results').empty();
@@ -167,7 +164,7 @@ function processAccount(results){
     // View Comments Button
     $("#toggle_comments").click(function() {
         //toggleComments(accountNumber,this);
-        toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,buttonBools, comment);
+        toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,haveComments);
         console.log("Toggled comments.");
     });
     console.log("View comments click event was created.");
@@ -175,7 +172,7 @@ function processAccount(results){
     // Consumption History Button
     $("#toggle_consumption").click(function() {
         
-        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,buttonBools, consumption);
+        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,haveConsumption);
         //toggleConsumptionHistory(accountNumber); // MAKE ME
         console.log("Toggled consumption.");
     });
