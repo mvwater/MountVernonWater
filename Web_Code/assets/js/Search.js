@@ -210,13 +210,13 @@ var havePayment = false;
 
 function makeBoolTrue(buttonLabel){
     if (buttonLabel == "Comments"){
-        haveComments = True;
+        haveComments = true;
     } else if (buttonLabel == "Recievables History"){
-        haveRecievables = True;
+        haveRecievables = true;
     } else if (buttonLabel == "Consuption History"){
-        haveConsumption = True;
+        haveConsumption = true;
     } else { // Payment History
-        havePayment = True;
+        havePayment = true;
     }
 }
 
