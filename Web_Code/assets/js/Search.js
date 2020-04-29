@@ -268,8 +268,19 @@ function displayAccountInfo(accountData){
         // Puts comment button in second column
         result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div>";
 
+
+        // Adding hidden div for comments
+        result += "<div id="display_comments_here" class='container text-left' style='" + containerStyle + "0px;display:'none'></div>";
+
+
+ 
+
+
+
+
+
         // Billing Information Container
-        result+= "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
+        result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
 
         // Landlord Information Container
         result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'><h3 style='padding: 20px;'>Landlord Information</h3></div><div class='row'> <div class='col'>";
@@ -285,6 +296,14 @@ function displayAccountInfo(accountData){
   return result;
 }
 
+
+
+
+
+
+
+
+
 function viewComments(accountNo) {
     console.log("About to perform ajax for view comments.");
     console.log("Sending", accountNo);
@@ -298,9 +317,52 @@ function viewComments(accountNo) {
 }
 
 function processComments(results){
-    console.log("Nothing");
-    console.log(results);
+    var comments = results.split('*');
+    comments.pop(); // Remove empty string from end of list
+
+    console.log("Comments: ", comments);
+    //var numComments = comments.length;
+    //var result = "";
+
+    $('#display_comments_here').append(commentOutput(comments));
+    $('#display_comments_here').show(); 
+    console.log(result);
 }
+
+function commentOutput(commentList){
+    var comments = results.split('*');
+    comments.pop(); // Remove empty string from end of list
+
+    console.log("Comments: ", accountData);
+    var numComments = comments.length;
+    //var containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
+    var result = "";
+
+    //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>   ";
+    result += "<div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>";
+
+    for (var i = 0; i < comments.length; i++){
+        result += "<p>" + comments[i] + "</p>";
+    }
+
+    result += "</div></div>";
+    
+    console.log(result);
+    return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function viewBillingInfo(accountNo, infoType){
     $.ajax({
