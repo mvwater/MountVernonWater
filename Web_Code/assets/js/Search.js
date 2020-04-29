@@ -184,13 +184,13 @@ function processAccount(results){
     console.log("Consumption click event was created.");*/
 
     // Recievables History Button
-    $("#view_recievables").click(function() {
+    $("#toggle_recievables").click(function() {
         viewRecievablesHistory(accountNumber); // MAKE ME
     });
     console.log("Recievables click event was created.");
 
     // Payment History Button
-    $("#view_payment").click(function() {
+    $("#toggle_payment").click(function() {
         viewPaymentHistory(accountNumber); // MAKE ME
     });
     console.log("Payment click event was created.");
@@ -429,7 +429,7 @@ function displayAccountInfo(accountData){
         result += "<div id='display_commentInfo_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Billing Information Container
-        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>Consumption History</button><button id='view_recievables' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>Receivables History</button><button id='view_payment' class='btn btn-secondary' type='button' value='View Payment History'>Payment History</button></div></div></div>";
+        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='toggle_consumption' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>Consumption History</button><button id='toggle_recievables' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>Receivables History</button><button id='toggle_payment' class='btn btn-secondary' type='button' value='View Payment History'>Payment History</button></div></div></div>";
 
         // Adding hidden div for consumption history
         result += "<div id='display_consumption_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
