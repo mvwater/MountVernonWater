@@ -162,13 +162,11 @@ function processAccount(results){
     
     // View Comments Button
     $("#toggle_comments").click(function() {
+        console.log($(this).val());
+        console.log(this.value);
         toggleComments(accountNumber); // MAKE ME
         console.log('New code here.');
-        //console.log(this.text);
-        //console.log(this.value);
         $(this).text("Close Comments");
-        //console.log(this.text);
-        //console.log(this.value);
     });
     console.log("View comments click event was created.");
 
@@ -272,7 +270,7 @@ function displayAccountInfo(accountData){
         }
 
         // Puts comment button in second column
-        result += "</div> <div class='col-4' style='right-align'> <button id='toggle_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div></div>"; 
+        result += "</div> <div class='col-4' style='right-align'> <button id='toggle_comments' class='btn btn-secondary' href='#' type='button' value='View Comments'>View Comments</button> </div></div></div></div>"; 
 
         // Adding hidden div for comments
         result += "<div id='display_comments_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
