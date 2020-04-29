@@ -326,7 +326,7 @@ function processComments(results){
 
     $('#display_comments_here').append(commentOutput(comments));
     $('#display_comments_here').show(); 
-    console.log(result);
+    console.log(results);
 }
 
 function commentOutput(commentList){
