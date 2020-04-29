@@ -147,6 +147,10 @@ function showSearchResults(resultString){
     return result;
 }
 
+
+
+
+
 function processAccount(results){
     console.log("&" + results + "&");
     $('#search_results').empty();
@@ -163,7 +167,7 @@ function processAccount(results){
     // View Comments Button
     $("#toggle_comments").click(function() {
         //toggleComments(accountNumber,this);
-        toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,buttonBools);
+        toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,haveComments);
         console.log("Toggled comments.");
     });
     console.log("View comments click event was created.");
@@ -171,7 +175,7 @@ function processAccount(results){
     // Consumption History Button
     $("#toggle_consumption").click(function() {
         
-        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,buttonBools);
+        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,haveConsumptionHistory);
         //toggleConsumptionHistory(accountNumber); // MAKE ME
         console.log("Toggled consumption.");
     });
@@ -198,6 +202,12 @@ function processAccount(results){
 }
 
 var buttonBools = {"Comments":false,"Consumption History":false,"Recievables History":false,"Payment History":false,};
+
+
+
+
+var haveComments = false;
+var haveConsumptionHistory = false;
 
 function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used){
 
@@ -429,7 +439,7 @@ function displayAccountInfo(accountData){
         result += "<div id='display_commentInfo_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Billing Information Container
-        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='toggle_consumption' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>Consumption History</button><button id='toggle_recievables' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>Receivables History</button><button id='toggle_payment' class='btn btn-secondary' type='button' value='View Payment History'>Payment History</button></div></div></div>";
+        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='toggle_consumption' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>View Consumption History</button><button id='toggle_recievables' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>View Receivables History</button><button id='toggle_payment' class='btn btn-secondary' type='button' value='View Payment History'>View Payment History</button></div></div></div>";
 
         // Adding hidden div for consumption history
         result += "<div id='display_consumption_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
@@ -463,7 +473,7 @@ function displayAccountInfo(accountData){
 // Make it so user can only add comments one time
 // Make it so query can only happen once
 
-var haveComments = false;
+//var haveComments = false;
 
 function toggleComments(accountNo,buttonObj) {
     if (buttonObj.value == "View Comments"){
