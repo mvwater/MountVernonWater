@@ -266,18 +266,11 @@ function displayAccountInfo(accountData){
         }
 
         // Puts comment button in second column
-        result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div></div>"; // MAYBE REMOVE LAST DIV
+        result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div></div>"; 
 
 
         // Adding hidden div for comments
         result += "<div id='display_comments_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
-
-
- 
-
-
-
-
 
         // Billing Information Container
         result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='view_consumption_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Consumption History</button><button id='view_recievables_history' class='btn btn-secondary' type='button' style='margin-right: 10px;'>Receivables History</button><button id='view_payment_history' class='btn btn-secondary' type='button'>Payment History</button></div></div></div>";
@@ -296,14 +289,6 @@ function displayAccountInfo(accountData){
   return result;
 }
 
-
-
-
-
-
-
-
-
 function viewComments(accountNo) {
     console.log("About to perform ajax for view comments.");
     console.log("Sending", accountNo);
@@ -321,8 +306,6 @@ function processComments(results){
     comments.pop(); // Remove empty string from end of list
 
     console.log("Comments: ", comments);
-    //var numComments = comments.length;
-    //var result = "";
 
     $('#display_comments_here').append(commentOutput(comments));
     $('#display_comments_here').show(); 
@@ -330,15 +313,11 @@ function processComments(results){
 }
 
 function commentOutput(commentList){
-    //var comments = commentList.split('*');
-    //comments.pop(); // Remove empty string from end of list
 
     console.log("Comments: ", commentList);
     var numComments = commentList.length;
-    //var containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
     var result = "";
 
-    //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>   ";
     result += "<div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>";
 
     for (var i = 0; i < numComments; i++){
@@ -350,19 +329,6 @@ function commentOutput(commentList){
     console.log(result);
     return result;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function viewBillingInfo(accountNo, infoType){
     $.ajax({
