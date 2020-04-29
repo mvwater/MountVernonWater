@@ -208,15 +208,15 @@ var havePayment = false;
 
 // Come up with solution for boolean problem
 
-function swapBool(buttonLabel){
+function makeBoolTrue(buttonLabel){
     if (buttonLabel == "Comments"){
-        haveComments = !haveComments;
+        haveComments = True;
     } else if (buttonLabel == "Recievables History"){
-        haveRecievables = !haveComments;
+        haveRecievables = True;
     } else if (buttonLabel == "Consuption History"){
-        haveConsumption = !haveComments;
+        haveConsumption = True;
     } else { // Payment History
-        havePayment = !haveComments;
+        havePayment = True;
     }
 }
 
@@ -239,7 +239,7 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
                 success: processFunction,
                 error: function(){alert("Error: Button failed.");}
             });
-            swapBool(buttonLabel); // Testing
+            makeBoolTrue(buttonLabel); // Testing
             //used = true;
         }
 
