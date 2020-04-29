@@ -266,7 +266,7 @@ function displayAccountInfo(accountData){
         }
 
         // Puts comment button in second column
-        result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div>";
+        result += "</div> <div class='col-4' style='right-align'> <button id='view_comments' class='btn btn-secondary' href='#' type='button'>View Comments</button> </div></div></div></div>"; // MAYBE REMOVE LAST DIV
 
 
         // Adding hidden div for comments
