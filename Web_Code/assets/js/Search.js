@@ -313,16 +313,13 @@ function displayAccountInfo(accountData){
 var haveComments = false;
 
 function toggleComments(accountNo,buttonObj) {
-    console.log("About to perform ajax for view comments.");
-    console.log("Sending", accountNo);
-
     if (buttonObj.value == "View Comments"){
         console.log("Value: ", buttonObj.value);
-
         if (haveComments){
+            console.log("Already got comments");
             $('#display_comments_here').show(); 
         } else {
-            console.log("About to perform ajax for view comments.");
+            console.log("About to perform ajax to obtain comments.");
             console.log("Sending", accountNo);
 
             $.ajax({
@@ -339,6 +336,7 @@ function toggleComments(accountNo,buttonObj) {
         $(buttonObj).text("Close Comments");
     } else {
         // Hide comments
+        console.log("Hiding comments");
         $('#display_comments_here').hide();
         buttonObj.value = "View Comments";
         $(buttonObj).text("View Comments");
