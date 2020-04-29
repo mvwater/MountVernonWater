@@ -213,7 +213,7 @@ function makeBoolTrue(buttonLabel){
         haveComments = true;
     } else if (buttonLabel == "Recievables History"){
         haveRecievables = true;
-    } else if (buttonLabel == "Consuption History"){
+    } else if (buttonLabel == "Consumption History"){
         haveConsumption = true;
     } else { // Payment History
         havePayment = true;
