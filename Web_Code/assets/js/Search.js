@@ -317,6 +317,8 @@ function toggleComments(accountNo,buttonObj) {
     console.log("Sending", accountNo);
 
     if (buttonObj.value == "View Comments"){
+        console.log("Value: ", buttonObj.value);
+
         if (haveComments){
             $('#display_comments_here').show(); 
         } else {
@@ -329,6 +331,7 @@ function toggleComments(accountNo,buttonObj) {
                 success: processComments,
                 error: function(){alert("Error: Could not get comments.");}
             });
+            haveComments = true;
         }
 
         // Swap button name
