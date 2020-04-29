@@ -163,8 +163,6 @@ function processAccount(results){
     // View Comments Button
     $("#toggle_comments").click(function() {
         //toggleComments(accountNumber,this);
-
-        // Testing
         toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,buttonBools);
         console.log("Toggled comments.");
     });
@@ -172,8 +170,10 @@ function processAccount(results){
 
     // Consumption History Button
     $("#toggle_consumption_history").click(function() {
-        console.log("Consumption click event was initiated.");
-        toggleConsumptionHistory(accountNumber); // MAKE ME
+        
+        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,buttonBools);
+        //toggleConsumptionHistory(accountNumber); // MAKE ME
+        console.log("Toggled consumption.");
     });
     console.log("Consumption click event was created.");
 
@@ -267,16 +267,17 @@ function toggleConsumptionHistory(accountNo,buttonObj){
     }
 }*/
 
-
-
+function processConsumption(results){
+    console.log("Processing consumption");
+    console.log(results);
 
 /*
-function processConsumption(results){
-  console.log("&" + results + "&");
-  $('#search_results').empty();
-  console.log("About to show results");
-  $('#search_results').append(displayConsumptionInfo(results));
-  console.log("Finished show results");
+    console.log("&" + results + "&");
+    $('#search_results').empty();
+    console.log("About to show results");
+    $('#search_results').append(displayConsumptionInfo(results));
+    console.log("Finished show results");*/
+    console.log("Success");
 }
 
 function displayConsumptionInfo(resultString){
@@ -329,7 +330,7 @@ function displayConsumptionInfo(resultString){
 
     return result;
   }
-}*/
+}
 
 
 
