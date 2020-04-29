@@ -21,7 +21,9 @@ int main(){
   JavaScriptBridge javaScriptBridge;
 
   //Receive info from web page
-  string searchVal = javaScriptBridge.getElement("accountNo", cgi);
+  //string searchVal = javaScriptBridge.getElement("accountNo", cgi);
+  searchVal = "104-23-1";
+
   DatabaseBridge databaseBridge;
   
   CommentInfo searchResult = databaseBridge.commentInfoByAccountNo(searchVal);
