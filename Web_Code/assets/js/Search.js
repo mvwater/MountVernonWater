@@ -330,19 +330,19 @@ function processComments(results){
 }
 
 function commentOutput(commentList){
-    var comments = results.split('*');
-    comments.pop(); // Remove empty string from end of list
+    //var comments = commentList.split('*');
+    //comments.pop(); // Remove empty string from end of list
 
-    console.log("Comments: ", accountData);
-    var numComments = comments.length;
+    console.log("Comments: ", commentList);
+    var numComments = commentList.length;
     //var containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
     var result = "";
 
     //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>   ";
     result += "<div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>";
 
-    for (var i = 0; i < comments.length; i++){
-        result += "<p>" + comments[i] + "</p>";
+    for (var i = 0; i < numComments; i++){
+        result += "<p>" + commentList[i] + "</p>";
     }
 
     result += "</div></div>";
