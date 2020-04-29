@@ -167,7 +167,7 @@ function processAccount(results){
     // View Comments Button
     $("#toggle_comments").click(function() {
         //toggleComments(accountNumber,this);
-        toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,haveComments);
+        toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,buttonBools, comment);
         console.log("Toggled comments.");
     });
     console.log("View comments click event was created.");
@@ -175,7 +175,7 @@ function processAccount(results){
     // Consumption History Button
     $("#toggle_consumption").click(function() {
         
-        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,haveConsumptionHistory);
+        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,buttonBools, consumption);
         //toggleConsumptionHistory(accountNumber); // MAKE ME
         console.log("Toggled consumption.");
     });
@@ -201,7 +201,9 @@ function processAccount(results){
 
 }
 
-var buttonBools = {"Comments":false,"Consumption History":false,"Recievables History":false,"Payment History":false,};
+//var buttonBools = {"Comments":false,"Consumption History":false,"Recievables History":false,"Payment History":false};
+
+var buttonBools = {comment:false,consumption:false};
 
 
 
@@ -209,11 +211,11 @@ var buttonBools = {"Comments":false,"Consumption History":false,"Recievables His
 var haveComments = false;
 var haveConsumptionHistory = false;
 
-function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used){
+function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used,boolKey){
 
     if (buttonObj.value == "View " + buttonLabel){ 
         console.log("Value: ", buttonObj.value);
-        if (used.buttonLabel){
+        if (used.boolKey){
             console.log("Already used button");
             $('#display_' + cgiString + '_here').show();
         } else {
@@ -226,7 +228,7 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
                 success: processFunction,
                 error: function(){alert("Error: Button failed.");}
             });
-            used.buttonLabel = true;
+            used.boolKey = true;
         }
 
         // Swap button name
