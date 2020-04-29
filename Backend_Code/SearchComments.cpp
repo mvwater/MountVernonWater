@@ -22,17 +22,11 @@ int main(){
 
   //Receive info from web page
   string searchVal = javaScriptBridge.getElement("accountNo", cgi);
-  //string searchVal = "104-23-1";
 
   DatabaseBridge databaseBridge;
-  
   CommentInfo searchResult = databaseBridge.commentInfoByAccountNo(searchVal);
 
   // Send search results to JavaScript 
-  
-
-// REPLACED for testing
-  //javaScriptBridge.sendMessage("Hello.");
   javaScriptBridge.sendCommentInfo(searchResult);
   return 0;
 }

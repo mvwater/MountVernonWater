@@ -5,7 +5,6 @@
 //Description: Header file for Database Communication
 //Last Changed: 24 April 2020
 
-
 #include <string>
 #include <vector>
 #include "AccountInfo.h"

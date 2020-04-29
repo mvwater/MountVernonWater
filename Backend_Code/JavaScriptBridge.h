@@ -32,7 +32,6 @@ class JavaScriptBridge{
 
     string printAccountSnapshot(AccountSnapshot accountSnapshot);
 
-
     string getElement(string element, Cgicc &cgi);
     //Preconditions: element must be a string corresponding to an ajax element
     //sent from JavaScript. cgi is a Cgicc ajax object.
