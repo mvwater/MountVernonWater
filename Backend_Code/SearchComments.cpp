@@ -21,16 +21,16 @@ int main(){
   JavaScriptBridge javaScriptBridge;
 
   //Receive info from web page
-
   string searchVal = javaScriptBridge.getElement("accountNo", cgi);
   DatabaseBridge databaseBridge;
-
-  // Receive a BillingInfo object from from database
-  //BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
   
   CommentInfo searchResult = databaseBridge.commentInfoByAccountNo(searchVal);
 
   // Send search results to JavaScript 
-  javaScriptBridge.sendCommentInfo(searchResult);
+  
+
+// REPLACED for testing
+  javaScriptBridge.sendMessage("Hello.");
+  //javaScriptBridge.sendCommentInfo(searchResult);
   return 0;
 }
