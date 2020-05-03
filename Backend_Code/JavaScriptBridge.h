@@ -62,8 +62,8 @@ class JavaScriptBridge{
     //Postconditions:
 
     void sendConsumptionInfos(vector<Consumption> searchResults);
-    void sendReceivablesInfos(vector<Payments> searchResults);
-    void sendPaymentsInfos(vector<Receivables> searchResults);
+    void sendReceivablesInfos(vector<Receivables> searchResults);
+    void sendPaymentsInfos(vector<Payments> searchResults);
 
 
 

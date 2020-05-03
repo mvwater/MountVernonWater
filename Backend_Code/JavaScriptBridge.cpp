@@ -55,7 +55,7 @@ string JavaScriptBridge::printConsumptionInfo(Consumption consumptionInfo){
 
 string JavaScriptBridge::printPaymentsInfo(Payments paymentsInfo){
 	string result, sep("*");
-	result += paymentInfo.Pay_date + sep + paymentInfo.Amount_Paid + sep + paymentInfo.Type + sep + paymentInfo.Reference + sep + paymentInfo.Batch + sep + paymentInfo.Seq + sep;
+	result += paymentsInfo.Pay_date + sep + paymentsInfo.Amount_Paid + sep + paymentsInfo.Type + sep + paymentsInfo.Reference + sep + paymentsInfo.Batch + sep + paymentsInfo.Seq + sep;
 
   return result;
 }
