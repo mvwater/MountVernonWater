@@ -470,7 +470,7 @@ function paymentOutput(paymentList){
 
   //console.log("Account Data: " + accountData);
   console.log("Payments Data: ", paymentList);
-  var listLength = paymentsData.length;
+  var listLength = paymentList.length;
 
 // Edit listlen max
   if (listLength < 7)
