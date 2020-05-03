@@ -105,7 +105,7 @@ SearchReceivables: $(SEARCH_RECEIVABLES)
 	#TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 	#	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-PutCGI: SearchAddress SearchAccount SearchBilling SearchComments SearchConsumption
+PutCGI: SearchAddress SearchAccount SearchBilling SearchComments SearchConsumption SearchPayments SearchReceivables
 	chmod 757 SearchAccount
 	chmod 757 SearchAddress
 	chmod 757 SearchBilling
