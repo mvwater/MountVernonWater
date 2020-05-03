@@ -411,13 +411,13 @@ function processReceivables(results){
 }
 
 function receivablesOutput(receivablesList){
-  console.log("Length of result string: ", resultString.length);
+  //console.log("Length of result string: ", resultString.length);
   //var receivablesData = resultString.split('*');
   //receivablesData.pop(); // Remove empty string from end of list
 
   //console.log("Account Data: " + accountData);
-  console.log("Receivables Data: ", receivablesData);
-  var listLength = receivablesData.length;
+  console.log("Receivables Data: ", receivablesList);
+  var listLength = receivablesList.length;
 
 // Edit listlen max
   if (listLength < 7)
@@ -443,7 +443,7 @@ function receivablesOutput(receivablesList){
       for (var i = 0; i < listLength; i += 8){
           result += "<tr>";
           for (var j = i; j < i+8; j++){
-              result += "<td>" + consumptionData[j] + "</td>";
+              result += "<td>" + receivablesData[j] + "</td>";
           }
           result += "</tr>";
       }
@@ -469,7 +469,7 @@ function paymentOutput(paymentList){
   //paymentsData.pop(); // Remove empty string from end of list
 
   //console.log("Account Data: " + accountData);
-  console.log("Payments Data: ", paymentsData);
+  console.log("Payments Data: ", paymentList);
   var listLength = paymentsData.length;
 
 // Edit listlen max
