@@ -25,7 +25,7 @@ int main(){
   DatabaseBridge databaseBridge;
 
   // Receive vector of AccountSnapshot objects from database
-  vector<Receivables> searchResults = databaseBridge.receivablesByAccountNo(searchVal);
+  vector<Receivables> searchResult = databaseBridge.receivablesByAccountNo(searchVal);
 
   // Send search results to JavaScript
   javaScriptBridge.sendReceivablesInfos(searchResults);
