@@ -28,6 +28,6 @@ int main(){
   vector<Receivables> searchResult = databaseBridge.receivablesByAccountNo(searchVal);
 
   // Send search results to JavaScript
-  javaScriptBridge.sendReceivablesInfos(searchResults);
+  javaScriptBridge.sendReceivablesInfos(searchResult);
   return 0;
 }
