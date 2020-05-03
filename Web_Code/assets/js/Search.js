@@ -176,13 +176,13 @@ function processAccount(results){
     });
     console.log("Consumption click event was created.");
 
-    // Recievables History Button
-    $("#toggle_recievables").click(function() {
-        // MUST make processRecievables function
-        toggleButton(accountNumber,this,"Recievables History", "recievables", processRecievables,haveRecievables);
+    // Receivables History Button
+    $("#toggle_receivables").click(function() {
+        // MUST make processReceivables function
+        toggleButton(accountNumber,this,"Receivables History", "receivables", processReceivables,haveReceivables);
         console.log("Toggled receivables.");
     });
-    console.log("Recievables click event was created.");
+    console.log("Receivables click event was created.");
 
     // Payment History Button
     $("#toggle_payment").click(function() {
@@ -196,15 +196,15 @@ function processAccount(results){
 
 var haveComments = false;
 var haveConsumption = false;
-var haveRecievables = false;
+var haveReceivables = false;
 var havePayment = false;
 
 // Indicates button has been used
 function buttonUsed(buttonLabel){
     if (buttonLabel == "Comments"){
         haveComments = true;
-    } else if (buttonLabel == "Recievables History"){
-        haveRecievables = true;
+    } else if (buttonLabel == "Receivables History"){
+        haveReceivables = true;
     } else if (buttonLabel == "Consumption History"){
         haveConsumption = true;
     } else { // Payment History
@@ -354,13 +354,13 @@ function displayAccountInfo(accountData){
         result += "<div id='display_commentInfo_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Billing Information Container
-        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='toggle_consumption' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>View Consumption History</button><button id='toggle_recievables' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>View Receivables History</button><button id='toggle_payment' class='btn btn-secondary' type='button' value='View Payment History'>View Payment History</button></div></div></div>";
+        result += "<div class= 'container text-left' style= '" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Billing Information</h3></div><div class='row'> <div class='col'><button id='toggle_consumption' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Consumption History'>View Consumption History</button><button id='toggle_receivables' class='btn btn-secondary' type='button' style='margin-right: 10px;' value='View Receivables History'>View Receivables History</button><button id='toggle_payment' class='btn btn-secondary' type='button' value='View Payment History'>View Payment History</button></div></div></div>";
 
         // Adding hidden div for consumption history
         result += "<div id='display_consumption_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
-        // Adding hidden div for recievables history
-        result += "<div id='display_recievables_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
+        // Adding hidden div for receivables history
+        result += "<div id='display_receivables_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Adding hidden div for payment history
         result += "<div id='display_payment_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
@@ -402,15 +402,15 @@ function commentOutput(commentList){
     return result;
 }
 
-function processRecievables(results){
-    var recievables = results.split('*');
-    recievables.pop(); // Remove empty string from end of list
-    $('#display_recievables_here').append(recievablesOutput(recievables));
-    $('#display_recievables_here').show();
+function processReceivables(results){
+    var receivables = results.split('*');
+    receivables.pop(); // Remove empty string from end of list
+    $('#display_receivables_here').append(receivablesOutput(receivables));
+    $('#display_receivables_here').show();
     console.log(results);
 }
 
-function recievablesOutput(recievablesList){
+function receivablesOutput(receivablesList){
   console.log("Length of result string: ", resultString.length);
   var receivablesData = resultString.split('*');
   receivablesData.pop(); // Remove empty string from end of list
