@@ -473,7 +473,7 @@ function paymentOutput(paymentList){
   var listLength = paymentList.length;
 
 // Edit listlen max
-  if (listLength < 7)
+  if (listLength < 5)
   {
   return "<h3>Sorry! We could not find payment details associated with this account number. </h3>";
   }
@@ -493,9 +493,9 @@ function paymentOutput(paymentList){
 
       //var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
 
-      for (var i = 0; i < listLength; i += 8){
+      for (var i = 0; i < listLength; i += 6){
           result += "<tr>";
-          for (var j = i; j < i+8; j++){
+          for (var j = i; j < i+6; j++){
               result += "<td>" + paymentList[j] + "</td>";
           }
           result += "</tr>";
