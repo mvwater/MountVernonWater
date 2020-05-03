@@ -475,7 +475,7 @@ function paymentOutput(paymentList){
 // Edit listlen max
   if (listLength < 7)
   {
-  return "<h3>Sorry! We could not find receivables details associated with this account number. </h3>";
+  return "<h3>Sorry! We could not find payment details associated with this account number. </h3>";
   }
   else
   {
@@ -496,7 +496,7 @@ function paymentOutput(paymentList){
       for (var i = 0; i < listLength; i += 8){
           result += "<tr>";
           for (var j = i; j < i+8; j++){
-              result += "<td>" + paymentsList[j] + "</td>";
+              result += "<td>" + paymentList[j] + "</td>";
           }
           result += "</tr>";
       }
