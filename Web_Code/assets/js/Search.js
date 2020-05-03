@@ -412,8 +412,8 @@ function processReceivables(results){
 
 function receivablesOutput(receivablesList){
   console.log("Length of result string: ", resultString.length);
-  var receivablesData = resultString.split('*');
-  receivablesData.pop(); // Remove empty string from end of list
+  //var receivablesData = resultString.split('*');
+  //receivablesData.pop(); // Remove empty string from end of list
 
   //console.log("Account Data: " + accountData);
   console.log("Receivables Data: ", receivablesData);
