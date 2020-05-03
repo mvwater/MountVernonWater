@@ -374,6 +374,9 @@ function displayAccountInfo(accountData){
         }
 
         result += "</div></div></div>";
+
+        //Adds Print/Save Button
+        result+= "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><button class='btn btn-secondary' onclick='window.print()' type='button' style='margin-right: 10px;'>Print/Save</button></div></div></div>";
     }
 
   return result;
@@ -411,11 +414,6 @@ function processReceivables(results){
 }
 
 function receivablesOutput(receivablesList){
-  //console.log("Length of result string: ", resultString.length);
-  //var receivablesData = resultString.split('*');
-  //receivablesData.pop(); // Remove empty string from end of list
-
-  //console.log("Account Data: " + accountData);
   console.log("Receivables Data: ", receivablesList);
   var listLength = receivablesList.length;
 
@@ -432,13 +430,11 @@ function receivablesOutput(receivablesList){
       var result = "";
       result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'>";
 
-      // Add Consumption History Title
+      // Add Receivables History Title
       result += "<h3 style = 'padding-top:20px'>Receivables History</h3></div>";
 
       // Add table
       result += "<div class='table-responsive'><table class='table'><thead><tr><th>Invoice</th><th>Inv_date</th><th>Amount</th><th>To_post</th><th>Amt_paid</th><th>Paid_date</th><th>Refer</th><th>Balance</th></tr></thead><tbody>";
-
-      //var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
 
       for (var i = 0; i < listLength; i += 8){
           result += "<tr>";
@@ -464,11 +460,6 @@ function processPayments(results){
 }
 
 function paymentsOutput(paymentsList){
-  //console.log("Length of result string: ", resultString.length);
-  //var paymentsData = resultString.split('*');
-  //paymentsData.pop(); // Remove empty string from end of list
-
-  //console.log("Account Data: " + accountData);
   console.log("Payments Data: ", paymentsList);
   var listLength = paymentsList.length;
 
@@ -490,8 +481,6 @@ function paymentsOutput(paymentsList){
 
       // Add table
       result += "<div class='table-responsive'><table class='table'><thead><tr><th>Pay_date</th><th>Amount_Paid</th><th>Type</th><th>Reference</th><th>Batch</th><th>Seq</th></tr></thead><tbody>";
-
-      //var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
 
       for (var i = 0; i < listLength; i += 6){
           result += "<tr>";
