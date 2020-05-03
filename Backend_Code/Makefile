@@ -104,16 +104,16 @@ PutCGI: SearchAddress SearchAccount SearchBilling SearchComments SearchConsumpti
 	cp SearchComments /usr/lib/cgi-bin/$(USER)_commentInfoByAccountNo.cgi
 	cp SearchConsumption /usr/lib/cgi-bin/$(USER)_consumptionByAccountNo.cgi
 
-PutHTML:                                                                              
-	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
-	echo "Current contents of HTML directory: "
-	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
-
-#PutHTML:
-#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/MichaelaMvwater
-
+#PutHTML:                                                                              
+#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
 #	echo "Current contents of HTML directory: "
-#	ls -l /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+#	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
+
+PutHTML:
+	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/MichaelaMvwater
+
+	echo "Current contents of HTML directory: "
+	ls -l /var/www/html/class/softdev/$(USER)/MichaelaMvwater
 
 clean:
 	rm -f SearchAccount SearchAddress SearchBilling SearchComments $(OUT)
