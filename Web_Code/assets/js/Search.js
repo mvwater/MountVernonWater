@@ -220,6 +220,7 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
         } else {
             console.log("About to send query with ajax");
             console.log("Sending", accountNo);
+            $('#display_' + cgiString + '_here').show(); 
 
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_' + cgiString + 'ByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
@@ -252,6 +253,11 @@ function processConsumption(results){
     //$('#search_results').empty();
     console.log("About to show results");
     $('#display_consumption_here').append(displayConsumptionInfo(results));
+
+
+
+
+
     console.log("Finished show results");
     console.log("Success");
 }
