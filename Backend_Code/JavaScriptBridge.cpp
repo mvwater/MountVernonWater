@@ -3,7 +3,7 @@
 //Email Address: brydon1@kenyon.edu, kim3@kenyon.edu, canfield1@kenyon.edu
 //Project: Mount Vernon Water
 //Description: Sends output and gets input to and from JavaScript through Ajax
-//Last Changed: 24 April 2020
+//Last Changed: 3 May 2020
 
 #include "JavaScriptBridge.h"
 
@@ -23,18 +23,18 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
 
 // CANNOT PARSE; must edit
 string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
-	
+
 	string result, sep("*");
-	
+
 	//Adding BillingInfo
 	for (uint i = 0; i<billingInfo.getReceivables().size(); i ++){
 		result += billingInfo.getReceivables()[i].Invoice + sep + billingInfo.getReceivables()[i].Inv_date + sep + billingInfo.getReceivables()[i].Amount + sep + billingInfo.getReceivables()[i].To_post + sep + billingInfo.getReceivables()[i].Amt_paid + sep + billingInfo.getReceivables()[i].Paid_date + sep + billingInfo.getReceivables()[i].Refer + sep + billingInfo.getReceivables()[i].Balance + sep;
 	}
-	
+
 	for (uint i = 0; i<billingInfo.getConsumption().size(); i ++){
 		result += billingInfo.getConsumption()[i].Bill_date + sep + billingInfo.getConsumption()[i].Beg_read + sep + billingInfo.getConsumption()[i].End_read + sep + billingInfo.getConsumption()[i].Read_date + sep + billingInfo.getConsumption()[i].Service + sep + billingInfo.getConsumption()[i].Cons + sep + billingInfo.getConsumption()[i].Amount + sep + billingInfo.getConsumption()[i].Penalty + sep;
 	}
-	
+
 	for (uint i = 0; i<billingInfo.getPayments().size(); i ++){
 		result += billingInfo.getPayments()[i].Pay_date + sep + billingInfo.getPayments()[i].Amount_Paid + sep + billingInfo.getPayments()[i].Type + sep + billingInfo.getPayments()[i].Reference + sep + billingInfo.getPayments()[i].Batch + sep + billingInfo.getPayments()[i].Seq + sep;
 	}
@@ -48,15 +48,25 @@ string JavaScriptBridge::printConsumptionInfo(Consumption consumptionInfo){
 
 	string result, sep("*");
 
-	//for (uint i = 0; i<consumptionInfo.size(); i ++){
-	//result += consumptionInfo[i].Bill_date + sep + consumptionInfo[i].Beg_read + sep + consumptionInfo[i].End_read + sep + consumptionInfo[i].Read_date + sep + consumptionInfo[i].Service + sep + consumptionInfo[i].Cons + sep + consumptionInfo[i].Amount + sep + consumptionInfo[i].Penalty + sep;
-
-	//result += consumptionInfo.accountNo + sep + consumptionInfo.Bill_date + sep + consumptionInfo.Beg_read + sep + consumptionInfo.End_read + sep + consumptionInfo.Read_date + sep + consumptionInfo.Service + sep + consumptionInfo.Cons + sep + consumptionInfo.Amount + sep + consumptionInfo.Penalty + sep;
-
 	result += consumptionInfo.Bill_date + sep + consumptionInfo.Beg_read + sep + consumptionInfo.End_read + sep + consumptionInfo.Read_date + sep + consumptionInfo.Service + sep + consumptionInfo.Cons + sep + consumptionInfo.Amount + sep + consumptionInfo.Penalty + sep;
 
    return result;
 }
+
+string JavaScriptBridge::printPaymentsInfo(Payments paymentsInfo){
+	string result, sep("*");
+	result += paymentInfo.Pay_date + sep + paymentInfo.Amount_Paid + sep + paymentInfo.Type + sep + paymentInfo.Reference + sep + paymentInfo.Batch + sep + paymentInfo.Seq + sep;
+
+  return result;
+}
+
+string JavaScriptBridge::printReceivablesInfo(Receivables receivablesInfo){
+	string result, sep("*");
+	result += receivablesInfo.Invoice + sep + receivablesInfo.Inv_date + sep + receivablesInfo.Amount + sep + receivablesInfo.To_post + sep + receivablesInfo.Amt_paid + sep + receivablesInfo.Paid_date + sep + receivablesInfo.Refer + sep + receivablesInfo.Balance + sep;
+
+  return result;
+}
+
 
 
 string JavaScriptBridge::printCommentInfo(CommentInfo commentInfo){
@@ -106,9 +116,9 @@ string JavaScriptBridge::billingInfoToStr(BillingInfo searchResult){
 	BillingInfo billingInfo;
 	billingInfo = searchResult;
   	string jsMessage = "";
-	
+
 	jsMessage += printBillingInfo(billingInfo);
-	
+
 	return jsMessage;
 }
 
@@ -117,9 +127,9 @@ string JavaScriptBridge::commentInfoToStr(CommentInfo searchResult){
 	CommentInfo commentInfo;
 	commentInfo = searchResult;
   	string jsMessage = "";
-	
+
 	jsMessage += printCommentInfo(commentInfo);
-	
+
 	return jsMessage;
 }
 
@@ -143,6 +153,26 @@ string JavaScriptBridge::consumptionInfoToStr(vector<Consumption> searchResults)
     return jsMessage;
 }
 
+string JavaScriptBridge::paymentsInfoToStr(vector<Payments> searchResults){
+    Payments paymentsInfo;
+    string jsMessage = "";
+    for (uint i=0; i<searchResults.size(); i++){
+        paymentsInfo = searchResults.at(i);
+        jsMessage += printPaymentsInfo(paymentsInfo);
+    }
+    return jsMessage;
+}
+
+string JavaScriptBridge::receivablesInfoToStr(vector<Receivables> searchResults){
+    Receivables receivablesInfo;
+    string jsMessage = "";
+    for (uint i=0; i<searchResults.size(); i++){
+        receivablesInfo = searchResults.at(i);
+        jsMessage += printReceivablesInfo(receivablesInfo);
+    }
+    return jsMessage;
+}
+
 void JavaScriptBridge::sendAccountInfos(vector<AccountInfo> searchResults){
 	sendMessage(accountInfosToStr(searchResults));
 }
@@ -157,6 +187,12 @@ void JavaScriptBridge::sendBillingInfo(BillingInfo searchResult){
 
 void JavaScriptBridge::sendConsumptionInfos(vector<Consumption> searchResults){
 	sendMessage(consumptionInfoToStr(searchResults));
+}
+void JavaScriptBridge::sendPaymentsInfos(vector<Payments> searchResults){
+	sendMessage(paymentsInfoToStr(searchResults));
+}
+void JavaScriptBridge::sendReceivablesInfos(vector<Receivables> searchResults){
+	sendMessage(receivablesInfoToStr(searchResults));
 }
 
 void JavaScriptBridge::sendCommentInfo(CommentInfo searchResult){

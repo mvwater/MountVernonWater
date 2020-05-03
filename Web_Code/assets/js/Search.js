@@ -160,7 +160,7 @@ function processAccount(results){
     console.log("Finished show results");
     // Get account number for click events
     var accountNumber = accountData[0];
-    
+
     // View Comments Button
     $("#toggle_comments").click(function() {
         toggleButton(accountNumber,this,"Comments", "commentInfo", processComments,haveComments);
@@ -170,8 +170,8 @@ function processAccount(results){
 
     // Consumption History Button
     $("#toggle_consumption").click(function() {
-        
-        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption,haveConsumption);
+
+        toggleButton(accountNumber,this,"Consumption History", "consumption", processConsumption, haveConsumption);
         console.log("Toggled consumption.");
     });
     console.log("Consumption click event was created.");
@@ -179,14 +179,16 @@ function processAccount(results){
     // Recievables History Button
     $("#toggle_recievables").click(function() {
         // MUST make processRecievables function
-        //toggleButton(accountNumber,this,"Recievables History", "recievables", processRecievables,haveRecievables);
+        toggleButton(accountNumber,this,"Recievables History", "recievables", processRecievables,haveRecievables);
+        console.log("Toggled receivables.");
     });
     console.log("Recievables click event was created.");
 
     // Payment History Button
     $("#toggle_payment").click(function() {
         // MUST make processPayment function
-        //toggleButton(accountNumber,this,"Payment History", "payment", processPayment,havePayment);
+        toggleButton(accountNumber,this,"Payment History", "payment", processPayment,havePayment);
+        console.log("Toggled payments.");
     });
     console.log("Payment click event was created.");
 
@@ -212,7 +214,7 @@ function buttonUsed(buttonLabel){
 
 function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used){
 
-    if (buttonObj.value == "View " + buttonLabel){ 
+    if (buttonObj.value == "View " + buttonLabel){
         console.log("Value: ", buttonObj.value);
         if (used){
             console.log("Already used button");
@@ -220,7 +222,7 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
         } else {
             console.log("About to send query with ajax");
             console.log("Sending", accountNo);
-            $('#display_' + cgiString + '_here').show(); 
+            $('#display_' + cgiString + '_here').show();
 
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_' + cgiString + 'ByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
@@ -228,14 +230,14 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
                 success: processFunction,
                 error: function(){alert("Error: Button failed.");}
             });
-            buttonUsed(buttonLabel); 
+            buttonUsed(buttonLabel);
         }
         // Swap button name
         buttonObj.value = "Close " + buttonLabel;
         $(buttonObj).text("Close " + buttonLabel);
     } else {
         console.log("Hiding content.");
-        $('#display_' + cgiString + '_here').hide(); 
+        $('#display_' + cgiString + '_here').hide();
         buttonObj.value = "View " + buttonLabel;
         $(buttonObj).text("View " + buttonLabel);
     }
@@ -346,7 +348,7 @@ function displayAccountInfo(accountData){
         }
 
         // Puts comment button in second column
-        result += "</div> <div class='col-4' style='right-align'> <button id='toggle_comments' class='btn btn-secondary' href='#' type='button' value='View Comments'>View Comments</button> </div></div></div></div>"; 
+        result += "</div> <div class='col-4' style='right-align'> <button id='toggle_comments' class='btn btn-secondary' href='#' type='button' value='View Comments'>View Comments</button> </div></div></div></div>";
 
         // Adding hidden div for comments
         result += "<div id='display_commentInfo_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
@@ -381,7 +383,7 @@ function processComments(results){
     var comments = results.split('*');
     comments.pop(); // Remove empty string from end of list
     $('#display_commentInfo_here').append(commentOutput(comments));
-    $('#display_commentInfo_here').show(); 
+    $('#display_commentInfo_here').show();
     //console.log(results);
 }
 
@@ -404,53 +406,104 @@ function processRecievables(results){
     var recievables = results.split('*');
     recievables.pop(); // Remove empty string from end of list
     $('#display_recievables_here').append(recievablesOutput(recievables));
-    $('#display_recievables_here').show(); 
+    $('#display_recievables_here').show();
     console.log(results);
 }
 
 function recievablesOutput(recievablesList){
-    console.log("Recievables output currently blank");
+  console.log("Length of result string: ", resultString.length);
+  var receivablesData = resultString.split('*');
+  receivablesData.pop(); // Remove empty string from end of list
 
-    /*console.log("Comments: ", commentList);
-    var numComments = commentList.length;
-    var result = "";
+  //console.log("Account Data: " + accountData);
+  console.log("Receivables Data: ", receivablesData);
+  var listLength = receivablesData.length;
 
-    result += "<div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>";
+// Edit listlen max
+  if (listLength < 7)
+  {
+  return "<h3>Sorry! We could not find receivables details associated with this account number. </h3>";
+  }
+  else
+  {
+      console.log("We have results.");
+      console.log(listLength);
 
-    for (var i = 0; i < numComments; i++){
-        result += "<p>" + commentList[i] + "</p>";
-    }
+      var result = "";
+      result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'>";
 
-    result += "</div></div>";
-    return result;*/
+      // Add Consumption History Title
+      result += "<h3 style = 'padding-top:20px'>Receivables History</h3></div>";
+
+      // Add table
+      result += "<div class='table-responsive'><table class='table'><thead><tr><th>Invoice</th><th>Inv_date</th><th>Amount</th><th>To_post</th><th>Amt_paid</th><th>Paid_date</th><th>Refer</th><th>Balance</th></tr></thead><tbody>";
+
+      //var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
+
+      for (var i = 0; i < listLength; i += 8){
+          result += "<tr>";
+          for (var j = i; j < i+8; j++){
+              result += "<td>" + consumptionData[j] + "</td>";
+          }
+          result += "</tr>";
+      }
+
+    result += "</tbody></table></div></div>";
+    //result += displayPrintButton();
+
+    return result;
+  }
 }
 
 function processPayment(results){
     var payments = results.split('*');
     payments.pop(); // Remove empty string from end of list
     $('#display_payment_here').append(paymentOutput(payments));
-    $('#display_payment_here').show(); 
+    $('#display_payment_here').show();
     console.log(results);
 }
 
 function paymentOutput(paymentList){
-    console.log("Payment output currently blank");
+  console.log("Length of result string: ", resultString.length);
+  var paymentsData = resultString.split('*');
+  paymentsData.pop(); // Remove empty string from end of list
 
-    /*console.log("Comments: ", commentList);
-    var numComments = commentList.length;
-    var result = "";
+  //console.log("Account Data: " + accountData);
+  console.log("Payments Data: ", paymentsData);
+  var listLength = paymentsData.length;
 
-    result += "<div class='row'><h3 style='padding: 20px;'>Comments</h3></div><div class='row'><div class='col'>";
+// Edit listlen max
+  if (listLength < 7)
+  {
+  return "<h3>Sorry! We could not find receivables details associated with this account number. </h3>";
+  }
+  else
+  {
+      console.log("We have results.");
+      console.log(listLength);
 
-    for (var i = 0; i < numComments; i++){
-        result += "<p>" + commentList[i] + "</p>";
-    }
+      var result = "";
+      result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'>";
 
-    result += "</div></div>";
-    return result;*/
+      // Add Consumption History Title
+      result += "<h3 style = 'padding-top:20px'>Payments History</h3></div>";
+
+      // Add table
+      result += "<div class='table-responsive'><table class='table'><thead><tr><th>Pay_date</th><th>Amount_Paid</th><th>Type</th><th>Reference</th><th>Batch</th><th>Seq</th></tr></thead><tbody>";
+
+      //var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
+
+      for (var i = 0; i < listLength; i += 8){
+          result += "<tr>";
+          for (var j = i; j < i+8; j++){
+              result += "<td>" + paymentsData[j] + "</td>";
+          }
+          result += "</tr>";
+      }
+
+    result += "</tbody></table></div></div>";
+    //result += displayPrintButton();
+
+    return result;
+  }
 }
-
-
-
-
-

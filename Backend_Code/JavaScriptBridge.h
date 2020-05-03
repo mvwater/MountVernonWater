@@ -25,12 +25,13 @@ using namespace cgicc;
 class JavaScriptBridge{
   public:
     string printAccountInfo(AccountInfo accountInfo);
-	
-	string printBillingInfo(BillingInfo billingInfo);
+    string printBillingInfo(BillingInfo billingInfo);
 
     string printConsumptionInfo(Consumption consumptionInfo);
-	
-	string printCommentInfo(CommentInfo commentInfo);
+    string printPaymentsInfo(Payments paymentsInfo);
+    string printReceivablesInfo(Receivables receivablesInfo);
+
+    string printCommentInfo(CommentInfo commentInfo);
 
     string printAccountSnapshot(AccountSnapshot accountSnapshot);
 
@@ -41,32 +42,36 @@ class JavaScriptBridge{
 
     string accountInfosToStr(vector<AccountInfo> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
-	
+
 	string billingInfoToStr(BillingInfo searchResult);
 	// Returns string of BillingInfo that will be sent to JavaScript
 
     string consumptionInfoToStr(vector<Consumption> searchResults);
-	
+    string paymentsInfoToStr(vector<Payments> searchResults);
+    string receivablesInfoToStr(vector<Receivables> searchResults);
+
 	string commentInfoToStr(CommentInfo searchResult);
- 
+
     string accountSnapshotsToStr(vector<AccountSnapshot> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
 
     void sendAccountInfos(vector<AccountInfo> searchResults);
-	
+
 	void sendBillingInfo(BillingInfo searchResult);
     //Preconditions:
     //Postconditions:
 
     void sendConsumptionInfos(vector<Consumption> searchResults);
+    void sendReceivablesInfos(vector<Payments> searchResults);
+    void sendPaymentsInfos(vector<Receivables> searchResults);
 
 
 
 
 
-	
+
 	void sendCommentInfo(CommentInfo searchResult);
-	
+
     void sendAccountSnapshots(vector<AccountSnapshot> searchResults);
     //Preconditions:
     //Postconditions:
