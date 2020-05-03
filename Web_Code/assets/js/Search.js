@@ -207,8 +207,8 @@ function buttonUsed(buttonLabel){
         haveReceivables = true;
     } else if (buttonLabel == "Consumption History"){
         haveConsumption = true;
-    } else { // Payment History
-        havePayment = true;
+    } else { // Payments History
+        havePayments = true;
     }
 }
 
@@ -363,7 +363,7 @@ function displayAccountInfo(accountData){
         result += "<div id='display_receivables_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Adding hidden div for payment history
-        result += "<div id='display_payment_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
+        result += "<div id='display_payments_here' class='container text-left' style='" + containerStyle + "0px;display:none'></div>";
 
         // Landlord Information Container
         result += "<div class='container text-left' style='" + containerStyle + "30px;'> <div class='row'><h3 style='padding: 20px;'>Landlord Information</h3></div><div class='row'> <div class='col'>";
@@ -455,27 +455,27 @@ function receivablesOutput(receivablesList){
   }
 }
 
-function processPayment(results){
+function processPayments(results){
     var payments = results.split('*');
     payments.pop(); // Remove empty string from end of list
-    $('#display_payment_here').append(paymentOutput(payments));
-    $('#display_payment_here').show();
+    $('#display_payments_here').append(paymentsOutput(payments));
+    $('#display_payments_here').show();
     console.log(results);
 }
 
-function paymentOutput(paymentList){
+function paymentsOutput(paymentsList){
   //console.log("Length of result string: ", resultString.length);
   //var paymentsData = resultString.split('*');
   //paymentsData.pop(); // Remove empty string from end of list
 
   //console.log("Account Data: " + accountData);
-  console.log("Payments Data: ", paymentList);
-  var listLength = paymentList.length;
+  console.log("Payments Data: ", paymentsList);
+  var listLength = paymentsList.length;
 
 // Edit listlen max
   if (listLength < 5)
   {
-  return "<h3>Sorry! We could not find payment details associated with this account number. </h3>";
+  return "<h3>Sorry! We could not find payments details associated with this account number. </h3>";
   }
   else
   {
@@ -485,7 +485,7 @@ function paymentOutput(paymentList){
       var result = "";
       result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'>";
 
-      // Add Consumption History Title
+      // Add Payments History Title
       result += "<h3 style = 'padding-top:20px'>Payments History</h3></div>";
 
       // Add table
@@ -496,7 +496,7 @@ function paymentOutput(paymentList){
       for (var i = 0; i < listLength; i += 6){
           result += "<tr>";
           for (var j = i; j < i+6; j++){
-              result += "<td>" + paymentList[j] + "</td>";
+              result += "<td>" + paymentsList[j] + "</td>";
           }
           result += "</tr>";
       }
