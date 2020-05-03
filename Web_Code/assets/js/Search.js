@@ -99,7 +99,7 @@ function showSearchResults(resultString){
         console.log("We have results.");
         console.log(listLength);
         // Why do I need extra blank <th> tag?
-        var result = "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th></th><th></th><th>Address</th><th>Account No.</th><th>Has Comments</th></tr></thead><tbody>";
+        var result = "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'><h3 style='padding: 20px;'>Consumption History</h3></div><div class='table-responsive'><table class='table'><thead><tr><th></th><th></th><th>Address</th><th>Account No.</th><th>Has Comments</th></tr></thead><tbody>";
 
         var count=0; // Error stop
         for (var i = 0; i < listLength; i+=6){
