@@ -29,7 +29,8 @@ int main(){
 
 
 	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
-	vector<Payments> searchResult = databaseBridge.paymentsByAccountNo(searchVal);
+	//vector<Payments> searchResult = databaseBridge.paymentsByAccountNo(searchVal);
+	vector<Receivables> searchResult = databaseBridge.receivablesByAccountNo(searchVal);
 
 	JavaScriptBridge javaScriptBridge;
 
@@ -38,7 +39,7 @@ int main(){
 
 	//cout << javaScriptBridge.billingInfoToStr(searchResult) << endl;
 	//cout << javaScriptBridge.commentInfoToStr(searchResult) << endl;
-	cout << javaScriptBridge.paymentsInfoToStr(searchResult) << endl;
+	cout << javaScriptBridge.receivablesInfoToStr(searchResult) << endl;
 
 	return 0;
 }
