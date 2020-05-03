@@ -249,12 +249,10 @@ function processConsumption(results){
     console.log("Processing consumption");
     console.log(results);
 
-/*
-    console.log("&" + results + "&");
-    $('#search_results').empty();
+    //$('#search_results').empty();
     console.log("About to show results");
-    $('#search_results').append(displayConsumptionInfo(results));
-    console.log("Finished show results");*/
+    $('#display_consumption_here').append(displayConsumptionInfo(results));
+    console.log("Finished show results");
     console.log("Success");
 }
 
@@ -291,18 +289,37 @@ function displayConsumptionInfo(resultString){
 
       var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
 
+      result += "<tr><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td></tr>";
+      
+
+
+      //"<tr id=res_'" + idNameList[i] + "'>" + accountData[i] + "</td></tr>";
+
+
+
+
+
+
+
+
       //var labelNameList = ["AccountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
 
       // Consumption Information Container
       //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
 
-      // Loops through list
 
+
+
+
+
+
+      // Loops through list
+      /*
       for (var i = 0; i < listLength; i++){
             result += "<tr><td><tr id=res_'" + idNameList[i] + "'>" + accountData[i] + "</td></tr>";
           }
         //}
-      //}
+      //}*/
       result += "</tbody></table></div></div>";
       //result += displayPrintButton();
 
