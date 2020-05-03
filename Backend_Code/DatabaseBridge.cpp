@@ -62,8 +62,8 @@ vector<Payments> DatabaseBridge::paymentsByAccountNo(string accountNo){
     	searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
 			Payments paymentsResult;
-
-	    	paymentsResult.Amount_Paid = searchMatches -> getString("Amount_Paid");
+			paymentsResult.Pay_date = searchMatches -> getString("Pay_date");
+	    paymentsResult.Amount_Paid = searchMatches -> getString("Amount_Paid");
 			paymentsResult.Type = searchMatches -> getString("Type");
 			paymentsResult.Reference = searchMatches -> getString("Reference");
 			paymentsResult.Batch = searchMatches -> getString("Batch");
@@ -116,11 +116,8 @@ vector<Receivables> DatabaseBridge::receivablesByAccountNo(string accountNo){
 			cout << "Starting to grab from database" << endl;
 			Receivables receivablesResult;
 			receivablesResult.Invoice = searchMatches -> getString("Invoice");
-			cout << "Invoice" << endl;
 			receivablesResult.Inv_date = searchMatches -> getString("Inv_date");
-			cout << "Inv_date" << endl;
 			receivablesResult.Amount = searchMatches -> getString("Amount");
-					cout << "Amount" << endl;
 			receivablesResult.To_post = searchMatches -> getString("To_post");
 			receivablesResult.Amt_paid = searchMatches -> getString("Amt_paid");
 			receivablesResult.Paid_date = searchMatches -> getString("Paid_date");
