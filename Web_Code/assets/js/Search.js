@@ -254,58 +254,57 @@ function processConsumption(results){
     console.log("About to show results");
     $('#display_consumption_here').append(displayConsumptionInfo(results));
 
-
-
-
-
     console.log("Finished show results");
     console.log("Success");
 }
 
 function displayConsumptionInfo(resultString){
-  console.log("Length of result string: ", resultString.length);
-  var accountData = resultString.split('*');
-  accountData.pop(); // Remove empty string from end of list
+    console.log("Length of result string: ", resultString.length);
+    var consumptionData = resultString.split('*');
+    consumptionData.pop(); // Remove empty string from end of list
 
-  //console.log("Account Data: " + accountData);
-  console.log("Account Data: ", accountData);
-  var listLength = accountData.length;
+    //console.log("Account Data: " + accountData);
+    console.log("Consumption Data: ", consumptionData);
+    var listLength = consumptionData.length;
 
-  if (listLength < 1)
-  {
+// Edit listlen max
+    if (listLength < 7)
+    {
     return "<h3>Sorry! We could not find an consumption details associated with this account number. </h3>";
-  }
-  else
-  {
-      console.log("We have results.");
-      console.log(listLength);
-      //console.log(accountData[0])
-      //var res_accountNumber = accountData[0];
+    }
+    else
+    {
+        console.log("We have results.");
+        console.log(listLength);
+        //console.log(accountData[0])
+        //var res_accountNumber = accountData[0];
 
-      //var result = displayAccountInfoMinimal(res_accountNumber);
-      // Same style used in each section container
-      //containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
+        //var result = displayAccountInfoMinimal(res_accountNumber);
+        // Same style used in each section container
+        //containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
 
-      // Account Number in separate container
-      //result += "<p id=res_'accountNo'><b>AccountNo:&nbsp;</b> "+accountData[0]+"</p>";";
+        // Account Number in separate container
+        //result += "<p id=res_'accountNo'><b>AccountNo:&nbsp;</b> "+accountData[0]+"</p>";";
 
-      //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Consumption Information</h3></div><div class='row'><div class='col'>";
-      var result = "";
-      result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th>Account No.</th><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
+        //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Consumption Information</h3></div><div class='row'><div class='col'>";
+        var result = "";
+        result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
 
-      var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
+        var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
 
-      result += "<tr><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td></tr>";
+        for (var i = 0; i < listLength; i += 8){
+            result += "<tr>";
+            for (var j = i; j < i+8; j++){
+                result += "<td>" + consumptionData[j] + "</td>";
+            }
+            result += "</tr>";
+        }
+
+      //result += "<tr><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td><td>Hello</td></tr>";
       
 
 
       //"<tr id=res_'" + idNameList[i] + "'>" + accountData[i] + "</td></tr>";
-
-
-
-
-
-
 
 
       //var labelNameList = ["AccountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
