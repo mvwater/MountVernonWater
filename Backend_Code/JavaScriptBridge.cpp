@@ -43,6 +43,21 @@ string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
    return result;
 }
 
+// 8 items in a piece of consumption info
+string JavaScriptBridge::printConsumptionInfo(Consumption consumptionInfo){
+
+	string result, sep("*");
+
+	//for (uint i = 0; i<consumptionInfo.size(); i ++){
+	//result += consumptionInfo[i].Bill_date + sep + consumptionInfo[i].Beg_read + sep + consumptionInfo[i].End_read + sep + consumptionInfo[i].Read_date + sep + consumptionInfo[i].Service + sep + consumptionInfo[i].Cons + sep + consumptionInfo[i].Amount + sep + consumptionInfo[i].Penalty + sep;
+
+	//result += consumptionInfo.accountNo + sep + consumptionInfo.Bill_date + sep + consumptionInfo.Beg_read + sep + consumptionInfo.End_read + sep + consumptionInfo.Read_date + sep + consumptionInfo.Service + sep + consumptionInfo.Cons + sep + consumptionInfo.Amount + sep + consumptionInfo.Penalty + sep;
+
+	result += consumptionInfo.Bill_date + sep + consumptionInfo.Beg_read + sep + consumptionInfo.End_read + sep + consumptionInfo.Read_date + sep + consumptionInfo.Service + sep + consumptionInfo.Cons + sep + consumptionInfo.Amount + sep + consumptionInfo.Penalty + sep;
+
+   return result;
+}
+
 
 string JavaScriptBridge::printCommentInfo(CommentInfo commentInfo){
 	string result, sep("*");
@@ -97,6 +112,7 @@ string JavaScriptBridge::billingInfoToStr(BillingInfo searchResult){
 	return jsMessage;
 }
 
+// EDIT me; should input be a vector?
 string JavaScriptBridge::commentInfoToStr(CommentInfo searchResult){
 	CommentInfo commentInfo;
 	commentInfo = searchResult;
@@ -117,6 +133,16 @@ string JavaScriptBridge::accountSnapshotsToStr(vector<AccountSnapshot> searchRes
 	return jsMessage;
 }
 
+string JavaScriptBridge::consumptionInfoToStr(vector<Consumption> searchResults){
+    Consumption consumptionInfo;
+    string jsMessage = "";
+    for (uint i=0; i<searchResults.size(); i++){
+        consumptionInfo = searchResults.at(i);
+        jsMessage += printConsumptionInfo(consumptionInfo);
+    }
+    return jsMessage;
+}
+
 void JavaScriptBridge::sendAccountInfos(vector<AccountInfo> searchResults){
 	sendMessage(accountInfosToStr(searchResults));
 }
@@ -127,6 +153,10 @@ void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResult
 
 void JavaScriptBridge::sendBillingInfo(BillingInfo searchResult){
 	sendMessage(billingInfoToStr(searchResult));
+}
+
+void JavaScriptBridge::sendConsumptionInfos(vector<Consumption> searchResults){
+	sendMessage(consumptionInfoToStr(searchResults));
 }
 
 void JavaScriptBridge::sendCommentInfo(CommentInfo searchResult){

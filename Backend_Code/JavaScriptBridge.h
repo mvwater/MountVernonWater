@@ -27,6 +27,8 @@ class JavaScriptBridge{
     string printAccountInfo(AccountInfo accountInfo);
 	
 	string printBillingInfo(BillingInfo billingInfo);
+
+    string printConsumptionInfo(Consumption consumptionInfo);
 	
 	string printCommentInfo(CommentInfo commentInfo);
 
@@ -42,6 +44,8 @@ class JavaScriptBridge{
 	
 	string billingInfoToStr(BillingInfo searchResult);
 	// Returns string of BillingInfo that will be sent to JavaScript
+
+    string consumptionInfoToStr(vector<Consumption> searchResults);
 	
 	string commentInfoToStr(CommentInfo searchResult);
  
@@ -53,6 +57,13 @@ class JavaScriptBridge{
 	void sendBillingInfo(BillingInfo searchResult);
     //Preconditions:
     //Postconditions:
+
+    void sendConsumptionInfos(vector<Consumption> searchResults);
+
+
+
+
+
 	
 	void sendCommentInfo(CommentInfo searchResult);
 	

@@ -27,7 +27,7 @@ function searchDatabase(){
         if (searchType == "AccountNo"){
             console.log("Searching by account.");
             console.log("Sending " + userInput);
-            console.log("/cgi-bin/"+ajaxUser+"_searchByAccount2.cgi?accountNo=" + userInput);
+            //console.log("/cgi-bin/"+ajaxUser+"_searchByAccount2.cgi?accountNo=" + userInput);
             console.log("/cgi-bin/"+ajaxUser+"_searchByAccount.cgi?accountNo=" + userInput);
             openAccount(userInput);
         } else { // searchType == "Address"
@@ -75,7 +75,7 @@ function processAddressMatches(results){
 
 // Use this function in SearchDatabase function
 function openAccount(accountNo){
-    console.log("openAccount function blank for now.");
+    console.log("Opening Account");
     $.ajax({
         url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + accountNo, // Var not created yet
         dataType: 'text', // maybe JSON
@@ -220,6 +220,7 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
         } else {
             console.log("About to send query with ajax");
             console.log("Sending", accountNo);
+            $('#display_' + cgiString + '_here').show(); 
 
             $.ajax({
                 url: '/cgi-bin/'+ajaxUser+'_' + cgiString + 'ByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
@@ -240,86 +241,55 @@ function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunctio
     }
 }
 
-
-
-
-// WORK ON ME
-
 function processConsumption(results){
     console.log("Processing consumption");
     console.log(results);
 
-/*
-    console.log("&" + results + "&");
-    $('#search_results').empty();
     console.log("About to show results");
-    $('#search_results').append(displayConsumptionInfo(results));
-    console.log("Finished show results");*/
+    $('#display_consumption_here').append(displayConsumptionInfo(results));
+
+    console.log("Finished show results");
     console.log("Success");
 }
 
 function displayConsumptionInfo(resultString){
-  console.log("Length of result string: ", resultString.length);
-  var accountData = resultString.split('*');
-  accountData.pop(); // Remove empty string from end of list
+    console.log("Length of result string: ", resultString.length);
+    var consumptionData = resultString.split('*');
+    consumptionData.pop(); // Remove empty string from end of list
 
-  //console.log("Account Data: " + accountData);
-  console.log("Account Data: ", accountData);
-  var listLength = accountData.length;
+    //console.log("Account Data: " + accountData);
+    console.log("Consumption Data: ", consumptionData);
+    var listLength = consumptionData.length;
 
-  if (listLength < 1)
-  {
+// Edit listlen max
+    if (listLength < 7)
+    {
     return "<h3>Sorry! We could not find an consumption details associated with this account number. </h3>";
-  }
-  else
-  {
-      console.log("We have results.");
-      console.log(listLength);
-      //console.log(accountData[0])
-      //var res_accountNumber = accountData[0];
+    }
+    else
+    {
+        console.log("We have results.");
+        console.log(listLength);
 
-      //var result = displayAccountInfoMinimal(res_accountNumber);
-      // Same style used in each section container
-      //containerStyle = "background-color: #CCCCFF;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;margin-bottom: ";
+        var result = "";
+        result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
 
-      // Account Number in separate container
-      //result += "<p id=res_'accountNo'><b>AccountNo:&nbsp;</b> "+accountData[0]+"</p>";";
+        var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
 
-      //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>Consumption Information</h3></div><div class='row'><div class='col'>";
-      var result = "";
-      result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='table-responsive'><table class='table'><thead><tr><th>Account No.</th><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
+        for (var i = 0; i < listLength; i += 8){
+            result += "<tr>";
+            for (var j = i; j < i+8; j++){
+                result += "<td>" + consumptionData[j] + "</td>";
+            }
+            result += "</tr>";
+        }
 
-      var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
-
-      //var labelNameList = ["AccountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
-
-      // Consumption Information Container
-      //result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
-
-      // Loops through list
-
-      for (var i = 0; i < listLength; i++){
-            result += "<tr><td><tr id=res_'" + idNameList[i] + "'>" + accountData[i] + "</td></tr>";
-          }
-        //}
-      //}
       result += "</tbody></table></div></div>";
       //result += displayPrintButton();
 
     return result;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // Example result string: 10-59-1*I*12-11-1977*Reinald Mallinar*CITY OF MOUNT VERNON
 function displayAccountInfo(accountData){
@@ -400,38 +370,6 @@ function displayAccountInfo(accountData){
 
   return result;
 }
-
-/*
-function toggleComments(accountNo,buttonObj) {
-    if (buttonObj.value == "View Comments"){
-        console.log("Value: ", buttonObj.value);
-        if (haveComments){
-            console.log("Already got comments");
-            $('#display_commentInfo_here').show(); 
-        } else {
-            console.log("About to perform ajax to obtain comments.");
-            console.log("Sending", accountNo);
-
-            $.ajax({
-                url: '/cgi-bin/'+ajaxUser+'_commentInfoByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
-                dataType: 'text', // maybe JSON
-                success: processComments,
-                error: function(){alert("Error: Could not get comments.");}
-            });
-            haveComments = true;
-        }
-
-        // Swap button name
-        buttonObj.value = "Close Comments";
-        $(buttonObj).text("Close Comments");
-    } else {
-        // Hide comments
-        console.log("Hiding comments");
-        $('#display_commentInfo_here').hide();
-        buttonObj.value = "View Comments";
-        $(buttonObj).text("View Comments");
-    }
-}*/
 
 function processComments(results){
     var comments = results.split('*');
