@@ -89,7 +89,7 @@ vector<Consumption> DatabaseBridge::consumptionByAccountNo(string accountNo){
     	searchMatches.reset(statement->getResultSet());
 	    while (searchMatches->next()) {
 			Consumption consumptionResult;
-			consumptionResult.Beg_date = searchMatches -> getString("Bill_date");
+			consumptionResult.Bill_date = searchMatches -> getString("Bill_date");
 	    	consumptionResult.Beg_read = searchMatches -> getString("Beg_read");
 			consumptionResult.End_read = searchMatches -> getString("End_read");
 			consumptionResult.Read_date = searchMatches -> getString("Read_date");
