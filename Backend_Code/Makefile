@@ -52,7 +52,7 @@ SearchAddress.o: SearchAddress.cpp JavaScriptBridge.h DatabaseBridge.h AccountSn
 	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
 
 SearchBilling.o: SearchBilling.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.h
-	$(CC) $(FLAGS) SearchAddress.cpp $(CFLAGS)
+	$(CC) $(FLAGS) SearchBilling.cpp $(CFLAGS)
 
 SearchComments.o: SearchComments.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.h
 	$(CC) $(FLAGS) SearchComments.cpp $(CFLAGS)
@@ -121,7 +121,6 @@ PutCGI: SearchAddress SearchAccount SearchBilling SearchComments SearchConsumpti
 	cp SearchConsumption /usr/lib/cgi-bin/$(USER)_consumptionByAccountNo.cgi
 	cp SearchPayments /usr/lib/cgi-bin/$(USER)_paymentsByAccountNo.cgi
 	cp SearchReceivables /usr/lib/cgi-bin/$(USER)_receivablesByAccountNo.cgi
-
 #PutHTML:
 #	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
 #	echo "Current contents of HTML directory: "
