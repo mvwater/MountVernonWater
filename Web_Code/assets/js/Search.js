@@ -275,7 +275,7 @@ function displayConsumptionInfo(resultString){
         result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'>";
 
         // Add Consumption History Title
-        result += "<h3>Consumption History</h3></div>";
+        result += "<h3 style = 'padding-top:20px'>Consumption History</h3></div>";
 
         // Add table
         result += "<div class='table-responsive'><table class='table'><thead><tr><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
