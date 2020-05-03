@@ -2,6 +2,8 @@ SEARCH_ADDRESS = SearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnap
 SEARCH_ACCOUNT = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o CommentInfo.o
 SEARCH_BILLING = SearchAccount.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o CommentInfo.o
 SEARCH_COMMENTS = SearchComments.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o CommentInfo.o
+SEARCH_CONSUMPTION = SearchConsumption.o JavaScriptBridge.o DatabaseBridge.o AccountInfo.o AccountSnapshot.o BillingInfo.o CommentInfo.o
+
 
 #TEST_SEARCH_ADDRESS = TestSearchAddress.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
 #TEST_JAVASCRIPT = TestJavaScript.o JavaScriptBridge.o DatabaseBridge.o AccountSnapshot.o
@@ -53,9 +55,11 @@ SearchBilling.o: SearchBilling.cpp JavaScriptBridge.h DatabaseBridge.h AccountSn
 SearchComments.o: SearchComments.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h BillingInfo.h CommentInfo.h
 	$(CC) $(FLAGS) SearchComments.cpp $(CFLAGS)
 
+SearchConsumption.o: SearchConsumption.cpp JavaScriptBridge.h DatabaseBridge.h AccountSnapshot.h AccountInfo.h  CommentInfo.h BillingInfo.h
+	$(CC) $(FLAGS) SearchConsumption.cpp $(CFLAGS)
+
 #TestDatabase.o: TestDatabase.cpp DatabaseBridge.h AccountSnapshot.h
 	#$(CC) $(FLAGS) TestDatabase.cpp $(CFLAGS)
-
 
 
 # Linking after compiling
@@ -75,6 +79,9 @@ SearchAddress: $(SEARCH_ADDRESS)
 SearchComments: $(SEARCH_COMMENTS)
 	$(CC) $(SEARCH_COMMENTS) -o SearchComments -L/usr/local/lib $(SQL_FLAGS)
 
+SearchConsumption: $(SEARCH_CONSUMPTION)
+	$(CC) $(SEARCH_CONSUMPTION) -o SearchConsumption -L/usr/local/lib $(SQL_FLAGS)
+
 #TestDatabase: TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o
 	#$(CC) TestDatabase.o DatabaseBridge.o AccountSnapshot.o JavaScriptBridge.o -o TestDatabase -L/usr/local/lib $(SQL_FLAGS)
 
@@ -84,16 +91,18 @@ SearchComments: $(SEARCH_COMMENTS)
 	#TestSearchAddress: $(TEST_SEARCH_ADDRESS)
 	#	$(CC) $(TEST_SEARCH_ADDRESS) -o TestSearchAddress -L/usr/local/lib $(SQL_FLAGS)
 
-PutCGI: SearchAddress SearchAccount SearchBilling SearchComments
+PutCGI: SearchAddress SearchAccount SearchBilling SearchComments SearchConsumption
 	chmod 757 SearchAccount
 	chmod 757 SearchAddress
 	chmod 757 SearchBilling
 	chmod 757 SearchComments
+	chmod 757 SearchConsumption
 	
 	cp SearchAccount /usr/lib/cgi-bin/$(USER)_searchByAccount.cgi
 	cp SearchAddress /usr/lib/cgi-bin/$(USER)_searchByAddress.cgi
 	cp SearchBilling /usr/lib/cgi-bin/$(USER)_billingInfoByAccountNo.cgi
 	cp SearchComments /usr/lib/cgi-bin/$(USER)_commentInfoByAccountNo.cgi
+	cp SearchConsumption /usr/lib/cgi-bin/$(USER)_consumptionByAccountNo.cgi
 
 #PutHTML:                                                                              
 #	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
