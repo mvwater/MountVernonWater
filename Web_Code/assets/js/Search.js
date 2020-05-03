@@ -27,7 +27,7 @@ function searchDatabase(){
         if (searchType == "AccountNo"){
             console.log("Searching by account.");
             console.log("Sending " + userInput);
-            console.log("/cgi-bin/"+ajaxUser+"_searchByAccount2.cgi?accountNo=" + userInput);
+            //console.log("/cgi-bin/"+ajaxUser+"_searchByAccount2.cgi?accountNo=" + userInput);
             console.log("/cgi-bin/"+ajaxUser+"_searchByAccount.cgi?accountNo=" + userInput);
             openAccount(userInput);
         } else { // searchType == "Address"
@@ -75,7 +75,7 @@ function processAddressMatches(results){
 
 // Use this function in SearchDatabase function
 function openAccount(accountNo){
-    console.log("openAccount function blank for now.");
+    console.log("Opening Account");
     $.ajax({
         url: '/cgi-bin/'+ajaxUser+'_searchByAccount.cgi?accountNo=' + accountNo, // Var not created yet
         dataType: 'text', // maybe JSON
