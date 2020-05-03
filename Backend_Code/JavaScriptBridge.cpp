@@ -179,11 +179,11 @@ void JavaScriptBridge::sendAccountInfos(vector<AccountInfo> searchResults){
 void JavaScriptBridge::sendAccountSnapshots(vector<AccountSnapshot> searchResults){
 	sendMessage(accountSnapshotsToStr(searchResults));
 }
-
+/*
 void JavaScriptBridge::sendBillingInfo(BillingInfo searchResult){
 	sendMessage(billingInfoToStr(searchResult));
 }
-
+*/
 void JavaScriptBridge::sendConsumptionInfos(vector<Consumption> searchResults){
 	sendMessage(consumptionInfoToStr(searchResults));
 }
