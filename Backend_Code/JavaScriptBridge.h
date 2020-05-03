@@ -3,7 +3,7 @@
 //Email Address: canfield1@kenyon.edu, kim3@kenyon.edu, brydon1@kenyon.edu
 //Assignment: Mount Vernon City Water Database
 //Description: Header file for Javascript functions
-//Last Changed: 24 April 2020
+//Last Changed: 3 May 2020
 
 #include <iostream>
 #include <string>
@@ -24,15 +24,14 @@ using namespace cgicc;
 
 class JavaScriptBridge{
   public:
+
+    //Printing functions
     string printAccountInfo(AccountInfo accountInfo);
     string printBillingInfo(BillingInfo billingInfo);
-
     string printConsumptionInfo(Consumption consumptionInfo);
     string printPaymentsInfo(Payments paymentsInfo);
     string printReceivablesInfo(Receivables receivablesInfo);
-
     string printCommentInfo(CommentInfo commentInfo);
-
     string printAccountSnapshot(AccountSnapshot accountSnapshot);
 
     string getElement(string element, Cgicc &cgi);
@@ -43,38 +42,35 @@ class JavaScriptBridge{
     string accountInfosToStr(vector<AccountInfo> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
 
-	string billingInfoToStr(BillingInfo searchResult);
-	// Returns string of BillingInfo that will be sent to JavaScript
+    /*
+    string billingInfoToStr(BillingInfo searchResult);
+	  // Returns string of BillingInfo that will be sent to JavaScript
+    */
 
     string consumptionInfoToStr(vector<Consumption> searchResults);
+    // Returns string of Consumption objects that will be sent to JavaScript
     string paymentsInfoToStr(vector<Payments> searchResults);
+    // Returns string of Payments objects that will be sent to JavaScript
     string receivablesInfoToStr(vector<Receivables> searchResults);
-
-	string commentInfoToStr(CommentInfo searchResult);
-
+    // Returns string of Receivables objects that will be sent to JavaScript
+	  string commentInfoToStr(CommentInfo searchResult);
+    // Returns string of Receivables objects that will be sent to JavaScript
     string accountSnapshotsToStr(vector<AccountSnapshot> searchResults);
     // Returns string of AccountInfo objects that will be sent to JavaScript
 
     void sendAccountInfos(vector<AccountInfo> searchResults);
 
-	void sendBillingInfo(BillingInfo searchResult);
-    //Preconditions:
-    //Postconditions:
+	  void sendBillingInfo(BillingInfo searchResult);
 
     void sendConsumptionInfos(vector<Consumption> searchResults);
+
     void sendReceivablesInfos(vector<Receivables> searchResults);
+
     void sendPaymentsInfos(vector<Payments> searchResults);
 
-
-
-
-
-
-	void sendCommentInfo(CommentInfo searchResult);
+	  void sendCommentInfo(CommentInfo searchResult);
 
     void sendAccountSnapshots(vector<AccountSnapshot> searchResults);
-    //Preconditions:
-    //Postconditions:
 
     void sendMessage(string message);
     //Preconditions: stringForJS must be a string that is intended to be sent

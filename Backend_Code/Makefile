@@ -121,6 +121,7 @@ PutCGI: SearchAddress SearchAccount SearchBilling SearchComments SearchConsumpti
 	cp SearchConsumption /usr/lib/cgi-bin/$(USER)_consumptionByAccountNo.cgi
 	cp SearchPayments /usr/lib/cgi-bin/$(USER)_paymentsByAccountNo.cgi
 	cp SearchReceivables /usr/lib/cgi-bin/$(USER)_receivablesByAccountNo.cgi
+
 #PutHTML:
 #	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
 #	echo "Current contents of HTML directory: "
@@ -134,4 +135,4 @@ PutHTML:
 
 
 clean:
-	rm -f SearchAccount SearchAddress SearchBilling SearchComments $(OUT)
+	rm -f SearchAccount SearchAddress SearchBilling SearchComments SearchReceivables$(OUT)

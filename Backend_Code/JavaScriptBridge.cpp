@@ -20,7 +20,7 @@ string JavaScriptBridge::printAccountInfo(AccountInfo accountInfo){
    return result;
 }
 
-
+/* Not using BillingInfo for Prototype 3
 // CANNOT PARSE; must edit
 string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 
@@ -38,35 +38,31 @@ string JavaScriptBridge::printBillingInfo(BillingInfo billingInfo){
 	for (uint i = 0; i<billingInfo.getPayments().size(); i ++){
 		result += billingInfo.getPayments()[i].Pay_date + sep + billingInfo.getPayments()[i].Amount_Paid + sep + billingInfo.getPayments()[i].Type + sep + billingInfo.getPayments()[i].Reference + sep + billingInfo.getPayments()[i].Batch + sep + billingInfo.getPayments()[i].Seq + sep;
 	}
-
-
    return result;
 }
+*/
 
 // 8 items in a piece of consumption info
 string JavaScriptBridge::printConsumptionInfo(Consumption consumptionInfo){
-
 	string result, sep("*");
-
 	result += consumptionInfo.Bill_date + sep + consumptionInfo.Beg_read + sep + consumptionInfo.End_read + sep + consumptionInfo.Read_date + sep + consumptionInfo.Service + sep + consumptionInfo.Cons + sep + consumptionInfo.Amount + sep + consumptionInfo.Penalty + sep;
 
    return result;
 }
-
+// 6 items in a piece of payment info
 string JavaScriptBridge::printPaymentsInfo(Payments paymentsInfo){
 	string result, sep("*");
 	result += paymentsInfo.Pay_date + sep + paymentsInfo.Amount_Paid + sep + paymentsInfo.Type + sep + paymentsInfo.Reference + sep + paymentsInfo.Batch + sep + paymentsInfo.Seq + sep;
 
   return result;
 }
-
+// 8 items in a piece of receivables info
 string JavaScriptBridge::printReceivablesInfo(Receivables receivablesInfo){
 	string result, sep("*");
 	result += receivablesInfo.Invoice + sep + receivablesInfo.Inv_date + sep + receivablesInfo.Amount + sep + receivablesInfo.To_post + sep + receivablesInfo.Amt_paid + sep + receivablesInfo.Paid_date + sep + receivablesInfo.Refer + sep + receivablesInfo.Balance + sep;
 
   return result;
 }
-
 
 
 string JavaScriptBridge::printCommentInfo(CommentInfo commentInfo){
