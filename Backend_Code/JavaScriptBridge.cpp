@@ -108,6 +108,7 @@ string JavaScriptBridge::accountInfosToStr(vector<AccountInfo> searchResults){
 	return jsMessage;
 }
 
+/*
 string JavaScriptBridge::billingInfoToStr(BillingInfo searchResult){
 	BillingInfo billingInfo;
 	billingInfo = searchResult;
@@ -118,7 +119,9 @@ string JavaScriptBridge::billingInfoToStr(BillingInfo searchResult){
 	return jsMessage;
 }
 
+*/
 // EDIT me; should input be a vector?
+// CommentInfo object contains a vector of Comments and bool hasComments, so just 1 object needed
 string JavaScriptBridge::commentInfoToStr(CommentInfo searchResult){
 	CommentInfo commentInfo;
 	commentInfo = searchResult;
