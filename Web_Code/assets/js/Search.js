@@ -464,9 +464,9 @@ function processPayment(results){
 }
 
 function paymentOutput(paymentList){
-  console.log("Length of result string: ", resultString.length);
-  var paymentsData = resultString.split('*');
-  paymentsData.pop(); // Remove empty string from end of list
+  //console.log("Length of result string: ", resultString.length);
+  //var paymentsData = resultString.split('*');
+  //paymentsData.pop(); // Remove empty string from end of list
 
   //console.log("Account Data: " + accountData);
   console.log("Payments Data: ", paymentsData);
