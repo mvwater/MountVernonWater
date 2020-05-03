@@ -443,7 +443,7 @@ function receivablesOutput(receivablesList){
       for (var i = 0; i < listLength; i += 8){
           result += "<tr>";
           for (var j = i; j < i+8; j++){
-              result += "<td>" + receivablesData[j] + "</td>";
+              result += "<td>" + receivablesList[j] + "</td>";
           }
           result += "</tr>";
       }
@@ -496,7 +496,7 @@ function paymentOutput(paymentList){
       for (var i = 0; i < listLength; i += 8){
           result += "<tr>";
           for (var j = i; j < i+8; j++){
-              result += "<td>" + paymentsData[j] + "</td>";
+              result += "<td>" + paymentsList[j] + "</td>";
           }
           result += "</tr>";
       }
