@@ -269,7 +269,7 @@ function accountOutput(accountData){
         result += "</div></div></div>";
 
         //Adds Print/Save Button
-        result+= "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><button class='btn btn-secondary' onclick='window.print()' type='button' style='margin-right: 10px;'>Print/Save</button></div></div></div>";
+        result += "<div class='+container+'><div class='container text-left'style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='><div class='col'><button class='btn btn-secondary' onclick='window.print()' type='button' style='margin-top: 15px; margin-right: 10px;'>Print/Save</button></div></div></div>";
     }
 
   return result;
@@ -484,7 +484,6 @@ function paymentsOutput(paymentsList){
       }
 
     result += "</tbody></table></div></div>";
-    //result += displayPrintButton();
 
     return result;
   }
