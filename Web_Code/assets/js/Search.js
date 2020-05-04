@@ -62,7 +62,7 @@ function processAddressMatches(results){
     console.log("&" + results + "&");
     $('#search_results').empty(); //$('#account_search).empty();
     console.log("About to show results");
-    $('#search_results').append(showSearchResults(results));
+    $('#search_results').append(addressOutput(results));
     console.log("Finished show results");
 
     $(".open_account").click(function() {
@@ -84,7 +84,7 @@ function openAccount(accountNo){
     });
 }
 
-function showSearchResults(resultString){
+function addressOutput(resultString){
     console.log("Length of result string: ", resultString.length);
     var accountData = resultString.split('*');
     accountData.pop(); // Remove empty string from end of list
@@ -147,7 +147,6 @@ function showSearchResults(resultString){
     return result;
 }
 
-
 function processAccount(results){
     console.log("&" + results + "&");
     $('#search_results').empty();
@@ -156,7 +155,7 @@ function processAccount(results){
     var accountData = results.split('*');
     accountData.pop(); // Remove empty string from end of list
 
-    $('#search_results').append(displayAccountInfo(accountData));
+    $('#search_results').append(accountOutput(accountData));
     console.log("Finished show results");
     // Get account number for click events
     var accountNumber = accountData[0];
@@ -199,114 +198,8 @@ var haveConsumption = false;
 var haveReceivables = false;
 var havePayments = false;
 
-// Indicates button has been used
-function buttonUsed(buttonLabel){
-    if (buttonLabel == "Comments"){
-        haveComments = true;
-    } else if (buttonLabel == "Receivables History"){
-        haveReceivables = true;
-    } else if (buttonLabel == "Consumption History"){
-        haveConsumption = true;
-    } else { // Payments History
-        havePayments = true;
-    }
-}
-
-function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used){
-
-    if (buttonObj.value == "View " + buttonLabel){
-        console.log("Value: ", buttonObj.value);
-        if (used){
-            console.log("Already used button");
-            $('#display_' + cgiString + '_here').show();
-        } else {
-            console.log("About to send query with ajax");
-            console.log("Sending", accountNo);
-            $('#display_' + cgiString + '_here').show();
-
-            $.ajax({
-                url: '/cgi-bin/'+ajaxUser+'_' + cgiString + 'ByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
-                dataType: 'text', // maybe JSON
-                success: processFunction,
-                error: function(){alert("Error: Button failed.");}
-            });
-            buttonUsed(buttonLabel);
-        }
-        // Swap button name
-        buttonObj.value = "Close " + buttonLabel;
-        $(buttonObj).text("Close " + buttonLabel);
-    } else {
-        console.log("Hiding content.");
-        $('#display_' + cgiString + '_here').hide();
-        buttonObj.value = "View " + buttonLabel;
-        $(buttonObj).text("View " + buttonLabel);
-    }
-}
-
-function processConsumption(results){
-    console.log("Processing consumption");
-    console.log(results);
-
-    console.log("About to show results");
-    $('#display_consumption_here').append(displayConsumptionInfo(results));
-
-    console.log("Finished show results");
-    console.log("Success");
-}
-
-function displayConsumptionInfo(resultString){
-    console.log("Length of result string: ", resultString.length);
-    var consumptionData = resultString.split('*');
-    consumptionData.pop(); // Remove empty string from end of list
-
-    //console.log("Account Data: " + accountData);
-    console.log("Consumption Data: ", consumptionData);
-    var listLength = consumptionData.length;
-
-// Edit listlen max
-    if (listLength < 7)
-    {
-    return "<h3>Sorry! We could not find an consumption details associated with this account number. </h3>";
-    }
-    else
-    {
-        console.log("We have results.");
-        console.log(listLength);
-
-        var result = "";
-        result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'>";
-
-        // Add Consumption History Title
-        result += "<h3 style = 'padding-top:20px'>Consumption History</h3></div>";
-
-        // Add table
-        result += "<div class='table-responsive'><table class='table'><thead><tr><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
-
-        //var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
-
-        for (var i = 0; i < listLength; i += 8){
-            result += "<tr>";
-            for (var j = i; j < i+8; j++){
-                result += "<td>" + consumptionData[j] + "</td>";
-            }
-            result += "</tr>";
-        }
-
-      result += "</tbody></table></div></div>";
-      //result += displayPrintButton();
-
-    return result;
-  }
-}
-
 // Example result string: 10-59-1*I*12-11-1977*Reinald Mallinar*CITY OF MOUNT VERNON
-function displayAccountInfo(accountData){
-
-    //console.log("Length of result string: ", resultString.length);
-    //var accountData = resultString.split('*');
-    //accountData.pop(); // Remove empty string from end of list
-
-    //console.log("Account Data: " + accountData);
+function accountOutput(accountData){
     console.log("Account Data: ", accountData);
     var listLength = accountData.length;
 
@@ -380,6 +273,106 @@ function displayAccountInfo(accountData){
     }
 
   return result;
+}
+
+// Indicates button has been used
+function buttonUsed(buttonLabel){
+    if (buttonLabel == "Comments"){
+        haveComments = true;
+    } else if (buttonLabel == "Receivables History"){
+        haveReceivables = true;
+    } else if (buttonLabel == "Consumption History"){
+        haveConsumption = true;
+    } else { // Payments History
+        havePayments = true;
+    }
+}
+
+function toggleButton(accountNo,buttonObj,buttonLabel, cgiString, processFunction,used){
+
+    if (buttonObj.value == "View " + buttonLabel){
+        console.log("Value: ", buttonObj.value);
+        if (used){
+            console.log("Already used button");
+            $('#display_' + cgiString + '_here').show();
+        } else {
+            console.log("About to send query with ajax");
+            console.log("Sending", accountNo);
+            $('#display_' + cgiString + '_here').show();
+
+            $.ajax({
+                url: '/cgi-bin/'+ajaxUser+'_' + cgiString + 'ByAccountNo.cgi?accountNo=' + accountNo, // Var not created yet
+                dataType: 'text', // maybe JSON
+                success: processFunction,
+                error: function(){alert("Error: Button failed.");}
+            });
+            buttonUsed(buttonLabel);
+        }
+        // Swap button name
+        buttonObj.value = "Close " + buttonLabel;
+        $(buttonObj).text("Close " + buttonLabel);
+    } else {
+        console.log("Hiding content.");
+        $('#display_' + cgiString + '_here').hide();
+        buttonObj.value = "View " + buttonLabel;
+        $(buttonObj).text("View " + buttonLabel);
+    }
+}
+
+function processConsumption(results){
+    console.log("Processing consumption");
+    console.log(results);
+
+    console.log("About to show results");
+    $('#display_consumption_here').append(consumptionOutput(results));
+
+    console.log("Finished show results");
+    console.log("Success");
+}
+
+function consumptionOutput(resultString){
+    console.log("Length of result string: ", resultString.length);
+    var consumptionData = resultString.split('*');
+    consumptionData.pop(); // Remove empty string from end of list
+
+    //console.log("Account Data: " + accountData);
+    console.log("Consumption Data: ", consumptionData);
+    var listLength = consumptionData.length;
+
+// Edit listlen max
+    if (listLength < 7)
+    {
+    return "<h3>Sorry! We could not find an consumption details associated with this account number. </h3>";
+    }
+    else
+    {
+        console.log("We have results.");
+        console.log(listLength);
+
+        var result = "";
+        result += "<div class='container text-left' style='background-color: #CCCCFF;margin-bottom: 0px;padding-bottom: 10px;padding-top: 0px;margin-top: 15px;><div class='row'>";
+
+        // Add Consumption History Title
+        result += "<h3 style = 'padding-top:20px'>Consumption History</h3></div>";
+
+        // Add table
+        result += "<div class='table-responsive'><table class='table'><thead><tr><th>Bill Date</th><th>Beg_read</th><th>End_read</th><th>Read_Date</th><th>Service</th><th>Cons</th><th>Amount</th><th>Penalty</th></tr></thead><tbody>";
+
+        //var idNameList = ["accountNo","Bill_date","Beg_read","End_read","Read_date","Service","Cons","Amount","Penalty"];
+
+        for (var i = 0; i < listLength; i += 8){
+            result += "<tr>";
+            for (var j = i; j < i+8; j++){
+                result += "<td>" + consumptionData[j] + "</td>";
+            }
+            result += "</tr>";
+        }
+
+      result += "</tbody></table></div></div>";
+      //result += displayPrintButton();
+
+    return result;
+  }
 }
 
 function processComments(results){

@@ -113,7 +113,7 @@ vector<Receivables> DatabaseBridge::receivablesByAccountNo(string accountNo){
 	do{
 		searchMatches.reset(statement->getResultSet());
 		while (searchMatches->next()){
-			cout << "Starting to grab from database" << endl;
+			//cout << "Starting to grab from database" << endl;
 			Receivables receivablesResult;
 			receivablesResult.Invoice = searchMatches -> getString("Invoice");
 			receivablesResult.Inv_date = searchMatches -> getString("Inv_date");
@@ -160,25 +160,25 @@ CommentInfo DatabaseBridge::commentInfoByAccountNo(string inputAccountNo){
 			commentInfo = new CommentInfo(accountNo, comments, hasComments);
 			commentResultList.push_back(*(commentInfo));
 			delete commentInfo;
-			//cout << "Done" << endl;
+			//addressOutput << "Done" << endl;
 	    }
   	} while (statement->getMoreResults());
   	return commentResultList[0];
 }
-
+/*
 BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 
-	cout << "billingInfoByAccountNo function starting..." << endl;
+	//cout << "billingInfoByAccountNo function starting..." << endl;
 	string query("SELECT * FROM accounts WHERE AccountNo = '" + inputAccountNo + "';");
 
 	Connection con = connectToDatabase();
 	Statement statement(con->createStatement());
-	cout << "Creating statement."<< endl;
+	//cout << "Creating statement."<< endl;
 	statement->execute(query);
 
 	ResultSet searchMatches;
 
-	cout << "Declaring BillingInfo Object"<< endl;
+	//cout << "Declaring BillingInfo Object"<< endl;
 	BillingInfo *billingInfo;
 	//searchMatches.reset(statement->getResultSet());
 	//cout << "Starting loop"<< endl;
@@ -219,7 +219,7 @@ BillingInfo DatabaseBridge::billingInfoByAccountNo(string inputAccountNo){
 
 }
 
-
+*/
 
 
 vector<AccountSnapshot> DatabaseBridge::searchByAddress(string inputAddress){
