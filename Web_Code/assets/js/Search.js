@@ -226,14 +226,14 @@ function accountOutput(accountData){
 
         // General Information Container
         result += "<div class='container text-left' style='" + containerStyle + "0px;'><div class='row'><h3 style='padding: 20px;'>General Information</h3></div><div class='row'><div class='col'>";
-
+        /*
         var hasComments = 'No';
         if (accountData[29] == "T"){
             hasComments = 'Yes';
         }
-
+        */
         // EDIT href
-        result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
+        //result += "<p id='has_comments'><b>Has Comments: </b>&nbsp; " + hasComments + "</p>";
 
         // Loops through resident information
         for (var i = 0; i < 15; i++){
