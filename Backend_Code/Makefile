@@ -122,17 +122,17 @@ PutCGI: SearchAddress SearchAccount SearchBilling SearchComments SearchConsumpti
 	cp SearchPayments /usr/lib/cgi-bin/$(USER)_paymentsByAccountNo.cgi
 	cp SearchReceivables /usr/lib/cgi-bin/$(USER)_receivablesByAccountNo.cgi
 
-#PutHTML:
-#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
-#	echo "Current contents of HTML directory: "
-#	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
-
 PutHTML:
-	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/ShaneMvwater
+	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/Mvwater
 	echo "Current contents of HTML directory: "
-	ls -l /var/www/html/class/softdev/$(USER)/ShaneMvwater
+	ls -l /var/www/html/class/softdev/$(USER)/Mvwater
+
+#PutHTML:
+#	cp -R ../Web_Code /var/www/html/class/softdev/$(USER)/ShaneMvwater
+#	echo "Current contents of HTML directory: "
+#	ls -l /var/www/html/class/softdev/$(USER)/ShaneMvwater
 
 
 
 clean:
-	rm -f SearchAccount SearchAddress SearchBilling SearchComments SearchReceivables$(OUT)
+	rm -f SearchAccount SearchAddress SearchBilling SearchComments $(OUT)
