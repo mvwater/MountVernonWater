@@ -13,30 +13,33 @@ using std::vector;
 
 int main(){
 	string searchVal = "104-23-1";
-	
+
 	//string query("SELECT * FROM accounts WHERE CONCAT(TAdd1, ' ', TAdd2, ' ', TAdd3) LIKE '%" + searchVal + "%';");
-	
+
 
 	DatabaseBridge databaseBridge;
 	// Receive vector of AccountSnapshot objects from database
 	//vector<AccountInfo> searchResults = databaseBridge.searchByAccount2(searchVal);
-	
+
 	cout << "Making CommentInfo object" << endl;
-	
+
 	//BillingInfo searchResult = databaseBridge.billingInfoByAccountNo(searchVal);
-	
-	CommentInfo searchResult = databaseBridge.commentInfoByAccountNo(searchVal);
-	
+
+	//CommentInfo searchResult = databaseBridge.commentInfoByAccountNo(searchVal);
+
 
 	//vector<AccountSnapshot> searchResults = databaseBridge.queryDatabase(query);
+	//vector<Payments> searchResult = databaseBridge.paymentsByAccountNo(searchVal);
+	vector<Receivables> searchResult = databaseBridge.receivablesByAccountNo(searchVal);
 
 	JavaScriptBridge javaScriptBridge;
-	
+
 	cout << "Making Javascript statement" << endl;
 	//cout << javaScriptBridge.accountInfosToStr(searchResults) << endl;
-	
+
 	//cout << javaScriptBridge.billingInfoToStr(searchResult) << endl;
-	cout << javaScriptBridge.commentInfoToStr(searchResult) << endl;
+	//cout << javaScriptBridge.commentInfoToStr(searchResult) << endl;
+	cout << javaScriptBridge.receivablesInfoToStr(searchResult) << endl;
 
 	return 0;
 }
